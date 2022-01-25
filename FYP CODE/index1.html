@@ -152,6 +152,26 @@
 
 		}
 
+        #title h4
+        {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Sigmar One', cursive;
+            color: transparent;
+            text-transform: uppercase;
+            background-image: linear-gradient(to right , #f00,#ff0,#0ff,#0f0,#00f);
+            -webkit-background-clip: text;
+            animation: animate 20s linear infinite;
+            background-size:1000%;
+            font-size:50px;
+            margin-top: 5px;
+	        background-color:lightblue;
+            word-spacing:15px;
+
+        }
+
         @keyframes animate
         {
             0%
@@ -194,6 +214,54 @@
             margin:auto;
             letter-spacing:4px;
 		}
+
+        #contact
+        {
+            background-image: url('https://cdn.wallpapersafari.com/16/35/gRrKpQ.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .contact-box 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 34px;
+        }
+
+        .contact-box input,
+        .contact-box textarea 
+        {
+            width: 100%;
+            padding: 0.5sem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box label 
+        {
+            text-shadow: 2px 2px 2px rgb(177, 169, 169);
+            font-family: 'Indie Flower', cursive;
+			font-weight:bold;
+            float: left;
+			font-size:20pt;
+			color:  #ff8080;  
+            letter-spacing: 3px;
+        }
+
+        input[type="submit"] 
+        {
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover 
+        {
+            cursor: pointer;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+            transition: 0.5s;
+        }
         
     </style>
     </head>
@@ -206,8 +274,7 @@
 
         <div class="topnav">
             <a href = "#">HOME</a>
-            <a href = "#">MENU</a>
-            <a href = "#">ADMIN</a>
+            <a href = "menu.html">MENU</a>
             <a href = "#" style="float: right;">HELP</a>
             <a href = "#" style="float: right;">ABOUT US</a>
             <a href = "#" style="float: right;"onclick="myFunction()";>LOG OUT</a>
@@ -274,6 +341,38 @@
             </tr>
         </table>
         
+        <hr />
+        
+        <div class="header1">
+            <div id="title"><h4>CONTACT US</h4>
+        </div>
+
+        <section id="contact">
+            <div class="contact-box">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Name :</label>
+                        <input type="text" name="name" id="name" placeholder="Type your name here" required />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="email" name="email" id="email" placeholder="example@gmail.com" required />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="phone">Phone Number :</label>
+                        <input type="phone" name="phone" id="phone" placeholder="exp : 01xxxxxxxxx" />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="message">Message :</label>
+                        <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+                    </div>
+                    <input type="submit" name="cu-submit" value="Submit" />
+                </form>
+            </div>
+        </section>
 
     </body>
 </html>
