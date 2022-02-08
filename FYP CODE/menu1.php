@@ -1,3 +1,79 @@
+<?php
+session_start();
+require_once('./php/dbconnect.php');
+
+//unset($_SESSION["cart"]);
+$status = "";
+if (isset($_POST['reset'])) { //debug reset button
+    unset($_SESSION["cart"]);
+    unset($_SESSION["menustat"]);
+    unset($_SESSION['setmethod']);
+    unset($_SESSION['setvalue']);
+}
+
+
+/*if (isset($_POST['food']) && $_POST['food'] != "") { //product add to cart
+    if (empty($_SESSION['username']) && empty($_SESSION['userlevel'])) { //check login state
+        unset($_SESSION["cart"]);
+        unset($_SESSION["menustat"]);
+        unset($_SESSION['setmethod']);
+        unset($_SESSION['setvalue']);
+        echo "<script>
+    alert('You are not logged in!\\nRedirecting you to login page...');
+    window.location.href = './login.php';
+    </script>";
+        exit;
+    }*/
+
+    $foodCode = $_POST['food']; //get product by id
+    $result = mysqli_query($con, "SELECT * FROM food WHERE productCode ='$foodCode'"); //retreive product information from the database with id
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['foodName'];
+    $foodCode = $row['foodCode'];
+    $price = $row['foodPrice'];
+    $productImg = $row['foodimage'];
+
+    $cartArray = array( //set product information to array
+        $foodCode => array(
+            'name' => $name,
+            'productCode' => $foodCode,
+            'price' => $price,
+            'quantity' => 1,
+            'productImg' => $productImg
+        )
+    );
+    // $status = $foodCode;
+
+    if (empty($_SESSION['cart'])) { //check if cart session empty
+        $_SESSION["cart"] = $cartArray;
+        $status = "<div class='box'>Product is added to your cart!</div>";
+    } else {
+        $array_keys = array_keys($_SESSION["cart"]); //get cart array from cart session
+
+        if (in_array($foodCode, $array_keys)) { //check if item already in cart carry
+            $status = "<div class='box' style='color:red;'>
+    Product is already added to your cart!<br/>
+    <h6>Note: You can change the quantity of added product in the cart</h1>
+    </div>";
+        } else { //set array to cart session
+
+            // $_SESSION["cart"] = array_merge($_SESSION["cart"], $cartArray);
+            $_SESSION["cart"] = $_SESSION["cart"] + $cartArray;
+            $status = "<div class='box'>Product is added to your cart!</div>";
+        }
+    }
+}
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
