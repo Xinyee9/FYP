@@ -280,7 +280,7 @@
 
         <div class="topnav">
             <a href = "#">HOME</a>
-            <a href = "menu.html">MENU</a>
+            <a href = "menu.php">MENU</a>
             <a href = "#" style="float: right;">HELP</a>
             <a href = "#" style="float: right;">ABOUT US</a>
             <a href = "login.html" style="float: right;">LOGIN</a>
