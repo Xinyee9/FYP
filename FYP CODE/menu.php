@@ -218,6 +218,60 @@ require_once('./php/dbconnect.php');
         #myBtn:hover {
             background-color: #555;
         }
+
+        #title h1
+		{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Sigmar One', cursive;
+            color:  #7979d2;
+            text-transform: uppercase;
+            background-image: linear-gradient(to right , #f00,#ff0,#0ff,#0f0,#00f);
+            background-clip: padding-box;
+            animation: animate 20s linear infinite;
+            background-size:1000%;
+            background-color: turquoise;
+            letter-spacing: 3px;
+
+		}
+
+        #title h4
+        {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Sigmar One', cursive;
+            color: transparent;
+            text-transform: uppercase;
+            background-image: linear-gradient(to right , #f00,#ff0,#0ff,#0f0,#00f);
+            -webkit-background-clip: text;
+            animation: animate 20s linear infinite;
+            background-size:1000%;
+            font-size:50px;
+            margin-top: 5px;
+	        background-color:lightblue;
+            word-spacing:15px;
+
+        }
+
+        @keyframes animate
+        {
+            0%
+            {
+                background-position: 0% 100%;
+            }
+            50%
+            {
+                background-position: 100% 0%;
+            }
+            100%
+            {
+                background-position: 0% 100%;
+            }
+        }
     </style>
 </head>
 
@@ -226,6 +280,8 @@ require_once('./php/dbconnect.php');
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
     <div class="header">
+        <div id="title"><h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1></div>
+        <br />
         <div id="title">
             <h1>&#127800; MENU &#127800;</h1>
         </div>
