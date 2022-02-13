@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
         <title>Aurora Restaurant &#10024;</title>
