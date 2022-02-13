@@ -1,14 +1,55 @@
 <?php
 session_start();
 require_once('./php/dbconnect.php');
+// session_unset();
+// $_SESSION['logged'] = "test";
 
-if ($_SESSION['logged']) {
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+  echo "<script>
+  window.location.href= './index.php';
+</script>";
+  exit;
+}
+
+if (isset($_POST['username'])) {
+  $username = stripslashes($_REQUEST['username']); // removes backslashes
+  $username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
+
+  $password = stripslashes($_REQUEST['password']);
+  $password = mysqli_real_escape_string($con, $password);
+
+  $query = "SELECT * FROM users WHERE username='$username' and userpassword='$password'";
+  $result = mysqli_query($con, $query);
+  $rows = mysqli_num_rows($result);
+  $row = mysqli_fetch_assoc($result);
+
+  if ($rows == 1 && $row['block?'] == 1) { //if user is blocked by admin
+    echo "<script>
+  alert('Your account is blocked! Please contact us!');
+  window.location.href='./index.php';
+  </script>";
+    exit;
+  } else if ($rows == 1) { //if successful login
+    $_SESSION['logged'] = 1;
+    $_SESSION['username'] = $username;
+    $_SESSION['privilege'] = $row['userprivilege'];
+    $_SESSION['id'] = $row['userid'];
+    echo "<script>
+          alert('You are now logged in as " . $_SESSION['username'] . "');
+          window.location.href='./index.php';
+          </script>";
+  } else {
+    echo "<script>
+          alert('Username/password is incorrect.');
+          window.location.href='./login.php';
+          </script>";
+  }
 }
 
 ?>
-<script>
-  window.location.href('./')
-</script>
+
+
+
 <!DOCTYPE html>
 
 <html>
