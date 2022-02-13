@@ -56,10 +56,12 @@ if (isset($_POST['username'])) {
 
 <head>
   <title>Login</title>
-
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet" />
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+
 
   <style>
     body {
@@ -182,6 +184,7 @@ if (isset($_POST['username'])) {
       }
     }
   </style>
+
 </head>
 
 <body>
@@ -205,7 +208,8 @@ if (isset($_POST['username'])) {
       </p>
       <div align="center">
         <!-- <input type="button" value="LOG IN" onclick="backtologin();" /> -->
-        <input type="submit" value="LOG IN" />
+        <!-- <input type="submit" value="LOG IN" /> -->
+        <button type="submit" class="btn btn-primary">LOG IN</button>
         <button onclick="goBack()">GO BACK</button>
         <script>
           function backtologin() {

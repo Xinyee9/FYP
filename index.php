@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link rel="stylesheet" href=""> -->
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
     <style>
@@ -256,15 +260,9 @@
         <p1>Your favourite places !</p1>
     </div>
 
-    <div class="topnav">
-        <a href="#">HOME</a>
-        <a href="menu.php">MENU</a>
-        <a href="#" style="float: right;">HELP</a>
-        <a href="#" style="float: right;">ABOUT US</a>
-        <a href="login.php" style="float: right;">LOGIN</a>
-    </div>
-
-
+    <?php
+    include_once('./php/navbar.php');
+    ?>
 
     <div id="menu">Our Signature Dishes &#127857;</div>
     <br />
