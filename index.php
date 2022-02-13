@@ -1,48 +1,43 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Aurora Restaurant &#10024;</title>
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
-    
+
+<head>
+    <title>Aurora Restaurant &#10024;</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
+
     <style>
-        body
-        {
+        body {
             font-family: 'Lucida Sans';
             padding: 10px;
-            background-color:#e6eeff;
+            background-color: #e6eeff;
         }
 
-        .header
-        {
-            padding:30px;
+        .header {
+            padding: 30px;
             text-align: center;
             background: white;
         }
 
-        .header1
-        {
-            padding:30px;
+        .header1 {
+            padding: 30px;
             text-align: center;
         }
 
-        .header h1
-        {
+        .header h1 {
             font-size: 60px;
         }
 
-        .topnav
-        {
+        .topnav {
             overflow: auto;
-            background-color:#6699cc;
+            background-color: #6699cc;
             font-size: 25px;
             font-family: 'Amatic SC', cursive;
         }
 
-        .topnav a 
-        {
+        .topnav a {
             float: left;
             display: block;
             color: #f2f2f2;
@@ -51,115 +46,107 @@
             text-decoration: none;
         }
 
-        .topnav a:hover 
-        {
+        .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
 
         /* Create two unequal columns that floats next to each other */
         /* Left column */
-        .leftcolumn 
-        {   
+        .leftcolumn {
             float: left;
             width: 100%;
         }
 
         /* Right column */
         .rightcolumn {
-        float: right;
-        width: 25%;
-        background-color: #f1f1f1;
-        padding-left: 20px;
+            float: right;
+            width: 25%;
+            background-color: #f1f1f1;
+            padding-left: 20px;
         }
 
         /* Fake image */
-        .fake-image img
-        {
+        .fake-image img {
             background-color: #aaa;
-            margin-top:20px;
-            width:350px;
-            height:300px;
+            margin-top: 20px;
+            width: 350px;
+            height: 300px;
             padding: 10px;
             display: inline-grid;
         }
+
         /* Add a card effect for articles */
         .card {
-        background-color: white;
-        padding: 20px;
-        margin-top: 20px;
-        display: inline-grid;
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            display: inline-grid;
         }
 
         /* Clear floats after the columns */
         .row:after {
-        content: "";
-        display: inline-block;
-        clear: both;
+            content: "";
+            display: inline-block;
+            clear: both;
 
         }
 
         /* Footer */
         .footer {
-        padding: 20px;
-        text-align: center;
-        background: #ddd;
-        margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+            margin-top: 20px;
         }
 
 
-        #food td
-		{
-			width:500px;
-		}
-		
-        td
-		{
-			border:3px solid #c299ff;
+        #food td {
+            width: 500px;
+        }
+
+        td {
+            border: 3px solid #c299ff;
             border-style: inset;
-		}
-
-        hr
-        {
-            border:3px dashed purple;
         }
 
-        #menu
-		{	
-			margin:auto;
-			border-top:5px solid black;
-			width:750px;
-			text-shadow: 
-			3px 2px 4px gray,
-			2px 3px  2px white;
-			text-align:center;
-			font-size:40pt;
-			font-family:Jokerman;
-			font-weight:bold;
-			margin-top:10px;
-			letter-spacing:5px;
-		}
+        hr {
+            border: 3px dashed purple;
+        }
 
-        #title h1
-		{
+        #menu {
+            margin: auto;
+            border-top: 5px solid black;
+            width: 750px;
+            text-shadow:
+                3px 2px 4px gray,
+                2px 3px 2px white;
+            text-align: center;
+            font-size: 40pt;
+            font-family: Jokerman;
+            font-weight: bold;
+            margin-top: 10px;
+            letter-spacing: 5px;
+        }
+
+        #title h1 {
             margin: 0;
             padding: 0;
             text-align: center;
             font-size: 40px;
             font-family: 'Sigmar One', cursive;
-            color:  #7979d2;
+            color: #7979d2;
             text-transform: uppercase;
-            background-image: linear-gradient(to right , #f00,#ff0,#0ff,#0f0,#00f);
+            background-image: linear-gradient(to right, #f00, #ff0, #0ff, #0f0, #00f);
             background-clip: padding-box;
             animation: animate 20s linear infinite;
-            background-size:1000%;
+            background-size: 1000%;
             background-color: turquoise;
             letter-spacing: 3px;
 
-		}
+        }
 
-        #title h4
-        {
+        #title h4 {
             margin: 0;
             padding: 0;
             text-align: center;
@@ -167,70 +154,64 @@
             font-family: 'Sigmar One', cursive;
             color: transparent;
             text-transform: uppercase;
-            background-image: linear-gradient(to right , #f00,#ff0,#0ff,#0f0,#00f);
+            background-image: linear-gradient(to right, #f00, #ff0, #0ff, #0f0, #00f);
             -webkit-background-clip: text;
             animation: animate 20s linear infinite;
-            background-size:1000%;
-            font-size:50px;
+            background-size: 1000%;
+            font-size: 50px;
             margin-top: 5px;
-	        background-color:lightblue;
-            word-spacing:15px;
+            background-color: lightblue;
+            word-spacing: 15px;
 
         }
 
-        @keyframes animate
-        {
-            0%
-            {
+        @keyframes animate {
+            0% {
                 background-position: 0% 100%;
             }
-            50%
-            {
+
+            50% {
                 background-position: 100% 0%;
             }
-            100%
-            {
+
+            100% {
                 background-position: 0% 100%;
             }
         }
-        
-        p
-		{
-			font-family: 'Indie Flower', cursive;
-			font-weight:bold;
-			font-size:14pt;
-			color:  #b37700;          
-		}
 
-        p1
-		{
-			font-family: 'Indie Flower', cursive;
-			font-weight:bold;
-			font-size:20pt;
-			color:  #ff8080;  
-            letter-spacing: 3px;       
-		}
+        p {
+            font-family: 'Indie Flower', cursive;
+            font-weight: bold;
+            font-size: 14pt;
+            color: #b37700;
+        }
 
-        #menu-name h2
-		{
-			font-family: 'Bubblegum Sans', cursive;
-			margin-top:2px;
-			font-size:21pt;
-			font-style:italic;
-            margin:auto;
-            letter-spacing:4px;
-		}
+        p1 {
+            font-family: 'Indie Flower', cursive;
+            font-weight: bold;
+            font-size: 20pt;
+            color: #ff8080;
+            letter-spacing: 3px;
+        }
 
-        #contact
-        {
+        #menu-name h2 {
+            font-family: 'Bubblegum Sans', cursive;
+            margin-top: 2px;
+            font-size: 21pt;
+            font-style: italic;
+            margin: auto;
+            letter-spacing: 4px;
+        }
+
+        #contact {
             background-image: url('https://cdn.wallpapersafari.com/16/35/gRrKpQ.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        .contact-box 
-        {
+
+        .contact-box {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -238,104 +219,108 @@
         }
 
         .contact-box input,
-        .contact-box textarea 
-        {
+        .contact-box textarea {
             width: 100%;
             padding: 0.5sem;
             border-radius: 5px;
             font-size: 1.1rem;
         }
 
-        .contact-box label 
-        {
+        .contact-box label {
             text-shadow: 2px 2px 2px rgb(177, 169, 169);
             font-family: 'Indie Flower', cursive;
-			font-weight:bold;
+            font-weight: bold;
             float: left;
-			font-size:20pt;
-			color:  #ff8080;  
+            font-size: 20pt;
+            color: #ff8080;
             letter-spacing: 3px;
         }
 
-        input[type="submit"] 
-        {
+        input[type="submit"] {
             cursor: pointer;
         }
 
-        input[type="submit"]:hover 
-        {
+        input[type="submit"]:hover {
             cursor: pointer;
             box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
             transition: 0.5s;
         }
-
     </style>
-    </head>
+</head>
 
-    <body>
-        <div class="header">
-            <div id="title"><h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1></div>
-            <p1>Your favourite places !</p1>
+<body>
+    <div class="header">
+        <div id="title">
+            <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
         </div>
+        <p1>Your favourite places !</p1>
+    </div>
 
-        <div class="topnav">
-            <a href = "#">HOME</a>
-            <a href = "menu.php">MENU</a>
-            <a href = "#" style="float: right;">HELP</a>
-            <a href = "#" style="float: right;">ABOUT US</a>
-            <a href = "login.html" style="float: right;">LOGIN</a>
-        </div>
+    <div class="topnav">
+        <a href="#">HOME</a>
+        <a href="menu.php">MENU</a>
+        <a href="#" style="float: right;">HELP</a>
+        <a href="#" style="float: right;">ABOUT US</a>
+        <a href="login.php" style="float: right;">LOGIN</a>
+    </div>
 
-        
 
-        <div id="menu">Our Signature Dishes &#127857;</div>
-        <br />
-        <table id="food" align ="center" cellpadding="15px" cellspacing="20px">
-            <tr>
-                <td>
-                    <div class="row">
-                        <div class="leftcolumn">
-                            <div class="card">
-                                <div id="menu-name"><h2>Blackpepper Chickenchop</h2></div>
-                                <div class="fake-image"><img src="Food/c1.jpeg"></div>
-                                <p>The Black Pepper Chicken Chop is a vibrant and flavorful dish.Has a great nutritional value,especially in terms of protein.Black pepper chicken chops have a crisp and tender flavour.It is the perfect solution for comrades who want to lose weight but can't stop themselves from eating because of the low fat content.</p>
+
+    <div id="menu">Our Signature Dishes &#127857;</div>
+    <br />
+    <table id="food" align="center" cellpadding="15px" cellspacing="20px">
+        <tr>
+            <td>
+                <div class="row">
+                    <div class="leftcolumn">
+                        <div class="card">
+                            <div id="menu-name">
+                                <h2>Blackpepper Chickenchop</h2>
                             </div>
+                            <div class="fake-image"><img src="Food/c1.jpeg"></div>
+                            <p>The Black Pepper Chicken Chop is a vibrant and flavorful dish.Has a great nutritional value,especially in terms of protein.Black pepper chicken chops have a crisp and tender flavour.It is the perfect solution for comrades who want to lose weight but can't stop themselves from eating because of the low fat content.</p>
                         </div>
                     </div>
-                </td>
+                </div>
+            </td>
 
-                <td>
-                    <div class="row">
-                        <div class="leftcolumn">
-                            <div class="card">
-                                <div id="menu-name"><h2>Creammy Rigatoni Vege</h2></div>
-                                <div class="fake-image"><img src="Food/s1.jpg"></div>
-                                <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.Instead, I'd describe it as delicious, rich, unctuous, velvety, warm and fragrant with sweet.</p>
+            <td>
+                <div class="row">
+                    <div class="leftcolumn">
+                        <div class="card">
+                            <div id="menu-name">
+                                <h2>Creammy Rigatoni Vege</h2>
                             </div>
+                            <div class="fake-image"><img src="Food/s1.jpg"></div>
+                            <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.Instead, I'd describe it as delicious, rich, unctuous, velvety, warm and fragrant with sweet.</p>
                         </div>
                     </div>
-                </td>
+                </div>
+            </td>
 
-                
-                <td>
-                    <div class="row">
-                        <div class="leftcolumn">
-                            <div class="card">
-                                <div id="menu-name"><h2>Steamed Cheeseburger </h2></div>
-                                <div class="fake-image"><img src="Food/b1.jpg"></div>
-                                <p>Steamed cheeseburgers, also known as cheeseburgs, are a special type of cheeseburger that originated in Connecticut. This local delicacy is created with steamed ground beef and steaming bits of cheese. Both are steamed separately, with the beef in special metal moulds and the cheese in its own container.</p>
+
+            <td>
+                <div class="row">
+                    <div class="leftcolumn">
+                        <div class="card">
+                            <div id="menu-name">
+                                <h2>Steamed Cheeseburger </h2>
                             </div>
+                            <div class="fake-image"><img src="Food/b1.jpg"></div>
+                            <p>Steamed cheeseburgers, also known as cheeseburgs, are a special type of cheeseburger that originated in Connecticut. This local delicacy is created with steamed ground beef and steaming bits of cheese. Both are steamed separately, with the beef in special metal moulds and the cheese in its own container.</p>
                         </div>
                     </div>
-                </td>
+                </div>
+            </td>
 
-            </tr>
-        </table>
+        </tr>
+    </table>
 
-        <hr />
-        
-        <div class="header1">
-            <div id="title"><h4>CONTACT US</h4>
+    <hr />
+
+    <div class="header1">
+        <div id="title">
+            <h4>CONTACT US</h4>
         </div>
 
         <section id="contact">
@@ -345,17 +330,17 @@
                         <label for="name">Name :</label>
                         <input type="text" name="name" id="name" placeholder="Type your name here" required />
                     </div>
-    
+
                     <div class="form-group">
                         <label for="email">Email :</label>
                         <input type="email" name="email" id="email" placeholder="example@gmail.com" required />
                     </div>
-    
+
                     <div class="form-group">
                         <label for="phone">Phone Number :</label>
                         <input type="phone" name="phone" id="phone" placeholder="exp : 01xxxxxxxxx" />
                     </div>
-    
+
                     <div class="form-group">
                         <label for="message">Message :</label>
                         <textarea name="message" id="message" cols="30" rows="10" required></textarea>
@@ -364,5 +349,6 @@
                 </form>
             </div>
         </section>
-    </body>
+</body>
+
 </html>
