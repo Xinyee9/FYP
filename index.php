@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+<!-- 123 -->
 
 <head>
     <title>Aurora Restaurant &#10024;</title>
