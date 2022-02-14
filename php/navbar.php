@@ -21,7 +21,7 @@
         <a href="#" style="float: right;">HELP</a>
         <a href="#" style="float: right;">ABOUT US</a>
         <a href="" style="float: right;">ORDER MANAGEMENT</a>
-        <a href="" style="float: right;">ADMIN PANEL</a>
+        <a href="./admin/adminpanel.php" style="float: right;">ADMIN PANEL</a>
         <a style="-webkit-user-select: none; cursor: default;">Welcome, ' . $_SESSION['username'] . '</a>';
     } else {
         echo '
