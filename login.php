@@ -227,7 +227,7 @@ if (isset($_POST['username'])) {
         <div class="forgot">
           <p1>Forgot your password? </p1><a href="#"> Reset Here</a>
           <p></p>
-          <p1>NOT A USER?</p1><a href="Customer Register.html"> SIGN UP</a>
+          <p1>NOT A USER?</p1><a href="register.php"> SIGN UP</a>
         </div>
       </div>
     </form>

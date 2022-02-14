@@ -1,243 +1,247 @@
-<?php
-echo '<!DOCTYPE html>';
-echo '';
-echo '<html>';
-echo '';
-echo '<head>';
-echo '<title>Payment</title>';
-echo '';
-echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
-echo '';
-echo '<style>';
-echo '.header {';
-    echo 'padding: 30px;';
-    echo 'text-align: center;';
-    echo 'background-color: rgba(255, 255, 255, .5);';
-    echo '}';
-echo 'body';
-echo '{';
-    echo 'background-image:url("https://images.indianexpress.com/2021/09/GettyImages-virtual-shopping-online-1200.jpg");';
-    echo 'background-repeat: no-repeat;';
-echo 'background-size: cover;';
-echo 'background-position: center;';
-echo 'position: relative;';
-echo 'font-family: Arial;';
-echo 'font-size: 17px;';
-echo 'padding: 8px;';
-echo '}';
-echo '';
-echo '* {';
-echo 'box-sizing: border-box;';
-echo '}';
-echo '';
-echo '.row {';
-echo 'display: -ms-flexbox; /* IE10 */';
-echo 'display: flex;';
-echo '-ms-flex-wrap: wrap; /* IE10 */';
-echo 'flex-wrap: wrap;';
-echo 'margin: 0 -16px;';
-echo '}';
-echo '';
-echo '.col-25 {';
-echo '-ms-flex: 25%; /* IE10 */';
-echo 'flex: 25%;';
-echo '}';
-echo '';
-echo '.col-50 {';
-echo '-ms-flex: 50%; /* IE10 */';
-echo 'flex: 50%;';
-echo '}';
-echo '';
-echo '.col-75 {';
-echo '-ms-flex: 75%; /* IE10 */';
-echo 'flex: 75%;';
-echo '}';
-echo '';
-echo '.col-25,';
-echo '.col-50,';
-echo '.col-75 {';
-echo 'padding: 0 16px;';
-echo '}';
-echo '';
-echo '.container {';
-    echo 'background-color: rgba(255, 255, 255, .5);';
-echo 'padding: 5px 20px 15px 20px;';
-echo 'border: 1px solid lightgrey;';
-echo 'border-radius: 3px;';
-echo '}';
-echo '';
-echo 'input[type=text] {';
-echo 'width: 100%;';
-echo 'margin-bottom: 20px;';
-echo 'padding: 12px;';
-echo 'border: 1px solid #ccc;';
-echo 'border-radius: 3px;';
-echo '}';
-echo '';
-echo 'label {';
-echo 'margin-bottom: 10px;';
-echo 'display: block;';
-echo '}';
-echo '';
-echo '.icon-container {';
-echo 'margin-bottom: 20px;';
-echo 'padding: 7px 0;';
-echo 'font-size: 24px;';
-echo '}';
-echo '';
-echo '.btn {';
-echo 'background-color: #4CAF50;';
-echo 'color: white;';
-echo 'padding: 12px;';
-echo 'margin: 10px 0;';
-echo 'border: none;';
-echo 'width: 100%;';
-echo 'border-radius: 3px;';
-echo 'cursor: pointer;';
-echo 'font-size: 17px;';
-echo '}';
-echo '';
-echo '.btn:hover {';
-echo 'background-color: #45a049;';
-echo '}';
-echo '';
-echo 'a {';
-echo 'color: #2196F3;';
-echo '}';
-echo '';
-echo 'hr {';
-echo 'border: 1px solid lightgrey;';
-echo '}';
-echo '';
-echo 'span.price {';
-echo 'float: right;';
-echo 'color: grey;';
-echo '}';
-echo '';
-echo '@media (max-width: 800px) {';
-echo '.row {';
-echo 'flex-direction: column-reverse;';
-echo '}';
-echo '.col-25 {';
-echo 'margin-bottom: 20px;';
-echo '}';
-echo '}';
-echo '';
-echo 'a {';
-echo 'text-decoration: none;';
-echo 'display: inline-block;';
-echo 'padding: 8px 16px;';
-echo 'border:1px solid;';
-echo 'color:black;';
-echo '}';
-echo '';
-echo 'a:hover {';
-echo 'background-color: #ddd;';
-echo 'color: white;';
-echo '}';
-echo '</style>';
-echo '</head>';
-echo '<body>';
-echo '<div class="header">';
-echo '<div id="title">';
-echo '<h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>';
-echo '</div>';
-echo '</div>';
-echo '<p align="right">';
-echo '<button href="index.php">
-Back</button>';
-echo '</p>';
-echo '<h2>Transaction</h2>';
-echo '<div class="row">';
-echo '<div class="col-75">';
-echo '<div class="container">';
-echo '<form action="/action_page.php">';
-echo '';
-echo '<div class="row">';
-echo '<div class="col-50">';
-echo '<h3>Billing Address</h3>';
-echo '<label for="fname"><i class="fa fa-user"></i> Full Name</label>';
-echo '<input type="text" id="fname" name="firstname" placeholder="Joshua">';
-echo '<label for="email"><i class="fa fa-envelope"></i> Email</label>';
-echo '<input type="text" id="email" name="email" placeholder="example@gmail.com">';
-echo '<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>';
-echo '<input type="text" id="adr" name="address" placeholder="123 Jalan D1">';
-echo '<label for="city"><i class="fa fa-institution"></i> City</label>';
-echo '<input type="text" id="city" name="city" placeholder="Ayer Keroh">';
-echo '';
-echo '<div class="row">';
-echo '<div class="col-50">';
-echo '<label for="state">State</label>';
-echo '<input type="text" id="state" name="state" placeholder="Malacca">';
-echo '</div>';
-echo '<div class="col-50">';
-echo '<label for="zip">Zip</label>';
-echo '<input type="text" id="zip" name="zip" placeholder="75450">';
-echo '</div>';
-echo '</div>';
-echo '</div>';
-echo '';
-echo '<div class="col-50">';
-echo '<h3>Payment</h3>';
-echo '<label for="fname">Accepted Cards</label>';
-echo '<div class="icon-container">';
-echo '<i class="fa fa-cc-visa" style="color:navy;"></i>';
-echo '<i class="fa fa-cc-amex" style="color:blue;"></i>';
-echo '<i class="fa fa-cc-mastercard" style="color:red;"></i>';
-echo '<i class="fa fa-cc-discover" style="color:orange;"></i>';
-echo '</div>';
-echo '<label for="cname">Name on Card</label>';
-echo '<input type="text" id="cname" name="cardname" placeholder="JOSHUA">';
-echo '<label for="ccnum">Card number</label>';
-echo '<input type="text" id="ccnum" name="cardnumber" placeholder="1234-1234-1234-1234">';
-echo '<label for="expmonth">Exp Month</label>';
-echo '<input type="text" id="expmonth" name="expmonth" placeholder="April">';
-echo '<div class="row">';
-echo '<div class="col-50">';
-echo '<label for="expyear">Exp Year</label>';
-echo '<input type="text" id="expyear" name="expyear" placeholder="2022">';
-echo '</div>';
-echo '<div class="col-50">';
-echo '<label for="cvv">CVV</label>';
-echo '<input type="text" id="cvv" name="cvv" placeholder="888">';
-echo '</div>';
-echo '</div>';
-echo '</div>';
-echo '';
-echo '</div>';
-echo '<label>';
-echo '<input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing';
-echo '</label>';
-echo '<input type="button" value="Submit and Pay" class="btn" onclick="input()">';
-echo '</form>';
-echo '</div>';
-echo '</div>';
-echo '<div class="col-25">';
-echo '<div class="container">';
-echo '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>3</b></span></h4>';
-echo '<p>Product<span class="price">RM </span></p>';
-echo '<hr>';
-echo '<p>Total <span class="price" style="color:black"><b>RM </b></span></p>';
-echo '</div>';
-echo '</div>';
-echo '</div>';
-echo '<script>';
-echo 'function input()';
-echo '{';
-echo 'window.alert("Thank You for your order! Your payment is SUCCESSFUL!");';
-echo '';
-echo 'display();';
-echo '';
-echo 'showAlert();';
-echo '}';
-echo '';
-echo 'function display()';
-echo '{';
-echo 'window.location.href="delivery.php";';
-echo '}';
-echo '';
-echo '</script>';
-echo '</body>';
-echo '</html>';
-?>
+<?php ?>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Payment</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .header {
+            padding: 30px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, .5);
+        }
+
+        body {
+            background-image: url("https://images.indianexpress.com/2021/09/GettyImages-virtual-shopping-online-1200.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            font-family: Arial;
+            font-size: 17px;
+            padding: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap;
+            /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
+
+        .col-25 {
+            -ms-flex: 25%;
+            /* IE10 */
+            flex: 25%;
+        }
+
+        .col-50 {
+            -ms-flex: 50%;
+            /* IE10 */
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 75%;
+            /* IE10 */
+            flex: 75%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, .5);
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #2196F3;
+        }
+
+        hr {
+            border: 1px solid lightgrey;
+        }
+
+        span.price {
+            float: right;
+            color: grey;
+        }
+
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
+            }
+
+            .col-25 {
+                margin-bottom: 20px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid;
+            color: black;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div id="title">
+            <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
+        </div>
+    </div>
+    <p align="right">
+        <button href="index.php">
+            Back</button>
+    </p>
+    <h2>Transaction</h2>
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <form action="/action_page.php">
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Joshua">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="text" id="email" name="email" placeholder="example@gmail.com">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="123 Jalan D1">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="city" placeholder="Ayer Keroh">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" placeholder="Malacca">
+                                </div>
+                                <div class="col-50">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" id="zip" name="zip" placeholder="75450">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="cardname" placeholder="JOSHUA">
+                            <label for="ccnum">Card number</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1234-1234-1234-1234">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="expmonth" placeholder="April">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="expyear" placeholder="2022">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="888">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <input type="button" value="Submit and Pay" class="btn" onclick="input()">
+                </form>
+            </div>
+        </div>
+        <div class="col-25">
+            <div class="container">
+                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>3</b></span></h4>
+                <p>Product<span class="price">RM </span></p>
+                <hr>
+                <p>Total <span class="price" style="color:black"><b>RM </b></span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function input() {
+            window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
+
+            display();
+
+            showAlert();
+        }
+
+        function display() {
+            window.location.href = "delivery.php";
+        }
+    </script>
+</body>
+
+</html>
