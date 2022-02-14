@@ -26,11 +26,17 @@ require_once('./php/dbconnect.php');
         <div id="title">
             <h1>&#127800; MENU &#127800;</h1>
         </div>
+
     </div>
 
     <div id="menu">FOOD &#127812;</div>
 
     <a href="index.php" class="previous round">&#8249;</a>
+
+    <form action="transaction.php" name="toSubmit" method="post">
+        <input type="hidden" name="foodcode" value="">
+        <input type="hidden" name="foodquantity" value="">
+    </form>
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <?php
@@ -48,7 +54,7 @@ require_once('./php/dbconnect.php');
                             <div id='menu-name'><h2>" . $row["food_name"] . "</h2></div>
                             <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
                             <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
-                            <button class='button'>SELECT</button>
+                            <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
                         </div>
                     </div>
                 </div>
@@ -324,6 +330,23 @@ require_once('./php/dbconnect.php');
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+        }
+
+        function select(selButton) {
+            var foodinfo = selButton.value.split(",,");
+            // console.log(foodinfo);
+            quantity = prompt("You have selected " + foodinfo[1] + ".\nHow many quantity you want?", 1);
+            // console.log(isNaN(quantity));
+            while (isNaN(quantity)) {
+                alert("Please enter quantity in numbers only!");
+            }
+
+            if (quantity != null && quantity != isNaN(quantity)) {
+                document.toSubmit.foodcode.value = foodinfo[0];
+                document.toSubmit.foodquantity.value = quantity;
+                document.toSubmit.submit();
+            }
+
         }
     </script>
 

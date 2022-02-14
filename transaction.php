@@ -1,4 +1,15 @@
-<?php ?>
+<?php
+session_start();
+if (isset($_POST["foodcode"])) {
+    echo "
+    <script>
+    console.log('" . $_POST["foodcode"] . "');
+    console.log('" . $_POST["foodquantity"] . "');
+    </script>
+    ";
+}
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -223,7 +234,9 @@
         <div class="col-25">
             <div class="container">
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>3</b></span></h4>
-                <p>Product<span class="price">RM </span></p>
+                <p><?php
+                    echo $_POST["foodcode"]
+                    ?><span class="price">RM </span></p>
                 <hr>
                 <p>Total <span class="price" style="color:black"><b>RM </b></span></p>
             </div>
