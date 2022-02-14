@@ -4,6 +4,7 @@ require_once('./php/dbconnect.php');
 
 if (isset($_POST['mem_name'])) {
   $username = stripslashes($_POST['mem_name']); // removes backslashes
+  //123
   $username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
   $email = stripslashes($_POST['mem_email']);
   $email = mysqli_real_escape_string($con, $email);
