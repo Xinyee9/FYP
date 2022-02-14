@@ -213,7 +213,7 @@ if (isset($_POST['username'])) {
         <button onclick="goBack()">GO BACK</button>
         <script>
           function backtologin() {
-            window.alert("You have success LOG IN!");
+            window.alert("You have successful LOG IN!");
             window.location.href = "index.php";
           }
 
