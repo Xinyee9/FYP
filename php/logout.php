@@ -6,6 +6,6 @@ unset($_SESSION['privilege']);
 unset($_SESSION['id']);
 
 echo "<script>
-          alert('You have benn logged out.');
+          alert('You have been logged out.');
           window.location.href='../';
           </script>";
