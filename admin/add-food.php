@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
 <html>
     <head>
@@ -56,7 +56,7 @@
                                 //create 
                                 $sql="SELECT * FROM admin ";
 
-                                $res = mysqli_query($con, $sql);
+                                $res = mysqli_query($conn, $sql);
 
                                 $count = mysqli_num_rows($res);
                                 if($count>0)
@@ -94,7 +94,7 @@
                                 $sql2 = "SELECT * FROM CATEGORY ";
 
                                 //executing query
-                                $res2 = mysqli_query($con, $sql2);
+                                $res2 = mysqli_query($conn, $sql2);
 
                                 //count rows to check whether we have category or not
                                 $count = mysqli_num_rows($res2);
@@ -177,7 +177,7 @@
                 $src = $_FILES['image']['tmp_name'];
 
                 //destination path for the image to be upload
-                $dst = "image/food/".$image_name;
+                $dst = "../image/food/".$image_name;
 
                 //finally upload
                 $upload = move_uploaded_file($src,$dst);
@@ -186,7 +186,7 @@
                 if($upload == false)
                 {
                     $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                    header('location:'.SITEURL.'add-food.php');
+                    header('location:'.SITEURL.'admin/add-food.php');
                     //stop process
                     die();
                 }
@@ -211,7 +211,7 @@
             cate_id = '$category'
         ";
         //execute the query
-        $res3 = mysqli_query($con, $sql3);
+        $res3 = mysqli_query($conn, $sql3);
 
         //check whether data inserted or not
         //4.redirect with message to manage food page
@@ -219,13 +219,13 @@
         {
             //echo "Data Inserted";
             $_SESSION['add'] = "<div class='success'>Food Added Successfully.</div>";
-            header("location:".SITEURL.'food.php');
+            header("location:".SITEURL.'admin/food.php');
         }
         else
         {
             //echo "Faile to Insert Data";
             $_SESSION['add'] = "<div class='error'>Failed to Add Food.</div>";
-            header("location:".SITEURL.'food.php');
+            header("location:".SITEURL.'admin/food.php');
         }
     }
 ?>
@@ -235,5 +235,5 @@
 
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

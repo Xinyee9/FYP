@@ -1,10 +1,10 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 <div class="header">
     <div id="title">
         <h1>Manage Food</h1>
         <br /><br />
             <!-- Buttom to Add Admin -->
-            <a href ="<?php echo SITEURL;?>add-food.php" class="btn-add">Add Food</a>
+            <a href ="<?php echo SITEURL;?>admin/add-food.php" class="btn-add">Add Food</a>
             <br /><br /><br />
 
             <?php
@@ -50,7 +50,7 @@
                     //Query to get all admin
                     $sql = "SELECT * FROM FOOD";
                     //Execture the Query
-                    $res = mysqli_query($con, $sql);
+                    $res = mysqli_query($conn, $sql);
 
                        //cout rows to check whether we have data in database or not
                         $count = mysqli_num_rows($res);//function to get all the rows in database
@@ -88,15 +88,15 @@
                                             {
                                                 //display image
                                                 ?>
-                                                <img src="<?php echo SITEURL; ?>image/food/<?php echo $image_name; ?>" width="100px">
+                                                <img src="<?php echo SITEURL; ?>Food/<?php echo $image_name; ?>" width="100px">
 
                                                 <?php
                                             }
                                         ?>
                                     </td>       
                                     <td>
-                                        <a href="<?php echo SITEURL;?>edit-food.php?ID=<?php echo $ID; ?>" class="btn-update">Update Food</a>
-                                        <a href="<?php echo SITEURL;?>delete-food.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Food</a>
+                                        <a href="<?php echo SITEURL;?>admin/edit-food.php?ID=<?php echo $ID; ?>" class="btn-update">Update Food</a>
+                                        <a href="<?php echo SITEURL;?>admin/delete-food.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Food</a>
                                     </td>  
                                 </tr>
 
@@ -114,5 +114,5 @@
     </div>
 </div>
 <?php 
-include('php/script.php'); 
+include('includes/script.php'); 
 ?>

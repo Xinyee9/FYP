@@ -1,11 +1,9 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
 <!-- Main Content Section Starts -->
 <div class="header">
         <div id="title">
             <h1>Manage Admin</h1>
-
-            <br />
 
             <?php
                 if(isset($_SESSION['add']))
@@ -13,35 +11,35 @@
                     echo $_SESSION['add']; //Display Session Message
                     unset($_SESSION['add']); //REMoving Session Message
                 }
+                if(isset($_SESSION['remove']))
+                {
+                    echo $_SESSION['remove']; //Display Session Message
+                    unset($_SESSION['remove']); //REMoving Session Message
+                }
                 if(isset($_SESSION['delete']))
                 {
                     echo $_SESSION['delete']; //Display Session Message
                     unset($_SESSION['delete']); //REMoving Session Message
+                }
+                if(isset($_SESSION['admin-not-found']))
+                {
+                    echo $_SESSION['admin-not-found']; //Display Session Message
+                    unset($_SESSION['admin-not-found']); //REMoving Session Message
                 }
                 if(isset($_SESSION['update']))
                 {
                     echo $_SESSION['update']; //Display Session Message
                     unset($_SESSION['update']); //REMoving Session Message
                 }
-                if(isset($_SESSION['user-not-found']))
+                if(isset($_SESSION['psw-not-match']))
                 {
-                    echo $_SESSION['user-not-found']; //Display Session Message
-                    unset($_SESSION['user-not-found']); //REMoving Session Message
-                }
-                if(isset($_SESSION['pwd-not-match']))
-                {
-                    echo $_SESSION['pwd-not-match']; //Display Session Message
-                    unset($_SESSION['pwd-not-match']); //REMoving Session Message
+                    echo $_SESSION['psw-not-match']; //Display Session Message
+                    unset($_SESSION['psw-not-match']); //REMoving Session Message
                 }
                 if(isset($_SESSION['change-pwd']))
                 {
                     echo $_SESSION['change-pwd']; //Display Session Message
                     unset($_SESSION['change-pwd']); //REMoving Session Message
-                }
-                if(isset($_SESSION['remove']))
-                {
-                    echo $_SESSION['remove']; //Display Session Message
-                    unset($_SESSION['remove']); //REMoving Session Message
                 }
                 if(isset($_SESSION['upload']))
                 {
@@ -54,10 +52,10 @@
                     unset($_SESSION['failed-remove']); //REMoving Session Message
                 }          
             ?>
-            <br /><br />
+            <br><br>
             <!-- Buttom to Add Admin -->
             <a href ="add-admin.php" class="btn-add">Add admin</a>
-            <br /><br />
+            <br /><br /><br />
 
             <table class = "tbl-full" >
                 <tr>
@@ -72,9 +70,9 @@
 
                 <?php
                     //Query to get all admin
-                    $sql = "SELECT * FROM admin";
+                    $sql = "SELECT * FROM ADMIN";
                     //Execture the Query
-                    $res = mysqli_query($con, $sql);
+                    $res = mysqli_query($conn, $sql);
 
                     //check whether the Query is Executed or Not
                     if($res == TRUE)
@@ -129,9 +127,9 @@
                                     </td> 
      
                                     <td >
-                                        <a href="change-pass.php" class="btn-add"> Change Password</a>
-                                        <a href="<?php echo SITEURL;?>edit-admin.php?ID=<?php echo $ID?>" class="btn-update">Edit Admin</a>
-                                        <a href="<?php echo SITEURL;?>delete-admin.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Admin</a>
+                                    <a href="<?php echo SITEURL;?>admin/change-pass.php?ID=<?php echo $ID;?>" class="btn-add"> Change Password</a>
+                                        <a href="<?php echo SITEURL;?>admin/edit-admin.php?ID=<?php echo $ID?>" class="btn-update">Update Admin</a>
+                                        <a href="<?php echo SITEURL;?>admin/delete-admin.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Admin</a>
                                     </td>  
                                 </tr>
 
@@ -152,5 +150,5 @@
     <!-- Main Content Section End -->
 
 <?php 
-include('php/script.php'); 
+include('includes/script.php'); 
 ?>

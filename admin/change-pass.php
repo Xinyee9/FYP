@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
 <html>
     <head>
@@ -57,7 +57,7 @@
             $sql = "SELECT * FROM admin WHERE admin_id=$ID AND admin_password ='$current_password'";
 
             //Execute the Query
-            $res = mysqli_query($con, $sql);
+            $res = mysqli_query($conn, $sql);
 
             if($res == true)
             {
@@ -66,61 +66,58 @@
 
 
                 if($count == 1)
-            {   
-                //user exists and password can be change
-                //echo "User Found";
-                //check whether the new password and confirm match or not
-                if($new_password==$confirm_password)
-                {
-                    //update password
-                    $sql2 = "UPDATE admin SET
-                    admin_password ='$new_password'
-                    WHERE admin_id=$ID
-                    ";
-                    //Execute the Query
-                    $res2 = mysqli_query($con, $sql2);
-
-                    //check whether the query exeuted or not
-                    if($res2==true)
+                {   
+                    //user exists and password can be change
+                    //echo "User Found";
+                    //check whether the new password and confirm match or not
+                    if($new_password==$confirm_password)
                     {
-                        //display succes message
-                        //REdirec to manage admin page with error message
-                        $_SESSION['change-pwd'] = "<div class='success'>Password Change Successfully.</div>";
-                        //Redirect the user
-                        header('location:'.SITEURL.'admin-pro.php');
+                        //update password
+                        $sql2 = "UPDATE admin SET
+                        admin_password ='$new_password'
+                        WHERE admin_id=$ID
+                        ";
+                        //Execute the Query
+                        $res2 = mysqli_query($conn, $sql2);
+    
+                        //check whether the query exeuted or not
+                        if($res2==true)
+                        {
+                            //display succes message
+                            //REdirec to manage admin page with error message
+                            $_SESSION['change-pwd'] = "<div class='success'>Password Change Successfully.</div>";
+                            //Redirect the user
+                            header('location:'.SITEURL.'admin/admin-pro.php');
+                        }
+                        else
+                        {
+                            //display error message
+                            //REdirec to manage admin page with error message
+                            $_SESSION['change-pwd'] = "<div class='error'>Failed to  Change Password.</div>";
+                            //Redirect the user
+                            header('location:'.SITEURL.'admin/admin-pro.php');
+                        }
+    
                     }
                     else
                     {
-                        //display error message
                         //REdirec to manage admin page with error message
-                        $_SESSION['change-pwd'] = "<div class='error'>Failed to  Change Password.</div>";
+                        $_SESSION['psw-not-match'] = "<div class='error'>Password Did Not Match.</div>";
                         //Redirect the user
-                        header('location:'.SITEURL.'admin-pro.php');
+                        header('location:'.SITEURL.'admin/admin-pro.php');
                     }
-
                 }
                 else
                 {
-                    //REdirec to manage admin page with error message
-                    $_SESSION['psw-not-match'] = "<div class='error'>Password Did Not Match.</div>";
+                    //user does not exists set message and REdirect 
+                    $_SESSION['user-not-found'] = "<div class='error'>User Not Found.</div>";
                     //Redirect the user
-                    header('location:'.SITEURL.'admin-pro.php');
-                }
-            }
-            else
-            {
-                //user does not exists set message and REdirect 
-                $_SESSION['user-not-found'] = "<div class='error'>User Not Found.</div>";
-                //Redirect the user
-                header('location:'.SITEURL.'admin-pro.php');
-        
-            }
+                    header('location:'.SITEURL.'admin/admin-pro.php');
             
+                }
+                
             }
-            else
-            {
-
-            }
+           
         
         }
         
@@ -129,5 +126,5 @@
 </div>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

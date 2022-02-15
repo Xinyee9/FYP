@@ -1,7 +1,7 @@
 <?php  
 
     //include constants.php file here
-    include ('php/dbconnect.php');
+    include ('config/constants.php');
 
     //1.get the ID of admin to be delete
     $ID = $_GET['ID'];
@@ -9,7 +9,7 @@
     $sql = "DELETE FROM CATEGORY WHERE category_id =$ID";
 
     //Execute the query
-    $res = mysqli_query($con, $sql);
+    $res = mysqli_query($conn, $sql);
 
     //check whether the query executed successfully or not
     if($res == true)
@@ -19,14 +19,14 @@
         //create session varible to display message
         $_SESSION['delete'] = "<div class='success'>Category Deleted Successfully.</div>";
         //Redirect to manage admin page
-        header('location:'.SITEURL.'category.php');
+        header('location:'.SITEURL.'admin/category.php');
     }
     else
     {
         //failed to delete admin
         //echo "Failed to Delete Admin";
         $_SESSION['delete'] = "<div class='error'>Failed to Delete Category. Try Again Later.</div>";
-        header('location:'.SITEURL.'category.php');
+        header('location:'.SITEURL.'admin/category.php');
     }
     //3.Redirect to manage admin page with message(success)
 

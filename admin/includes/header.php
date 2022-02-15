@@ -1,6 +1,5 @@
 <?php 
-session_start();
-include('php/dbconnect.php'); ?>
+include('config/constants.php'); ?>
 
 <!DOCTYPE html>
 
@@ -18,7 +17,7 @@ include('php/dbconnect.php'); ?>
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="index.php">
+                        <a href="">
                             <span class ="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                             <span class="title"><h2>Food</h2></span>
                         </a>
@@ -54,7 +53,7 @@ include('php/dbconnect.php'); ?>
                         </a>
                     </li>
                     <li>
-                        <a href="admin_pro.php">
+                        <a href="admin-pro.php">
                             <span class ="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <span class="title">Admin</span>
                         </a>

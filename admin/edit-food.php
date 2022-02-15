@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?> 
+<?php include('includes/header.php') ?>
 <div class="header">
     <div id="title">
         <h1>Updete Food</h1>
@@ -14,7 +14,7 @@
                 $sql3 = "SELECT * FROM FOOD WHERE food_id =$ID";
                     
                 //Execute the query
-                $res3 = mysqli_query($con, $sql3);
+                $res3 = mysqli_query($conn, $sql3);
 
                 
                     //get the value based on query executed
@@ -31,7 +31,7 @@
             }
             else
             {
-                header('location:'.SITEURL.'food.php');
+                header('location:'.SITEURL.'admin/food.php');
             }         
         ?> 
 
@@ -88,7 +88,7 @@
                                 //create 
                                 $sql="SELECT * FROM ADMIN ";
 
-                                $res = mysqli_query($con, $sql);
+                                $res = mysqli_query($conn, $sql);
 
                                 $count = mysqli_num_rows($res);
                                 if($count>0)
@@ -127,7 +127,7 @@
                                 //create 
                                 $sql2="SELECT * FROM CATEGORY ";
 
-                                $res2 = mysqli_query($con, $sql2);
+                                $res2 = mysqli_query($conn, $sql2);
 
                                 $count = mysqli_num_rows($res2);
                                 if($count>0)
@@ -197,7 +197,7 @@
                 $image_name = "Food_".rand(000, 999).'.'.$ext; //e.g. Admin_816.jpg
 
                 $src_path = $_FILES['image']['tmp_name'];
-                $dest_path = "image/food/".$image_name;
+                $dest_path = "../image/food/".$image_name;
 
                 //finally upload
                 $upload = move_uploaded_file($src_path,$dest_path);
@@ -205,7 +205,7 @@
                 if($upload == false)
                 {
                     $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                    header("location:".SITEURL.'food.php');
+                    header("location:".SITEURL.'admin/food.php');
                     //stop process
                     die();
                 }
@@ -214,14 +214,14 @@
                 //b. remove the current image
                 if($current_image!="")
                 {
-                    $remove_path = "image/food/".$current_image;
+                    $remove_path = "../image/food/".$current_image;
 
                     $remove = unlink($remove_path);
 
                     if($remove == false)
                     {
                         $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image.</div>";
-                        header("location:".SITEURL.'food.php');
+                        header("location:".SITEURL.'admin/food.php');
                         die();
                     }
                 }
@@ -246,21 +246,21 @@
         ";
 
         //Execute the Query
-        $res4 = mysqli_query($con, $sql4);
+        $res4 = mysqli_query($conn, $sql4);
 
         if($res4 == TRUE)
         {
             //Query Executed and food Update
             $_SESSION['update'] = "<div class='success'>Food Updated Successfully.</div>";
             //Redirect to manage food page
-            header('location:'.SITEURL.'food.php');
+            header('location:'.SITEURL.'admin/food.php');
         }
         else
         {
             //Faile to update food
             $_SESSION['update'] = "<div class='error'>Failed to Updatded Food.</div>";
             //Redirect to manage food page
-            header('location:'.SITEURL.'food.php');
+            header('location:'.SITEURL.'admin/food.php');
             
         }
         
@@ -272,5 +272,5 @@
 </div>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

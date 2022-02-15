@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
 <div class="header">
     <div id="title">
@@ -15,7 +15,7 @@
                     $sql = "SELECT * FROM CATEGORY WHERE category_id =$ID";
                     
                     //Execute the query
-                    $res = mysqli_query($con, $sql);
+                    $res = mysqli_query($conn, $sql);
 
                     //count the rows to check whether the id is valid or not
                     $count = mysqli_num_rows($res);
@@ -34,13 +34,13 @@
                     {
                         $_SESSION['cate-no-found'] = "<div class='error'>Category not found.</div>";
                         //Redirect to manage admin page
-                        header('location:'.SITEURL.'category.php');
+                        header('location:'.SITEURL.'admin/category.php');
                     }
 
                 }
                 else
                 {
-                    header('location:'.SITEURL.'category.php');
+                    header('location:'.SITEURL.'admin/category.php');
                 }
 
                 
@@ -86,21 +86,21 @@
         ";
 
         //Execute the Query
-        $res = mysqli_query($con, $sql);
+        $res = mysqli_query($conn, $sql);
 
         if($res == TRUE)
         {
             //Query Executed and Admin Update
             $_SESSION['update'] = "<div class='success'>Category Updated Successfully.</div>";
             //Redirect to manage admin page
-            header('location:'.SITEURL.'category.php');
+            header('location:'.SITEURL.'admin/category.php');
         }
         else
         {
             //Faile to update Admin
             $_SESSION['update'] = "<div class='error'>Failed to Updatded Category.</div>";
             //Redirect to manage admin page
-            header('location:'.SITEURL.'category.php');
+            header('location:'.SITEURL.'admin/category.php');
         }
         
     }
@@ -108,6 +108,6 @@
 ?>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>
             

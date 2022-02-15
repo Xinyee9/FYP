@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 <div class="header">
         <div id="title">
             <h1>Add Category</h1>
@@ -41,19 +41,19 @@
                 cate_name = '$ccname'
                 ";
 
-                $res = mysqli_query($con, $sql);
+                $res = mysqli_query($conn, $sql);
 
                 if($res == TRUE)
                 {
                     //echo "Data Inserted";
                     $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
-                    header("location:".SITEURL.'category.php');
+                    header("location:".SITEURL.'admin/category.php');
                 }
                 else
                 {
                     //echo "Faile to Insert Data";
                     $_SESSION['add'] = "<div class='success'>Failed to Add Category.</div>";
-                    header("location:".SITEURL.'category.php');
+                    header("location:".SITEURL.'admin/category.php');
                 }
             }
     
@@ -63,5 +63,5 @@
 </div>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

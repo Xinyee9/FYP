@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
                 <div class="cardBox">
                     <div class="card">
@@ -150,5 +150,5 @@
         </div>
 
 <?php 
-include('php/script.php'); 
+include('includes/script.php'); 
 ?>

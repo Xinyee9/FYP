@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?> 
+<?php include('includes/header.php') ?>
 
 <html>
     <head>
@@ -21,7 +21,7 @@
                     $sql = "SELECT * FROM admin WHERE admin_id =$ID";
                     
                     //Execute the query
-                    $res = mysqli_query($con, $sql);
+                    $res = mysqli_query($conn, $sql);
 
                     //count the rows to check whether the id is valid or not
                     $count = mysqli_num_rows($res);
@@ -42,13 +42,13 @@
                     {
                         $_SESSION['admin-no-found'] = "<div class='error'>Admin not found.</div>";
                         //Redirect to manage admin page
-                        header('location:'.SITEURL.'admin_pro.php');
+                        header('location:'.SITEURL.'admin/admin-pro.php');
                     }
 
                 }
                 else
                 {
-                    header('location:'.SITEURL.'admin_pro.php');
+                    header('location:'.SITEURL.'admin/admin-pro.php');
                 }
 
                 
@@ -133,7 +133,7 @@
                 $image_name = "Admin_".rand(000, 999).'.'.$ext; //e.g. Admin_816.jpg
 
                 $source_path = $_FILES['pic']['tmp_name'];
-                $destination_path = "image/admin/".$image_name;
+                $destination_path = "../image/admin/".$image_name;
 
                 //finally upload
                 $upload = move_uploaded_file($source_path,$destination_path);
@@ -141,7 +141,7 @@
                 if($upload == false)
                 {
                     $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                    header("location:".SITEURL.'admin_pro.php');
+                    header("location:".SITEURL.'admin/admin-pro.php');
                     //stop process
                     die();
                 }
@@ -149,14 +149,14 @@
                 //b. remove the current image
                 if($current_image!="")
                 {
-                    $remove_path = "image/admin/".$current_image;
+                    $remove_path = "../image/admin/".$current_image;
 
                     $remove = unlink($remove_path);
 
                     if($remove == false)
                     {
                         $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image.</div>";
-                        header("location:".SITEURL.'admin_pro.php');
+                        header("location:".SITEURL.'admin/admin-pro.php');
                         die();
                     }
                 }
@@ -185,21 +185,21 @@
         ";
 
         //Execute the Query
-        $res2 = mysqli_query($con, $sql2);
+        $res2 = mysqli_query($conn, $sql2);
 
         if($res2 == TRUE)
         {
             //Query Executed and Admin Update
             $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
             //Redirect to manage admin page
-            header('location:'.SITEURL.'admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
         else
         {
             //Faile to update Admin
             $_SESSION['update'] = "<div class='error'>Failed to Updatded Admin.</div>";
             //Redirect to manage admin page
-            header('location:'.SITEURL.'admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
         
     }
@@ -209,5 +209,5 @@
 </div>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

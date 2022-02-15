@@ -1,11 +1,11 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 
 <div class="header">
     <div id="title">
         <h1>Manage category</h1>
         <br /><br />
             <!-- Buttom to Add Admin -->
-            <a href ="<?php echo SITEURL;?>add-category.php" class="btn-add">Add Category</a>
+            <a href ="<?php echo SITEURL;?>admin/add-category.php" class="btn-add">Add Category</a>
             <br /><br /><br />
 
             <?php
@@ -43,7 +43,7 @@
                     //Query to get all category
                     $sql = "SELECT * FROM CATEGORY";
                     //Execture the Query
-                    $res = mysqli_query($con, $sql);
+                    $res = mysqli_query($conn, $sql);
 
                     //cout rows to check whether we have data in database or not
                     $count = mysqli_num_rows($res);
@@ -69,8 +69,8 @@
                                     <td><?php echo $ccode; ?></td>  
                                     <td><?php echo $ccname ; ?></td>                            
                                     <td>
-                                        <a href="<?php echo SITEURL;?>edit-category.php?ID=<?php echo $ID?>" class="btn-update">Update Admin</a>
-                                        <a href="<?php echo SITEURL;?>delete-category.php?ID=<?php echo $ID?>" class="btn-delete">Delete Admin</a>
+                                        <a href="<?php echo SITEURL;?>admin/edit-category.php?ID=<?php echo $ID?>" class="btn-update">Update Admin</a>
+                                        <a href="<?php echo SITEURL;?>admin/delete-category.php?ID=<?php echo $ID?>" class="btn-delete">Delete Admin</a>
                                     </td>  
                                 </tr>
 
@@ -96,5 +96,5 @@
 </div>
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>

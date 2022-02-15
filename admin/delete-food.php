@@ -1,7 +1,7 @@
 <?php  
 
     //include constants.php file here
-    include ('php/dbconnect.php');
+    include ('config/constants.php');
 
     if(isset($_GET['ID']) && isset($_GET['image_name']))
     {
@@ -18,27 +18,27 @@
             {
                 $_SESSION['upload'] = "<div class='error'>Faile to remove image.</div>";
 
-                header('location:'.SITEURL.'food.php');
+                header('location:'.SITEURL.'admin/food.php');
 
                 die();
             }
         }
 
         $sql = "DELETE FROM FOOD WHERE food_id =$ID";
-        $res = mysqli_query($con, $sql);
+        $res = mysqli_query($conn, $sql);
 
         //check whether the query executed successfully or not
         if($res == true)
         {
         
             $_SESSION['delete'] = "<div class='success'>Food Deleted Successfully.</div>";
-            header('location:'.SITEURL.'food.php');
+            header('location:'.SITEURL.'admin/food.php');
         }
         else
         {
                
             $_SESSION['delete'] = "<div class='error'>Failed to Delete Food. Try Again Later.</div>";
-            header('location:'.SITEURL.'food.php');
+            header('location:'.SITEURL.'admin/food.php');
         }
     
 
@@ -46,7 +46,7 @@
     else
     {
         $_SESSION['unauthorize'] = "<div class='error'>Unauthorized Access.</div>";
-        header('location:'.SITEURL.'food.php');
+        header('location:'.SITEURL.'admin/food.php');
     }
 
 

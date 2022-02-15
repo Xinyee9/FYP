@@ -1,7 +1,7 @@
 <?php  
-session_start();
+
     //include constants.php file here
-    include ('php/dbconnects.php');
+    include ('config/constants.php');
 
     if(isset($_GET['ID']) AND isset($_GET['image_name']))
     {
@@ -11,39 +11,39 @@ session_start();
 
         if($image_name !="")
         {
-            $path= "image/admin/".$image_name;
+            $path= "../image/admin/".$image_name;
             $remove = unlink($path);
 
             if($remove == false)
             {
                 $_SESSION['remove'] = "<div class='error'>Faile to remove image.</div>";
 
-                header('location:'.SITEURL.'admin_pro.php');
+                header('location:'.SITEURL.'admin/admin-pro.php');
 
                 die();
             }
         }
-        $sql = "DELETE FROM admin WHERE admin_id =$ID";
-        $res = mysqli_query($con, $sql);
+        $sql = "DELETE FROM ADMIN WHERE admin_id =$ID";
+        $res = mysqli_query($conn, $sql);
 
         //check whether the query executed successfully or not
         if($res == true)
         {
         
             $_SESSION['delete'] = "<div class='success'>Admin Deleted Successfully.</div>";
-            header('location:'.SITEURL.'admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
         else
         {
                
             $_SESSION['delete'] = "<div class='error'>Failed to Delete Admin. Try Again Later.</div>";
-            header('location:'.SITEURL.'admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
     
 
     }
     else
     {
-        header('location:'.SITEURL.'admin_pro.php');
+        header('location:'.SITEURL.'admin/admin-pro.php');
     }
 ?>

@@ -1,4 +1,4 @@
-<?php include('php/header.php') ?>
+<?php include('includes/header.php') ?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -88,7 +88,7 @@
                 $image_name = "Admin_".rand(000, 999).'.'.$ext; //e.g. Admin_816.jpg
 
                 $source_path = $_FILES['pic']['tmp_name'];
-                $destination_path = "image/admin/".$image_name;
+                $destination_path = "../image/admin/".$image_name;
 
                 //finally upload
                 $upload = move_uploaded_file($source_path,$destination_path);
@@ -96,7 +96,7 @@
                 if($upload == false)
                 {
                     $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                    header('location:'.SITEURL.'add-admin.php');
+                    header('location:'.SITEURL.'admin/add-admin.php');
                     //stop process
                     die();
                 }
@@ -118,19 +118,19 @@
             admin_profile_pic = '$image_name'
         ";
 
-        $res = mysqli_query($con, $sql) or die(mysqli_error());
+        $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
         if($res == TRUE)
         {
             //echo "Data Inserted";
             $_SESSION['add'] = "<div class='success'>Admin Added Successfully</div>";
-            header('location:admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
         else
         {
             //echo "Faile to Insert Data";
             $_SESSION['add'] = "<div class='error'>Failed to Add Admin</div>";
-            header('location:'.SITEURL.'admin_pro.php');
+            header('location:'.SITEURL.'admin/admin-pro.php');
         }
     }
 ?>
@@ -140,7 +140,7 @@
 
 <?php 
 
-include('php/script.php')
+include('includes/script.php')
 ?>
 
 
