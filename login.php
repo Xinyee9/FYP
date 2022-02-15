@@ -199,7 +199,7 @@ if (isset($_POST['email'])) {
       <h1><strong>LOGIN</strong></h1>
       <hr />
       <p>
-        Username :
+        Email :
         <input type="email" name="email" size="50" maxlength="55" placeholder="Type your email here" required />
       </p>
       <p>
