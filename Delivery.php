@@ -130,7 +130,7 @@
 	</div>
 	<div class="right">
 		<button class="btn">
-			<j href = "index.html" class="fa fa-home"> HOME</j>
+			<j href = "index.php" class="fa fa-home"> HOME</j>
 		</button>
 	</div>
     <div class="status">
