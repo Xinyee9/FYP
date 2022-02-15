@@ -11,14 +11,14 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
   exit;
 }
 
-if (isset($_POST['username'])) {
-  $username = stripslashes($_REQUEST['username']); // removes backslashes
-  $username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
+if (isset($_POST['email'])) {
+  $email = stripslashes($_REQUEST['email']); // removes backslashes
+  $email = mysqli_real_escape_string($con, $email); //escapes special characters in a string
 
   $password = stripslashes($_REQUEST['password']);
   $password = mysqli_real_escape_string($con, $password);
 
-  $query = "SELECT * FROM users WHERE username='$username' and userpassword='$password'";
+  $query = "SELECT * FROM users WHERE useremail='$email' and userpassword='$password'";
   $result = mysqli_query($con, $query);
   $rows = mysqli_num_rows($result);
   $row = mysqli_fetch_assoc($result);
@@ -31,7 +31,7 @@ if (isset($_POST['username'])) {
     exit;
   } else if ($rows == 1) { //if successful login
     $_SESSION['logged'] = 1;
-    $_SESSION['username'] = $username;
+    $_SESSION['username'] = $row['username'];
     $_SESSION['privilege'] = $row['userprivilege'];
     $_SESSION['id'] = $row['userid'];
     echo "<script>
@@ -200,7 +200,7 @@ if (isset($_POST['username'])) {
       <hr />
       <p>
         Username :
-        <input type="text" name="username" size="50" maxlength="55" placeholder="Type your username here" required />
+        <input type="email" name="email" size="50" maxlength="55" placeholder="Type your email here" required />
       </p>
       <p>
         Password :
