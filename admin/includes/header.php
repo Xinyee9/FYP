@@ -17,7 +17,7 @@ include('config/constants.php'); ?>
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="index.php">
                             <span class ="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                             <span class="title"><h2>Food</h2></span>
                         </a>
