@@ -1,6 +1,27 @@
 
 <!DOCTYPE html>
 <style>
+  #title h1 {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 40px;
+      font-family: "Sigmar One", cursive;
+      color: #7979d2;
+      text-transform: uppercase;
+      background-image: linear-gradient(to right,
+          #f00,
+          #ff0,
+          #0ff,
+          #0f0,
+          #00f);
+      background-clip: padding-box;
+      animation: animate 20s linear infinite;
+      background-size: 1000%;
+      background-color: turquoise;
+      letter-spacing: 3px;
+    }
+    
   .u-section-1 .u-sheet-1 {
   min-height: 1216px;
 }
@@ -139,6 +160,13 @@
     <meta property="og:title" content="About Us">
     <meta property="og:type" content="website">
   </head>
+  <body>
+    <div class="header">
+      <div id="title">
+        <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
+      </div>
+    </div>
+  </body>
   <body class="u-body u-xl-mode">
     <section class="u-align-center u-clearfix u-section-1" id="carousel_6778">
       <div class="u-clearfix u-sheet u-sheet-1">
