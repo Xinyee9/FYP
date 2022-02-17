@@ -65,8 +65,6 @@
                 $count = mysqli_num_rows($res);
 
 
-                if($count == 1)
-                {   
                     //user exists and password can be change
                     //echo "User Found";
                     //check whether the new password and confirm match or not
