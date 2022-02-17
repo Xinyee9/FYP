@@ -1,7 +1,7 @@
-<?php include('includes/header.php') ?>
+<?php include('config/constants.php') ?>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="apstyle.css">
         
     </head>
     

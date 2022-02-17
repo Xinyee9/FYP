@@ -1,8 +1,8 @@
-<?php include('includes/header.php') ?>
+<?php include('config/constants.php') ?>
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">  
+        <link rel="stylesheet" type="text/css" href="apstyle.css">  
     </head>
 
 <div class="header">
@@ -177,7 +177,7 @@
                 $src = $_FILES['image']['tmp_name'];
 
                 //destination path for the image to be upload
-                $dst = "../image/food/".$image_name;
+                $dst = "../Food/".$image_name;
 
                 //finally upload
                 $upload = move_uploaded_file($src,$dst);

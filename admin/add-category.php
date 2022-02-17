@@ -1,4 +1,10 @@
-<?php include('includes/header.php') ?>
+<?php include('config/constants.php') ?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="apstyle.css">
+        
+    </head>
+    
 <div class="header">
         <div id="title">
             <h1>Add Category</h1>

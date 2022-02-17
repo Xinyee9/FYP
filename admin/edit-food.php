@@ -1,4 +1,11 @@
-<?php include('includes/header.php') ?>
+<?php/** include('includes/header.php') */?>
+<?php include('config/constants.php') ?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="apstyle.css">
+        
+    </head>
+    
 <div class="header">
     <div id="title">
         <h1>Updete Food</h1>
@@ -15,10 +22,9 @@
             //Execute the query
             $res3 = mysqli_query($conn, $sql3);
 
-
-            //get the value based on query executed
+           //get the value based on query executed
             $row3 = mysqli_fetch_assoc($res3);
-
+                
             $code = $row3['food_code'];
             $food_name = $row3['food_name'];
             $price = $row3['food_price'];
@@ -27,9 +33,12 @@
             $status = $row3['food_status'];
             $current_admin = $row3['admin_id'];
             $current_category = $row3['cate_id'];
-        } else {
+            
+        }
+        else {
             header('location:' . SITEURL . 'admin/food.php');
         }
+        
         ?>
 
         <form action="" method="POST" enctype="multipart/form-data">
@@ -55,7 +64,7 @@
                         } else {
                             //display image
                         ?>
-                            <img src="<?php echo SITEURL; ?>food/<?php echo $current_image; ?>" width="150px">
+                            <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>" width="150px">
                         <?php
                         }
                         ?>
@@ -148,7 +157,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+                        <input type="hidden" name="ID" value="<?php echo $row3['food_id']; ?>">
                         <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
                         <input type="submit" name="submit" value="Update Food" class="btn-update">
                     </td>
@@ -182,7 +191,7 @@
                     $image_name = "Food_" . rand(000, 999) . '.' . $ext; //e.g. Admin_816.jpg
 
                     $src_path = $_FILES['image']['tmp_name'];
-                    $dest_path = "../image/food/" . $image_name;
+                    $dest_path = "../Food/" . $image_name;
 
                     //finally upload
                     $upload = move_uploaded_file($src_path, $dest_path);
@@ -197,7 +206,7 @@
                     //remove image if new image is upload
                     //b. remove the current image
                     if ($current_image != "") {
-                        $remove_path = "../image/food/" . $current_image;
+                        $remove_path = "../Food/" . $current_image;
 
                         $remove = unlink($remove_path);
 
@@ -207,22 +216,23 @@
                             die();
                         }
                     }
-                }
+                }else {
+                    $image_name = $current_image;}
             } else {
                 $image_name = $current_image;
             }
 
             //update the food in database
-            $sql4 = "UPDATE FOOD SET
+            $sql4 = "UPDATE food SET
             food_code = '$code',
             food_name = '$food_name',
             food_price = $price,
             food_image = '$image_name',
-            ffood_stock = '$stock',
+            food_stock = '$stock',
             food_status = '$status',
             admin_id = '$admin',
-            cate_id = '$category',
-            WHERE food_id=$ID
+            cate_id = '$category'
+            WHERE food_id='$ID'
         ";
 
             //Execute the Query

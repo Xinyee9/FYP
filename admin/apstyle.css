@@ -152,7 +152,7 @@ body {
 /** end**/
 
 .header {
-  padding: 110px;
+  padding: 80px;
   text-align: center;
   background: white;
 }
@@ -180,6 +180,15 @@ table tr th {
   border-bottom: 2px solid rgb(197, 129, 197);
   padding: 0.5%;
   text-align: center;
+}
+table tr td img {
+  display:inline-block;
+  width:80px;
+  height:70px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #0003;
+  
 }
 .btn-add {
   background-color: #03a9f4;
@@ -217,7 +226,7 @@ table tr th {
 .btn-delete:hover {
   background-color: #ff4757;
 }
-
+/***/
 .cardBox {
   position: relative;
   width: 100%;

@@ -11,7 +11,7 @@
 
         if($image_name !="")
         {
-            $path= "image/food/".$image_name;
+            $path= "../Food/".$image_name;
             $remove = unlink($path);
 
             if($remove==false)
@@ -24,7 +24,7 @@
             }
         }
 
-        $sql = "DELETE FROM FOOD WHERE food_id =$ID";
+        $sql = "DELETE FROM food WHERE food_id =$ID";
         $res = mysqli_query($conn, $sql);
 
         //check whether the query executed successfully or not

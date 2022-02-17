@@ -1,4 +1,5 @@
 <?php include('includes/header.php') ?>
+
 <div class="header">
     <div id="title">
         <h1>Manage Food</h1>
@@ -46,6 +47,7 @@
                     <th>Image</th>    
                     <th>Actions</th>  
                 </tr>
+                
                 <?php
                     //Query to get all admin
                     $sql = "SELECT * FROM FOOD";
@@ -75,7 +77,7 @@
                                     <td><?php echo $sn++; ?></td>
                                     <td><?php echo $code; ?></td>  
                                     <td><?php echo $food_name; ?></td>                     
-                                    <td>$<?php echo $price; ?></td>
+                                    <td>RM <?php echo $price; ?></td>
                                     <td>
                                         <?php  
                                             //check image name is available or not
