@@ -56,6 +56,8 @@ if (isset($_POST['mem_name'])) {
 <head>
   <title>Customer Register</title>
 
+  <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
+
   <style>
     body {
       background-image: url("https://wallpaperbat.com/img/490393-flower-aesthetic-computer-wallpaper-top-flower-aesthetic-desktop-wallpaper-aesthetic-flower-1280x1024-download-hd-wallpaper-wallpapertip.jpg");

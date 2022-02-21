@@ -1,12 +1,21 @@
 <?php
-    if (isset($_POST['btn-send']))
+    if (isset($_POST['btn-submit']))
     {
         $UserName = $_POST['name'];
         $Email = $_POST['email'];
         $PhoneNumber = $_POST['phone'];
         $Msg = $_POST['message'];
+        $Datetime = date("Y-M-d h:i:sa");
 
-        if(empty($UserName) || empty($Email) || empty($PhoneNumber) || empty($Msg))
+        $query = "INSERT INTO contactus (conName, conEmail, conPhone, conMessage, conDatetime) VALUES ('$UserName','$Email','$PhoneNumber','$Msg','$Datetime')";
+        $result = mysqli_query($con,$query);
+
+        if($result)
+        {
+            $to = $Email;
+            
+        }
+        (empty($UserName) || empty($Email) || empty($PhoneNumber) || empty($Msg))
         {
             header('location:index.php?error');
         }

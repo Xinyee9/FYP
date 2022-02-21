@@ -14,6 +14,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel ="stylesheet" href="bootstrap.css">
 
+    <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link rel="stylesheet" href=""> -->
@@ -368,7 +369,7 @@ session_start();
                         <label for="message">Message :</label>
                         <textarea name="message" id="message" cols="30" rows="10" required></textarea>
                     </div>
-                    <input type="submit" name="cu-submit" value="Submit" />
+                    <input type="submit" name="btn-submit" value="Submit" />
                 </form>
             </div>
         </section>

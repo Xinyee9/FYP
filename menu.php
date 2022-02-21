@@ -7,6 +7,7 @@ require_once('./php/dbconnect.php');
 <head>
     <title>MENU</title>
 
+    <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./css/style.css">
