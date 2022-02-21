@@ -8,7 +8,7 @@
     
 <div class="header">
     <div id="title">
-        <h1>Updete Food</h1>
+        <h1>Update Food</h1>
 
         <br /><br />
         <?php

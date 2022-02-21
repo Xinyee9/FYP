@@ -2,17 +2,25 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!-- 123 -->
 
 <head>
     <title>Aurora Restaurant &#10024;</title>
+
+    <!--Contact us testing-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel ="stylesheet" href="bootstrap.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link rel="stylesheet" href=""> -->
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
+
+    
     <style>
         body {
             font-family: 'Lucida Sans';
@@ -320,11 +328,27 @@ session_start();
     <div class="header1">
         <div id="title">
             <h4>CONTACT US</h4>
+
+            <?php
+            $Msg = "";
+            if(isset($_GET['error']))
+            {
+                $Msg = "Please fill in the blanks";
+                echo '<div class="alert alert-danger">'.$Msg.'</div>';
+            }
+            
+            if(isset($_GET['success']))
+            {
+                $Msg = "Your Message Has Been Sent";
+                echo '<div class="alert alert-success">'.$Msg.'</div>';
+            }
+        ?>
+
         </div>
 
         <section id="contact">
             <div class="contact-box">
-                <form method="POST">
+                <form action = "process.php" method="POST">
                     <div class="form-group">
                         <label for="name">Name :</label>
                         <input type="text" name="name" id="name" placeholder="Type your name here" required />
