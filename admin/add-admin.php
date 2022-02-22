@@ -1,13 +1,13 @@
 <?php include('config/constants.php') ?>
-<html>
+<html >
     <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
-        
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="add.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    
-<div class="header">
-        <div id="title">
-            <h1>Add Admin</h1>
+    <body>  
+    <div class="container">
+        <div class ="title"> Add Admin</div>
 
             <br /><br />
             <?php
@@ -22,42 +22,44 @@
                     unset($_SESSION['upload']); //REMoving Session Message
                 } 
             ?>
-            
-            <form action="" method ="POST" enctype="multipart/form-data">
-                <table class = "tbl-30 ">
-                    <tr>
-                        <td><p2>Full Name :</p2></td>
-                        <td><input type="text" name="full_name" placeholder="Enter your name" required></td>   
-                    </tr>
-                    <tr>
-                        <td><p2>Email :</p2></td> 
-                        <td><input type="email" name="email" placeholder="Enter your email" required></td>  
-                    </tr>
-                    <tr>
-                        <td><p2>Gender :</p2></td>
-                        <td><input type="radio" name="gender" value="male" > Male
-					        <input type="radio" name="gender" value="female" > Female</td>  
-                    </tr>
-                    <tr>
-                        <td><p2>Phone Number :</p2></td>
-                        <td><input type="text" name="phone" placeholder="Enter your phone number" required></td>  
-                    </tr>
-                    <tr>
-                        <td><p2>Password :</p2></td>
-                        <td><input type="password" name="password" placeholder="Enter your password" ></td>  
-                    </tr>
-                    <tr>
-                        <td><p2>Profile picture :</p2></td>
-                        <td><input type="file" name="pic" ></td>  
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align:center">
-                            <input style="border-radius: 5px; padding:2%;" type="submit" name="submit"  value="Add Admin"class="btn-add">
-                        </td>
-                        
-                    </tr>
 
-                </table>   
+            <form action="" method ="POST" enctype="multipart/form-data">
+                <div class = "user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name :</span>
+                        <input type="text" name="full_name" placeholder="Enter your name" required>  
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email :</span>
+                        <input type="email" name="email" placeholder="Enter your email" required>  
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number :</span>
+                        <input type="text" name="phone" placeholder="Enter your phone number" required>  
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password :</span>
+                        <input type="password" name="password" placeholder="Enter your password" required >  
+                    </div>
+                    
+                </div>
+                
+                <div class ="gender-details">
+                    <span class="gender-title">Gender :</span> 
+                   
+                        <input type="radio" name="gender" value="male" >Male
+				        <input type="radio" name="gender" value="female" > Female
+                    
+                </div>
+                
+                <div class="input-box"><br>
+                     <span class="details">Profile picture :</span>
+                    <input type="file" name="pic">  
+                </div>
+           
+                <div class="button">
+                    <input type="submit" name="submit"  value="Add Admin">
+                </div>  
             </form>
 <?php 
     if(isset($_POST['submit']))
@@ -142,7 +144,5 @@
 
 include('includes/script.php')
 ?>
-
-
-
-            
+</body>
+</html>

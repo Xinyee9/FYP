@@ -1,15 +1,5 @@
 <?php include('config/constants.php') ?>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
-        
-    </head>
-    
-<div class="header">
-    <div id="title">
-        <h1>Upade Category</h1>
-
-        <br /><br />
+<br /><br />
         <?php
                 if(isset($_GET['ID']))
                 {
@@ -48,27 +38,33 @@
                     header('location:'.SITEURL.'admin/category.php');
                 }
 
-                
             ?>
 
-        <form action="" method ="POST">
-            <table class = "tbl-30">
-                <tr>
-                    <td>Category Code</td>
-                    <td><input type="text" name="ccode" value="<?php echo $ccode; ?>" ></td>   
-                </tr>
-                <tr>
-                    <td>Category Name</td> 
-                    <td><input type="text" name="cname" value="<?php echo $cname; ?>" ></td>  
-                </tr>
-                <tr> 
-                    <td colspan="2">
-                        <input type="hidden" name = "ID" value="<?php echo $ID;?>">
-                        <input type="submit" name="submit" value="Update Category"class="btn-update">
-                    </td>    
-                </tr>
 
-            </table>   
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="edit.css"> 
+    </head>
+    
+<body> 
+<div class="wrapper">
+    <div class="inner">
+        <form action="" method ="POST">
+            <h3>Updete Food</h3>
+            <div class ="form-wrapper">  
+                <p>Category Code:</p>
+                <input type="text" name="ccode" value="<?php echo $ccode; ?>" placeholder="Category Code" class="form-control">
+            </div>
+            <div class ="form-wrapper"> 
+                <p>Category Name</p> 
+                <input type="text" name="cname" value="<?php echo $cname; ?>" placeholder="Category Name" class="form-control">
+            </div>
+            
+            <div>
+                <input type="hidden" name = "ID" value="<?php echo $ID;?>">
+                <button type="submit" name="submit" value="Update Category">Update Category
+            </div>
         </form>
     </div>
 </div>
@@ -115,4 +111,5 @@
 
 include('includes/script.php')
 ?>
-            
+</body> 
+</html> 

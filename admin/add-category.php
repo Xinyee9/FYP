@@ -1,13 +1,13 @@
 <?php include('config/constants.php') ?>
-<html>
+<html >
     <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
-        
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="add.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    
-<div class="header">
-        <div id="title">
-            <h1>Add Category</h1>
+    <body>  
+    <div class="container">
+        <div class ="title"> Add Category</div>
 
             <br /><br />
             <?php
@@ -19,20 +19,19 @@
             ?>
 
             <form action="" method ="POST">
-                <table class = "tbl-30">
-                    <tr>
-                        <td>Category Code</td>
-                        <td><input type="text" name="ccode" placeholder="Category Code" required></td>   
-                    </tr>
-                    <tr>
-                        <td>Category Name</td> 
-                        <td><input type="text" name="cname" placeholder="Category Name" required></td>  
-                    </tr>
-                        <td colspan="2">
-                            <input type="submit" name="submit"  value="Add Category"class="btn-update">
-                        </td>
-                        
-                    </tr>
+                <div class = "user-details">
+                    <div class="input-box">
+                        <span class="details">Category Code:</span>
+                        <input type="text" name="ccode" placeholder="Category Code" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Category Name:</span>
+                        <input type="text" name="cname" placeholder="Category Name" required> 
+                    </div>
+                </div>     
+                <div class="button">
+                    <input type="submit" name="submit"  value="Add Category">
+                </div>
 
                 </table>   
             </form>
@@ -71,3 +70,5 @@
 
 include('includes/script.php')
 ?>
+</body>
+</html>

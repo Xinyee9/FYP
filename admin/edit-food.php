@@ -1,17 +1,6 @@
 <?php/** include('includes/header.php') */?>
 <?php include('config/constants.php') ?>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
-        
-    </head>
-    
-<div class="header">
-    <div id="title">
-        <h1>Update Food</h1>
-
-        <br /><br />
-        <?php
+<?php
         if (isset($_GET['ID'])) {
             //1.get the id of selected admin
             $ID = $_GET['ID'];
@@ -40,130 +29,126 @@
         }
         
         ?>
-
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="edit.css"> 
+    </head>
+    
+<body> 
+<div class="wrapper">
+    <div class="inner">
+        <div class="image-holder">
+        <?php
+            if ($current_image == "") 
+            {
+                echo "<div class='error'>Image not added.</div>";
+            } 
+            else {
+                //display image
+            ?>
+            <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>" alt="image">
+            <?php
+            }
+            ?>
+        </div>
         <form action="" method="POST" enctype="multipart/form-data">
-            <table class="tbl-30">
-                <tr>
-                    <td>Code</td>
-                    <td><input type="text" name="code" value="<?php echo $code; ?>"></td>
-                </tr>
-                <tr>
-                    <td>Food Name</td>
-                    <td><input type="text" name="food_name" value="<?php echo $food_name; ?>"></td>
-                </tr>
-                <tr>
-                    <td>Price</td>
-                    <td><input type="number" name="price" value="<?php echo $price; ?>"></td>
-                </tr>
-                <tr>
-                    <td>Current Image</td>
-                    <td>
-                        <?php
-                        if ($current_image == "") {
-                            echo "<div class='error'>Image not added.</div>";
-                        } else {
-                            //display image
-                        ?>
-                            <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>" width="150px">
-                        <?php
+            <h3>Updete Food</h3>
+            
+            <div class ="form-wrapper">  
+                <input type="text" name="code" value="<?php echo $code; ?>" placeholder="Food Code" class="form-control">
+            </div>
+            <div class ="form-wrapper">
+                
+                <input type="text" name="food_name" value="<?php echo $food_name; ?>" placeholder="Food Name" class="form-control">
+            </div>
+            
+            <div class ="form-group">
+                <input type="number" name="price" value="<?php echo $price; ?>" placeholder="Price" class="form-control">
+                <input type="text" name="stock" value="<?php echo $stock; ?>" placeholder="Stock" class="form-control">
+            </div>
+
+            <div class ="form-wrapper">
+                <textarea name="status" cols="30" rows="5" placeholder="Status" class="form-control" ><?php echo $status; ?></textarea>
+            </div>
+
+            <div class ="form-wrapper">
+                <select name="admin" class="form-control">
+                    <?php
+                        //create 
+                        $sql = "SELECT * FROM ADMIN ";
+
+                        $res = mysqli_query($conn, $sql);
+
+                        $count = mysqli_num_rows($res);
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                $ID = $row['admin_id'];
+                                $name = $row['admin_name'];
+
+                                //echo "<option value='$ID'>$name</option>";
+                    ?>
+
+                        <option <?php if ($current_admin == $ID) {
+                            echo "selected";
+                         } ?> value="<?php echo $ID; ?>"> <?php echo $name; ?></option>
+
+                    <?php
                         }
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Select new image:</td>
-                    <td><input type="file" name="image"></td>
-                </tr>
-                <tr>
-                    <td>Stock</td>
-                    <td><input type="text" name="stock" value="<?php echo $stock; ?>"></td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td><textarea name="status" cols="30" rows="5"><?php echo $status; ?></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Admin</td>
-                    <td>
-                        <select name="admin">
-                            <?php
-                            //create 
-                            $sql = "SELECT * FROM ADMIN ";
+                    } else {
+                        echo "<option value='0'>no ADMIN found</option>";
+                        /**?>
+                             <option value="0">no category found</option>
+                            <?php **/
+                    }
 
-                            $res = mysqli_query($conn, $sql);
+                    ?>
+                </select>
+                </div>
+            <div class ="form-wrapper">  
+                <select name="category" class="form-control">
+                    <?php
+                        //create 
+                        $sql2 = "SELECT * FROM CATEGORY ";
 
-                            $count = mysqli_num_rows($res);
-                            if ($count > 0) {
-                                while ($row = mysqli_fetch_assoc($res)) {
-                                    $ID = $row['admin_id'];
-                                    $name = $row['admin_name'];
+                        $res2 = mysqli_query($conn, $sql2);
 
-                                    //echo "<option value='$ID'>$name</option>";
-                            ?>
+                        $count = mysqli_num_rows($res2);
+                        if ($count > 0) {
+                            while ($row2 = mysqli_fetch_assoc($res2)) {
+                                $cname = $row2['cate_name'];
+                                $ID = $row2['category_id'];
 
-                                    <option <?php if ($current_admin == $ID) {
-                                                echo "selected";
-                                            } ?> value="<?php echo $ID; ?>"><?php echo $name; ?></option>
+                                //echo "<option value='$ID'>$cname</option>";
+                    ?>
 
-                            <?php
-                                }
-                            } else {
-                                echo "<option value='0'>no ADMIN found</option>";
-                                /**?>
-                                    <option value="0">no category found</option>
-                                    <?php **/
+                            <option <?php if ($current_category == $ID) {
+                                echo "selected";
+                            } ?> value="<?php echo $ID; ?>"><?php echo $cname; ?></option>
+
+                    <?php
                             }
+                        } else {
+                             echo "<option value='0'>no category found</option>";
+                            /**?>
+                                <option value="0">no category found</option>
+                                <?php**/
+                        }
 
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Category</td>
-                    <td>
-                        <select name="category">
-                            <?php
-                            //create 
-                            $sql2 = "SELECT * FROM CATEGORY ";
+                    ?>
+                </select>
+                </div>
+                <p>Select new image: </p>
+                <div class ="form-wrapper">
+                    <input type="file" name="image">
+                </div>       
+            <div>
+                <input type="hidden" name="ID" value="<?php echo $row3['food_id']; ?>">
+                <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+                <button type="submit" name="submit" value="Update Food" >Update Food
+            </div>
 
-                            $res2 = mysqli_query($conn, $sql2);
-
-                            $count = mysqli_num_rows($res2);
-                            if ($count > 0) {
-                                while ($row2 = mysqli_fetch_assoc($res2)) {
-                                    $cname = $row2['cate_name'];
-                                    $ID = $row2['category_id'];
-
-                                    //echo "<option value='$ID'>$cname</option>";
-                            ?>
-
-                                    <option <?php if ($current_category == $ID) {
-                                                echo "selected";
-                                            } ?> value="<?php echo $ID; ?>"><?php echo $cname; ?></option>
-
-                            <?php
-                                }
-                            } else {
-                                echo "<option value='0'>no category found</option>";
-                                /**?>
-                                    <option value="0">no category found</option>
-                                    <?php**/
-                            }
-
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="hidden" name="ID" value="<?php echo $row3['food_id']; ?>">
-                        <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
-                        <input type="submit" name="submit" value="Update Food" class="btn-update">
-                    </td>
-                </tr>
-
-            </table>
+            
         </form>
 
         <?php
@@ -259,3 +244,5 @@
 
 include('includes/script.php')
 ?>
+</body> 
+</html> 

@@ -1,13 +1,14 @@
 <?php include('config/constants.php') ?>
-
-<html>
+<html >
     <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="add.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-   
-<div class="header">
-    <div id="title">
-        <h1>Change Password</h1>
+    <body>  
+    <div class="container">
+        <div class ="title"> Change Password</div>
+
         <br /><br />
 
         <?php
@@ -19,28 +20,28 @@
         ?>
 
         <form action="" method ="POST">
-            <table class = "tbl-30">
-                <tr>
-                    <td>Current Password: </td>
-                    <td><input type="password" name="current_password" placeholder="Current Password" ></td>   
-                </tr>
-                <tr>
-                    <td>New Password: </td>
-                    <td><input type="password" name="new_password" placeholder="New Password" ></td>   
-                </tr>
-                <tr>
-                    <td>Confirm Password: </td>
-                    <td><input type="password" name="confirm_password" placeholder="Confirm Password" ></td>   
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="hidden" name = "ID" value="<?php echo $_GET['ID']?>"> 
-                        <input type="submit" name="submit" value="Change Password" class="btn-update">
-                        <a href="admin-pro.php" class="btn-update">Back</a>
-                    </td>    
-                </tr>
+            <div class = "user-details">
+                <div class="input-box">
+                    <span class="details">Current Password: </span>
+                    <input type="password" name="current_password" placeholder="Current Password" required > 
+                </div>
+                <div class="input-box">
+                    <span class="details">New Password: </span>
+                    <input type="password" name="new_password" placeholder="New Password" required > 
+                </div>
+            </div>
+            <div class = "user-details">
+                <div class="input-box">
+                    <span class="details">Confirm Password:  </span>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required > 
+                </div>
+            </div>
 
-            </table>   
+            <div class="button">
+                <input type="hidden" name = "ID" value="<?php echo $_GET['ID']?>"> 
+                <input type="submit" name="submit"  value="Change password" >
+            </div>
+                
         </form>
         <?php
 

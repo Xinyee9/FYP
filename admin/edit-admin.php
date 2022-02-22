@@ -1,16 +1,4 @@
 <?php include('config/constants.php') ?>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">
-        
-    </head>
-    
-
-<div class="header">
-    <div id="title">
-        <h1>Upade Admin</h1>
-
-        <br /><br />
         <?php
                 if(isset($_GET['ID']))
                 {
@@ -49,63 +37,64 @@
                 else
                 {
                     header('location:'.SITEURL.'admin/admin-pro.php');
-                }
-
-                
+                }    
         ?>
-       
-        <form action="" method ="POST" enctype="multipart/form-data">
-            <table class = "tbl-30">
-                <tr>
-                    <td>Full Name: </td>
-                    <td><input type="text" name="full_name" value="<?php echo $full_name; ?>" ></td>   
-                </tr>
-                <tr>
-                    <td>Email:</td> 
-                    <td><input type="email" name="email" value="<?php echo $email; ?>"></td>  
-                </tr>
-                <tr>
-                <td>Gender:</td>
-                    <td>
-                        <input <?php if($gender == "male"){echo "checked";} ?> type="radio" name="gender" value="male" > Male
-                        <input <?php if($gender == "female"){echo "checked";} ?> type="radio" name="gender" value="female" > Female
-                    </td>    
-                </tr>
-                <tr>
-                    <td>Phone Number:</td>
-                    <td><input type="text" name="phone" value="<?php echo $phone; ?>"></td>  
-                </tr>
-                <tr>
-                    <td>Profile picture:</td>
-                    <td>
-                        <?php
-                            if($current_image != "")
-                            {
-                                //display image
-                                ?>
-                                <img src="<?php echo SITEURL; ?>image/admin/<?php echo $current_image;?>" width="150px">
-                                <?php
-                            } 
-                            else
-                            {
-                                echo "<div class='error'>Image not added.</div>";
-                            }
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>New Profile picture:</td>
-                    <td><input type="file" name="pic" ></td>  
-                </tr>
-                <tr>
-                    <td >
-                        <input type="hidden" name = "current_image" value="<?php echo $current_image;?>">
-                        <input type="hidden" name = "ID" value="<?php echo $ID;?>">
-                        <input type="submit" name="submit" value="Update Admin"class="btn-update">
-                    </td>    
-                </tr>
 
-            </table>   
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="edit.css"> 
+</head>
+    
+<body> 
+<div class="wrapper">
+    <div class="inner">
+        <div class="image-holder">
+        <?php
+            if($current_image != "")
+            {
+                //display image
+                ?>
+                <img src="<?php echo SITEURL; ?>image/admin/<?php echo $current_image;?>">
+                <?php
+            } 
+            else
+            {
+                echo "<div class='error'>Image not added.</div>";
+            }
+        ?>
+        </div>
+        <form action="" method ="POST" enctype="multipart/form-data">
+        <h3>Updete Admin</h3>
+            <div class ="form-wrapper"> 
+                <p>Full Name:</p> 
+                <input type="text" name="full_name" value="<?php echo $full_name; ?>" placeholder="Full Name" class="form-control">
+            </div>
+            <div class ="form-wrapper"> 
+                <p>Email:</p> 
+                <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Email" class="form-control">
+            </div>
+            <div class ="form-wrapper"> 
+                <p>Phone Number:</p> 
+                <input type="text" name="phone" value="<?php echo $phone; ?>" placeholder="Phone" class="form-control">
+            </div> 
+            <p>Gender:</p>
+            <div class ="form-wrapper"> 
+                    <input <?php if($gender == "male"){echo "checked";} ?> type="radio" name="gender" value="male" > Male
+                    <input <?php if($gender == "female"){echo "checked";} ?> type="radio" name="gender" value="female" > Female
+            </div>
+            <br>
+              
+            <div class ="form-wrapper"> 
+                <p>New Profile picture:</p> 
+                <td><input type="file" name="pic" >
+            </div>     
+            <div>
+                <input type="hidden" name = "current_image" value="<?php echo $current_image;?>">
+                <input type="hidden" name = "ID" value="<?php echo $ID;?>">
+                <button type="submit" name="submit" value="Update Admin">Update Admin
+            </div>
+  
         </form>
 
 <?php
@@ -211,3 +200,5 @@
 
 include('includes/script.php')
 ?>
+</body> 
+</html> 

@@ -164,18 +164,6 @@ body {
   font-family: Arial;
 }
 
-.tbl-30 {
-  width: 50%;
-  margin: auto;
-}
-.tbl-30 input[type="text"],
-[type="email"],
-[type="password"] {
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 5px 20px 8px 20px;
-}
-
 table tr th {
   border-bottom: 2px solid rgb(197, 129, 197);
   padding: 0.5%;

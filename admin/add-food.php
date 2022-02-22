@@ -1,14 +1,13 @@
 <?php include('config/constants.php') ?>
-
-<html>
+<html >
     <head>
-        <link rel="stylesheet" type="text/css" href="apstyle.css">  
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="add.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-
-<div class="header">
-        <div id="title">
-            <h1>Add Food</h1>
-
+    <body>  
+    <div class="container">
+        <div class ="title"> Add Food</div>
             <br /><br/>
             <?php
                 if(isset($_SESSION['upload']))//Checking whether the session is set or not
@@ -20,37 +19,32 @@
 
 
             <form action="" method ="POST" enctype ="multipart/form-data">
-                <table class = "tbl-30">
-                    <tr>
-                        <td>Code:</td>
-                        <td><input type="text" name="code" placeholder="Code of the food" required></td>   
-                    </tr>
-                    <tr>
-                        <td>Food Name:</td>
-                        <td><input type="text" name="food_name" placeholder="Name of the food" required></td>   
-                    </tr>
-                    <tr>
-                        <td>Price:</td> 
-                        <td><input type="number" name="price" ></td>  
-                    </tr>
-                    <tr>
-                        <td>Image:</td>
-                        <td><input type="file" name="image"></td>  
-                    </tr>
-                    <tr>
-                        <td>Stock:</td>
-                        <td><input type="text" name="stock" ></td>  
-                    </tr>
-                    <tr>
-                        <td>Status:</td>
-                        <td><textarea name="status" cols="30" rows="5" placeholder="status of the food" ></textarea>
-                        </td>                      
-                    </tr>
-
-                    <tr>
-                        <td>Admin:</td>
-                        <td>
-                            <select name="admin"> 
+                <div class = "user-details">
+                    <div class="input-box">
+                        <span class="details">Code:</span>
+                        <input type="text" name="code" placeholder="Code of the food" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Food Name:</span>
+                        <input type="text" name="food_name" placeholder="Name of the food" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Price:</span>
+                        <input type="number" name="price" placeholder="Price of the food" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Stock:</span>
+                        <input type="text" name="stock" placeholder="Stock of the food" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Status:</span>
+                        <textarea name="status" cols="40" rows="3" placeholder="Status of the food" required></textarea>
+                    </div>
+                </div>
+                <div class = "user-details">
+                    <div class="input-box">
+                        <span class="details">Admin:</span>
+                        <select name="admin"> 
 
                             <?php
                                 //create 
@@ -83,10 +77,9 @@
                             
                             ?>
                             </select > 
-                        </td>
-                    <tr>
-                        <td>Category:</td>
-                        <td>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Category:</span>
                             <select name="category"> 
 
                             <?php
@@ -125,17 +118,18 @@
                             
                             ?>
                             </select > 
-                        </td>                      
-                    </tr>
-
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" name="submit" value="Add Food"class="btn-update">
-                        </td>
+                        </div>
+                        </div>
                         
-                    </tr>
-
-                </table>   
+                    
+                
+                <div class="">
+                    <span class="">Image:</span><br><br>
+                    <input type="file" name="image">
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit" value="Add Food">
+                </div>  
             </form>
         
 
@@ -237,3 +231,5 @@
 
 include('includes/script.php')
 ?>
+</body>
+</html>
