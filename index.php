@@ -1,6 +1,43 @@
 <?php
 session_start();
+require('./php/dbconnect.php');
+unset($_SESSION['date']);
+unset($_SESSION['email']);
+unset($_SESSION['first']);
+unset($_SESSION['last']);
+
+if (isset($_POST['btn-submit'])) 
+{
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $message = $_POST['message'];
+    $datetime = date("Y-M-d h:i:sa");
+
+    $query = "INSERT INTO contactus (conName, conEmail, conPhone, conMessage, conDatetime) VALUES ('$name','$email','$phone','$message','$datetime')";
+    $result = mysqli_query($con, $query);
+
+    if ($result) 
+    {
+        $to = $email;
+        $subject = "Thank You for Contacting Us";
+        $message = "We're glad to tell you that we receive your message and our staff will contact you shortly.\n\n";
+        $message .= "<br/>Cheers,<br/>Aurora Team";
+
+        $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";
+        $headers .= "Reply-To: auroracutie2022@gmail.com\r\n";
+        $headers .= "Content-type: text/html\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+
+        if (mail($to, $subject, $message, $headers)) {
+            echo '<script>
+            alert("Message sent!");
+            </script>';
+        }
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- 123 -->
@@ -8,18 +45,11 @@ session_start();
 <head>
     <title>Aurora Restaurant &#10024;</title>
 
-    <!--Contact us testing-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel ="stylesheet" href="bootstrap.css">
-
     <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link rel="stylesheet" href=""> -->
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
-
 
     
     <style>
@@ -329,27 +359,11 @@ session_start();
     <div class="header1">
         <div id="title">
             <h4>CONTACT US</h4>
-
-            <?php
-            $Msg = "";
-            if(isset($_GET['error']))
-            {
-                $Msg = "Please fill in the blanks";
-                echo '<div class="alert alert-danger">'.$Msg.'</div>';
-            }
-            
-            if(isset($_GET['success']))
-            {
-                $Msg = "Your Message Has Been Sent";
-                echo '<div class="alert alert-success">'.$Msg.'</div>';
-            }
-        ?>
-
         </div>
 
         <section id="contact">
             <div class="contact-box">
-                <form action = "process.php" method="POST">
+                <form method="POST">
                     <div class="form-group">
                         <label for="name">Name :</label>
                         <input type="text" name="name" id="name" placeholder="Type your name here" required />

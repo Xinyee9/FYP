@@ -10,7 +10,6 @@
     if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "user") {
         echo '
         <a href="./php/logout.php" style="float: right;">LOGOUT</a>
-        <a href="#" style="float: right;">HELP</a>
         <a href="#" style="float: right;">ABOUT US</a>
         <a href="" style="float: right;">ORDER HISTORY</a>
         <a href="" style="float: right;">EDIT PROFILE</a>
@@ -19,7 +18,6 @@
     } else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "admin") {
         echo '
         <a href="./php/logout.php" style="float: right;">LOGOUT</a>
-        <a href="#" style="float: right;">HELP</a>
         <a href="#" style="float: right;">ABOUT US</a>
         <a href="" style="float: right;">ORDER MANAGEMENT</a>
         <a href="./admin/adminpanel.php" style="float: right;">ADMIN PANEL</a>
@@ -27,7 +25,6 @@
         
     } else {
         echo '
-        <a href="#" style="float: right;">HELP</a>
         <a href="#" style="float: right;">ABOUT US</a>
         <a href="login.php" style="float: right;">LOGIN</a>';
     }
