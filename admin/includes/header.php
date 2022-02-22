@@ -67,7 +67,7 @@ include('config/constants.php'); ?>
                     </li>
 
                     <li>
-                        <a href="./php/logout.php">
+                        <a href="../php/logout.php">
                             <span class ="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
                             <span class="title">Sign Out</span>
                         </a>
