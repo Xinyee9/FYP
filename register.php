@@ -59,6 +59,27 @@ if (isset($_POST['mem_name'])) {
   <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
 
   <style>
+    #title h1 {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 40px;
+      font-family: "Sigmar One", cursive;
+      color: #7979d2;
+      text-transform: uppercase;
+      background-image: linear-gradient(to right,
+          #f00,
+          #ff0,
+          #0ff,
+          #0f0,
+          #00f);
+      background-clip: padding-box;
+      animation: animate 20s linear infinite;
+      background-size: 1000%;
+      background-color: turquoise;
+      letter-spacing: 3px;
+    }
+    
     body {
       background-image: url("https://wallpaperbat.com/img/490393-flower-aesthetic-computer-wallpaper-top-flower-aesthetic-desktop-wallpaper-aesthetic-flower-1280x1024-download-hd-wallpaper-wallpapertip.jpg");
       background-repeat: no-repeat;
@@ -92,6 +113,14 @@ if (isset($_POST['mem_name'])) {
   </style>
 </head>
 
+<body>
+    <div class="header">
+      <div id="title">
+        <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
+      </div>
+    </div>
+  </body>
+  
 <body>
   <span class="font_bk">
     <h4><strong>Register for a New Account</strong></h4>
