@@ -32,7 +32,7 @@ if (isset($_POST["foodcode"])) {
         }
 
         body {
-            background-image: url("https://images.indianexpress.com/2021/09/GettyImages-virtual-shopping-online-1200.jpg");
+            background-image: url("./image/transaction.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
