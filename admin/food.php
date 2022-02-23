@@ -44,7 +44,8 @@
                     <th>Code</th>  
                     <th>Name</th>                     
                     <th>Price</th>  
-                    <th>Image</th>    
+                    <th>Image</th>
+                    <th>Active</th>    
                     <th>Actions</th>  
                 </tr>
                 
@@ -70,6 +71,7 @@
                                 $food_name = $rows['food_name'];
                                 $price = $rows['food_price'];
                                 $image_name = $rows['food_image'];
+                                $active = $rows['active'];
 
                                 //display the value in our table
                                 ?>
@@ -95,7 +97,8 @@
                                                 <?php
                                             }
                                         ?>
-                                    </td>       
+                                    </td>
+                                    <td><?php echo $active; ?></td>       
                                     <td>
                                         <a href="<?php echo SITEURL;?>admin/edit-food.php?ID=<?php echo $ID; ?>" class="btn-update">Update Food</a>
                                         <a href="<?php echo SITEURL;?>admin/delete-food.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Food</a>

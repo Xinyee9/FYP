@@ -41,7 +41,7 @@ require_once('./php/dbconnect.php');
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <?php
-        $result = mysqli_query($con, "SELECT * FROM food");
+        $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
             $counter;

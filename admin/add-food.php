@@ -124,8 +124,13 @@
                     
                 
                 <div class="">
-                    <span class="">Image:</span><br><br>
+                    <span class="">Image:</span>
                     <input type="file" name="image">
+                </div>
+                <div class ="gender-details"><br><br>
+                    <span class="gender-title">Active:</span>
+                    <input type="radio" name="active" value="Yes">Yes
+				    <input type="radio" name="active" value="No" > No
                 </div>
                 <div class="button">
                     <input type="submit" name="submit" value="Add Food">
@@ -147,6 +152,14 @@
         $status = $_POST['status'];
         $admin = $_POST['admin'];
         $category = $_POST['category'];
+        if(isset($_POST['active']))
+        {
+            $active = $_POST['active'];
+        }
+        else
+        {
+            $active = "No";
+        }
 
         //2.upload the image if selected
         //check whether the image is clicked or not and upload the image onli if the image is selected
@@ -202,7 +215,8 @@
             food_stock = '$stock',
             food_status= '$status',
             admin_id = '$admin',
-            cate_id = '$category'
+            cate_id = '$category',
+            active = '$active'
         ";
         //execute the query
         $res3 = mysqli_query($conn, $sql3);

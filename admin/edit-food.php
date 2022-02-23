@@ -22,6 +22,7 @@
             $status = $row3['food_status'];
             $current_admin = $row3['admin_id'];
             $current_category = $row3['cate_id'];
+            $active = $row3['active'];
             
         }
         else {
@@ -141,7 +142,14 @@
                 <p>Select new image: </p>
                 <div class ="form-wrapper">
                     <input type="file" name="image">
-                </div>       
+                </div> 
+                 
+                <p>Active:</p>
+                <div class ="form-wrapper"> 
+                    <input <?php if($active == "Yes"){echo "checked";} ?> type="radio" name="active" value="Yes" > Yes
+                    <input <?php if($active == "No"){echo "checked";} ?> type="radio" name="active" value="No" > No
+                </div>
+                
             <div>
                 <input type="hidden" name="ID" value="<?php echo $row3['food_id']; ?>">
                 <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
@@ -165,6 +173,7 @@
             $status = $_POST['status'];
             $admin = $_POST['admin'];
             $category = $_POST['category'];
+            $active = $_POST['active'];
 
             if (isset($_FILES['image']['name'])) {
                 $image_name = $_FILES['image']['name'];
@@ -216,7 +225,8 @@
             food_stock = '$stock',
             food_status = '$status',
             admin_id = '$admin',
-            cate_id = '$category'
+            cate_id = '$category',
+            active = '$active'
             WHERE food_id='$ID'
         ";
 
