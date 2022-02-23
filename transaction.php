@@ -180,7 +180,7 @@ if (isset($_POST["foodcode"])) {
 
                     <div class="row">
                         <div class="col-50">
-                            <h3>Billing Address</h3>
+                            <h3>Delivery Address</h3>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
                             <input type="text" id="fname" name="firstname" placeholder="Joshua">
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
