@@ -37,8 +37,8 @@
                         <input type="text" name="stock" placeholder="Stock of the food" required> 
                     </div>
                     <div class="input-box">
-                        <span class="details">Status:</span>
-                        <textarea name="status" cols="40" rows="3" placeholder="Status of the food" required></textarea>
+                        <span class="details">Description:</span>
+                        <textarea name="description" cols="40" rows="3" placeholder="Description of the food" ></textarea>
                     </div>
                 </div>
                 <div class = "user-details">
@@ -128,6 +128,11 @@
                     <input type="file" name="image">
                 </div>
                 <div class ="gender-details"><br><br>
+                    <span class="gender-title">Status:</span>
+                    <input type="radio" name="status" value="Yes">Yes
+				    <input type="radio" name="status" value="No" > No
+                </div>
+                <div class ="gender-details"><br><br>
                     <span class="gender-title">Active:</span>
                     <input type="radio" name="active" value="Yes">Yes
 				    <input type="radio" name="active" value="No" > No
@@ -148,6 +153,7 @@
         $code = $_POST['code'];
         $food_name = $_POST['food_name'];
         $price = $_POST['price'];
+        $description = $_POST['description'];
         $stock = $_POST['stock'];
         $status = $_POST['status'];
         $admin = $_POST['admin'];
@@ -211,6 +217,7 @@
             food_code = '$code',
             food_name = '$food_name',
             food_price = $price,
+            food_description='$description',
             food_image = '$image_name',
             food_stock = '$stock',
             food_status= '$status',

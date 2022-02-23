@@ -17,6 +17,7 @@
             $code = $row3['food_code'];
             $food_name = $row3['food_name'];
             $price = $row3['food_price'];
+            $description = $row3['food_description'];
             $current_image = $row3['food_image'];
             $stock = $row3['food_stock'];
             $status = $row3['food_status'];
@@ -70,7 +71,7 @@
             </div>
 
             <div class ="form-wrapper">
-                <textarea name="status" cols="30" rows="5" placeholder="Status" class="form-control" ><?php echo $status; ?></textarea>
+                <textarea name="description" cols="30" rows="5" placeholder="Description" class="form-control" ><?php echo $description; ?></textarea>
             </div>
 
             <div class ="form-wrapper">
@@ -143,7 +144,12 @@
                 <div class ="form-wrapper">
                     <input type="file" name="image">
                 </div> 
-                 
+                <p>Status: </p>
+                <div class ="form-wrapper"> 
+                    <input <?php if($status == "Yes"){echo "checked";} ?> type="radio" name="status" value="Yes" > Yes
+                    <input <?php if($status == "No"){echo "checked";} ?> type="radio" name="status" value="No" > No
+                    </div>
+
                 <p>Active:</p>
                 <div class ="form-wrapper"> 
                     <input <?php if($active == "Yes"){echo "checked";} ?> type="radio" name="active" value="Yes" > Yes
@@ -168,6 +174,7 @@
             $code = $_POST['code'];
             $food_name = $_POST['food_name'];
             $price = $_POST['price'];
+            $description = $_POST['description'];
             $current_image = $_POST['current_image'];
             $stock = $_POST['stock'];
             $status = $_POST['status'];
@@ -221,6 +228,7 @@
             food_code = '$code',
             food_name = '$food_name',
             food_price = $price,
+            food_description='$description',
             food_image = '$image_name',
             food_stock = '$stock',
             food_status = '$status',

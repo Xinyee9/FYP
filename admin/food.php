@@ -43,7 +43,8 @@
                     <th>ID</th>
                     <th>Code</th>  
                     <th>Name</th>                     
-                    <th>Price</th>  
+                    <th>Price</th>
+                    <th>Description</th>  
                     <th>Image</th>
                     <th>Active</th>    
                     <th>Actions</th>  
@@ -70,6 +71,7 @@
                                 $code = $rows['food_code'];
                                 $food_name = $rows['food_name'];
                                 $price = $rows['food_price'];
+                                $description = $rows['food_description'];
                                 $image_name = $rows['food_image'];
                                 $active = $rows['active'];
 
@@ -80,6 +82,7 @@
                                     <td><?php echo $code; ?></td>  
                                     <td><?php echo $food_name; ?></td>                     
                                     <td>RM <?php echo $price; ?></td>
+                                    <td> <?php echo $description; ?></td>
                                     <td>
                                         <?php  
                                             //check image name is available or not

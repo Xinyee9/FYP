@@ -56,6 +56,7 @@ require_once('./php/dbconnect.php');
                             <div id='menu-name'><h2>" . $row["food_name"] . "</h2></div>
                             <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
                             <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
+                            <p>".$row['food_description'] . "</p>
                             <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
                         </div>
                     </div>
