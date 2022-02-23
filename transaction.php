@@ -1,4 +1,7 @@
 <?php
+require_once('./php/dbconnect.php');
+?>
+<?php
 session_start();
 if (isset($_POST["foodcode"])) {
     echo "
@@ -29,7 +32,7 @@ if (isset($_POST["foodcode"])) {
         }
 
         body {
-            background-image: url("https://images.indianexpress.com/2021/09/GettyImages-virtual-shopping-online-1200.jpg");
+            background-image: url("./image/transaction.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -164,18 +167,20 @@ if (isset($_POST["foodcode"])) {
         </div>
     </div>
     <p align="right">
-        <button href="index.php">
-            Back</button>
+        <!-- <button href="menu.php">
+            Back</button> -->
+            <!-- <button onclick="menu.php">Back</button> -->
+            <button onclick="window.location.href='menu.php'">Back</button>
     </p>
     <h2>Transaction</h2>
     <div class="row">
         <div class="col-75">
             <div class="container">
-                <form action="/action_page.php">
+                <form action="">
 
                     <div class="row">
                         <div class="col-50">
-                            <h3>Billing Address</h3>
+                            <h3>Delivery Address</h3>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
                             <input type="text" id="fname" name="firstname" placeholder="Joshua">
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
@@ -234,12 +239,29 @@ if (isset($_POST["foodcode"])) {
         </div>
         <div class="col-25">
             <div class="container">
-                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>3</b></span></h4>
+                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
                 <p><?php
-                    echo $_POST["foodcode"]
-                    ?><span class="price">RM </span></p>
+                    echo $_POST["foodcode"];
+                    echo ' - '.$_POST["foodquantity"];
+                    $a = $_POST["foodquantity"];
+                    $j = $_POST["foodcode"];
+                    $sql = "SELECT food_code, food_price FROM food WHERE food_code = '$j'";
+                    // echo $sql;
+                    $result = mysqli_query($con, $sql);
+                    // $row = mysqli_fetch_assoc($result);
+                    // echo $row["food_price"];
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<span class="price">RM '.$row["food_price"].'</span>';
+                        // echo $row["food_price"];
+                        $total = $row["food_price"] * $a;
+                        echo '<p>Total <span class="price" style="color:black"><b>RM '.$total.'</b></span></p>';
+                    }
+                    // echo $_POST["foodprice"]
+                    // $total = $row["food_price"] * $a;
+                    // echo '<p>Total <span class="price" style="color:black"><b>RM '.$total.'</b></span></p>'
+                    ?></p>
                 <hr>
-                <p>Total <span class="price" style="color:black"><b>RM </b></span></p>
+                <!-- <p>Total <span class="price" style="color:black"><b>RM </b></span></p> -->
             </div>
         </div>
     </div>

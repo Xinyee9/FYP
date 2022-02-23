@@ -129,8 +129,8 @@
        	Order Status
 	</div>
 	<div class="right">
-		<button class="btn">
-			<j href = "index.php" class="fa fa-home"> HOME</j>
+		<button class="btn" onclick="window.location.href='index.php'">
+			<j class="fa fa-home"> HOME</j>
 		</button>
 	</div>
     <div class="status">
