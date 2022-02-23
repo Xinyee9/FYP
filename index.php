@@ -297,7 +297,7 @@ if (isset($_POST['btn-submit']))
         <div id="title">
             <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
         </div>
-        <p1>Your favourite places !</p1>
+        <p1>Your first choice !</p1>
     </div>
 
     <?php
