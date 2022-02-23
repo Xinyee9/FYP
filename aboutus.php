@@ -58,7 +58,7 @@
 
 .u-section-1 .u-image-1 {
   min-height: 951px;
-  background-image: url("aboutus.jpeg");
+  background-image: url("./image/aboutus.jpeg");
   background-position: 50% 50%;
 }
 
