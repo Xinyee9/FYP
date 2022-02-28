@@ -120,17 +120,15 @@
                             </select > 
                         </div>
                         </div>
-                        
-                    
-                
+
                 <div class="">
                     <span class="">Image:</span>
                     <input type="file" name="image">
                 </div>
                 <div class ="gender-details"><br><br>
                     <span class="gender-title">Status:</span>
-                    <input type="radio" name="status" value="Yes">Yes
-				    <input type="radio" name="status" value="No" > No
+                    <input type="radio" name="status" value="available"> Available
+				    <input type="radio" name="status" value="unavailable" > Unavailable
                 </div>
                 <div class ="gender-details"><br><br>
                     <span class="gender-title">Active:</span>

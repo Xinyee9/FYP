@@ -140,16 +140,16 @@
                     ?>
                 </select>
                 </div>
+                
                 <p>Select new image: </p>
                 <div class ="form-wrapper">
                     <input type="file" name="image">
                 </div> 
-                <p>Status: </p>
+                <p>Status:</p>
                 <div class ="form-wrapper"> 
-                    <input <?php if($status == "Yes"){echo "checked";} ?> type="radio" name="status" value="Yes" > Yes
-                    <input <?php if($status == "No"){echo "checked";} ?> type="radio" name="status" value="No" > No
-                    </div>
-
+                    <input <?php if($status == "available"){echo "checked";} ?> type="radio" name="status" value="available" > Available
+                    <input <?php if($status == "unavailable"){echo "checked";} ?> type="radio" name="status" value="unavailable" > Unavailable
+                </div>
                 <p>Active:</p>
                 <div class ="form-wrapper"> 
                     <input <?php if($active == "Yes"){echo "checked";} ?> type="radio" name="active" value="Yes" > Yes
