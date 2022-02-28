@@ -81,7 +81,7 @@
                                     <td><?php echo $sn++; ?></td>
                                     <td><?php echo $code; ?></td>  
                                     <td><?php echo $food_name; ?></td>                     
-                                    <td>RM <?php echo $price; ?></td>
+                                    <td>RM <?php echo number_format($price, 2); ?></td>
                                     <td> <?php echo $description; ?></td>
                                     <td>
                                         <?php  

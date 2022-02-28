@@ -30,11 +30,11 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Price:</span>
-                        <input type="number" name="price" placeholder="Price of the food" required> 
+                        <input type="number" name="price" placeholder="0.00" min="1" max="120" step=0.1 required> 
                     </div>
                     <div class="input-box">
                         <span class="details">Stock:</span>
-                        <input type="text" name="stock" placeholder="Stock of the food" required> 
+                        <input type="number" name="stock" placeholder="xx" min="1" max="500" required> 
                     </div>
                     <div class="input-box">
                         <span class="details">Description:</span>
