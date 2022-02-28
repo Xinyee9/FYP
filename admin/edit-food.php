@@ -67,7 +67,7 @@
             
             <div class ="form-group">
                 <input type="number" name="price" value="<?php echo $price; ?>" min="1" max="120" step=0.1 placeholder="Price" class="form-control">
-                <input type="text" name="stock" value="<?php echo $stock; ?>" placeholder="Stock" class="form-control">
+                <input type="text" name="stock" value="<?php echo $stock; ?>" min="1" max="500" placeholder="Stock" class="form-control">
             </div>
 
             <div class ="form-wrapper">
