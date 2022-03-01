@@ -20,7 +20,7 @@ if (isset($_POST["foodcode"])) {
 <head>
     <title>Payment</title>
 
-    <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
+    <link rel="shortcut icon" href="./image/transaction.ico" rel="icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -169,8 +169,8 @@ if (isset($_POST["foodcode"])) {
     <p align="right">
         <!-- <button href="menu.php">
             Back</button> -->
-            <!-- <button onclick="menu.php">Back</button> -->
-            <button onclick="window.location.href='menu.php'">Back</button>
+        <!-- <button onclick="menu.php">Back</button> -->
+        <button onclick="window.location.href='menu.php'">Back</button>
     </p>
     <h2>Transaction</h2>
     <div class="row">
@@ -242,7 +242,7 @@ if (isset($_POST["foodcode"])) {
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
                 <p><?php
                     echo $_POST["foodcode"];
-                    echo ' - '.$_POST["foodquantity"];
+                    echo ' - ' . $_POST["foodquantity"];
                     $a = $_POST["foodquantity"];
                     $j = $_POST["foodcode"];
                     $sql = "SELECT food_code, food_price FROM food WHERE food_code = '$j'";
@@ -251,10 +251,10 @@ if (isset($_POST["foodcode"])) {
                     // $row = mysqli_fetch_assoc($result);
                     // echo $row["food_price"];
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<span class="price">RM '.$row["food_price"].'</span>';
+                        echo '<span class="price">RM ' . $row["food_price"] . '</span>';
                         // echo $row["food_price"];
                         $total = $row["food_price"] * $a;
-                        echo '<p>Total <span class="price" style="color:black"><b>RM '.$total.'</b></span></p>';
+                        echo '<p>Total <span class="price" style="color:black"><b>RM ' . $total . '</b></span></p>';
                     }
                     // echo $_POST["foodprice"]
                     // $total = $row["food_price"] * $a;

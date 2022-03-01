@@ -56,7 +56,7 @@ if (isset($_POST['mem_name'])) {
 <head>
   <title>Customer Register</title>
 
-  <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
+  <link rel="shortcut icon" href="./image/register.ico" rel="icon" type="image/x-icon" />
 
   <style>
     #title h1 {
@@ -79,7 +79,7 @@ if (isset($_POST['mem_name'])) {
       background-color: turquoise;
       letter-spacing: 3px;
     }
-    
+
     body {
       background-image: url("https://wallpaperbat.com/img/490393-flower-aesthetic-computer-wallpaper-top-flower-aesthetic-desktop-wallpaper-aesthetic-flower-1280x1024-download-hd-wallpaper-wallpapertip.jpg");
       background-repeat: no-repeat;
@@ -114,13 +114,13 @@ if (isset($_POST['mem_name'])) {
 </head>
 
 <body>
-    <div class="header">
-      <div id="title">
-        <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
-      </div>
+  <div class="header">
+    <div id="title">
+      <h1>&#127800; WELCOME TO Aurora Restaurant &#127800;</h1>
     </div>
-  </body>
-  
+  </div>
+</body>
+
 <body>
   <span class="font_bk">
     <h4><strong>Register for a New Account</strong></h4>
