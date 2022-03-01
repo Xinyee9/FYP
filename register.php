@@ -57,27 +57,46 @@ if (isset($_POST['mem_name'])) {
   <title>Customer Register</title>
 
   <link rel="shortcut icon" href="./image/register.ico" rel="icon" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link rel="stylesheet" href=""> -->
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
   <style>
+    .header {
+      padding: 30px;
+      text-align: center;
+    }
+
     #title h1 {
       margin: 0;
       padding: 0;
       text-align: center;
       font-size: 40px;
-      font-family: "Sigmar One", cursive;
+      font-family: 'Sigmar One', cursive;
       color: #7979d2;
       text-transform: uppercase;
-      background-image: linear-gradient(to right,
-          #f00,
-          #ff0,
-          #0ff,
-          #0f0,
-          #00f);
+      background-image: linear-gradient(to right, #f00, #ff0, #0ff, #0f0, #00f);
       background-clip: padding-box;
       animation: animate 20s linear infinite;
       background-size: 1000%;
       background-color: turquoise;
       letter-spacing: 3px;
+
+    }
+
+    @keyframes animate {
+      0% {
+        background-position: 0% 100%;
+      }
+
+      50% {
+        background-position: 100% 0%;
+      }
+
+      100% {
+        background-position: 0% 100%;
+      }
     }
 
     body {
@@ -97,7 +116,7 @@ if (isset($_POST['mem_name'])) {
       margin: auto;
       left: 0;
       right: 0;
-      top: 0;
+      top: 90px;
       bottom: 0;
     }
 

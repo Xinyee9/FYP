@@ -72,6 +72,11 @@ if (isset($_POST['email'])) {
       background-size: 100%;
     }
 
+    .header {
+      padding: 30px;
+      text-align: center;
+    }
+
     @font-face {
       font-family: "Obliq";
       src: url("font/Obliq.ttf");
@@ -132,20 +137,16 @@ if (isset($_POST['email'])) {
       padding: 0;
       text-align: center;
       font-size: 40px;
-      font-family: "Sigmar One", cursive;
+      font-family: 'Sigmar One', cursive;
       color: #7979d2;
       text-transform: uppercase;
-      background-image: linear-gradient(to right,
-          #f00,
-          #ff0,
-          #0ff,
-          #0f0,
-          #00f);
+      background-image: linear-gradient(to right, #f00, #ff0, #0ff, #0f0, #00f);
       background-clip: padding-box;
       animation: animate 20s linear infinite;
       background-size: 1000%;
       background-color: turquoise;
       letter-spacing: 3px;
+
     }
 
     #title h4 {
