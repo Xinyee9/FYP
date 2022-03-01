@@ -49,9 +49,17 @@ body {
   letter-spacing: 5px;
 }
 
+table#food td,
+table#food td {
+  vertical-align: top;
+  position: relative;
+}
+
 .leftcolumn {
-  float: left;
+  /* float: left; */
   width: 100%;
+  display: inline-block;
+  height: 100%;
 }
 
 /* Right column */
@@ -77,7 +85,19 @@ body {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
-  display: inline-grid;
+  display: inline-block;
+  height: 90%;
+}
+
+.card * {
+  vertical-align: top;
+}
+
+.card button {
+  position: absolute;
+  right: 35px;
+  bottom: 50px;
+  /* vertical-align: bottom; */
 }
 
 /* Clear floats after the columns */
@@ -109,9 +129,9 @@ hr {
 }
 
 p {
-  font-family: "Indie Flower", cursive;
+  font-family: "Fredoka", cursive;
   font-weight: bold;
-  font-size: 30pt;
+  font-size: 14pt;
   color: #b37700;
 }
 
@@ -164,7 +184,7 @@ a {
   text-decoration: blue;
   font-size: 45px;
   display: inline-block;
-  float: left;
+  /* float: left; */
   padding: 10px 16px 10px 10px;
 }
 

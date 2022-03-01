@@ -11,7 +11,7 @@ require_once('./php/dbconnect.php');
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -49,18 +49,29 @@ require_once('./php/dbconnect.php');
             if ($counter % 3 == 0) {
                 echo "<tr>";
             }
-            echo "<td>
-                <div class='row'>
+            // echo "<td style='height: 500px;'>
+            //     <div class='row'>
+            //         <div class='leftcolumn'>
+            //             <div class='card'>
+            //                 <div id='menu-name'><h2>" . $row["food_name"] . "</h2></div>
+            //                 <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
+            //                 <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
+            //                 <p>".$row['food_description'] . "</p>
+            //                 <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </td>";
+            echo "<td style='height: 700px;'>
                     <div class='leftcolumn'>
                         <div class='card'>
                             <div id='menu-name'><h2>" . $row["food_name"] . "</h2></div>
                             <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
                             <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
-                            <p>".$row['food_description'] . "</p>
+                            <p>" . $row['food_description'] . "</p>
                             <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
                         </div>
                     </div>
-                </div>
             </td>";
             if ($counter - 2 % 3 == 0) {
                 echo "</tr>";
@@ -68,246 +79,6 @@ require_once('./php/dbconnect.php');
             $counter++;
         }
         ?>
-        <!-- <tr> ctrl + /
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Blackpepper Chickenchop</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c1.jpeg"></div>
-                            <p>RM 11.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Creammy Rigatoni Vege</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s1.jpg"></div>
-                            <p>RM 12.50</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Steamed Cheeseburger </h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b1.jpg"></div>
-                            <p>RM 9.40</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Chickenchop with Mushroom</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c2.jpg"></div>
-                            <p>RM 10.20</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Spaghetti Aglio e Olio</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s2.jpg"></div>
-                            <p>RM 11.60</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Wild Salmon Burgers</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b2.jpg"></div>
-                            <p>RM 14.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Honey Lemon Chicken Chop</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c4.jpg"></div>
-                            <p>RM 9.20</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Spaghetti Bolognese</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s3.jpg"></div>
-                            <p>RM 10.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Beef Burgers</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b4.jpg"></div>
-                            <p>RM 12.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Chicken Parmigiana</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c5.jpg"></div>
-                            <p>RM 8.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Dill Butter Shrimp Farfalle Pasta</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s4.jpg"></div>
-                            <p>RM 13.90</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Spicy Elk Burger</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b5.jpg"></div>
-                            <p>RM 13.00</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Seared Salmon Steak with Wasabi Lemon Vinaigrette</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c6.jpg"></div>
-                            <p>RM 17.60</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Creammy Corn Gemelli</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s5.jpg"></div>
-                            <p>RM 12.20</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-
-
-            <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Bison Burgers</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b6.jpg"></div>
-                            <p>RM 13.40</p>
-                            <button class="button">SELECT</button>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr> -->
-
     </table>
 
 

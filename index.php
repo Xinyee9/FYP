@@ -6,8 +6,7 @@ unset($_SESSION['email']);
 unset($_SESSION['first']);
 unset($_SESSION['last']);
 
-if (isset($_POST['btn-submit'])) 
-{
+if (isset($_POST['btn-submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -17,12 +16,11 @@ if (isset($_POST['btn-submit']))
     $query = "INSERT INTO contactus (conName, conEmail, conPhone, conMessage, conDatetime) VALUES ('$name','$email','$phone','$message','$datetime')";
     $result = mysqli_query($con, $query);
 
-    if ($result) 
-    {
+    if ($result) {
         $to = $email;
         $subject = "Thank You for Contacting Us";
-        $message = "We're glad to tell you that we receive your message and our staff will contact you shortly.\n\n";
-        $message .= "<br/>Cheers,<br/>Aurora Team";
+        $message = "Your information has been received. Just a moment, our team will get back to you as soon as possible.\n\n";
+        $message .= "<br/>Best regards,<br/>Aurora Team";
 
         $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";
         $headers .= "Reply-To: auroracutie2022@gmail.com\r\n";
@@ -49,9 +47,9 @@ if (isset($_POST['btn-submit']))
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link rel="stylesheet" href=""> -->
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
-    
+
     <style>
         body {
             font-family: 'Lucida Sans';
@@ -97,9 +95,18 @@ if (isset($_POST['btn-submit']))
 
         /* Create two unequal columns that floats next to each other */
         /* Left column */
+        table#food td,
+        table#food td {
+            vertical-align: top;
+            position: relative;
+            height: 700px;
+        }
+
         .leftcolumn {
-            float: left;
+            /* float: left; */
             width: 100%;
+            display: inline-block;
+            height: 100%;
         }
 
         /* Right column */
@@ -125,7 +132,12 @@ if (isset($_POST['btn-submit']))
             background-color: white;
             padding: 20px;
             margin-top: 20px;
-            display: inline-grid;
+            display: inline-block;
+            height: 90%;
+        }
+
+        .card * {
+            vertical-align: top;
         }
 
         /* Clear floats after the columns */
@@ -200,6 +212,7 @@ if (isset($_POST['btn-submit']))
             text-transform: uppercase;
             background-image: linear-gradient(to right, #f00, #ff0, #0ff, #0f0, #00f);
             -webkit-background-clip: text;
+            background-clip: text;
             animation: animate 20s linear infinite;
             background-size: 1000%;
             font-size: 50px;
@@ -224,7 +237,7 @@ if (isset($_POST['btn-submit']))
         }
 
         p {
-            font-family: 'Indie Flower', cursive;
+            font-family: 'Fredoka', cursive;
             font-weight: bold;
             font-size: 14pt;
             color: #b37700;
@@ -309,46 +322,46 @@ if (isset($_POST['btn-submit']))
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <tr>
             <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Blackpepper Chickenchop</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/c1.jpeg"></div>
-                            <p>The Black Pepper Chicken Chop is a vibrant and flavorful dish.Has a great nutritional value,especially in terms of protein.Black pepper chicken chops have a crisp and tender flavour.It is the perfect solution for comrades who want to lose weight but can't stop themselves from eating because of the low fat content.</p>
+                <!-- <div class="row"> -->
+                <div class="leftcolumn">
+                    <div class="card">
+                        <div id="menu-name">
+                            <h2>Blackpepper Chickenchop</h2>
                         </div>
+                        <div class="fake-image"><img src="Food/c1.jpeg"></div>
+                        <p>The Black Pepper Chicken Chop is a vibrant and flavorful dish.Has a great nutritional value,especially in terms of protein.Black pepper chicken chops have a crisp and tender flavour.It is the perfect solution for comrades who want to lose weight but can't stop themselves from eating because of the low fat content. </p>
                     </div>
                 </div>
+                <!-- </div> -->
             </td>
 
             <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Creammy Rigatoni Vege</h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/s1.jpg"></div>
-                            <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.Instead, I'd describe it as delicious, rich, unctuous, velvety, warm and fragrant with sweet.</p>
+                <!-- <div class="row"> -->
+                <div class="leftcolumn">
+                    <div class="card">
+                        <div id="menu-name">
+                            <h2>Creammy Rigatoni Vege</h2>
                         </div>
+                        <div class="fake-image"><img src="Food/s1.jpg"></div>
+                        <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.Instead, I'd describe it as delicious, rich, unctuous, velvety, warm and fragrant with sweet.</p>
                     </div>
                 </div>
+                <!-- </div> -->
             </td>
 
 
             <td>
-                <div class="row">
-                    <div class="leftcolumn">
-                        <div class="card">
-                            <div id="menu-name">
-                                <h2>Steamed Cheeseburger </h2>
-                            </div>
-                            <div class="fake-image"><img src="Food/b1.jpg"></div>
-                            <p>Steamed cheeseburgers, also known as cheeseburgs, are a special type of cheeseburger that originated in Connecticut. This local delicacy is created with steamed ground beef and steaming bits of cheese. Both are steamed separately, with the beef in special metal moulds and the cheese in its own container.</p>
+                <!-- <div class="row"> -->
+                <div class="leftcolumn">
+                    <div class="card">
+                        <div id="menu-name">
+                            <h2>Steamed Cheeseburger </h2>
                         </div>
+                        <div class="fake-image"><img src="Food/b1.jpg"></div>
+                        <p>Steamed cheeseburgers, also known as cheeseburgs, are a special type of cheeseburger that originated in Connecticut. This local delicacy is created with steamed ground beef and steaming bits of cheese. Both are steamed separately, with the beef in special metal moulds and the cheese in its own container.</p>
                     </div>
                 </div>
+                <!-- </div> -->
             </td>
 
         </tr>
