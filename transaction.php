@@ -237,33 +237,7 @@ if (isset($_POST["foodcode"])) {
                 </form>
             </div>
         </div>
-        <div class="col-25">
-            <div class="container">
-                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
-                <p><?php
-                    echo $_POST["foodcode"];
-                    echo ' - ' . $_POST["foodquantity"];
-                    $a = $_POST["foodquantity"];
-                    $j = $_POST["foodcode"];
-                    $sql = "SELECT food_code, food_price FROM food WHERE food_code = '$j'";
-                    // echo $sql;
-                    $result = mysqli_query($con, $sql);
-                    // $row = mysqli_fetch_assoc($result);
-                    // echo $row["food_price"];
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<span class="price">RM ' . $row["food_price"] . '</span>';
-                        // echo $row["food_price"];
-                        $total = $row["food_price"] * $a;
-                        echo '<p>Total <span class="price" style="color:black"><b>RM ' . $total . '</b></span></p>';
-                    }
-                    // echo $_POST["foodprice"]
-                    // $total = $row["food_price"] * $a;
-                    // echo '<p>Total <span class="price" style="color:black"><b>RM '.$total.'</b></span></p>'
-                    ?></p>
-                <hr>
-                <!-- <p>Total <span class="price" style="color:black"><b>RM </b></span></p> -->
-            </div>
-        </div>
+
     </div>
     <script>
         function input() {
