@@ -34,7 +34,7 @@ require_once('./php/dbconnect.php');
 
     <a href="index.php" class="previous round">&#8249;</a>
 
-    <form action="transaction.php" name="toSubmit" method="post">
+    <form action="cart.php" name="toSubmit" method="post">
         <!-- <input type="hidden" name="foodprice" value=""> -->
         <input type="hidden" name="foodcode" value="">
         <input type="hidden" name="foodquantity" value="">
