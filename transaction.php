@@ -170,7 +170,7 @@ if (isset($_POST["foodcode"])) {
         <!-- <button href="menu.php">
             Back</button> -->
         <!-- <button onclick="menu.php">Back</button> -->
-        <button onclick="window.location.href='menu.php'">Back</button>
+        <button onclick="window.location.href='cart.php'">Back</button>
     </p>
     <h2>Transaction</h2>
     <div class="row">

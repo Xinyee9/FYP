@@ -1,3 +1,8 @@
+<?php
+	require_once('./php/dbconnect.php');
+	session_start();
+?>
+
 <!DOCTYPE html>
 <style>
 body{
@@ -57,7 +62,7 @@ body{
 }
 .about{
 	height: 100%;
-	width: 24%;
+	width: 50%;
 }
 .title{
 	padding-top: 10px;
@@ -188,6 +193,7 @@ hr{
 	<title>Cart</title>
 	<link rel="stylesheet" type="text/css" href="./style.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
    <div class="CartContainer">
@@ -196,50 +202,121 @@ hr{
    	   	<!-- <h5 class="Action">Remove all</h5> -->
    	   </div>
 
-   	   <div class="Cart-Items">
-   	   	  <div class="image-box">
-   	   	  	<img src="" style={{ height="120px" }} />
-   	   	  </div>
-   	   	  <div class="about">
-   	   	  	<h1 class="title"></h1>
-   	   	  </div>
-   	   	  <div class="counter">
-   	   	  	<div class="btn">+</div>
-   	   	  	<div class="count">1</div>
-   	   	  	<div class="btn">-</div>
-   	   	  </div>
-   	   	  <div class="prices">
-   	   	  	<div class="amount">RM</div>
-   	   	  	<div class="remove"><u>Remove</u></div>
-   	   	  </div>
-   	   </div>
+	<?php
+		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+            $userid = $_SESSION['id'];
+        }
+		// else{
+		// 	$userid = 0;
+		// }
+		$sql = "SELECT * FROM `cart` , food WHERE cart.food_id = food.food_id AND userid = $userid";
+		// echo $sql;
+		$result = mysqli_query($con, $sql);
+		$total = 0;
+		while ($row = mysqli_fetch_assoc($result)) {
+			// echo '<input type="hidden" id="cart_id" value="'.$row["cart_id"].'">';
+			$subtotal = $row['food_price'] * $row['cart_qty'];
+			$total += $subtotal;
+			echo '<div class="Cart-Items">
+			<div class="image-box">
+				<img src="Food/'.$row["food_image"].'" style={{ height="120px" }} />
+			</div>
+			<div class="about">
+				<h4 class="title">'.$row["food_name"].'</h4>
+			</div>
+			<div class="counter">
+				<div class="btn">+</div>
+				<div class="count">'.$row["cart_qty"].'</div>
+				<div class="btn">-</div>
+			</div>
+			<div class="prices">
+				<div class="amount">RM '.$subtotal.'</div>
+				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
+			</div>
+	  		</div>';
+		}
+		echo '<hr> 
+			  <div class="checkout">
+			  <div class="total">
+				  <div>
+					  <div class="Subtotal">Total</div>
+				  </div>
+				  <div class="total-amount">RM '.$total.'</div>
+			  </div>';
+		// $result = mysqli_query($con, $sql);
+		// $rlt = mysqli_query($con, $qwe);
 
-   	   <div class="Cart-Items pad">
-   	   	  <div class="image-box">
-   	   	  	<img src="" style={{ height="120px" }} />
-   	   	  </div>
-   	   	  <div class="about">
-   	   	  	<h1 class="title"></h1>
-   	   	  </div>
-   	   	  <div class="counter">
-   	   	  	<div class="btn">+</div>
-   	   	  	<div class="count">1</div>
-   	   	  	<div class="btn">-</div>
-   	   	  </div>
-   	   	  <div class="prices">
-   	   	  	<div class="amount">RM</div>
-   	   	  	<div class="remove"><u>Remove</u></div>
-   	   	  </div>
-   	   </div>
-   	 <hr> 
+   	   	// echo "<div class='Cart-Items'></div>
+   	   	//   <div class='about'>
+   	   	//   	<h1 class='title'>".$_POST['food_name']."</h1>
+   	   	//   </div>
+   	   	//   <div class='counter'>
+   	   	//   	<div class='btn'>+</div>
+   	   	//   	<div class='count'>".$_POST['food_quantity']."</div>
+   	   	//   	<div class='btn'>-</div>
+   	   	//   </div>
+   	   	//   <div class='prices'>
+   	   	//   	<div class='amount'>RM</div>
+   	   	//   	<div class='remove'><u>Remove</u></div>
+		// 	<hr> 
+   	 	// 	<div class='checkout'>
+		// 		<div class='total'>
+		// 			<div>";
+		// 				while ($row = mysqli_fetch_assoc($result)) {
+		// 					echo "<span class='price'>RM ". $row['food_price'] . "</span>";
+		// 					$total = $row['food_price'] * $foodqty;
+		// 					echo "<div class='Subtotal'><p>Total <span class='price' style='color:black'><b>RM ". $total ."</b></span></p></div>";
+		// 				}
+		// 				// <!-- <div class='items'>2 foods</div> -->
+		// 			echo"</div>
+		// 			<div class='total-amount'>RM </div>
+		// 		</div>
+		// 	</div>
+   	  	// </div>
+		// ";
+	?>
+
+	<script>
+		function remove(cart_id) {
+			$.ajax({
+                    method: "POST",
+                    url: "cartremove.php",
+                    data: {cart_id: cart_id},
+                success: (response) =>
+                {
+					console.log(response);
+                }
+                });
+			// 	$dlt = "DELETE FROM cart WHERE cart_id =''";
+
+		}
+	</script>
+   	<!-- //    <div class="Cart-Items pad">
+   	//    	  <div class="image-box">
+   	//    	  	<img src="" style={{ height="120px" }} />
+   	//    	  </div>
+   	//    	  <div class="about">
+   	//    	  	<h1 class="title"></h1>
+   	//    	  </div>
+   	//    	  <div class="counter">
+   	//    	  	<div class="btn">+</div>
+   	//    	  	<div class="count">1</div>
+   	//    	  	<div class="btn">-</div>
+   	//    	  </div>
+   	//    	  <div class="prices">
+   	//    	  	<div class="amount">RM</div>
+   	//    	  	<div class="remove"><u>Remove</u></div>
+   	//    	  </div> -->
+   	   <!-- </div> -->
+   	 <!-- <hr> 
    	 <div class="checkout">
    	 <div class="total">
    	 	<div>
    	 		<div class="Subtotal">Total</div>
-   	 		<!-- <div class="items">2 foods</div> -->
+   	 		<div class="items">2 foods</div>
    	 	</div>
-   	 	<div class="total-amount">RM 0.00</div>
-   	 </div>
+   	 	<div class="total-amount">RM </div>
+   	 </div> -->
         <!-- <button onclick="btn()">Check Out</button>
         <script>
             function btn()

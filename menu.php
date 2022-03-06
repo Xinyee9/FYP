@@ -13,6 +13,7 @@ require_once('./php/dbconnect.php');
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
 
 <body>
@@ -34,10 +35,10 @@ require_once('./php/dbconnect.php');
 
     <a href="index.php" class="previous round">&#8249;</a>
 
-    <form action="cart.php" name="toSubmit" method="post">
-        <!-- <input type="hidden" name="foodprice" value=""> -->
-        <input type="hidden" name="foodcode" value="">
-        <input type="hidden" name="foodquantity" value="">
+    <form action="iteminfo.php" name="toSubmit" method="post">
+        <input type="hidden" name="food_price" value="">
+        <input type="hidden" name="food_id" value="">
+        <input type="hidden" name="food_quantity" value="" id="food_quantity">
     </form>
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
@@ -57,7 +58,7 @@ require_once('./php/dbconnect.php');
             //                 <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
             //                 <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
             //                 <p>".$row['food_description'] . "</p>
-            //                 <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
+            //                 <button class='button' value='" . $row["food_id"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
             //             </div>
             //         </div>
             //     </div>
@@ -69,7 +70,7 @@ require_once('./php/dbconnect.php');
                             <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
                             <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
                             <p>" . $row['food_description'] . "</p>
-                            <button class='button' value='" . $row["food_code"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
+                            <button class='button' value='" . $row["food_id"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
                         </div>
                     </div>
             </td>";
@@ -80,8 +81,6 @@ require_once('./php/dbconnect.php');
         }
         ?>
     </table>
-
-
 
     <script>
         //Get the button
@@ -116,9 +115,11 @@ require_once('./php/dbconnect.php');
             }
 
             if (quantity != null && quantity != isNaN(quantity)) {
-                // document.toSubmit.foodprice.value = quantity;
-                document.toSubmit.foodcode.value = foodinfo[0];
-                document.toSubmit.foodquantity.value = quantity;
+                // $("#foodquantity").val(quantity);
+                // console.log($("#foodquantity").val());
+                document.toSubmit.food_price.value = quantity;
+                document.toSubmit.food_id.value = foodinfo[0];
+                document.toSubmit.food_quantity.value = quantity;
                 document.toSubmit.submit();
             }
 
