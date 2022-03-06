@@ -110,6 +110,13 @@
             $image_name="";
         }
 
+        $dup = mysqli_query($conn, "SELECT FROM ADMIN WHERE admin_name = '$full_name' ");
+
+        if(mysqli_num_rows($dup)>0)
+        {
+            echo "Admin Name is duplicate enter";
+        }
+        else{
 
         $sql = "INSERT INTO admin SET
             admin_name = '$full_name',
@@ -134,6 +141,7 @@
             $_SESSION['add'] = "<div class='error'>Failed to Add Admin</div>";
             header('location:'.SITEURL.'admin/admin-pro.php');
         }
+    }
     }
 ?>
             

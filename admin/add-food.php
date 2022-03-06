@@ -209,6 +209,14 @@
             $image_name = ""; //setting default value as blank
         }
 
+        $dup = mysqli_query($conn, "SELECT FROM FOOD WHERE food_name = '$food_name' ");
+
+        if(mysqli_num_rows($dup)>0)
+        {
+            echo "Food Name is duplicate enter";
+        }
+        else{
+
         //3.insert into database
         //create a sql query to save or add food
         $sql3 = "INSERT INTO food SET
@@ -240,6 +248,7 @@
             $_SESSION['add'] = "<div class='error'>Failed to Add Food.</div>";
             header("location:".SITEURL.'admin/food.php');
         }
+    }
     }
 ?>
 

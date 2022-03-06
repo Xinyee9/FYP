@@ -71,7 +71,7 @@
             </div>
 
             <div class ="form-wrapper">
-                <textarea name="description" cols="30" rows="5" placeholder="Description" class="form-control" ><?php echo $description; ?></textarea>
+                <textarea name="description" cols="30" rows="8" placeholder="Description" class="form-control2" ><?php echo $description; ?></textarea>
             </div>
 
             <div class ="form-wrapper">
@@ -236,7 +236,7 @@
             cate_id = '$category',
             active = '$active'
             WHERE food_id='$ID'
-        ";
+            ";
 
             //Execute the Query
             $res4 = mysqli_query($conn, $sql4);
@@ -253,6 +253,7 @@
                 header('location:' . SITEURL . 'admin/food.php');
             }
         }
+        
 
         ?>
 

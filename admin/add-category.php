@@ -41,6 +41,13 @@
                 $ccode = $_POST['ccode'];
                 $ccname = $_POST['cname'];
 
+                $dup = mysqli_query($conn, "SELECT FROM category WHERE cate_name = '$ccname' ");
+
+                if(mysqli_num_rows($dup)>0)
+                {
+                    echo "Category Name is duplicate enter";
+                }
+                else{
                 $sql = "INSERT INTO CATEGORY SET
                 cate_code = '$ccode',
                 cate_name = '$ccname'
@@ -60,6 +67,7 @@
                     $_SESSION['add'] = "<div class='success'>Failed to Add Category.</div>";
                     header("location:".SITEURL.'admin/category.php');
                 }
+            }
             }
     
             ?>
