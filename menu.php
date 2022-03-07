@@ -43,6 +43,20 @@ require_once('./php/dbconnect.php');
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <?php
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+            $userid = $_SESSION['id'];
+        }
+        else{
+            echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Please Login to view menu.');
+            window.location.href='login.php';
+            </script>");
+            // $message = "Please Login to view menu.";
+            // echo "<script type='text/javascript'>alert('$message');</script>";
+            // function_alert("Please Login to view menu.");
+            // echo "<script>alert('Please Login to view menu.')</script>";
+            // header("Location: login.php");
+        }
         $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -74,6 +88,21 @@ require_once('./php/dbconnect.php');
                         </div>
                     </div>
             </td>";
+            // function function_alert($message) {
+      
+            //     // Display the alert box 
+            //     echo "<script>alert('$message');</script>";
+            // }
+            // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+            //     $userid = $_SESSION['id'];
+            // }
+            // else{
+            //     // $message = "wrong answer";
+            //     // echo "<script type='text/javascript'>alert('$message');</script>";
+            //     // function_alert("Please Login to view menu.");
+            //     // echo "<script>alert('Please Login to view menu.')</script>";
+            //     header("Location: login.php");
+            // }
             if ($counter - 2 % 3 == 0) {
                 echo "</tr>";
             }

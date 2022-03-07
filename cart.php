@@ -1,6 +1,18 @@
 <?php
 	require_once('./php/dbconnect.php');
 	session_start();
+
+	// if (isset($_POST['remove'])){
+	// 	if ($_GET['action'] == 'remove'){
+	// 		foreach ($_SESSION['cart'] as $key => $value){
+	// 			if($value["cart_id"] == $_GET['id']){
+	// 				unset($_SESSION['cart'][$key]);
+	// 				echo "<script>alert('Product has been Removed!')</script>";
+	// 				echo "<script>window.location = 'cart.php'</script>";
+	// 			}
+	// 		}
+	// 	}
+	//   }
 ?>
 
 <!DOCTYPE html>
@@ -291,8 +303,9 @@ hr{
                     data: {cart_id: cart_id},
                 success: (response) =>
                 {
-					// console.log(response);
-					document.getElementById("Cart-Items").innerHTML = response;
+					// var get = document.getElementsByClassName("Cart-Items")
+					console.log(response);
+					document.getElementById("rmv").innerHTML = response;
                 }
             });
 			// 	$dlt = "DELETE FROM cart WHERE cart_id =''";
