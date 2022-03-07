@@ -11,7 +11,8 @@ if (isset($_POST['btn-submit'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $message = $_POST['message'];
-    $datetime = date("Y-M-d h:i:sa");
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $datetime = date('Y-m-d h:i:sa');
 
     $query = "INSERT INTO contactus (conName, conEmail, conPhone, conMessage, conDatetime) VALUES ('$name','$email','$phone','$message','$datetime')";
     $result = mysqli_query($con, $query);
@@ -20,8 +21,7 @@ if (isset($_POST['btn-submit'])) {
         $to = $email;
         $subject = "Thank You for Contacting Us";
         $message = "Your information has been received. Just a moment, our team will get back to you as soon as possible.\n\n";
-        $message = "                                    ";
-        $message .= "<br/>Best regards,<br/>Aurora Team";
+        $message .= "<br/>\nBest regards,<br/>Aurora Team";
 
         $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";
         $headers .= "Reply-To: auroracutie2022@gmail.com\r\n";
