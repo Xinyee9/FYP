@@ -20,6 +20,7 @@ if (isset($_POST['btn-submit'])) {
         $to = $email;
         $subject = "Thank You for Contacting Us";
         $message = "Your information has been received. Just a moment, our team will get back to you as soon as possible.\n\n";
+        $message = "                                    ";
         $message .= "<br/>Best regards,<br/>Aurora Team";
 
         $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";

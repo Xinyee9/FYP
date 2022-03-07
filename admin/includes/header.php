@@ -22,7 +22,11 @@ include('config/constants.php'); ?>
                     <a href="../index.php">
                         <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                         <span class="title">
-                            <h2>Food</h2>
+                            <span style="font-family:Algerian">
+                                <span style="font-size:x-large ,">
+                                    Food
+                                </span>
+                            </span>
                         </span>
                     </a>
                 </li>
