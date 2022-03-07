@@ -5,6 +5,12 @@
 
 <!DOCTYPE html>
 <style>
+	/* .j {
+	text-decoration: blue;
+	font-size: 45px;
+	display: inline-block;
+	padding: 10px 16px 10px 10px;
+} */
 body{
 	margin: 0;
 	padding: 0;
@@ -196,6 +202,7 @@ hr{
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<!-- <j href="index.php" class="previous round">&#8249;</j> -->
    <div class="CartContainer">
    	   <div class="Header">
    	   	<h3 class="Heading">Cart</h3>
@@ -284,9 +291,10 @@ hr{
                     data: {cart_id: cart_id},
                 success: (response) =>
                 {
-					console.log(response);
+					// console.log(response);
+					document.getElementById("Cart-Items").innerHTML = response;
                 }
-                });
+            });
 			// 	$dlt = "DELETE FROM cart WHERE cart_id =''";
 
 		}

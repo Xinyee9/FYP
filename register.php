@@ -111,12 +111,12 @@ if (isset($_POST['mem_name'])) {
       display: block;
       border: 8px solid #ccc;
       width: 450px;
-      height: 550px;
+      height: 350px;
       position: fixed;
       margin: auto;
       left: 0;
       right: 0;
-      top: 90px;
+      top: 0px;
       bottom: 0;
     }
 
@@ -129,6 +129,12 @@ if (isset($_POST['mem_name'])) {
       text-align: center;
       font-size: 30px;
     }
+
+    /* .button {
+      background-color: blue; 
+      color: black; 
+      border: 2px solid #008CBA;
+    } */
   </style>
 </head>
 
@@ -164,7 +170,7 @@ if (isset($_POST['mem_name'])) {
       </p>
 
       <div align="right">
-        <input type="submit" name="registerbtn" value="SIGN UP" />
+        <input type="submit" name="registerbtn" value="SIGN UP"/>
         <input type="reset" name="resetbtn" value="Clear" />&nbsp &nbsp
       </div>
 
