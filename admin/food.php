@@ -104,7 +104,7 @@
                                     <td><?php echo $active; ?></td>       
                                     <td>
                                         <a href="<?php echo SITEURL;?>admin/edit-food.php?ID=<?php echo $ID; ?>" class="btn-update">Update Food</a>
-                                        <a href="<?php echo SITEURL;?>admin/delete-food.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Food</a>
+                                        <a href="<?php echo SITEURL;?>admin/view.php?ID=<?php echo $ID; ?>" class="btn-add<?php echo $image_name;?>" class="btn-delete">Delete Food</a>
                                     </td>  
                                 </tr>
 

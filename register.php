@@ -11,6 +11,7 @@ if (isset($_POST['mem_name'])) {
   $password = mysqli_real_escape_string($con, $password);
   $confirmpassword = stripslashes($_POST['mem_confirmpassword']);
   $confirmpassword = mysqli_real_escape_string($con, $confirmpassword);
+  $verify_token = md5(rand());
 
   if ($password == $confirmpassword) {
     $query = "SELECT * FROM users WHERE username = '$username'";
@@ -27,7 +28,7 @@ if (isset($_POST['mem_name'])) {
         </script>";
       exit;
     } else {
-      $query = "INSERT into users (username, userpassword, useremail) VALUES ('$username','$password','$email')";
+      $query = "INSERT into users (username, userpassword, useremail,verify_token) VALUES ('$username','$password','$email','$verify_token')";
       $result = mysqli_query($con, $query);
 
       if ($result) {

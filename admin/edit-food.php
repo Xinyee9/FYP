@@ -27,7 +27,7 @@
             
         }
         else {
-            header('location:' . SITEURL . 'admin/food.php');
+            header('location:' . SITEURL . 'admin/edit-food.php');
         }
         
         ?>
@@ -259,9 +259,6 @@
 
     </div>
 </div>
-<?php
 
-include('includes/script.php')
-?>
 </body> 
 </html> 
