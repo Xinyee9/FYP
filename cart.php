@@ -86,6 +86,7 @@ body{
 	padding-top: 10px;
 	line-height: 10px;
 	font-size: 32px;
+	/* font-size: 150%; */
 	font-family: 'Open Sans';
 	font-weight: 800;
 	color: #202020;
@@ -346,7 +347,23 @@ hr{
                 alert("Do you want proceed to Check Out?");
             }
         </script> -->
-   	 <button class="button"><a href="transaction.php">Check Out</button></div>
+   	 <!-- <button class="button"><a href="transaction.php">Check Out</button></div> -->
+		<button class="button" onclick="btn()">Check Out</button>
+		<script>
+            function btn()
+            {
+                // alert("Do you want proceed to Check Out?");
+
+				if (confirm("Do you want proceed to Check Out?"))
+				{
+					window.location.href = "transaction.php";
+				}
+				else
+				{
+					window.location.href = "cart.php";
+				}
+            }
+        </script>
     <!-- <script>
         if (confirm('Do you want proceed to Check Out?'))
         {
