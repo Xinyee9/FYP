@@ -1,5 +1,6 @@
 <?php
 require_once('./php/dbconnect.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,20 +44,40 @@ require_once('./php/dbconnect.php');
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <?php
-        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1)
+        {
             $userid = $_SESSION['id'];
+            // echo ("<script LANGUAGE='JavaScript'>
+            // window.alert('Please Login to view menu.');
+            // window.location.href='login.php';
+            // </script>");
+            // header('Location:login.php');
+            // exit();
         }
-        else{
+        else
+        {
             echo ("<script LANGUAGE='JavaScript'>
             window.alert('Please Login to view menu.');
             window.location.href='login.php';
             </script>");
-            // $message = "Please Login to view menu.";
-            // echo "<script type='text/javascript'>alert('$message');</script>";
-            // function_alert("Please Login to view menu.");
-            // echo "<script>alert('Please Login to view menu.')</script>";
-            // header("Location: login.php");
         }
+        // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+        //     $userid = $_SESSION['id'];
+        //     echo ("<script LANGUAGE='JavaScript'>
+        //     window.location.href='menu.php';
+        //     </script>");
+        // }
+        // else{
+        //     echo ("<script LANGUAGE='JavaScript'>
+        //     window.alert('Please Login to view menu.');
+        //     window.location.href='login.php';
+        //     </script>");
+        //     // $message = "Please Login to view menu.";
+        //     // echo "<script type='text/javascript'>alert('$message');</script>";
+        //     // function_alert("Please Login to view menu.");
+        //     // echo "<script>alert('Please Login to view menu.')</script>";
+        //     // header("Location: login.php");
+        // }
         $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {

@@ -305,7 +305,8 @@ hr{
                 {
 					// var get = document.getElementsByClassName("Cart-Items")
 					console.log(response);
-					document.getElementById("rmv").innerHTML = response;
+					// document.getElementById("rmv").innerHTML = response;
+					location.reload();
                 }
             });
 			// 	$dlt = "DELETE FROM cart WHERE cart_id =''";
