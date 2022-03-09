@@ -132,7 +132,7 @@ img{
                     <div class="col-md-6"><label class="labels">Stock :</label><input type="text" name="stock" value="<?php echo $stock; ?>" min="1" max="500" class="form-control"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Description :</label> <input name="description" value="<?php echo $description;?>"  placeholder="Description" class="form-control" > </textarea></div>
+                    <div class="col-md-12"><label class="labels">Description :</label> <textarea name="description"  placeholder="Description" class="form-control" ><?php echo $description;?></textarea></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Admin :</label>
