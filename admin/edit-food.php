@@ -71,7 +71,7 @@
             </div>
 
             <div class ="form-wrapper">
-                <textarea name="description" cols="30" rows="8" placeholder="Description" class="form-control2" ><?php echo $description; ?></textarea>
+                <textarea name="description" cols="30" rows="8" placeholder="Description" class="form-control2" value="<?php echo $description; ?>"></textarea>
             </div>
 
             <div class ="form-wrapper">

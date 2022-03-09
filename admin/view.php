@@ -1,5 +1,35 @@
 <?php include('config/constants.php')?>
+<?php
+        if (isset($_GET['ID'])) {
+            //1.get the id of selected admin
+            $ID = $_GET['ID'];
 
+            //2.create sql query to get the details
+            $sql3 = "SELECT * FROM FOOD WHERE food_id =$ID";
+
+            //Execute the query
+            $res3 = mysqli_query($conn, $sql3);
+
+           //get the value based on query executed
+            $row3 = mysqli_fetch_assoc($res3);
+                
+            $code = $row3['food_code'];
+            $food_name = $row3['food_name'];
+            $price = $row3['food_price'];
+            $description = $row3['food_description'];
+            $current_image = $row3['food_image'];
+            $stock = $row3['food_stock'];
+            $status = $row3['food_status'];
+            $current_admin = $row3['admin_id'];
+            $current_category = $row3['cate_id'];
+            $active = $row3['active'];
+            
+        }
+        else {
+            header('location:' . SITEURL . 'admin/food.php');
+        }
+        
+        ?>
 <html>
 <head>
 <meta charset='utf-8'>
@@ -51,12 +81,17 @@ body {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+img{
+    padding-top: 100px;
+    max-width:100%;
+}
+
 </style>
 </head>
 
 <body oncontextmenu='return false' class='snippet-body'>
 
-<form action="code.php" method="POST" enctype="multipart/form-data">
+<form action="view.php" method="POST" enctype="multipart/form-data">
 
 <div class="container rounded bg-white mt-5">
     <div class="row">
@@ -70,13 +105,13 @@ body {
                 else {
                     //display image
                     ?>
-                    <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>" alt="image">
+                    <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>">
                     <?php
                 }
                 ?> 
                 <span class="font-weight-bold"><?php echo $food_name; ?></span>
-                <span class="text-black-50">RM <?php echo number_format($price, 2); ?> </span>
-                <span><?php echo $active; ?></span>
+                <span >RM <?php echo number_format($price, 2); ?> </span>
+                <span>Active: <?php echo $active; ?></span>
             </div>
         </div>
         
@@ -97,7 +132,7 @@ body {
                     <div class="col-md-6"><label class="labels">Stock :</label><input type="text" name="stock" value="<?php echo $stock; ?>" min="1" max="500" class="form-control"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Description :</label> <textarea name="description" cols="30" rows="5" placeholder="Description" class="form-control" <?php echo $description;?>> </textarea></div>
+                    <div class="col-md-12"><label class="labels">Description :</label> <input name="description" value="<?php echo $description;?>"  placeholder="Description" class="form-control" > </textarea></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Admin :</label>

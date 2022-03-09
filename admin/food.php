@@ -44,7 +44,6 @@
                     <th>Code</th>  
                     <th>Name</th>                     
                     <th>Price</th>
-                    <th>Description</th>  
                     <th>Image</th>
                     <th>Active</th>    
                     <th>Actions</th>  
@@ -71,7 +70,7 @@
                                 $code = $rows['food_code'];
                                 $food_name = $rows['food_name'];
                                 $price = $rows['food_price'];
-                                $description = $rows['food_description'];
+                                //$description = $rows['food_description'];
                                 $image_name = $rows['food_image'];
                                 $active = $rows['active'];
 
@@ -82,7 +81,6 @@
                                     <td><?php echo $code; ?></td>  
                                     <td><?php echo $food_name; ?></td>                     
                                     <td>RM <?php echo number_format($price, 2); ?></td>
-                                    <td> <?php echo $description; ?></td>
                                     <td>
                                         <?php  
                                             //check image name is available or not
@@ -103,7 +101,7 @@
                                     </td>
                                     <td><?php echo $active; ?></td>       
                                     <td>
-                                        <a href="<?php echo SITEURL;?>admin/edit-food.php?ID=<?php echo $ID; ?>" class="btn-update">Update Food</a>
+                                        <a href="<?php echo SITEURL;?>admin/view.php?ID=<?php echo $ID; ?>" class="btn-update">View Food</a>
                                         <a href="<?php echo SITEURL;?>admin/delete-food.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Food</a>
                                     </td>  
                                 </tr>
