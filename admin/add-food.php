@@ -17,8 +17,7 @@
                 } 
             ?>
 
-
-            <form action="" method ="POST" enctype ="multipart/form-data">
+            <form action="" method ="POST" enctype ="multipart/form-data">     
                 <div class = "user-details">
                     <div class="input-box">
                         <span class="details">Code:</span>
