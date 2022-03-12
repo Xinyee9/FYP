@@ -130,7 +130,7 @@
 		<p>Delivery Time &nbsp &nbsp &nbsp: </p>
 		<p>Delivery Date &nbsp &nbsp &nbsp: </p>
 		<p>Delivery Status &nbsp &nbsp: </p>
-		<p>Delivery Address : <br><textarea name="address" placeholder="You may edit your address here" rows="5" cols="30"></textarea></p>
+		<p>Delivery Address : <br><textarea name="address" placeholder="Please enter your dellivery address here" rows="5" cols="30"></textarea></p>
 	</div>
 	<!-- <div class="container1">
 		<p>Why choose us?</p>
@@ -155,7 +155,7 @@
 				<div id="delivery-name">
 					<h1>Fast Delivery</h1>
 				</div>
-				<div id="delivery-image"><img src="delivery1.jpg"></div>
+				<div id="delivery-image"><img src="./image/delivery1.jpg"></div>
 				<br />
 				<br />
 			</td>
@@ -164,7 +164,7 @@
 				<div id="delivery-name">
 					<h1>Delivery in Time</h1>
 				</div>
-				<div id="delivery-image"><img src="delivery2.jpg"></div>
+				<div id="delivery-image"><img src="./image/delivery2.jpg"></div>
 				<br />
 				<br />
 			</td>
@@ -173,7 +173,7 @@
 				<div id="delivery-name">
 					<h1>Responsibility Rider</h1>
 				</div>
-				<div id="delivery-image"><img src="delivery3.jpeg"></div>
+				<div id="delivery-image"><img src="./image/delivery3.jpeg"></div>
 				<br />
 				<br />
 			</td>
