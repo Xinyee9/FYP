@@ -60,9 +60,9 @@ include('config/constants.php'); ?>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="orders.php">
                         <span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span>
-                        <span class="title">Delivery</span>
+                        <span class="title">Orders</span>
                     </a>
                 </li>
 

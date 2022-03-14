@@ -220,9 +220,10 @@ table tr td img {
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /*grid-template-columns: repeat(4, 1fr);*/
   grid-gap: 20px;
 }
+
 .cardBox .card {
   position: relative;
   background: #fff;
@@ -247,10 +248,10 @@ table tr td img {
   position: relative;
   width: 100%;
   padding: 20px;
-  padding-top: 0;
+  /*padding-top: 0;*/
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  /*grid-template-columns: 2fr 1fr;*/
 }
 .details .recentOrders {
   position: relative;
@@ -288,10 +289,10 @@ table tr td img {
 .details .recentOrders table tbody tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/*.details .recentOrders table tbody tr:hover {
   background: #03a9f4;
   color: #fff;
-}
+}*/
 .details .recentOrders table tr td {
   padding: 9px 5px;
 }

@@ -1,6 +1,6 @@
 <?php include('includes/header.php') ?>
 
-                <div class="cardBox">
+                <div class="cardBox " style="grid-template-columns: repeat(4, 1fr);">
                     <div class="card">
                         <div>
                             <div class="numbers">1024</div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="details">
+                <div class="details" style="padding-top: 0; grid-template-columns: 2fr 1fr;">
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Recent Order</h2>
