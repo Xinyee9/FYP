@@ -279,12 +279,13 @@ table tr td img {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+ 
 }
 .details table thead td {
   font-weight: 600;
 }
 .details .recentOrders table tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
 }
 .details .recentOrders table tbody tr:last-child {
   border-bottom: none;
@@ -298,7 +299,7 @@ table tr td img {
 }
 .details .recentOrders table thead tr td:last-child,
 .details .recentOrders table tbody tr td:last-child {
-  text-align: right;
+  text-align:left;
 }
 .details .recentOrders table thead tr td:nth-child(2),
 .details .recentOrders table tbody tr td:nth-child(2) {

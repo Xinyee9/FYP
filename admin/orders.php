@@ -18,7 +18,7 @@
                                     Status:<br>
                                     </td>
                                     
-                                    <td><a href="#" class="btn">View </a><td>
+                                    <td><a href="VandCorder.php" class="btn">View </a><td>
                                 </tr>
                             </thead>
                             <tbody>

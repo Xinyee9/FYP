@@ -8,7 +8,7 @@ include('config/constants.php'); ?>
 <head>
     <link rel="shortcut icon" href="./image/admin.ico" rel="icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Responsive Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="apstyle.css">
 
