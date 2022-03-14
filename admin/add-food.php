@@ -1,5 +1,5 @@
 <?php include('config/constants.php') ?>
-<html >
+<html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="add.css">
@@ -39,6 +39,7 @@
                         <span class="details">Description:</span>
                         <textarea name="description" cols="40" rows="3" placeholder="Description of the food" ></textarea>
                     </div>
+                    
                 </div>
                 <div class = "user-details">
                     <div class="input-box">
