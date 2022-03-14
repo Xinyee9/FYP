@@ -40,22 +40,22 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <style>
 body {
-    background: #BA68C8
+    background: /*#BA68C8*/linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #BA68C8
+    border-color: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 .profile-button {
-    background: #BA68C8;
+    background:linear-gradient(135deg, #71b7e6, #9b59b6);
     box-shadow: none;
     border: none
 }
 
 .profile-button:hover {
-    background: #682773
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 
 .profile-button:focus {
@@ -79,7 +79,7 @@ body {
     background: #BA68C8;
     color: #fff;
     cursor: pointer;
-    border: solid 1px #BA68C8
+    border:#BA68C8
 }
 img{
     padding-top: 100px;
