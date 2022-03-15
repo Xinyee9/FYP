@@ -223,6 +223,7 @@ hr{
    	   </div>
 
 	<?php
+	// $count = 0;
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
@@ -245,9 +246,9 @@ hr{
 				<h4 class="title">'.$row["food_name"].'</h4>
 			</div>
 			<div class="counter">
-				<div class="btn">+</div>
+				<div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
 				<div class="count">'.$row["cart_qty"].'</div>
-				<div class="btn">-</div>
+				<div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
 			</div>
 			<div class="prices">
 				<div class="amount">RM '.$subtotal.'</div>
@@ -255,6 +256,7 @@ hr{
 			</div>
 	  		</div>';
 		}
+
 		echo '<hr> 
 			  <div class="checkout">
 			  <div class="total">
@@ -297,6 +299,118 @@ hr{
 	?>
 
 	<script>
+		function increment_quantity(cart_qty)
+		{
+			var inputQuantityElement = $(cart_qty);
+
+			var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+			save_to_db(cart_qty);
+		}
+
+		function decrement_quantity(cart_qty)
+		{
+			var inputQuantityElement = $(cart_qty);
+
+			if($(inputQuantityElement).val() > 1) 
+			{
+				var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+				save_to_db(cart_qty);
+			}
+		}
+
+		function save_to_db(cart_qty)
+		{
+			var inputQuantityElement = $(cart_qty);
+
+			$.ajax({
+				method: "POST",
+				url : "update_cart_quantity.php",
+				data : {cart_id: cart_id},
+				success : (response) =>
+				{
+					$(inputQuantityElement).val(cart_qty);
+					console.log(response);
+					location.reload();
+				}
+			});
+		}
+	</script>
+
+	<script>
+		// function increment_quantity(count)
+        //     {
+        //         count = count - 1;
+        //         var quantity = [];
+        //         for(var i = 0; i < cart_qty; i++)
+        //         {
+        //             quantity[i] = $("#quantity_" + i).val();
+        //         }     
+                               
+        //         addQuantity = parseInt(quantity[count]) + parseInt("1");
+
+        //         quantity[count] = addQuantity;                                             
+                                
+        //         PostQuantity(quantity);
+        //     }
+
+		// function decrement_quantity(count)
+        //     {               
+        //         var num;
+        //         var quantity = [];
+        //         for(var i = 0; i < cart_qty; i++)
+        //         {
+        //             quantity[i] = $("#quantity_" + i).val(); 
+                                                       
+        //         }  
+        //         minusQuantity = quantity[count] - 1;
+        //         $("#minus").click(function(){
+        //             if(minusQuantity == 0)
+        //             {
+        //                 $("#quantity_" + count).val(1);
+        //             }
+        //         });
+                
+        //         // if(minusQuantity == 0)
+        //         // {    
+        //         //     num = count;
+        //         // }  
+                
+
+        //         if(minusQuantity == 0)
+        //         {
+        //             var cartid = [];
+        //             cartid = getCartID();                    
+        //             window.alert("Item quantity cannot be 0!");
+        //             // console.log(num);
+                   
+        //             // var confirm = window.confirm("Are you sure you want to remove the item?");
+        //             // if(confirm == true)
+        //             // {
+        //             //     removeFromCart(cartid[count]);
+        //             // }
+        //             // else
+        //             // {
+        //             //     //do nothing
+        //             //     if(minusQuantity == 0)
+        //             //     {
+        //             //         $("#quantity_" + count).val('1');
+        //             //     }
+        //             // }
+                    
+        //         }
+        //         else
+        //         {
+        //             quantity[count] = minusQuantity;
+                    
+        //             PostQuantity(quantity);
+        //         }             
+        //     }
+
+		// 	function PostQuantity(quantity)
+        //     {
+        //         allquantity = quantity;
+        //     }
+
 		function remove(cart_id) {
 			$.ajax({
                     method: "POST",

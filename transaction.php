@@ -233,6 +233,17 @@ if (isset($_POST["foodcode"])) {
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
+                    <?php
+                        // $dt1 = date("Y-m-d");
+                        // $dt2 = date("Y-m-d H:i:s");
+
+                        // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";
+                        if(isset($_POST['btn']))
+                        {
+                            $date_clicked = date('Y-m-d H:i:s');
+                            $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
+                        }
+                    ?>
                     <input type="button" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
             </div>

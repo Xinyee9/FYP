@@ -1,3 +1,8 @@
+<?php
+	require_once('./php/dbconnect.php');
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -126,7 +131,18 @@
 		</button>
 	</div>
 	<div class="status">
-		<p>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: </p>
+		<?php
+		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+            $userid = $_SESSION['id'];
+        }
+
+		$sql = "SELECT * from cart ORDER BY userid";
+		$result = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["cart_qty"], $row["food_id"], $row["userid"].'</span>';
+			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
+		}
+		?>
 		<p>Delivery Time &nbsp &nbsp &nbsp: </p>
 		<p>Delivery Date &nbsp &nbsp &nbsp: </p>
 		<p>Delivery Status &nbsp &nbsp: </p>
