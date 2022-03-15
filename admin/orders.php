@@ -9,40 +9,47 @@
                         </div>
                         <table>
                             <thead>
-                                <tr>
-                                    <td>
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
-                                    Order No.<br>
-                                    Date:<br>
-                                    Payment Type:<br>
-                                    Status:<br>
-                                    </td>
-                                    
-                                    <td><a href="VandCorder.php" class="btn">View </a><td>
-                                </tr>
+                                
                             </thead>
                             <tbody>
+                            <?php
+                                $sql = "SELECT * FROM transaction";
+                                $res = mysqli_query($conn, $sql);
+                                $count = mysqli_num_rows($res);
+                                $sn=1;
+                                if($count>0)
+                                {
+                                    while($rows=mysqli_fetch_assoc($res))
+                                    {
+                                    $tran_id = $rows['tran_id'];
+                                    $tran_date = $rows['tran_date'];
+                                    $tran_address = $rows['tran_address'];
+                                    $tran_status = $rows['tran_status'];
+                                    $tran_payment_method = $rows['tran_payment_method'];	
+                                ?>
                                 <tr>
                                     <td>
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
-                                    Order No.<br>
-                                    Date:<br>
-                                    Payment Type:<br>
-                                    Status:<br>
+                                    <p><b>Order No.</b> <?php echo $sn++; ?><p>
+                                    <p><b>Date: </b> <?php echo $tran_date; ?><p>
+                                    <p><b>Payment Type:</b> <?php echo $tran_payment_method;?></p>
+                                    <p><b>Status: </b> <?php echo $tran_status; ?> </p>
                                     </td>
-                                    <td><a href="#" class="btn">View </a><td>
-                                </tr>
-                                <tr>
                                     <td>
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
-                                    Order No.<br>
-                                    Date:<br>
-                                    Payment Type:<br>
-                                    Status:<br>
-                                    </td>
-                                    <td><a href="#" class="btn">View </a><td>
+                                        <a href="<?php echo SITEURL;?>admin/VandCorder.php?ID=<?php echo $tran_id; ?>" class="btn-update">View </a>
+                                    </td>  
                                 </tr>
                                 
+                                <?php
+                                    }
+                                }
+                                else
+                                {
+                                    //we do not have data in database
+                                    echo "<tr> <td colspan='2' class ='error'>No orders.</td></tr>";
+                                }
+                    
+                ?>
                             </tbody>
                         </table>
                     </div>

@@ -13,7 +13,7 @@
 
            //get the value based on query executed
             $row3 = mysqli_fetch_assoc($res3);
-                
+            
             $code = $row3['food_code'];
             $food_name = $row3['food_name'];
             $price = $row3['food_price'];
