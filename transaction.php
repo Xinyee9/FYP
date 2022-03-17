@@ -18,7 +18,7 @@ session_start();
 require_once('./php/dbconnect.php');
 
 // $query = "INSERT into transaction (username, userpassword, useremail,verify_token) VALUES ('$username','$password','$email','$verify_token')";
-$result = mysqli_query($con, $query);
+// $result = mysqli_query($con, $query);
 
 if ($result)
 {
