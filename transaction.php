@@ -13,6 +13,22 @@ if (isset($_POST["foodcode"])) {
 }
 ?>
 
+<?php
+session_start();
+require_once('./php/dbconnect.php');
+
+// $query = "INSERT into transaction (username, userpassword, useremail,verify_token) VALUES ('$username','$password','$email','$verify_token')";
+$result = mysqli_query($con, $query);
+
+if ($result)
+{
+    echo "<script>
+    alert('Thank You for your order! Your payment is SUCCESSFUL!');
+    window.location.href='./delivery.php';
+    </script>";
+}
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -238,11 +254,11 @@ if (isset($_POST["foodcode"])) {
                         // $dt2 = date("Y-m-d H:i:s");
 
                         // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";
-                        if(isset($_POST['btn']))
-                        {
-                            $date_clicked = date('Y-m-d H:i:s');
-                            $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
-                        }
+                        // if(isset($_POST['btn']))
+                        // {
+                        //     $date_clicked = date('Y-m-d H:i:s');
+                        //     $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
+                        // }
                     ?>
                     <input type="button" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
@@ -250,7 +266,7 @@ if (isset($_POST["foodcode"])) {
         </div>
 
     </div>
-    <script>
+    <!-- <script>
         function input() {
             window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
 
@@ -262,7 +278,7 @@ if (isset($_POST["foodcode"])) {
         function display() {
             window.location.href = "delivery.php";
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
