@@ -8,8 +8,8 @@ if (isset($_SESSION['userid'])) {
     $result = mysqli_query($con, $query);
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        $userfirst = $row['userfirstname'];
-        $userlast = $row['userlastname'];
+        $userfirst = $row['first_name'];
+        $userlast = $row['last_name'];
         $userEmail = $row['useremail'];
         $username = $row['username'];
     }
