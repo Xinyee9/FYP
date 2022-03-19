@@ -14,18 +14,38 @@ if (isset($_POST["foodcode"])) {
 ?>
 
 <?php
-session_start();
-require_once('./php/dbconnect.php');
+// session_start();
+// require_once('./php/dbconnect.php');
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+    $userid = $_SESSION['id'];
+}
 
-// $query = "INSERT into transaction (username, userpassword, useremail,verify_token) VALUES ('$username','$password','$email','$verify_token')";
-// $result = mysqli_query($con, $query);
+if (isset($_POST['btn-submit'])) {
+    $name = $_POST['fname'];
+    $cardname = $_POST['cname'];
+    $email = $_POST['email'];
+    $card_exp_year = $_POST['expyear'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $card_exp_month = $_POST['expmonth'];
+    $cvv = $_POST['cvv'];
 
-if ($result)
-{
-    echo "<script>
-    alert('Thank You for your order! Your payment is SUCCESSFUL!');
-    window.location.href='./delivery.php';
-    </script>";
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $date = date('Y-m-d');
+    $time = date('h:i:sa');
+
+    $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
+    $result = mysqli_query($con, $query);
+
+    // if ($result)
+    // {
+    //     echo "<script>
+    //     alert('Thank You for your order! Your payment is SUCCESSFUL!');
+    //     window.location.href='./delivery.php';
+    //     </script>";
+    // }
 }
 ?>
 
@@ -230,7 +250,7 @@ if ($result)
                             <label for="cname">Name on Card</label>
                             <input type="text" id="cname" name="cardname" placeholder="JOSHUA">
                             <label for="ccnum">Card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="1234-1234-1234-1234">
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1234123412341234">
                             <label for="expmonth">Exp Month</label>
                             <input type="text" id="expmonth" name="expmonth" placeholder="April">
                             <div class="row">
@@ -260,25 +280,25 @@ if ($result)
                         //     $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
                         // }
                     ?>
-                    <input type="button" value="Submit and Pay" class="btn" onclick="input()">
+                    <input type="button" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
             </div>
         </div>
 
     </div>
-    <!-- <script>
+    <script>
         function input() {
             window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
 
             display();
 
-            showAlert();
+            // showAlert();
         }
 
         function display() {
             window.location.href = "delivery.php";
         }
-    </script> -->
+    </script>
 </body>
 
 </html>
