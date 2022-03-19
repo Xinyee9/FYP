@@ -3,6 +3,9 @@ require_once('./php/dbconnect.php');
 ?>
 <?php
 session_start();
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+        $userid = $_SESSION['id'];
+    }
 if (isset($_POST["foodcode"])) {
     echo "
     <script>
@@ -16,28 +19,38 @@ if (isset($_POST["foodcode"])) {
 <?php
 // session_start();
 // require_once('./php/dbconnect.php');
-if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-    $userid = $_SESSION['id'];
-}
+// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+//     $userid = $_SESSION['id'];
+// }
 
 if (isset($_POST['btn-submit'])) {
-    $name = $_POST['fname'];
-    $cardname = $_POST['cname'];
-    $email = $_POST['email'];
-    $card_exp_year = $_POST['expyear'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zip = $_POST['zip'];
-    $card_exp_month = $_POST['expmonth'];
-    $cvv = $_POST['cvv'];
+    // $name = $_POST['fname'];
+    // $cardname = $_POST['cname'];
+    // $email = $_POST['email'];
+    // $card_exp_year = $_POST['expyear'];
+    // $address = $_POST['address'];
+    // $city = $_POST['city'];
+    // $state = $_POST['state'];
+    // $zip = $_POST['zip'];
+    // $card_exp_month = $_POST['expmonth'];
+    // $cvv = $_POST['cvv'];
 
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date('Y-m-d');
     $time = date('h:i:sa');
 
-    $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
-    $result = mysqli_query($con, $query);
+    // echo 'abc';
+
+    $sql = "INSERT INTO 'trans' (transaction_date, transaction_time) VALUES ('$date','$time')";
+    $result = mysqli_query($con, $sql);
+
+    // if($result)
+    // {
+    //     echo "<input type='button' name='btn-submit' value='Submit and Pay' class='btn' onclick='input()'>";
+    // }
+
+    // $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
+    // $result = mysqli_query($con, $query);
 
     // if ($result)
     // {
@@ -269,8 +282,8 @@ if (isset($_POST['btn-submit'])) {
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
-                    <?php
-                        // $dt1 = date("Y-m-d");
+
+                        <!-- // $dt1 = date("Y-m-d");
                         // $dt2 = date("Y-m-d H:i:s");
 
                         // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";
@@ -278,9 +291,10 @@ if (isset($_POST['btn-submit'])) {
                         // {
                         //     $date_clicked = date('Y-m-d H:i:s');
                         //     $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
-                        // }
-                    ?>
+                        // } -->
+
                     <input type="button" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
+                    <!-- <input type="button" name="btn-submit" value="Submit and Pay" class="btn"> -->
                 </form>
             </div>
         </div>
