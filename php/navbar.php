@@ -12,7 +12,7 @@
         <a href="./php/logout.php" style="float: right;">LOGOUT</a>
         <a href="aboutus.php" style="float: right;">ABOUT US</a>
         <a href="" style="float: right;">ORDER HISTORY</a>
-        <a href="" style="float: right;">MY PROFILE</a>
+        <a href="./user/" style="float: right;">MY PROFILE</a>
         <a style="-webkit-user-select: none; cursor: default;">Welcome, ' . $_SESSION['username'] . '</a>';
     } else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "admin") {
         echo '
