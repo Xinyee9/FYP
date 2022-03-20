@@ -304,6 +304,7 @@ hr{
 			var inputQuantityElement = $(cart_qty);
 
 			var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+			// console.log(newQuantity);
 			save_to_db(cart_qty);
 		}
 
