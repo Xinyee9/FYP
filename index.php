@@ -50,8 +50,17 @@ if (isset($_POST['btn-submit'])) {
     <!-- <link rel="stylesheet" href=""> -->
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
+    <!--slideshow-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+    <link rel="stylesheet" href="./css/slideshow.css" />
     <style>
+        .mySlides {
+            display: none;
+        }
+
         body {
             font-family: 'Lucida Sans';
             padding: 10px;
@@ -317,6 +326,22 @@ if (isset($_POST['btn-submit'])) {
     <?php
     include_once('./php/navbar.php');
     ?>
+
+    <script type="text/javascript" src="slideshow.js"></script>
+    <header class="intro">
+        <div class="intro-slideshow">
+            <img src="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1">
+            <img src="https://www.dropbox.com/s/lf29ifrd354ngyv/coffee.jpg?raw=1">
+            <img src="https://www.dropbox.com/s/lxnf1mxej90qoae/library.jpg?raw=1">
+            <img src="https://www.dropbox.com/s/15gdoyzoai94j6j/path.jpg?raw=1">
+            <img src="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1">
+        </div>
+        <div class="intro-header">
+            <h1>Coding Journey</h1>
+            <p>It's all about the journey</p>
+        </div>
+    </header>
+
 
     <div id="menu">Our Signature Dishes &#127857;</div>
     <br />

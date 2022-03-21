@@ -64,6 +64,11 @@ if (isset($_POST['email'])) {
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet" />
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
+  <!--button-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/button.css" />
+
 
   <style>
     body {
@@ -87,7 +92,7 @@ if (isset($_POST['email'])) {
       display: block;
       border: 8px solid #ccc;
       width: 500px;
-      height: 350px;
+      height: 380px;
       position: fixed;
       margin: auto;
       left: 0;
@@ -126,7 +131,7 @@ if (isset($_POST['email'])) {
     }
 
     .forgot {
-      font-size: 22px;
+      font-size: 25px;
       color: red;
       font-family: "Amatic SC", cursive;
       float: center;
@@ -212,8 +217,8 @@ if (isset($_POST['email'])) {
       <div align="center">
         <!-- <input type="button" value="LOG IN" onclick="backtologin();" /> -->
         <!-- <input type="submit" value="LOG IN" /> -->
-        <button type="submit" class="btn btn-primary">LOG IN</button>
-        <button onclick="goBack()">GO BACK</button>
+        <button type="submit" class="slide">LOG IN<i class="icon-arrow-right"></i></button>
+        <button onclick="goBack()" class="fill">GO BACK</button>
         <script>
           function backtologin() {
             window.alert("You have successful LOG IN!");

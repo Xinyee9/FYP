@@ -2,22 +2,23 @@
 session_start();
 include('../php/dbconnect.php');
 
+
 if (isset($_SESSION['userid'])) {
-    $userID = $_SESSION['userid'];
+    $userid = $_SESSION['userid'];
     $query = "SELECT * FROM users WHERE userid = '$userid'";
     $result = mysqli_query($con, $query);
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        $userfirst = $row['first_name'];
-        $userlast = $row['last_name'];
-        $userEmail = $row['useremail'];
+        $userfirstname = $row['userfirstname'];
+        $userlastname = $row['userlastname'];
+        $useremail = $row['useremail'];
         $username = $row['username'];
     }
 }
 
 if (isset($_POST['save']) && $_POST['save'] == 1) {
-    $userfirst = $_POST['first_name'];
-    $userlast = $_POST['last_name'];
+    $userfirstname = $_POST['first_name'];
+    $userlastname = $_POST['last_name'];
     $newusername = stripslashes($_REQUEST['username']);
     $newusername = mysqli_real_escape_string($con, $newusername);
     $newemail = stripslashes($_REQUEST['email']);
@@ -26,7 +27,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     $query = "SELECT * FROM users WHERE username='$newusername' AND username!='$username'";
     $result = mysqli_query($con, $query);
     $rows = mysqli_num_rows($result);
-    $query = "SELECT * FROM users WHERE useremail='$newemail' AND useremail!='$userEmail'";
+    $query = "SELECT * FROM users WHERE useremail='$newemail' AND useremail!='$useremail'";
     $result = mysqli_query($con, $query);
     $rowss = mysqli_num_rows($result);
     if ($rows >= 1) { //check username in use
@@ -42,7 +43,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
         </script>";
         exit;
     } else {
-        $query = "UPDATE users SET userfirstname = '$userfirst', userlastname = '$userlast', useremail = '$newemail',username = '$newusername' WHERE userid = '$userid';";
+        $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname, useremail = '$newemail',username = '$newusername' WHERE userid = '$userid';";
         $result = mysqli_query($con, $query);
         if ($result) {
             $_SESSION['username'] = $newusername;
@@ -91,7 +92,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                                 <label for="first_name">
                                     <h4>First name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="<?php echo $userfirst ?>" required />
+                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="<?php echo $userfirstname ?>" required />
                             </div>
                         </div>
 
@@ -100,7 +101,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                                 <label for="last_name">
                                     <h4>Last name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" value="<?php echo $userlast ?>" required />
+                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" value="<?php echo $userlastname ?>" required />
                             </div>
                         </div>
                         <div class="form-group">
@@ -108,7 +109,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                                 <label for="last_name">
                                     <h4>E-mail</h4>
                                 </label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $userEmail ?>" aria-describedby="emailHelp" required>
+                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $useremail ?>" aria-describedby="emailHelp" required>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                         </div>

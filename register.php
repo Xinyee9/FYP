@@ -63,6 +63,11 @@ if (isset($_POST['mem_name'])) {
   <!-- <link rel="stylesheet" href=""> -->
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
+  <!--button-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/button.css" />
+
   <style>
     .header {
       padding: 30px;
@@ -111,8 +116,8 @@ if (isset($_POST['mem_name'])) {
       background-color: #e0ffff;
       display: block;
       border: 8px solid #ccc;
-      width: 450px;
-      height: 350px;
+      width: 530px;
+      height: 430px;
       position: fixed;
       margin: auto;
       left: 0;
@@ -122,13 +127,18 @@ if (isset($_POST['mem_name'])) {
     }
 
     p {
+      font-size: 23px;
       font-style: italic;
+      font-family: "Fredericka the Great", cursive;
+      font-weight: bold;
     }
 
     h4 {
-      font-family: "Texturina", serif;
+      font-family: "Bubblegum Sans", cursive;
+      font-size: 2em;
+      color: #bf80ff;
+      letter-spacing: 5px;
       text-align: center;
-      font-size: 30px;
     }
 
     /* .button {
@@ -158,7 +168,7 @@ if (isset($_POST['mem_name'])) {
         <input type="text" name="mem_name" placeholder="Type your username here" />
       </p>
       <p>
-        &nbsp &nbspEmail :
+        &nbsp &nbspEmail &nbsp &nbsp &nbsp:
         <input type="email" name="mem_email" placeholder="example@gmail.com" />
       </p>
       <p>
@@ -171,8 +181,9 @@ if (isset($_POST['mem_name'])) {
       </p>
 
       <div align="right">
-        <input type="submit" name="registerbtn" value="SIGN UP"/>
-        <input type="reset" name="resetbtn" value="Clear" />&nbsp &nbsp
+        <button type="submit" class="slide">SIGN UP<i class="icon-arrow-right"></i></button>
+
+        <button type="reset" class="simple">Clear </button>
       </div>
 
       <!-- <script type="text/javascript">
