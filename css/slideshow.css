@@ -18,9 +18,9 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  letter-spacing: 0.1rem;
+  /*letter-spacing: 0.1rem;*/
 }
-.intro-slideshow img {
+.slideshow-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,16 +37,16 @@ body {
   display: block;
   opacity: 1;
 } */
-.intro .intro-header {
+.intro-header {
   border-radius: 0.5rem;
   padding: 2rem 2.5rem;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.intro h1 {
+.intro-header h1 {
   font-size: 4rem;
   margin-bottom: 0.75rem;
 }
-.intro p {
+.intro-header p {
   font-size: 1.75rem;
 }
 

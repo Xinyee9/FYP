@@ -51,14 +51,20 @@ if (isset($_POST['btn-submit'])) {
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
 
     <!--slideshow-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="imageslider.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <link rel="stylesheet" href="./css/slideshow.css" />
     <style>
         .mySlides {
-            display: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            height: 30%;
         }
 
         body {
@@ -141,7 +147,7 @@ if (isset($_POST['btn-submit'])) {
         .card {
             background-color: white;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 40px;
             display: inline-block;
             height: 90%;
         }
@@ -312,6 +318,84 @@ if (isset($_POST['btn-submit'])) {
             box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
             transition: 0.5s;
         }
+
+        /*Home section*/
+
+        #home {
+            display: flex;
+            flex-direction: column;
+            padding: 3px 200px;
+            height: 480px;
+            justify-content: center;
+            align-items: center;
+            text-shadow: black 2px 2px 3px;
+            background: url("https://wallpaperaccess.com/full/3014596.jpg") no-repeat center center/cover;
+            filter: brightness(75%);
+
+            /* background-color: rgb(0, 0, 0, 0.5); */
+        }
+
+        #home .btn-con {
+            height: 100px;
+            position: relative;
+        }
+
+        #home .btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 6px 20px;
+            width: 200px;
+            border: 2px solid white;
+            background-color: brown;
+            color: white;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #home .btn:hover {
+            padding: 6px 20px;
+            background-color: rgb(102, 23, 23);
+            color: white;
+            font-size: 1.7rem;
+            transition: 0.3s;
+            width: 220px;
+        }
+
+        #home .btn:focus {
+            outline: none;
+        }
+
+        /*#home::before {
+            content: "";
+            position: absolute;
+
+            height: 642px;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.89;
+        }
+
+        */
+        #home h1 {
+            color: white;
+            text-align: center;
+            font-size: 36pt;
+            font-family: "Bree Serif", serif;
+            -webkit-text-stroke: 0.5px black;
+        }
+
+        #home p {
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: "Bree Serif,serif";
+        }
     </style>
 </head>
 
@@ -327,23 +411,21 @@ if (isset($_POST['btn-submit'])) {
     include_once('./php/navbar.php');
     ?>
 
-    <script type="text/javascript" src="slideshow.js"></script>
-    <header class="intro">
-        <div class="intro-slideshow">
-            <img src="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1">
-            <img src="https://www.dropbox.com/s/lf29ifrd354ngyv/coffee.jpg?raw=1">
-            <img src="https://www.dropbox.com/s/lxnf1mxej90qoae/library.jpg?raw=1">
-            <img src="https://www.dropbox.com/s/15gdoyzoai94j6j/path.jpg?raw=1">
-            <img src="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1">
+    <section id="home">
+        <h1 class="main-odering">BEST RESTAURANT</h1>
+        <p>
+            Going to the theatre or don't have much time during lunch<br />
+            Consider pre ordering your meals.
+        </p>
+        <div class="btn-con">
+            <form method="get" action="./menu.php">
+                <button class="btn">Order Now</button>
+            </form>
         </div>
-        <div class="intro-header">
-            <h1>Coding Journey</h1>
-            <p>It's all about the journey</p>
-        </div>
-    </header>
+    </section>
 
 
-    <div id="menu">Our Signature Dishes &#127857;</div>
+    <div id="menu">Our Signature Dishes&#127857;</div>
     <br />
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <tr>
@@ -352,7 +434,7 @@ if (isset($_POST['btn-submit'])) {
                 <div class="leftcolumn">
                     <div class="card">
                         <div id="menu-name">
-                            <h2>Blackpepper Chickenchop</h2>
+                            <h2>BlackpepperChickenchop</h2>
                         </div>
                         <div class="fake-image"><img src="Food/c1.jpeg"></div>
                         <p>The Black Pepper Chicken Chop is a vibrant and flavorful dish.Has a great nutritional value,especially in terms of protein.Black pepper chicken chops have a crisp and tender flavour.It is the perfect solution for comrades who want to lose weight but can't stop themselves from eating because of the low fat content. </p>
@@ -369,7 +451,7 @@ if (isset($_POST['btn-submit'])) {
                             <h2>Creammy Rigatoni Vege</h2>
                         </div>
                         <div class="fake-image"><img src="Food/s1.jpg"></div>
-                        <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.Instead, I'd describe it as delicious, rich, unctuous, velvety, warm and fragrant with sweet.</p>
+                        <p>Rigatoni are tubes with little ridges on the outside, similar to penne, but they are somewhat wider and cut squarely rather than diagonally. Because of their huge size, they're best served with chunky vegetable sauces or baked into a gratin.I'd describe it as unctuous, velvety and fragrant with sweet.</p>
                     </div>
                 </div>
                 <!-- </div> -->
