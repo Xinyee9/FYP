@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('../php/dbconnect.php');
+require_once('../php/dbconnect.php');
 
-if (isset($_SESSION['userid'])) {
-    $userID = $_SESSION['userid'];
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+    $userid = $_SESSION['id'];
 }
 
 if (isset($_POST['save']) && $_POST['save'] == 1) {
@@ -15,7 +15,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     $conpass = mysqli_real_escape_string($con, $conpass);
 
     if ($password == $conpass) { //check password match with confirm password
-        $query = "SELECT * FROM users where userpass='$oldpassword'"; //check current password exist
+        $query = "SELECT * FROM users where userpassword='$oldpassword'and userid = '$userid';"; //check current password exist
         $result = mysqli_query($con, $query);
         $rows = mysqli_num_rows($result);
         if ($rows == 0) { //if current password not exist, print error
@@ -24,7 +24,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
             </script>";
         } else {
             //current password correct and new pass match with con pass, save new password to database
-            $query = "UPDATE users SET userpass = '$password' WHERE userID = '$userid';";
+            $query = "UPDATE users SET userpassword = '$password' WHERE userid = '$userid';";
             $result = mysqli_query($con, $query);
             if ($result) {
                 echo "<script>
