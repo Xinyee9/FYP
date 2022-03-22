@@ -14,9 +14,6 @@ if (isset($_POST["foodcode"])) {
     </script>
     ";
 }
-?>
-
-<?php
 // session_start();
 // require_once('./php/dbconnect.php');
 // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
@@ -35,14 +32,23 @@ if (isset($_POST['btn-submit'])) {
     // $card_exp_month = $_POST['expmonth'];
     // $cvv = $_POST['cvv'];
 
+    // date_default_timezone_set("Asia/Kuala_Lumpur");
+    // $datetime = date('Y-m-d h:i:sa');
+
+    // $query = "INSERT INTO trans (transactiondatetime, userid) VALUES ('$datetime', '$userid')";
+    // $result = mysqli_query($con, $query);
+
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date('Y-m-d');
     $time = date('h:i:sa');
 
     // echo 'abc';
 
-    $sql = "INSERT INTO 'trans' (transaction_date, transaction_time) VALUES ('$date','$time')";
-    $result = mysqli_query($con, $sql);
+    // $sql = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)";
+    $result = mysqli_query($con, "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)");
+    echo $userid;
+        echo $_POST[$time];
+        echo $_POST[$date];
 
     // if($result)
     // {

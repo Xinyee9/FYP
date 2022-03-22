@@ -290,7 +290,8 @@ table tr td img {
 .details .recentOrders table tbody tr:last-child {
   border-bottom: none;
 }
-/*.details .recentOrders table tbody tr:hover {
+/*
+.details .recentOrders table tbody tr:hover {
   background: #03a9f4;
   color: #fff;
 }*/
@@ -299,11 +300,11 @@ table tr td img {
 }
 .details .recentOrders table thead tr td:last-child,
 .details .recentOrders table tbody tr td:last-child {
-  text-align:left;
+  text-align: center; /*right*/
 }
 .details .recentOrders table thead tr td:nth-child(2),
 .details .recentOrders table tbody tr td:nth-child(2) {
-  text-align: right;
+  text-align: right;/*right*/
   padding-right: 20px;
 }
 .details .recentOrders table thead tr td:nth-child(3),

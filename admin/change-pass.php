@@ -50,12 +50,12 @@ if(isset($_POST['submit']))
     //echo "clicked";
     //1.GET the values from form 
     $ID = $_POST['ID'];
-    $current_password = md5($_POST['current_password']);
-    $new_password = md5($_POST['new_password']);
-    $confirm_password = md5($_POST['confirm_password']);
+    $current_password = $_POST['current_password'];
+    $new_password = $_POST['new_password'];
+    $confirm_password = $_POST['confirm_password'];
 
     //2.check whether the user with current id and current password exists or not
-    $sql = "SELECT * FROM admin WHERE admin_id=$ID AND admin_password ='$current_password'";
+    $sql = "SELECT * FROM users WHERE userid=$ID AND userpassword ='$current_password'";
 
     //Execute the Query
     $res = mysqli_query($conn, $sql);
@@ -73,9 +73,9 @@ if(isset($_POST['submit']))
             if($new_password===$confirm_password)
             {
                 //update password
-                $sql2 = "UPDATE admin SET
-                admin_password ='$new_password'
-                WHERE admin_id=$ID
+                $sql2 = "UPDATE users SET
+                userpassword ='$new_password'
+                WHERE userid=$ID
                 ";
                 //Execute the Query
                 $res2 = mysqli_query($conn, $sql2);
@@ -85,34 +85,50 @@ if(isset($_POST['submit']))
                 {
                     //display succes message
                     //REdirec to manage admin page with error message
-                    $_SESSION['change-pwd'] = "<div class='success'>Password Change Successfully.</div>";
+                    //$_SESSION['change-pwd'] = "<div class='success'>Password Change Successfully.</div>";
                     //Redirect the user
-                    header('location:'.SITEURL.'admin/admin-pro.php');
+                   // header('location:'.SITEURL.'admin/userstest.php');
+                    echo "<script>
+                        alert('Password Change Successfully.');
+                        window.location.href='./userstest.php';
+                        </script>";
                 }
                 else
                 {
                     //display error message
                     //REdirec to manage admin page with error message
-                    $_SESSION['change-pwd'] = "<div class='error'>Failed to  Change Password.</div>";
+                    //$_SESSION['change-pwd'] = "<div class='error'>Failed to  Change Password.</div>";
                     //Redirect the user
-                    header('location:'.SITEURL.'admin/admin-pro.php');
+                    //header('location:'.SITEURL.'admin/userstest.php');
+                    echo "<script>
+                    alert('Failed to  Change Password.');
+                    window.location.href='./userstest.php';
+                    </script>";
                 }
 
             }
             else
             {
                 //REdirec to manage admin page with error message
-                $_SESSION['psw-not-match'] = "<div class='error'>Password Did Not Match.</div>";
+                //$_SESSION['psw-not-match'] = "<div class='error'>Password Did Not Match.</div>";
                 //Redirect the user
-                header('location:'.SITEURL.'admin/admin-pro.php');
+                //header('location:'.SITEURL.'admin/userstest.php');
+                echo "<script>
+                    alert('Password Did Not Match.');
+                    window.location.href='./userstest.php';
+                    </script>";
             }
         }
         else
         {
             //user does not exists set message and REdirect 
-            $_SESSION['admin-not-found'] = "<div class='error'>User Not Found.</div>";
+            //$_SESSION['admin-not-found'] = "<div class='error'>User Not Found.</div>";
             //Redirect the user
-            header('location:'.SITEURL.'admin/admin-pro.php');
+            //header('location:'.SITEURL.'admin/userstest.php');
+            echo "<script>
+                    alert('User Not Found.');
+                    window.location.href='./userstest.php';
+                    </script>";
     
         }
         
