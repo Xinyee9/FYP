@@ -223,7 +223,7 @@ hr{
    	   </div>
 
 	<?php
-	// $count = 0;
+	$count = 0;
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
@@ -245,17 +245,13 @@ hr{
 			<div class="about">
 				<h4 class="title">'.$row["food_name"].'</h4>
 			</div>
-			<div class="counter">
-				<form method="post" action="">
-				<select name="quantity" class="quantity" onclick="editquantity('.$row["cart_qty"].')">
-					<option if('.$row["cart_qty"].' == 1) value="1">1</option>
-					<option if('.$row["cart_qty"].' == 2) value="2">2</option>
-					<option if('.$row["cart_qty"].' == 3) value="3">3</option>
-					<option if('.$row["cart_qty"].' == 4) value="4">4</option>
-					<option if('.$row["cart_qty"].' == 5) value="5">5</option>
-				</select>
-				</form>
-			</div>
+			<td>
+                <div class="qty">                                                         
+                    <button class="btn-minus" id="minus" onclick="ButtonMinus('.$count.')"><i class="fa fa-minus"></i></button>
+                    <input type="text" disabled id="quantity_'.$count++.'" value="'.$row["cart_qty"].'" onchange="GetValue('.$row["cart_id"].')"">
+                    <button class="btn-plus" onclick="ButtonPlus('.$count.')"><i class="fa fa-plus"></i></button>                                                                
+                </div>
+            </td>
 			<div class="prices">
 				<div class="amount">RM '.$subtotal.'</div>
 				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
@@ -272,11 +268,21 @@ hr{
 				  <div class="total-amount">RM '.$total.'</div>
 			  </div>';
 
-		// <div class="counter">
-		// 	  <div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
-		// 	  <div class="count">'.$row["cart_qty"].'</div>
-		// 	  <div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
-		// </div>
+			//   <form method="post" action="">
+			//   <select name="quantity" class="quantity" onclick="editquantity('.$row["cart_qty"].')">
+			// 	  <option if('.$row["cart_qty"].' == 1) value="1">1</option>
+			// 	  <option if('.$row["cart_qty"].' == 2) value="2">2</option>
+			// 	  <option if('.$row["cart_qty"].' == 3) value="3">3</option>
+			// 	  <option if('.$row["cart_qty"].' == 4) value="4">4</option>
+			// 	  <option if('.$row["cart_qty"].' == 5) value="5">5</option>
+			//   </select>
+			//   </form>
+
+			// <div class="counter">
+			// 	<div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
+			// 	<div class="count">'.$row["cart_qty"].'</div>
+			// 	<div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
+			// </div>
 
 		// $result = mysqli_query($con, $sql);
 		// $rlt = mysqli_query($con, $qwe);
@@ -312,6 +318,137 @@ hr{
 	?>
 
 	<script>
+		function ButtonMinus(count)
+            {               
+                var num;
+                var quantity = [];
+                for(var i = 0; i < cartItemNumber; i++)
+                {
+                    quantity[i] = $("#quantity_" + i).val(); 
+                                                       
+                }  
+                minusQuantity = quantity[count] - 1;
+                $("#minus").click(function(){
+                    if(minusQuantity == 0)
+                    {
+                        $("#quantity_" + count).val(1);
+                    }
+                });
+                
+                // if(minusQuantity == 0)
+                // {    
+                //     num = count;
+                // }  
+                
+
+                if(minusQuantity == 0)
+                {
+                    var cartid = [];
+                    cartid = getCartID();                    
+                    window.alert("Item quantity cannot be 0!");
+                    // console.log(num);
+                   
+                    // var confirm = window.confirm("Are you sure you want to remove the item?");
+                    // if(confirm == true)
+                    // {
+                    //     removeFromCart(cartid[count]);
+                    // }
+                    // else
+                    // {
+                    //     //do nothing
+                    //     if(minusQuantity == 0)
+                    //     {
+                    //         $("#quantity_" + count).val('1');
+                    //     }
+                    // }
+                    
+                }
+                else
+                {
+                    quantity[count] = minusQuantity;
+                    
+                    PostQuantity(quantity);
+                }             
+            }
+
+            function ButtonPlus(count)
+            {
+                count = count - 1;
+                var quantity = [];
+                for(var i = 0; i < cartItemNumber; i++)
+                {
+                    quantity[i] = $("#quantity_" + i).val();
+                }     
+                               
+                addQuantity = parseInt(quantity[count]) + parseInt("1");
+
+                quantity[count] = addQuantity;                                             
+                                
+                PostQuantity(quantity);
+            }
+
+            function GetValue(cartid)
+            {
+                var quantity = [];
+                for(var i = 0; i < cartItemNumber; i++)
+                {
+                    quantity[i] = $("#quantity_" + i).val();
+                }                               
+                
+                PostQuantity(quantity);
+            }
+
+            function PostQuantity(quantity)
+            {
+                allquantity = quantity;
+            }
+
+            function getCartID()
+            {
+                var cartID = [];
+                for(var i = 0; i < cartItemNumber; i++)
+                {
+                    cartID[i] = $("#cartid_" + i).val();  
+                }
+
+                return cartID;
+            }
+
+            function updateCart()
+            {
+                var storageids = [];
+                var cartID = [];
+                
+                storageids = storageSelected();
+                cartID = getCartID();
+
+                if(cartItemNumber == 0)
+                {
+                    alert("No item to update!");
+                }else{
+                    $.ajax({
+                    method: "POST",
+                    url: "update_cart_quantity.php",
+                    data: {quantity: allquantity, updateCartID: cartID},
+                    success: (response) =>
+                    {                 
+                        var results = response; 
+                        if(results == "Stock Not Available")
+						{
+							window.alert("Not Enough Stock. Maximum quantity applied.");
+							window.location.href = "cart.php";
+						}
+						else
+						{
+							window.alert("Success! Cart updated.");
+							window.location.href = "cart.php";
+						}
+                    }
+                    });
+                }
+
+                
+            }
 		// function increment_quantity(cart_qty)
 		// {
 		// 	var inputQuantityElement = $(cart_qty);
