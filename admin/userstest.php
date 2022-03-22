@@ -70,7 +70,7 @@ include('config/constants.php'); ?>
                 <li>
                     <a href="userstest.php">
                         <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <span class="title">User</span>
+                        <span class="title">Admin & User</span>
                     </a>
                 </li>
 
@@ -108,7 +108,7 @@ include('config/constants.php'); ?>
                                 <td>ID</td>
                                 <td>Full Name</td>  
                                 <td>Email</td>                       
-                                <td>Phone Number</td>
+                                <td>Contact</td>
                                 <td>Adress</td>
                                 <td>Role</td>
                                 <td>Image</td>  
@@ -210,7 +210,7 @@ include('config/constants.php'); ?>
                                 <td>ID</td>
                                 <td>Full Name</tdh>  
                                 <td>Email</td>                       
-                                <td>Phone Number</td>
+                                <td>Contact</td>
                                 <td>Adress</td>
                                 <td>Role</td>
                                 <td>Image</td>  
