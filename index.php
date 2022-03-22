@@ -48,7 +48,7 @@ if (isset($_POST['btn-submit'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link rel="stylesheet" href=""> -->
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Patrick+Hand&family=Sigmar+One&display=swap" rel="stylesheet">
 
     <!--slideshow-->
     <meta charset="UTF-8">
@@ -82,6 +82,7 @@ if (isset($_POST['btn-submit'])) {
         .header1 {
             padding: 30px;
             text-align: center;
+            background: url("data:image/jpeg;base64,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");
         }
 
         .header h1 {
@@ -348,7 +349,7 @@ if (isset($_POST['btn-submit'])) {
             padding: 6px 20px;
             width: 200px;
             border: 2px solid white;
-            background-color: brown;
+            background-color: #70dbdb;
             color: white;
             margin: 0 auto;
             font-size: 1.5rem;
@@ -385,8 +386,8 @@ if (isset($_POST['btn-submit'])) {
         #home h1 {
             color: white;
             text-align: center;
-            font-size: 36pt;
-            font-family: "Bree Serif", serif;
+            font-size: 55pt;
+            font-family: 'Patrick Hand', cursive;
             -webkit-text-stroke: 0.5px black;
         }
 
@@ -419,7 +420,7 @@ if (isset($_POST['btn-submit'])) {
         </p>
         <div class="btn-con">
             <form method="get" action="./menu.php">
-                <button class="btn">Order Now</button>
+                <button class="btn">ORDER NOW</button>
             </form>
         </div>
     </section>

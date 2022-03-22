@@ -43,7 +43,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
         </script>";
         exit;
     } else {
-        $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname, useremail = '$newemail',username = '$newusername' WHERE userid = '$userid';";
+        $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname, useremail = '$newemail',username = '$newusername' WHERE userid = $_SESSION[userid];";
         $result = mysqli_query($con, $query);
         if ($result) {
             $_SESSION['username'] = $newusername;
@@ -92,7 +92,14 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                                 <label for="first_name">
                                     <h4>First name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="<?php echo $userfirstname ?>" required />
+                                <?php
+                                $db = mysqli_connect('localhost', 'root', '', 'aurora');
+                                $user_check_query = "SELECT * FROM users WHERE userid = '" . $_SESSION['userid'] . "' ";
+                                $result = mysqli_query($db, $user_check_query);
+                                while ($user = mysqli_fetch_assoc($result)) {
+                                    echo "" . $user['userfirstname'] . " ";
+                                }
+                                ?>
                             </div>
                         </div>
 
