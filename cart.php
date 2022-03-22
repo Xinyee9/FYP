@@ -246,9 +246,15 @@ hr{
 				<h4 class="title">'.$row["food_name"].'</h4>
 			</div>
 			<div class="counter">
-				<div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
-				<div class="count">'.$row["cart_qty"].'</div>
-				<div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
+				<form method="post" action="">
+				<select name="quantity" class="quantity" onclick="editquantity('.$row["cart_qty"].')">
+					<option if('.$row["cart_qty"].' == 1) value="1">1</option>
+					<option if('.$row["cart_qty"].' == 2) value="2">2</option>
+					<option if('.$row["cart_qty"].' == 3) value="3">3</option>
+					<option if('.$row["cart_qty"].' == 4) value="4">4</option>
+					<option if('.$row["cart_qty"].' == 5) value="5">5</option>
+				</select>
+				</form>
 			</div>
 			<div class="prices">
 				<div class="amount">RM '.$subtotal.'</div>
@@ -265,6 +271,13 @@ hr{
 				  </div>
 				  <div class="total-amount">RM '.$total.'</div>
 			  </div>';
+
+		// <div class="counter">
+		// 	  <div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
+		// 	  <div class="count">'.$row["cart_qty"].'</div>
+		// 	  <div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
+		// </div>
+
 		// $result = mysqli_query($con, $sql);
 		// $rlt = mysqli_query($con, $qwe);
 
@@ -299,41 +312,55 @@ hr{
 	?>
 
 	<script>
-		function increment_quantity(cart_qty)
-		{
-			var inputQuantityElement = $(cart_qty);
+		// function increment_quantity(cart_qty)
+		// {
+		// 	var inputQuantityElement = $(cart_qty);
 
-			var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
-			// console.log(newQuantity);
-			save_to_db(cart_qty);
-		}
+		// 	var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+		// 	// console.log(newQuantity);
+		// 	save_to_db(cart_qty);
+		// }
 
-		function decrement_quantity(cart_qty)
-		{
-			var inputQuantityElement = $(cart_qty);
+		// function decrement_quantity(cart_qty)
+		// {
+		// 	var inputQuantityElement = $(cart_qty);
 
-			if($(inputQuantityElement).val() > 1) 
-			{
-				var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
-				save_to_db(cart_qty);
-			}
-		}
+		// 	if($(inputQuantityElement).val() > 1) 
+		// 	{
+		// 		var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+		// 		save_to_db(cart_qty);
+		// 	}
+		// }
 
-		function save_to_db(cart_qty)
-		{
-			var inputQuantityElement = $(cart_qty);
+		// function save_to_db(cart_qty)
+		// {
+		// 	var inputQuantityElement = $(cart_qty);
 
+		// 	$.ajax({
+		// 		method: "POST",
+		// 		url : "update_cart_quantity.php",
+		// 		data : {cart_id: cart_id},
+		// 		success : (response) =>
+		// 		{
+		// 			$(inputQuantityElement).val(cart_qty);
+		// 			console.log(response);
+		// 			location.reload();
+		// 		}
+		// 	});
+		// }
+
+		function editquantity(cart_qty) {
 			$.ajax({
-				method: "POST",
-				url : "update_cart_quantity.php",
-				data : {cart_id: cart_id},
-				success : (response) =>
-				{
-					$(inputQuantityElement).val(cart_qty);
+                    method: "POST",
+                    url: "update_cart_quantity.php",
+                    data: {cart_qty: cart_qty},
+                success: (response) =>
+                {
 					console.log(response);
-					location.reload();
-				}
-			});
+					// location.reload();
+                }
+            });
+
 		}
 	</script>
 
