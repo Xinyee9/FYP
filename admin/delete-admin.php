@@ -18,12 +18,12 @@
             {
                 $_SESSION['remove'] = "<div class='error'>Faile to remove image.</div>";
 
-                header('location:'.SITEURL.'admin/admin-pro.php');
+                header('location:'.SITEURL.'admin/userstest.php');
 
                 die();
             }
         }
-        $sql = "DELETE FROM ADMIN WHERE admin_id =$ID";
+        $sql = "DELETE FROM users WHERE userid =$ID";
         $res = mysqli_query($conn, $sql);
 
         //check whether the query executed successfully or not
@@ -31,19 +31,19 @@
         {
         
             $_SESSION['delete'] = "<div class='success'>Admin Deleted Successfully.</div>";
-            header('location:'.SITEURL.'admin/admin-pro.php');
+            header('location:'.SITEURL.'admin/userstest.php');
         }
         else
         {
                
             $_SESSION['delete'] = "<div class='error'>Failed to Delete Admin. Try Again Later.</div>";
-            header('location:'.SITEURL.'admin/admin-pro.php');
+            header('location:'.SITEURL.'admin/userstest.php');
         }
     
 
     }
     else
     {
-        header('location:'.SITEURL.'admin/admin-pro.php');
+        header('location:'.SITEURL.'admin/userstest.php');
     }
 ?>

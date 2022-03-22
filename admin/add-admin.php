@@ -26,8 +26,8 @@
             <form action="" method ="POST" enctype="multipart/form-data">
                 <div class = "user-details">
                     <div class="input-box">
-                        <span class="details">Full Name :</span>
-                        <input type="text" name="full_name" placeholder="Enter your name" required>  
+                        <span class="details">Name :</span>
+                        <input type="text" name="full_name" placeholder="Enter your username" required>  
                     </div>
                     <div class="input-box">
                         <span class="details">Email :</span>
@@ -40,6 +40,10 @@
                     <div class="input-box">
                         <span class="details">Password :</span>
                         <input type="password" name="password" placeholder="Enter your password" required >  
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Full Name :</span>
+                        <input type="text" name="full_name" placeholder="Enter your name" required>  
                     </div>
                     
                 </div>
@@ -58,7 +62,7 @@
                 </div>
            
                 <div class="button">
-                    <input type="submit" name="submit"  value="Add Admin">
+                    <input type="submit" name="submit"  value="Add Admin" class="btn-add">
                 </div>  
             </form>
 <?php 

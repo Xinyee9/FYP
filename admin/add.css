@@ -95,7 +95,7 @@ form .gender-details .gender-title{
 }
 form input[type="radio"]{
     display: none;
-} 
+} */
 form .button
 {
     height: 45px;
@@ -116,7 +116,7 @@ form .button input
 }
 form .button input:hover{
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-}*/
+}
 
 @media (max-width: 584px)
 {
