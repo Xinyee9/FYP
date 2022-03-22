@@ -140,8 +140,10 @@ img{
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Username :</label><input type="text" name="full_name" value="<?php echo $full_name; ?>" class="form-control" ></div>
-                    <div class="col-md-6"><label class="labels">Email :</label><input type="email" name="email" value="<?php echo $email; ?>" class="form-control"></div>
-                    <div class="col-md-6"><label class="labels">Phone :</label><input type="phone" name="text" value="<?php echo $phone; ?>" class="form-control"></div>
+                    <div class="col-md-6"><label class="labels">Phone :</label><input type="phone" name="tel" value="<?php echo $phone; ?>" class="form-control"></div>
+                </div>
+                <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Email :</label><input type="email" name="email" value="<?php echo $email; ?>" class="form-control"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Adress :</label> <textarea name="adress"  placeholder="Adress" class="form-control" ><?php echo $adress;?></textarea></div>
@@ -202,7 +204,7 @@ if (isset($_POST['submit'])) {
                 if($upload == false)
                 {
                     $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                    header("location:".SITEURL.'admin/admin-pro.php');
+                    header("location:".SITEURL.'admin/userstest.php');
                     //stop process
                     die();
                 }
@@ -245,25 +247,33 @@ if (isset($_POST['submit'])) {
     userlastname = '$lname',
     userpic = '$image_name'
     WHERE userid = '$ID'
-";
+    ";
 
-//Execute the Query
-$res2 = mysqli_query($conn, $sql2);
+    //Execute the Query
+    $res2 = mysqli_query($conn, $sql2);
 
-if($res2 == TRUE)
-{
-    //Query Executed and Admin Update
-    $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
-    //Redirect to manage admin page
-    header('location:'.SITEURL.'admin/userstest.php');
-}
-else
-{
-    //Faile to update Admin
-    $_SESSION['update'] = "<div class='error'>Failed to Updatded Admin.</div>";
-    //Redirect to manage admin page
-    header('location:'.SITEURL.'admin/userstest.php');
-}
+    if($res2 == TRUE)
+    {
+        //Query Executed and Admin Update
+        //$_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
+        //Redirect to manage admin page
+        //header('location:'.SITEURL.'admin/userstest.php');
+        echo "<script>
+        alert('Admin Updated Successfully.');
+        window.location.href='./userstest.php';
+        </script>";
+    }
+    else
+    {
+        //Faile to update Admin
+        //$_SESSION['update'] = "<div class='error'>Failed to Updatded Admin.</div>";
+        //Redirect to manage admin page
+        //header('location:'.SITEURL.'admin/userstest.php');
+        echo "<script>
+        alert('Failed to Updatded Admin.');
+        window.location.href='./userstest.php';
+        </script>";
+    }
 
 }
 
