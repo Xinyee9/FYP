@@ -8,7 +8,7 @@
     {
         $cart_id = $_POST["cart_id"];
         {
-            mysqli_query($con, "UPDATE cart SET cart_qty = $cart_qty WHERE cart_id = $cart_id;");
+            mysqli_query($con, "UPDATE cart SET cart_qty = cart_qty - 1 WHERE cart_id = $cart_id;");
         }
     }
 ?>

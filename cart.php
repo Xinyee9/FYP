@@ -210,7 +210,7 @@ hr{
 <html>
 <head>
 	<title>Cart</title>
-	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" type="text/css" href="">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -245,13 +245,11 @@ hr{
 			<div class="about">
 				<h4 class="title">'.$row["food_name"].'</h4>
 			</div>
-			<td>
-                <div class="qty">                                                         
-                    <button class="btn-minus" id="minus" onclick="ButtonMinus('.$count.')"><i class="fa fa-minus"></i></button>
-                    <input type="text" disabled id="quantity_'.$count++.'" value="'.$row["cart_qty"].'" onchange="GetValue('.$row["cart_id"].')"">
-                    <button class="btn-plus" onclick="ButtonPlus('.$count.')"><i class="fa fa-plus"></i></button>                                                                
-                </div>
-            </td>
+			<div class="counter">
+				<div class="btn"><span onclick="increment_quantity('.$row["cart_id"].')"><u>+</u></span></div>
+				<div class="count">'.$row["cart_qty"].'</div>
+				<div class="btn"><span onclick="decrement_quantity('.$row["cart_id"].')"><u>-</u></span></div>
+			</div>
 			<div class="prices">
 				<div class="amount">RM '.$subtotal.'</div>
 				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
@@ -277,6 +275,14 @@ hr{
 			// 	  <option if('.$row["cart_qty"].' == 5) value="5">5</option>
 			//   </select>
 			//   </form>
+
+			// <td>
+            //     <div class="qty">                                                         
+            //         <button class="btn-minus" id="minus" onclick="ButtonMinus('.$count.')"><i class="fa fa-minus"></i></button>
+            //         <input type="text" disabled id="quantity_'.$count++.'" value="'.$row["cart_qty"].'" onchange="GetValue('.$row["cart_id"].')"">
+            //         <button class="btn-plus" onclick="ButtonPlus('.$count.')"><i class="fa fa-plus"></i></button>                                                                
+            //     </div>
+            // </td>
 
 			// <div class="counter">
 			// 	<div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
@@ -318,144 +324,173 @@ hr{
 	?>
 
 	<script>
-		function ButtonMinus(count)
-            {               
-                var num;
-                var quantity = [];
-                for(var i = 0; i < cartItemNumber; i++)
-                {
-                    quantity[i] = $("#quantity_" + i).val(); 
-                                                       
-                }  
-                minusQuantity = quantity[count] - 1;
-                $("#minus").click(function(){
-                    if(minusQuantity == 0)
-                    {
-                        $("#quantity_" + count).val(1);
-                    }
-                });
-                
-                // if(minusQuantity == 0)
-                // {    
-                //     num = count;
-                // }  
-                
-
-                if(minusQuantity == 0)
-                {
-                    var cartid = [];
-                    cartid = getCartID();                    
-                    window.alert("Item quantity cannot be 0!");
-                    // console.log(num);
-                   
-                    // var confirm = window.confirm("Are you sure you want to remove the item?");
-                    // if(confirm == true)
-                    // {
-                    //     removeFromCart(cartid[count]);
-                    // }
-                    // else
-                    // {
-                    //     //do nothing
-                    //     if(minusQuantity == 0)
-                    //     {
-                    //         $("#quantity_" + count).val('1');
-                    //     }
-                    // }
-                    
-                }
-                else
-                {
-                    quantity[count] = minusQuantity;
-                    
-                    PostQuantity(quantity);
-                }             
-            }
-
-            function ButtonPlus(count)
-            {
-                count = count - 1;
-                var quantity = [];
-                for(var i = 0; i < cartItemNumber; i++)
-                {
-                    quantity[i] = $("#quantity_" + i).val();
-                }     
-                               
-                addQuantity = parseInt(quantity[count]) + parseInt("1");
-
-                quantity[count] = addQuantity;                                             
-                                
-                PostQuantity(quantity);
-            }
-
-            function GetValue(cartid)
-            {
-                var quantity = [];
-                for(var i = 0; i < cartItemNumber; i++)
-                {
-                    quantity[i] = $("#quantity_" + i).val();
-                }                               
-                
-                PostQuantity(quantity);
-            }
-
-            function PostQuantity(quantity)
-            {
-                allquantity = quantity;
-            }
-
-            function getCartID()
-            {
-                var cartID = [];
-                for(var i = 0; i < cartItemNumber; i++)
-                {
-                    cartID[i] = $("#cartid_" + i).val();  
-                }
-
-                return cartID;
-            }
-
-            function updateCart()
-            {
-                var storageids = [];
-                var cartID = [];
-                
-                storageids = storageSelected();
-                cartID = getCartID();
-
-                if(cartItemNumber == 0)
-                {
-                    alert("No item to update!");
-                }else{
-                    $.ajax({
+		function increment_quantity(cart_id) {
+			$.ajax({
                     method: "POST",
-                    url: "update_cart_quantity.php",
-                    data: {quantity: allquantity, updateCartID: cartID},
-                    success: (response) =>
-                    {                 
-                        var results = response; 
-                        if(results == "Stock Not Available")
-						{
-							window.alert("Not Enough Stock. Maximum quantity applied.");
-							window.location.href = "cart.php";
-						}
-						else
-						{
-							window.alert("Success! Cart updated.");
-							window.location.href = "cart.php";
-						}
-                    }
-                    });
+                    url: "increment_update_cart_quantity.php",
+                    data: {cart_id: cart_id},
+                success: (response) =>
+                {
+					console.log(response);
+					location.reload();
                 }
+            });
+
+		}
+
+		function decrement_quantity(cart_id) {
+			$.ajax({
+                    method: "POST",
+                    url: "decrement_update_cart_quantity.php",
+                    data: {cart_id: cart_id},
+                success: (response) =>
+                {
+					console.log(response);
+					location.reload();
+                }
+            });
+
+		}
+		// function ButtonMinus(count)
+        //     {               
+        //         var num;
+        //         var quantity = [];
+        //         for(var i = 0; i < cartItemNumber; i++)
+        //         {
+        //             quantity[i] = $("#quantity_" + i).val(); 
+                                                       
+        //         }  
+        //         minusQuantity = quantity[count] - 1;
+        //         $("#minus").click(function(){
+        //             if(minusQuantity == 0)
+        //             {
+        //                 $("#quantity_" + count).val(1);
+        //             }
+        //         });
+                
+        //         // if(minusQuantity == 0)
+        //         // {    
+        //         //     num = count;
+        //         // }  
+                
+
+        //         if(minusQuantity == 0)
+        //         {
+        //             var cartid = [];
+        //             cartid = getCartID();                    
+        //             window.alert("Item quantity cannot be 0!");
+        //             // console.log(num);
+                   
+        //             // var confirm = window.confirm("Are you sure you want to remove the item?");
+        //             // if(confirm == true)
+        //             // {
+        //             //     removeFromCart(cartid[count]);
+        //             // }
+        //             // else
+        //             // {
+        //             //     //do nothing
+        //             //     if(minusQuantity == 0)
+        //             //     {
+        //             //         $("#quantity_" + count).val('1');
+        //             //     }
+        //             // }
+                    
+        //         }
+        //         else
+        //         {
+        //             quantity[count] = minusQuantity;
+                    
+        //             PostQuantity(quantity);
+        //         }             
+        //     }
+
+        //     function ButtonPlus(count)
+        //     {
+        //         count = count - 1;
+        //         var quantity = [];
+        //         for(var i = 0; i < cartItemNumber; i++)
+        //         {
+        //             quantity[i] = $("#quantity_" + i).val();
+        //         }     
+                               
+        //         addQuantity = parseInt(quantity[count]) + parseInt("1");
+
+        //         quantity[count] = addQuantity;                                             
+                                
+        //         PostQuantity(quantity);
+        //     }
+
+        //     function GetValue(cartid)
+        //     {
+        //         var quantity = [];
+        //         for(var i = 0; i < cartItemNumber; i++)
+        //         {
+        //             quantity[i] = $("#quantity_" + i).val();
+        //         }                               
+                
+        //         PostQuantity(quantity);
+        //     }
+
+        //     function PostQuantity(quantity)
+        //     {
+        //         allquantity = quantity;
+        //     }
+
+        //     function getCartID()
+        //     {
+        //         var cartID = [];
+        //         for(var i = 0; i < cartItemNumber; i++)
+        //         {
+        //             cartID[i] = $("#cartid_" + i).val();  
+        //         }
+
+        //         return cartID;
+        //     }
+
+        //     function updateCart()
+        //     {
+        //         var storageids = [];
+        //         var cartID = [];
+                
+        //         storageids = storageSelected();
+        //         cartID = getCartID();
+
+        //         if(cartItemNumber == 0)
+        //         {
+        //             alert("No item to update!");
+        //         }else{
+        //             $.ajax({
+        //             method: "POST",
+        //             url: "update_cart_quantity.php",
+        //             data: {quantity: allquantity, updateCartID: cartID},
+        //             success: (response) =>
+        //             {                 
+        //                 var results = response; 
+        //                 if(results == "Stock Not Available")
+		// 				{
+		// 					window.alert("Not Enough Stock. Maximum quantity applied.");
+		// 					window.location.href = "cart.php";
+		// 				}
+		// 				else
+		// 				{
+		// 					window.alert("Success! Cart updated.");
+		// 					window.location.href = "cart.php";
+		// 				}
+        //             }
+        //             });
+        //         }
 
                 
-            }
+        //     }
+
 		// function increment_quantity(cart_qty)
 		// {
-		// 	var inputQuantityElement = $(cart_qty);
+		// 	var inputQuantityElement = "";
+		// 	console.log(inputQuantityElement);
 
-		// 	var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+		// 	// var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
 		// 	// console.log(newQuantity);
-		// 	save_to_db(cart_qty);
+		// 	// save_to_db(cart_qty);
 		// }
 
 		// function decrement_quantity(cart_qty)
@@ -486,19 +521,19 @@ hr{
 		// 	});
 		// }
 
-		function editquantity(cart_qty) {
-			$.ajax({
-                    method: "POST",
-                    url: "update_cart_quantity.php",
-                    data: {cart_qty: cart_qty},
-                success: (response) =>
-                {
-					console.log(response);
-					// location.reload();
-                }
-            });
+		// function editquantity(cart_qty) {
+		// 	$.ajax({
+        //             method: "POST",
+        //             url: "update_cart_quantity.php",
+        //             data: {cart_qty: cart_qty},
+        //         success: (response) =>
+        //         {
+		// 			console.log(response);
+		// 			// location.reload();
+        //         }
+        //     });
 
-		}
+		// }
 	</script>
 
 	<script>
