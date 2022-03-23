@@ -27,18 +27,12 @@
                         <span class="details">Email :</span>
                         <input type="email" name="email" placeholder="Enter your email" required>  
                     </div>
-                    <div class="input-box">
-                        <span class="details">Phone Number :</span>
-                        <input type="tel" name="phone" placeholder="Enter your phone number" required>  
-                    </div>
+                    
                     <div class="input-box">
                         <span class="details">Password :</span>
                         <input type="password" name="password" placeholder="Enter your password" required >  
                     </div>
-                    <div class="input-box">
-                        <span class="details">Adress :</span>
-                        <input type="text" name="adress" placeholder="Enter your adress" required>  
-                    </div>
+                    
                     
                 </div>
                 
@@ -50,10 +44,7 @@
                     
                 </div>
                 
-                <div class="input-box"><br>
-                     <span class="details">Profile picture :</span>
-                    <input type="file" name="pic">  
-                </div>
+                
            
                 <div class="button">
                     <input type="submit" name="submit"  value="Add Admin" class="btn-add">
@@ -65,8 +56,8 @@
         $full_name = $_POST['full_name'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $adress = $POST['adress'];
+        //$phone = $_POST['phone'];
+        //$adress = $POST['adress'];
         if(isset($_POST['role']))
         {
             $role = $_POST['role'];
@@ -80,7 +71,7 @@
         $lname = $POST['lname'];
         
 
-        if(isset($_FILES['pic']['name']))
+        /*if(isset($_FILES['pic']['name']))
         {
             //upload image
             $image_name= $_FILES['pic']['name'];
@@ -114,7 +105,7 @@
         {
             //dont upload and save the image_name valus as blank
             $image_name="";
-        }
+        }*/
 
         $dup = mysqli_query($conn, "SELECT FROM users WHERE username = '$full_name' ");
 
@@ -128,12 +119,11 @@
             username = '$full_name',
             userpassword = '$password',
             useremail = '$email',
-            userphone = '$phone',
-            useradress = '$adress',
+            
             userprivilege = '$role',
             userfirstname = '$fname',
-            userlastname = '$lname',
-            userpic = '$image_name'
+            userlastname = '$lname'
+           
         ";
 
         $res = mysqli_query($conn, $sql) or die(mysqli_error());
