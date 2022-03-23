@@ -108,10 +108,9 @@ include('config/constants.php'); ?>
                                 <td>ID</td>
                                 <td>Full Name</td>  
                                 <td>Email</td>                       
-                                <td>Contact</td>
-                                <td>Adress</td>
+                                
                                 <td>Role</td>
-                                <td>Image</td>  
+                                  
                                 <td>Actions</td>  
                             </tr>
                             </thead
@@ -143,10 +142,10 @@ include('config/constants.php'); ?>
                                 $ID = $rows['userid'];
                                 $full_name = $rows['username'];
                                 $email = $rows['useremail'];
-                                $phone = $rows['userphone'];
-                                $adress = $rows['useradress'];
+                                //$phone = $rows['userphone'];
+                                //$adress = $rows['useradress'];
                                 $role = $rows['userprivilege'];
-                                $image_name = $rows['userpic'];
+                                //$image_name = $rows['userpic'];
                                 
 
                                 //display the value in our table
@@ -155,29 +154,7 @@ include('config/constants.php'); ?>
                                     <td><?php echo $sn++; ?></td>
                                     <td><?php echo $full_name; ?></td>  
                                     <td><?php echo $email ; ?></td>                     
-                                      
-                                    <td><?php echo $phone ; ?></td>
-                                    <td><?php echo $adress ; ?></td>
                                     <td><?php echo $role ; ?></td>
-                                    <td>
-                                        <?php  
-                                            //check image name is available or not
-                                            if($image_name!="")
-                                            {
-                                                //display image
-                                                ?>
-                                                <img src="<?php echo SITEURL; ?>image/admin/<?php echo $image_name; ?>" width="100px">
-
-                                                <?php
-                                            }
-                                            else
-                                            {
-                                                //dissply message
-                                                echo "<div class = 'error'>Image not added.</div>";
-                                            }
-                                        ?>
-                                    </td> 
-     
                                     <td >
                                     <a href="<?php echo SITEURL;?>admin/change-pass.php?ID=<?php echo $ID;?>" class="btn-add"> Change Password</a>
                                         <a href="<?php echo SITEURL;?>admin/viewadmin.php?ID=<?php echo $ID?>" class="btn-update">Update&View</a>
@@ -210,10 +187,9 @@ include('config/constants.php'); ?>
                                 <td>ID</td>
                                 <td>Full Name</tdh>  
                                 <td>Email</td>                       
-                                <td>Contact</td>
-                                <td>Adress</td>
+                                
                                 <td>Role</td>
-                                <td>Image</td>  
+                                
                                 <td>Actions</td>  
                             </tr>
                            </thead>
@@ -245,11 +221,11 @@ include('config/constants.php'); ?>
                                 $ID = $rows2['userid'];
                                 $full_name = $rows2['username'];
                                 $email = $rows2['useremail'];
-                                $phone = $rows2['userphone'];
-                                $adress = $rows2['useradress'];
+                                //$phone = $rows2['userphone'];
+                                //$adress = $rows2['useradress'];
                                 $role = $rows2['userprivilege'];
                                 
-                                $image_name = $rows2['userpic'];
+                                //$image_name = $rows2['userpic'];
 
                                 //display the value in our table
                                 ?>
@@ -258,27 +234,9 @@ include('config/constants.php'); ?>
                                     <td><?php echo $full_name; ?></td>  
                                     <td><?php echo $email ; ?></td>                     
                                       
-                                    <td><?php echo $phone ; ?></td>
-                                    <td><?php echo $adress ; ?></td>
+                                    
                                     <td><?php echo $role ; ?></td>
-                                    <td>
-                                        <?php  
-                                            //check image name is available or not
-                                            if($image_name!="")
-                                            {
-                                                //display image
-                                                ?>
-                                                <img src="<?php echo SITEURL; ?>image/admin/<?php echo $image_name; ?>" >
-
-                                                <?php
-                                            }
-                                            else
-                                            {
-                                                //dissply message
-                                                echo "<div class = 'error'>Image not added.</div>";
-                                            }
-                                        ?>
-                                    </td> 
+                                    
      
                                     <td >
                                         <a href="<?php echo SITEURL;?>admin/users-changerole.php?ID=<?php echo $ID;?>" class="btn-add"> Change Role</a>

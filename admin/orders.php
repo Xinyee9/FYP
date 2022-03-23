@@ -23,17 +23,17 @@
                                     {
                                     $tran_id = $rows['tran_id'];
                                     $tran_date = $rows['tran_date'];
-                                    $tran_address = $rows['tran_address'];
-                                    $tran_status = $rows['tran_status'];
-                                    $tran_payment_method = $rows['tran_payment_method'];	
+                                    $tran_time = $rows['tran_time'];
+                                    $tran_state = $rows['tran_state'];
+                                    //$tran_payment_method = $rows['tran_payment_method'];	
                                 ?>
                                 <tr>
                                     <td>
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
                                     <p><b>Order No.</b> <?php echo $sn++; ?><p>
-                                    <p><b>Date: </b> <?php echo $tran_date; ?><p>
-                                    <p><b>Payment Type:</b> <?php echo $tran_payment_method;?></p>
-                                    <p><b>Status: </b> <?php echo $tran_status; ?> </p>
+                                    <p><b>Date : </b> <?php echo $tran_date; ?><p>
+                                    <p><b>Time :</b> <?php echo $tran_time;?></p>
+                                    <p><b>State : </b> <?php echo $tran_state; ?> </p>
                                     </td>
                                     <td>
                                         <a href="<?php echo SITEURL;?>admin/VandCorder.php?ID=<?php echo $tran_id; ?>" class="btn-update">View </a>
