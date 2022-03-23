@@ -1,6 +1,8 @@
 <?php
 require_once('./php/dbconnect.php');
 session_start();
+
+// $food_id = $_POST['food_id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,6 +80,13 @@ session_start();
         //     // echo "<script>alert('Please Login to view menu.')</script>";
         //     // header("Location: login.php");
         // }
+
+        // $check_item = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
+        // while($row = mysqli_fetch_assoc($check_item) > 0)
+        // {
+        //     echo('Item already in cart!');
+        // }
+        
         $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -172,6 +181,14 @@ session_start();
                 document.toSubmit.food_quantity.value = quantity;
                 document.toSubmit.submit();
             }
+            
+            // <?php
+            //     $check_item = msqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
+            //     if(mysqli_num_rows($check_item) > 0)
+            //     {
+            //         echo('Item already in cart!');
+            //     }
+            // ?>
 
         }
     </script>
