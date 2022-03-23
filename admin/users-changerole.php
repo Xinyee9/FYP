@@ -180,7 +180,7 @@ include('config/constants.php'); ?>
                                         <p><b>Role : </b>
                                             <input <?php if($role == "user"){echo "checked";} ?> type="radio" name="role" value="user" > User
                                             <input <?php if($role == "admin"){echo "checked";} ?> type="radio" name="role" value="admin" > Admin
-                                         </p>
+                                        </p>
                                     </div>
                                 </td>
                                 <td style="text-align: left;">

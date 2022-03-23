@@ -16,7 +16,7 @@ include('config/constants.php'); ?>
 
 <body>
     <?php
-if (isset($_GET['id'])) {
+        if(isset($_GET['id'])) {
             //1.get the id of selected admin
             $id = $_GET['id'];
 
@@ -30,10 +30,10 @@ if (isset($_GET['id'])) {
             $row3 = mysqli_fetch_assoc($res3);
                 
             //$tran_id = $rows3['tran_id'];
-            $tran_date = $rows3['tran_date'];
-            $tran_address = $rows3['tran_address'];
-            $tran_status = $rows3['tran_status'];
-            $tran_payment_method = $rows3['tran_payment_method'];
+            $tran_id = $rows['tran_id'];
+            $tran_date = $rows['tran_date'];
+            $tran_time = $rows['tran_time'];
+            $tran_state = $rows['tran_state'];
             
         }
         else {
@@ -120,23 +120,54 @@ if (isset($_GET['id'])) {
                     <img src="user.jpg">
                 </div>
             </div>
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">                    
                             <h2>Order view</h2>
                             <div class="">View All</div>   
                         </div>
-                        <form action="VandCorder.php" method="POST" enctype="multipart/form-data">
                         <table >
                             <tbody>
                             
                                 <tr>
                                     <td>
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
-                                    <p><b>Order No.</b> <p>
-                                    <p><b>Date: </b> <p>
-                                    <p><b>Payment Type:</b> </p>
-                                    <p><b>Status: </b> </p>
+                                    <p><b>Order No.</b> <?php echo $sn++; ?><p>
+                                    <p><b>Date : </b> <?php echo $tran_date; ?><p>
+                                    <p><b>Time :</b> <?php echo $tran_time;?></p>
+                                    <p><b>State : </b> <?php echo $tran_state; ?> </p>
+                                    <select name="category" class="form-control">
+                                    <?php
+                                        //create 
+                                        $sql2 = "SELECT * FROM CATEGORY ";
+
+                                        $res2 = mysqli_query($conn, $sql2);
+
+                                        $count = mysqli_num_rows($res2);
+                                        if ($count > 0) {
+                                        while ($row2 = mysqli_fetch_assoc($res2)) {
+                                            $cname = $row2['cate_name'];
+                                            $ID = $row2['category_id'];
+
+                                            //echo "<option value='$ID'>$cname</option>";
+                                    ?>
+
+                                    <option <?php if ($current_category == $ID) {
+                                    echo "selected";
+                                    } ?> value="<?php echo $ID; ?>"><?php echo $cname; ?></option>
+
+                                    <?php
+                                    }
+                                    } else {
+                                        echo "<option value='0'>no category found</option>";
+                                        /**?>
+                                        <option value="0">no category found</option>
+                                        <?php**/
+                                    }
+
+                                    ?>
+                                    </select>
                                     </td>
                                 </tr>
                                 
@@ -174,4 +205,7 @@ if (isset($_GET['id'])) {
 </form></div></div>
 </body>
 </html>
+<?php 
+include('includes/script.php'); 
+?>
 

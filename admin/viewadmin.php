@@ -82,12 +82,12 @@ img{
 
                         $full_name = $row['username'];
                         $email = $row['useremail'];
-                        $phone = $row['userphone'];
-                        $adress = $row['useradress'];
+                        //$phone = $row['userphone'];
+                        //$adress = $row['useradress'];
                         $role = $row['userprivilege'];
                         $fname = $row['userfirstname'];
                         $lname = $row['userlastname'];
-                        $current_image = $row['userpic'];   
+                        //$current_image = $row['userpic'];   
                     }
                     else
                     {
@@ -109,7 +109,7 @@ img{
         <div class="col-md-4 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <?php
-                if ($current_image == "") 
+                /*if ($current_image == "") 
                 {
                     echo "<div class='error'>Image not added.</div>";
                 } 
@@ -118,7 +118,7 @@ img{
                     ?>
                     <img src="<?php echo SITEURL; ?>image/admin/<?php echo $current_image; ?>">
                     <?php
-                }
+                }*/
                 ?> 
                 <span class="font-weight-bold">Username : <?php echo $full_name; ?></span>
                 <span>Contact : 0<?php echo $phone ?> </span>
@@ -140,18 +140,9 @@ img{
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Username :</label><input type="text" name="full_name" value="<?php echo $full_name; ?>" class="form-control" ></div>
-                    <div class="col-md-6"><label class="labels">Phone :</label><input type="phone" name="tel" value="<?php echo $phone; ?>" class="form-control"></div>
-                </div>
-                <div class="row mt-3">
-                <div class="col-md-12"><label class="labels">Email :</label><input type="email" name="email" value="<?php echo $email; ?>" class="form-control"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Adress :</label> <textarea name="adress"  placeholder="Adress" class="form-control" ><?php echo $adress;?></textarea></div>
+                    <div class="col-md-6"><label class="labels">Email :</label><input type="email" name="email" value="<?php echo $email; ?>" class="form-control"></div>
                 </div>
                 
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Select new image :</label><br><input type="file" name="image" ></div>
-                </div>
                 <div class="row mt-3">
                    <div class="col-md-12"><label class="labels">Role :</label>
                    <input <?php if($role == "admin"){echo "checked";} ?> type="radio" name="role" value="admin" > Admin
@@ -161,7 +152,7 @@ img{
                
                 <div class="mt-5 text-right">
                     <input type="hidden" name="ID" value="<?php echo $row['userid']; ?>">
-                    <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+                    
                     <button class="btn btn-primary profile-button" type="submit" name="submit" value="Update Admin">Save Admin</button></div>
             </div>
         </div>
@@ -176,15 +167,13 @@ if (isset($_POST['submit'])) {
     $ID = $_POST['ID'];
     $full_name = $_POST['full_name'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $adress = $_POST['adress'];
     $role = $_POST['role'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $current_image = $_POST['current_image'];
+    //$current_image = $_POST['current_image'];
     
 
-    if(isset($_FILES['pic']['name']))
+    /*if(isset($_FILES['pic']['name']))
         {
             $image_name = $_FILES['pic']['name'];
 
@@ -234,18 +223,16 @@ if (isset($_POST['submit'])) {
         else
         {
             $image_name = $current_image;
-        }
+        }*/
 
     //create a sql query to update admin
     $sql2 = "UPDATE users SET
     username = '$full_name',
     useremail = '$email',
-    userphone = '$phone',
-    useradress = '$adress',
     userprivilege = '$role',
     userfirstname = '$fname',
-    userlastname = '$lname',
-    userpic = '$image_name'
+    userlastname = '$lname'
+    
     WHERE userid = '$ID'
     ";
 
