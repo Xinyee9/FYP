@@ -1,71 +1,119 @@
 <?php
 require_once('./php/dbconnect.php');
-?>
-<?php
+
 session_start();
+
 if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-        $userid = $_SESSION['id'];
-    }
-if (isset($_POST["foodcode"])) {
-    echo "
-    <script>
-    console.log('" . $_POST["foodcode"] . "');
-    console.log('" . $_POST["foodquantity"] . "');
-    </script>
-    ";
+    $userid = $_SESSION['id'];
 }
+
+if (isset($_POST['btn-submit'])) {
+    // $message = $_POST['message'];
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $date = date('Y-m-d');
+    $time = date('h:i:sa');
+
+
+    $query = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ('$date','$time','$userid')";
+    $result = mysqli_query($con, $query);
+    if($result)
+    {
+        header("Location: delivery.php");
+    }
+
+    // if ($result) {
+    //     // $to = $email;
+    //     // $subject = "Thank You for Contacting Us";
+    //     // $message = "Your information has been received. Just a moment, our team will get back to you as soon as possible.\n\n";
+    //     // $message .= "<br/>\nBest regards,<br/>Aurora Team";
+
+    //     // $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";
+    //     // $headers .= "Reply-To: auroracutie2022@gmail.com\r\n";
+    //     // $headers .= "Content-type: text/html\r\n";
+    //     // $headers .= "MIME-Version: 1.0\r\n";
+
+    //     // if ($subject) {
+    //     echo'<script>
+    //     function input() {
+    //         window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
+
+    //         display();
+
+    //         // showAlert();
+    //     }
+
+    //     function display() {
+    //         window.location.href = "delivery.php";
+    //     }
+    // </script>';
+    //     // }
+    // }
+}
+
+// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+//         $userid = $_SESSION['id'];
+//     }
+// if (isset($_POST["foodcode"])) {
+//     echo "
+//     <script>
+//     console.log('" . $_POST["foodcode"] . "');
+//     console.log('" . $_POST["foodquantity"] . "');
+//     </script>
+//     ";
+// }
 // session_start();
 // require_once('./php/dbconnect.php');
 // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
 //     $userid = $_SESSION['id'];
 // }
 
-if (isset($_POST['btn-submit'])) {
-    // $name = $_POST['fname'];
-    // $cardname = $_POST['cname'];
-    // $email = $_POST['email'];
-    // $card_exp_year = $_POST['expyear'];
-    // $address = $_POST['address'];
-    // $city = $_POST['city'];
-    // $state = $_POST['state'];
-    // $zip = $_POST['zip'];
-    // $card_exp_month = $_POST['expmonth'];
-    // $cvv = $_POST['cvv'];
+// if (isset($_POST['btn-submit'])) {
+//     // $name = $_POST['fname'];
+//     // $cardname = $_POST['cname'];
+//     // $email = $_POST['email'];
+//     // $card_exp_year = $_POST['expyear'];
+//     // $address = $_POST['address'];
+//     // $city = $_POST['city'];
+//     // $state = $_POST['state'];
+//     // $zip = $_POST['zip'];
+//     // $card_exp_month = $_POST['expmonth'];
+//     // $cvv = $_POST['cvv'];
 
-    // date_default_timezone_set("Asia/Kuala_Lumpur");
-    // $datetime = date('Y-m-d h:i:sa');
+//     // date_default_timezone_set("Asia/Kuala_Lumpur");
+//     // $datetime = date('Y-m-d h:i:sa');
 
-    // $query = "INSERT INTO trans (transactiondatetime, userid) VALUES ('$datetime', '$userid')";
-    // $result = mysqli_query($con, $query);
+//     // $query = "INSERT INTO trans (transactiondatetime, userid) VALUES ('$datetime', '$userid')";
+//     // $result = mysqli_query($con, $query);
 
-    date_default_timezone_set("Asia/Kuala_Lumpur");
-    $date = date('Y-m-d');
-    $time = date('h:i:sa');
+//     // date_default_timezone_set("Asia/Kuala_Lumpur");
+//     // $date = date('Y-m-d');
+//     // // $time = date('h:i:sa');
 
-    // echo 'abc';
+//     // // echo 'abc';
 
-    // $sql = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)";
-    $result = mysqli_query($con, "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)");
-    echo $userid;
-        echo $_POST[$time];
-        echo $_POST[$date];
+//     // // $sql = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)";
+//     // $result = mysqli_query($con, "INSERT INTO trans (transaction_date, userid) VALUES ($date, $userid)");
+//     // if($result)
+//     // {
+//     //     echo '<span onclick="input()"></span>';
+//     // }
 
-    // if($result)
-    // {
-    //     echo "<input type='button' name='btn-submit' value='Submit and Pay' class='btn' onclick='input()'>";
-    // }
+//     // if($result)
+//     // {
+//     //     echo "<input type='button' name='btn-submit' value='Submit and Pay' class='btn' onclick='input()'>";
+//     // }
 
-    // $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
-    // $result = mysqli_query($con, $query);
+//     // $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
+//     // $result = mysqli_query($con, $query);
 
-    // if ($result)
-    // {
-    //     echo "<script>
-    //     alert('Thank You for your order! Your payment is SUCCESSFUL!');
-    //     window.location.href='./delivery.php';
-    //     </script>";
-    // }
-}
+//     // if ($result)
+//     // {
+//     //     echo "<script>
+//     //     alert('Thank You for your order! Your payment is SUCCESSFUL!');
+//     //     window.location.href='./delivery.php';
+//     //     </script>";
+//     // }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -232,8 +280,7 @@ if (isset($_POST['btn-submit'])) {
     <div class="row">
         <div class="col-75">
             <div class="container">
-                <form action="">
-
+                <form method="POST">
                     <div class="row">
                         <div class="col-50">
                             <h3>Delivery Address</h3>
@@ -300,8 +347,8 @@ if (isset($_POST['btn-submit'])) {
                         //     $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
                         // } -->
 
-                    <input type="button" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
-                    <!-- <input type="button" name="btn-submit" value="Submit and Pay" class="btn"> -->
+                    <!-- <input type="button" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()"> -->
+                    <input type="submit" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
             </div>
         </div>
@@ -311,14 +358,14 @@ if (isset($_POST['btn-submit'])) {
         function input() {
             window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
 
-            display();
+            // display();
 
             // showAlert();
         }
 
-        function display() {
-            window.location.href = "delivery.php";
-        }
+        // function display() {
+        //     window.location.href = "delivery.php";
+        // }
     </script>
 </body>
 
