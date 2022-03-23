@@ -136,7 +136,7 @@ if (isset($_POST['btn-submit'])) {
         }
 
         .container {
-            background-color: rgba(255, 255, 255, .5);
+            background-color: rgba(255, 255, 255, .8);
             padding: 5px 20px 15px 20px;
             border: 1px solid lightgrey;
             border-radius: 3px;
