@@ -35,12 +35,11 @@ include('config/constants.php'); ?>
                         //get the details
                         //echo "Admin Available"
                         $row = mysqli_fetch_assoc($res);
-
                         $full_name = $row['username'];
                         $email = $row['useremail'];
-                        $phone = $row['userphone'];
-                        $adress = $row['useradress'];
-                        $current_image = $row['userpic'];
+                        //$phone = $row['userphone'];
+                        //$adress = $row['useradress'];
+                        //$current_image = $row['userpic'];
                         $role = $row['userprivilege'];
                         $userfirstname = $row['userfirstname'];
                         $userlastname = $row['userlastname'];
@@ -148,31 +147,16 @@ include('config/constants.php'); ?>
                         
                         <table >
                             <tr>
-                                <th style="text-align: left";>Image</th>
                                 <th style="text-align: left";>Detail</th>
                                 <th style="text-align: left";>Actions</th> 
                             </tr>
                             <tr>
-                                <td >
-                                    <?php
-                                        if($current_image != "")
-                                        {
-                                            //display image
-                                        ?>
-                                            <img src="<?php echo SITEURL; ?>image/admin/<?php echo $current_image;?>">
-                                            <?php
-                                        } 
-                                        else
-                                        {
-                                            echo "<div class='error'>Image not added.</div>";
-                                        }
-                                        ?>
-                                </td>
+                                
                                 <td style="text-align: left";>
                                     <p><b>Username        :  </b> <?php echo $full_name; ?></p>
                                     <p><b>Email           :  </b> <?php echo $email; ?></p> 
-                                    <p><b>Phone Number    :  </b> <?php echo $phone; ?></p>
-                                    <p><b>Adress          :  </b> <?php echo $adress; ?></p>
+                                    
+                                    
                                     <p><b>User first Name :  </b> <?php echo $userfirstname; ?></p>
                                     <p><b>User Last Name  :  </b> <?php echo $userlastname; ?></p>
                                     <br>
