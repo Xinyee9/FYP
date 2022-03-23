@@ -21,8 +21,8 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     $userlastname = $_POST['last_name'];
     $newusername = stripslashes($_REQUEST['username']);
     $newusername = mysqli_real_escape_string($con, $newusername);
-    $newemail = stripslashes($_REQUEST['email']);
-    $newemail = mysqli_real_escape_string($con, $newemail);
+    // $newemail = stripslashes($_REQUEST['email']);
+    // $newemail = mysqli_real_escape_string($con, $newemail);
 
     $query = "SELECT * FROM users WHERE username='$newusername' AND username!='$username'";
     $result = mysqli_query($con, $query);
@@ -36,13 +36,15 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
         window.location.href='./index.php';
         </script>";
         exit;
-    } else if ($rowss >= 1) { //check email in use
-        echo "<script>
-        alert('Email in used!\\nPlease try again.');
-        window.location.href='./index.php';
-        </script>";
-        exit;
-    } else {
+    }
+    // else if ($rowss >= 1) { //check email in use
+    //     echo "<script>
+    //     alert('Email in used!\\nPlease try again.');
+    //     window.location.href='./index.php';
+    //     </script>";
+    //     exit;
+    // }
+    else {
         $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname', useremail = '$newemail',username = '$newusername' WHERE userid = $userid";
         $result = mysqli_query($con, $query);
         if ($result) {
@@ -116,10 +118,11 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="last_name">
+                                <label for="email">
                                     <h4>E-mail</h4>
                                 </label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $useremail ?>" aria-describedby="emailHelp" required>
+                                <!-- <input type="email" class="form-control" id="email" name="email" value="<?php echo $useremail ?>"> -->
+                                <div class="form-control" id="email"><?php echo $useremail ?></div>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                         </div>

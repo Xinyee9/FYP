@@ -88,6 +88,7 @@ if (isset($_POST['btn-submit'])) {
 
         body {
             background-image: url("./image/transaction.png");
+            /* filter: brightness(125%); */
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
