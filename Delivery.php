@@ -136,10 +136,10 @@
             $userid = $_SESSION['id'];
         }
 
-		$sql = "SELECT * from cart ORDER BY userid";
+		$sql = "SELECT * from delivery ORDER BY userid";
 		$result = mysqli_query($con, $sql);
 		while ($row = mysqli_fetch_assoc($result)) {
-			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["cart_qty"], $row["food_id"], $row["userid"].'</span>';
+			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["delivery_id"].'</span>';
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
 		}
 		?>

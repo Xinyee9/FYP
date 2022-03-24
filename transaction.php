@@ -9,12 +9,17 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
 
 if (isset($_POST['btn-submit'])) {
     // $message = $_POST['message'];
+    $fullname = $_POST['firstname'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date('Y-m-d');
     $time = date('h:i:sa');
 
 
-    $query = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ('$date','$time','$userid')";
+    $query = "INSERT INTO trans (transaction_date, transaction_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
     if($result)
     {
