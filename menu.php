@@ -81,12 +81,21 @@ session_start();
         //     // header("Location: login.php");
         // }
 
-        // $check_item = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
-        // while($row = mysqli_fetch_assoc($check_item) > 0)
-        // {
-        //     echo('Item already in cart!');
-        // }
-        
+        if (isset($_POST["food_id"])) {
+            $food_id = $_POST["food_id"];
+
+        $check_item = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
+        if($check_item == 0)
+        {
+            header("Location: cart.php");
+            // echo('Item already in cart!');
+        }
+        else
+        {
+            echo('Item already in cart!');
+            // header("Location: cart.php");
+        }
+    }
         $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
