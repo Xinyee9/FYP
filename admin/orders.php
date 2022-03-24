@@ -13,7 +13,7 @@
                             </thead>
                             <tbody>
                             <?php
-                                $sql = "SELECT * FROM transaction";
+                                $sql = "SELECT * FROM trans";
                                 $res = mysqli_query($conn, $sql);
                                 $count = mysqli_num_rows($res);
                                 $sn=1;
@@ -21,10 +21,10 @@
                                 {
                                     while($rows=mysqli_fetch_assoc($res))
                                     {
-                                    $tran_id = $rows['tran_id'];
-                                    $tran_date = $rows['tran_date'];
-                                    $tran_time = $rows['tran_time'];
-                                    $tran_state = $rows['tran_state'];
+                                        $tran_id = $rows['transaction_id'];
+                                        $tran_date = $rows['transaction_date'];
+                                        $tran_time = $rows['transaction_time'];
+                                        $tran_state = $rows['Trans_State'];
                                     //$tran_payment_method = $rows['tran_payment_method'];	
                                 ?>
                                 <tr>
@@ -40,7 +40,9 @@
                                     </td>  
                                 </tr>
                                 
+                                
                                 <?php
+                                    
                                     }
                                 }
                                 else
@@ -48,8 +50,10 @@
                                     //we do not have data in database
                                     echo "<tr> <td colspan='2' class ='error'>No orders.</td></tr>";
                                 }
+                            
                     
                 ?>
+                
                             </tbody>
                         </table>
                     </div>

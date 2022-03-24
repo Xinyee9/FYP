@@ -13,33 +13,8 @@ include('config/constants.php'); ?>
     <link rel="stylesheet" type="text/css" href="apstyle.css">
 
 </head>
-
 <body>
-    <?php
-        if(isset($_GET['id'])) {
-            //1.get the id of selected admin
-            $id = $_GET['id'];
 
-            //2.create sql query to get the details
-            $sql3 = "SELECT * FROM transaction WHERE tran_id =$id";
-
-            //Execute the query
-            $res3 = mysqli_query($conn, $sql3);
-
-           //get the value based on query executed
-            $row3 = mysqli_fetch_assoc($res3);
-                
-            //$tran_id = $rows3['tran_id'];
-            $tran_id = $rows['tran_id'];
-            $tran_date = $rows['tran_date'];
-            $tran_time = $rows['tran_time'];
-            $tran_state = $rows['tran_state'];
-            
-        }
-        else {
-            header('location:' . SITEURL . 'admin/VandCorder.php');
-        }
-        ?>
     <div class="container">
         <div class="navigation">
             <ul>
@@ -120,7 +95,6 @@ include('config/constants.php'); ?>
                     <img src="user.jpg">
                 </div>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">                    
@@ -128,84 +102,173 @@ include('config/constants.php'); ?>
                             <div class="">View All</div>   
                         </div>
                         <table >
-                            <tbody>
-                            
+                       
+                            <tbody> 
+                            <?php
+                                if(isset($_GET['ID'])) {
+                                //1.get the id of selected admin
+                                $ID = $_GET['ID'];
+                                
+                                //2.create sql query to get the details
+                                $sql = "SELECT * FROM trans WHERE transaction_id =$ID";
+                                //Execute the query
+                                $res = mysqli_query($conn, $sql);
+                                //get the value based on query executed
+                                $row = mysqli_fetch_assoc($res);
+                
+                                //$tran_id = $row['transaction_id'];
+                                $tran_date = $row['transaction_date'];
+                                $tran_time = $row['transaction_time'];
+                                $name = $row['Full_Name'];
+                                $adress = $row['Trans_Address'];
+                                $tran_state = $row['Trans_State'];
+                                
+
+                                }
+                                
+                                ?>
                                 <tr>
-                                    <td>
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
-                                    <p><b>Order No.</b> <?php echo $sn++; ?><p>
-                                    <p><b>Date : </b> <?php echo $tran_date; ?><p>
+                                    <td>       
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    <p><b>Order No.</b> <?php echo $ID; ?><p>
+                                    <p><b>Date : </b><?php echo $tran_date ?><p>
                                     <p><b>Time :</b> <?php echo $tran_time;?></p>
                                     <p><b>State : </b> <?php echo $tran_state; ?> </p>
-                                    <select name="category" class="form-control">
-                                    <?php
-                                        //create 
-                                        $sql2 = "SELECT * FROM CATEGORY ";
-
-                                        $res2 = mysqli_query($conn, $sql2);
-
-                                        $count = mysqli_num_rows($res2);
-                                        if ($count > 0) {
-                                        while ($row2 = mysqli_fetch_assoc($res2)) {
-                                            $cname = $row2['cate_name'];
-                                            $ID = $row2['category_id'];
-
-                                            //echo "<option value='$ID'>$cname</option>";
-                                    ?>
-
-                                    <option <?php if ($current_category == $ID) {
-                                    echo "selected";
-                                    } ?> value="<?php echo $ID; ?>"><?php echo $cname; ?></option>
-
-                                    <?php
-                                    }
-                                    } else {
-                                        echo "<option value='0'>no category found</option>";
-                                        /**?>
-                                        <option value="0">no category found</option>
-                                        <?php**/
-                                    }
-
-                                    ?>
-                                    </select>
+                                    
+                                    <p><b>Status : </b>
+                                    <form action="VandCorder.php" method="POST" > 
+                                    <select name="status" >
+								        <option value="Yet to be delivered" >Yet to be delivered</option>
+								        <option value="Delivered" >Delivered</option>
+								        <option value="Cancelled by Admin" >Cancelled by Admin</option>
+								        <option value="Paused">Paused</option>								
+								    </select></p>
+                                    </form>
                                     </td>
                                 </tr>
-                                
                                 <?php
-                                   
+                                $userid = $row['userid'];
+
+                                //$sql1 = mysqli_query($conn, "SELECT * FROM transaction_detail WHERE tran_id = $ID;");
+                                $sql3 = "SELECT * FROM users WHERE userid = $userid";
+                                //Execute the query
+                                $res3 = mysqli_query($conn, $sql3);
+                                //get the value based on query executed
+                                $row3 = mysqli_fetch_assoc($res3);
+                                $email = $row3['useremail'];
                                 ?>
                                 <tr>
                                     <td>
-                                        <p>Name:</p><br>
-                                        <p>Address:</p><br>
-                                        <p>Contact:</p><br>
-                                        <p>Email:</p><br>
-                                        <p>Note:</p><br>
+                                        <p><b>Name: </b><?php echo $name; ?></p><br>
+                                        <p><b>Address:</b><?php echo $adress; ?></p><br>
+                                        <p><b>Email:</b><?php echo $email; ?></p><br>
                                     </td>
+                                    
                                 </tr>
+                                <?php 
+                                $sql1 = "SELECT * FROM transaction_detail WHERE tran_id = $ID";
+                                $res1 = mysqli_query($conn, $sql1);
+                                //get the value based on query executed
+                                //$row1 = mysqli_fetch_assoc($res1);
+                                ?>
+                                <?php
+                                while($row1 = mysqli_fetch_assoc($res1))
+                                {
+                                $food_id = $row1['food_id'];
+                                $qty = $row1['trand_quantity'];
+                                $total = $row1['trand_total'];
+                                $subtotal = $row1['trand_subtotal'];
+
+							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
+                                $res2 = mysqli_query($conn, $sql2);
+                                while($row2=mysqli_fetch_array($res2))
+                                {
+								    $food_name = $row2['food_name'];
+                                    $food_price = $row2['food_price'];
+                                    $food_image = $row2 ['food_image'];
+                                ?>
                                 <tr>
+                                    
                                     <td>
-                                    <p> Item 1:</p><br>
+                                    <p> <?php echo $food_name ?></p><br>
+                                    </td>
+                                    <td>
+                                    <?php
+                                    if ($food_image == "") 
+                                    {
+                                        echo "<div class='error'>Image not added.</div>";
+                                    } 
+                                    else {
+                                        //display image
+                                    ?>
+                                        <img src="<?php echo SITEURL; ?>Food/<?php echo $food_image; ?>">
+                                        <?php
+                                    }
+                                    ?> 
+                                    </td>
+                                    <td>
+                                    <p> <?php echo $qty ?> Pieces</p><br>
+                                    </td>
+                                    <td>
+                                    <p>RM <?php echo number_format($total, 2); ?></p><br>
                                     </td> 
                                 </tr>
+                                <?php 
+                            } 
+                        }
+                            ?> 
                                 <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
-                                    <p> Item 2:</p><br>
-                                    </td> 
+                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
+                                    </td>   
                                 </tr>
                                 <tr>
-                                    <td>
-                                    <p> Total:</p><br>
-                                    <p style="text-align:right;" >Update</p>
-                                    </td> 
+                                <td>
+                                <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+                                <button type="submit" name="submit" value="Update" class ="btn-add">Update</button></div>
+                                   </td>
                                 </tr>
                             </tbody>
                             
 </table>
-</form></div></div>
+<?php
+
+//check whether the submit buttom is clicked or not
+if (isset($_POST['submit'])) {
+    //GET all the data from the form 
+    $ID = $_POST['ID'];
+    $status = $_POST['status'];
+    
+    //update the food in database
+    $sql5 = "UPDATE delivery SET
+    delivery_status = '$status'
+    WHERE delivery_id_id='$ID'
+    ";
+
+    //Execute the Query
+    $res4 = mysqli_query($conn, $sql4);
+
+    if ($res4 == TRUE) {
+        //Query Executed and food Update
+        $_SESSION['update'] = "<div class='success'>Updated Successfully.</div>";
+        //Redirect to manage food page
+        header('location:' . SITEURL . 'admin/orders.php');
+    } else {
+        //Faile to update food
+        $_SESSION['update'] = "<div class='error'>Failed to Updatded.</div>";
+        //Redirect to manage food page
+        header('location:' . SITEURL . 'admin/orders.php');
+    }
+}
+
+
+?>
+</div></div>
 </body>
 </html>
 <?php 
 include('includes/script.php'); 
 ?>
-

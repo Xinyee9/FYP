@@ -300,15 +300,23 @@ table tr td img {
 }
 .details .recentOrders table thead tr td:last-child,
 .details .recentOrders table tbody tr td:last-child {
-  text-align: center; /*right*/
+  text-align: left; /*right*/
 }
 .details .recentOrders table thead tr td:nth-child(2),
 .details .recentOrders table tbody tr td:nth-child(2) {
-  text-align: right;/*right*/
+  text-align: left;/*right*/
   padding-right: 20px;
 }
 .details .recentOrders table thead tr td:nth-child(3),
 .details .recentOrders table tbody tr td:nth-child(3) {
+  text-align: left;
+}
+.details .recentOrders table thead tr td:nth-child(4),
+.details .recentOrders table tbody tr td:nth-child(4) {
+  text-align: center;
+}
+.details .recentOrders table thead tr td:nth-child(5),
+.details .recentOrders table tbody tr td:nth-child(5) {
   text-align: center;
 }
 .status {
