@@ -227,6 +227,12 @@ hr{
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
+		// if (isset($_POST['btn-submit'])) {
+		// 	$total = $_POST['total'];
+
+		// 	$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
+		// 	$rlt = mysqli_query($con, $query);
+		// }
 		// else{
 		// 	$userid = 0;
 		// }
@@ -263,7 +269,9 @@ hr{
 				  <div>
 					  <div class="Subtotal">Total</div>
 				  </div>
-				  <div class="total-amount">RM '.$total.'</div>
+				  <form method="POST">
+				  <div class="total-amount" name="total">RM '.$total.'</div>
+				  </form>
 			  </div>';
 
 			//   <form method="post" action="">
@@ -321,6 +329,12 @@ hr{
 		// 	</div>
    	  	// </div>
 		// ";
+		// if (isset($_POST['btn-submit'])) {
+		// 	// $total = $_POST['total'];
+
+		// 	$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
+		// 	$rlt = mysqli_query($con, $query);
+		// }
 	?>
 
 	<script>
@@ -662,20 +676,32 @@ hr{
             }
         </script> -->
    	 <!-- <button class="button"><a href="transaction.php">Check Out</button></div> -->
-		<button class="button" onclick="btn()">Check Out</button>
+		<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
 		<script>
             function btn()
             {
+				<?php
+						$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
+						$rlt = mysqli_query($con, $query);
+				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.$total.'"))
+						{
+							window.location.href = "transaction.php";
+						}
+						else
+						{
+							window.location.href = "cart.php";
+						}';
+				?>
                 // alert("Do you want proceed to Check Out?");
 
-				if (confirm("Do you want proceed to Check Out?"))
-				{
-					window.location.href = "transaction.php";
-				}
-				else
-				{
-					window.location.href = "cart.php";
-				}
+				// if (confirm("Do you want proceed to Check Out?\nYour total is RM<?php $total ?>"))
+				// {
+				// 	window.location.href = "transaction.php";
+				// }
+				// else
+				// {
+				// 	window.location.href = "cart.php";
+				// }
             }
         </script>
     <!-- <script>
