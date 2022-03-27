@@ -46,8 +46,7 @@ session_start();
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
         <?php
-        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1)
-        {
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
             $userid = $_SESSION['id'];
             // echo ("<script LANGUAGE='JavaScript'>
             // window.alert('Please Login to view menu.');
@@ -55,9 +54,7 @@ session_start();
             // </script>");
             // header('Location:login.php');
             // exit();
-        }
-        else
-        {
+        } else {
             echo ("<script LANGUAGE='JavaScript'>
             window.alert('Please Login to view menu.');
             window.location.href='login.php';
@@ -81,21 +78,17 @@ session_start();
         //     // header("Location: login.php");
         // }
 
-        if (isset($_POST["food_id"])) {
-            $food_id = $_POST["food_id"];
+        // if (isset($_POST["food_id"])) {
+        //     $food_id = $_POST["food_id"];
 
-        $check_item = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
-        if($check_item == 0)
-        {
-            header("Location: cart.php");
-            // echo('Item already in cart!');
-        }
-        else
-        {
-            echo('Item already in cart!');
-            // header("Location: cart.php");
-        }
-    }
+        //     $result = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
+        //     $numrow = mysqli_num_rows($result);
+        //     if ($numrow > 0) {
+        //         echo ('Item already in cart!');
+        //     } else {
+        //         header("Location: cart.php");
+        //     }
+        // } 
         $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -128,7 +121,7 @@ session_start();
                     </div>
             </td>";
             // function function_alert($message) {
-      
+
             //     // Display the alert box 
             //     echo "<script>alert('$message');</script>";
             // }
@@ -190,14 +183,15 @@ session_start();
                 document.toSubmit.food_quantity.value = quantity;
                 document.toSubmit.submit();
             }
-            
+
             // <?php
-            //     $check_item = msqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
-            //     if(mysqli_num_rows($check_item) > 0)
-            //     {
-            //         echo('Item already in cart!');
-            //     }
-            // ?>
+                //     $check_item = msqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
+                //     if(mysqli_num_rows($check_item) > 0)
+                //     {
+                //         echo('Item already in cart!');
+                //     }
+                // 
+                ?>
 
         }
     </script>
