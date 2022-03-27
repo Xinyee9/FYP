@@ -166,25 +166,30 @@ include('config/constants.php'); ?>
                                     
                                 </tr>
                                 <?php 
-                                $sql1 = "SELECT * FROM transaction_detail WHERE tran_id = $ID";
+                                $id = $row['userid']; 
+                                $sql1 = "SELECT * FROM cart WHERE userid = $id";
                                 $res1 = mysqli_query($conn, $sql1);
                                 //get the value based on query executed
                                 //$row1 = mysqli_fetch_assoc($res1);
+                                $sql4 = "SELECT * FROM carttotal WHERE userid = $id";
+                                $res4 = mysqli_query($conn, $sql4);
+                                $row4 = mysqli_fetch_assoc($res4);
                                 ?>
                                 <?php
                                 while($row1 = mysqli_fetch_assoc($res1))
                                 {
                                 $food_id = $row1['food_id'];
-                                $qty = $row1['trand_quantity'];
-                                $total = $row1['trand_total'];
-                                $subtotal = $row1['trand_subtotal'];
+                                $qty = $row1['cart_qty'];
+                                
+                                $total = $row4['total'];
+                                //$subtotal = $row4['trand_subtotal'];
 
 							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
                                 $res2 = mysqli_query($conn, $sql2);
                                 while($row2=mysqli_fetch_array($res2))
                                 {
 								    $food_name = $row2['food_name'];
-                                    $food_price = $row2['food_price'];
+                                    //$food_price = $row2['food_price'];
                                     $food_image = $row2 ['food_image'];
                                 ?>
                                 <tr>
@@ -222,7 +227,7 @@ include('config/constants.php'); ?>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
+                                        <p >Total: RM <?php echo number_format($total, 2); ?></p><br>
                                     </td>   
                                 </tr>
                                 <tr>
@@ -231,6 +236,10 @@ include('config/constants.php'); ?>
                                 <button type="submit" name="submit" value="Update" class ="btn-add">Update</button></div>
                                    </td>
                                 </tr>
+                                <?php 
+                            
+                        
+                            ?> 
                             </tbody>
                             
 </table>
