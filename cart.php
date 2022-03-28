@@ -15,7 +15,7 @@
 	//   }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <style>
 	/* .j {
 	text-decoration: blue;
