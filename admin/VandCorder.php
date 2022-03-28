@@ -99,7 +99,7 @@ include('config/constants.php'); ?>
                     <div class="recentOrders">
                         <div class="cardHeader">                    
                             <h2>Order view</h2>
-                            <div class="">View All</div>   
+                            <a href ="../admin/orders.php"  class="btn-add ">Back </a> 
                         </div>
                         <form action="" method="POST" >
                         <table >
@@ -263,7 +263,7 @@ include('config/constants.php'); ?>
                                 <tr>
                                 <td>
                                 <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-                                <button type="submit" name="submit" value="Update" class ="btn-add">Update</button></div>
+                                <button type="submit" name="submit" value="Update" class ="btn-update">Update</button></div>
                                    </td>
                                 </tr>
                                 
