@@ -145,12 +145,14 @@
 		// $sql = "SELECT * from delivery WHERE userid = $userid";
 		$sql = "SELECT * FROM trans";
 		$rlt = mysqli_query($con, $sql);
+		// $edt = $row["transaction_time"] + 1800;
 		while ($row = mysqli_fetch_assoc($rlt)) {
-			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["transaction_id"].'</span>
-				<p>Delivery Date &nbsp &nbsp &nbsp: '.$row["transaction_date"].'</p>
-				<span>Delivery Time &nbsp &nbsp &nbsp: '.$row["transaction_time"].'</span>
-				<p>Delivery Status &nbsp &nbsp: </p>
-				<p>Delivery Address : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
+			echo '<p>Delivery ID          : '.$row["transaction_id"].'</p>
+				<p>Delivery Date          : '.$row["transaction_date"].'</p>
+				<p>Delivery Time          : '.$row["transaction_time"].'</p>
+				<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
+				<p>Delivery Status        : </p>
+				<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
 
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
 		}

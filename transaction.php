@@ -17,9 +17,10 @@ if (isset($_POST['btn-submit'])) {
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date('Y-m-d');
     $time = date('h:i:sa');
+    $timet = date('h:i:sa', strtotime('+30 minutes', strtotime($time)));
 
 
-    $query = "INSERT INTO trans (transaction_date, transaction_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$fullname','$address','$city','$state','$zip','$userid')";
+    $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
     if ($result) {
         header("Location: delivery.php");
