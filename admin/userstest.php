@@ -15,7 +15,7 @@ include('config/constants.php'); ?>
 </head>
 
 <body>
-   
+
     <div class="container">
         <div class="navigation">
             <ul>
@@ -96,168 +96,158 @@ include('config/constants.php'); ?>
                     <img src="user.jpg">
                 </div>
             </div>
-                <div class="details " >
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Manage Admin</h2>
-                            <a href="add-admin.php" class="btn">Add Admin</a>
-                        </div>
-                        <table>
-                            <thead> 
-                               <tr>
-                                <td>ID</td>
-                                <td>Full Name</td>  
-                                <td>Email</td>                       
-                                
-                                <td>Role</td>
-                                  
-                                <td>Actions</td>  
-                            </tr>
-                            </thead
-                            ><tbody>
-                            <?php
-                    //Query to get all admin
-                    $sql = "SELECT * FROM users WHERE userprivilege ='admin'";
-                    //Execture the Query
-                    $res = mysqli_query($conn, $sql);
-
-                    //check whether the Query is Executed or Not
-                    if($res == TRUE)
-                    {
-                        //cout rows to check whether we have data in database or not
-                        $count = mysqli_num_rows($res);//function to get all the rows in database
-
-                        //check the num of rows
-                        if($count>0)
-                        {
-                            $sn=1;//create a variable and assign the value
-
-                            //we have data in database
-                            while($rows=mysqli_fetch_assoc($res))
-                            {
-                                //use while loop to get all the data from database
-                                //and while loop will run as long as we have data in database
-
-                                //get individul data
-                                $ID = $rows['userid'];
-                                $full_name = $rows['username'];
-                                $email = $rows['useremail'];
-                                //$phone = $rows['userphone'];
-                                //$adress = $rows['useradress'];
-                                $role = $rows['userprivilege'];
-                                //$image_name = $rows['userpic'];
-                                
-
-                                //display the value in our table
-                                ?>
-                                <tr>
-                                    <td><?php echo $sn++; ?></td>
-                                    <td><?php echo $full_name; ?></td>  
-                                    <td><?php echo $email ; ?></td>                     
-                                    <td><?php echo $role ; ?></td>
-                                    <td >
-                                    <a href="<?php echo SITEURL;?>admin/change-pass.php?ID=<?php echo $ID;?>" class="btn-add"> Change Password</a>
-                                        <a href="<?php echo SITEURL;?>admin/viewadmin.php?ID=<?php echo $ID?>" class="btn-update">Update&View</a>
-                                        <a href="<?php echo SITEURL;?>admin/delete-admin.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name;?>" class="btn-delete">Delete Admin</a>
-                                    </td>  
-                                </tr>
-
-                                <?php
-                            }
-                        }
-                        else
-                        {
-                            //we do not have data in database
-                        }
-                    }
-                ?>
-                           </tbody> 
-                        </table>
+            <div class="details ">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Manage Admin</h2>
+                        <a href="add-admin.php" class="btn">Add Admin</a>
                     </div>
-                </div>
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Users list</h2>
-                            
-                        </div>
-                        <table>
-                            <thead>
+                    <table>
+                        <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>Full Name</tdh>  
-                                <td>Email</td>                       
-                                
+                                <td>Full Name</td>
+                                <td>Email</td>
+
                                 <td>Role</td>
-                                
-                                <td>Actions</td>  
+
+                                <td>Actions</td>
                             </tr>
-                           </thead>
-                           <tbody>
+                        </thead>
+                        <tbody>
                             <?php
-                    //Query to get all admin
-                    $sql2 = "SELECT * FROM users WHERE userprivilege ='user'";
-                    //Execture the Query
-                    $res2 = mysqli_query($conn, $sql2);
+                            //Query to get all admin
+                            $sql = "SELECT * FROM users WHERE userprivilege ='admin'";
+                            //Execture the Query
+                            $res = mysqli_query($conn, $sql);
 
-                    //check whether the Query is Executed or Not
-                    if($res2 == TRUE)
-                    {
-                        //cout rows to check whether we have data in database or not
-                        $count = mysqli_num_rows($res2);//function to get all the rows in database
+                            //check whether the Query is Executed or Not
+                            if ($res == TRUE) {
+                                //cout rows to check whether we have data in database or not
+                                $count = mysqli_num_rows($res); //function to get all the rows in database
 
-                        //check the num of rows
-                        if($count>0)
-                        {
-                            $sn=1;//create a variable and assign the value
+                                //check the num of rows
+                                if ($count > 0) {
+                                    $sn = 1; //create a variable and assign the value
 
-                            //we have data in database
-                            while($rows2=mysqli_fetch_assoc($res2))
-                            {
-                                //use while loop to get all the data from database
-                                //and while loop will run as long as we have data in database
+                                    //we have data in database
+                                    while ($rows = mysqli_fetch_assoc($res)) {
+                                        //use while loop to get all the data from database
+                                        //and while loop will run as long as we have data in database
 
-                                //get individul data
-                                $ID = $rows2['userid'];
-                                $full_name = $rows2['username'];
-                                $email = $rows2['useremail'];
-                                //$phone = $rows2['userphone'];
-                                //$adress = $rows2['useradress'];
-                                $role = $rows2['userprivilege'];
-                                
-                                //$image_name = $rows2['userpic'];
+                                        //get individul data
+                                        $ID = $rows['userid'];
+                                        $full_name = $rows['username'];
+                                        $email = $rows['useremail'];
+                                        //$phone = $rows['userphone'];
+                                        //$adress = $rows['useradress'];
+                                        $role = $rows['userprivilege'];
+                                        //$image_name = $rows['userpic'];
 
-                                //display the value in our table
-                                ?>
-                                <tr>
-                                    <td><?php echo $sn++; ?></td>
-                                    <td><?php echo $full_name; ?></td>  
-                                    <td><?php echo $email ; ?></td>                     
-                                      
-                                    
-                                    <td><?php echo $role ; ?></td>
-                                    
-     
-                                    <td >
-                                        <a href="<?php echo SITEURL;?>admin/users-changerole.php?ID=<?php echo $ID;?>" class="btn-add"> Change Role</a>
-                                    </td>  
-                                </tr>
 
-                                <?php
+                                        //display the value in our table
+                            ?>
+                                        <tr>
+                                            <td><?php echo $sn++; ?></td>
+                                            <td><?php echo $full_name; ?></td>
+                                            <td><?php echo $email; ?></td>
+                                            <td><?php echo $role; ?></td>
+                                            <td>
+                                                <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
+                                                <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update&View</a>
+                                                <a href="<?php echo SITEURL; ?>admin/delete-admin.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name; ?>" class="btn-delete">Block</a>
+                                            </td>
+                                        </tr>
+
+                            <?php
+                                    }
+                                } else {
+                                    //we do not have data in database
+                                }
                             }
-                        }
-                        else
-                        {
-                            //we do not have data in database
-                        }
-                    }
-                ?>
-                            </tbody>
-                        </table>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Users list</h2>
+
                     </div>
-                
-               
-         
-<?php 
-include('includes/script.php'); 
-?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Full Name</tdh>
+                                <td>Email</td>
+
+                                <td>Role</td>
+
+                                <td>Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            //Query to get all admin
+                            $sql2 = "SELECT * FROM users WHERE userprivilege ='user'";
+                            //Execture the Query
+                            $res2 = mysqli_query($conn, $sql2);
+
+                            //check whether the Query is Executed or Not
+                            if ($res2 == TRUE) {
+                                //cout rows to check whether we have data in database or not
+                                $count = mysqli_num_rows($res2); //function to get all the rows in database
+
+                                //check the num of rows
+                                if ($count > 0) {
+                                    $sn = 1; //create a variable and assign the value
+
+                                    //we have data in database
+                                    while ($rows2 = mysqli_fetch_assoc($res2)) {
+                                        //use while loop to get all the data from database
+                                        //and while loop will run as long as we have data in database
+
+                                        //get individul data
+                                        $ID = $rows2['userid'];
+                                        $full_name = $rows2['username'];
+                                        $email = $rows2['useremail'];
+                                        //$phone = $rows2['userphone'];
+                                        //$adress = $rows2['useradress'];
+                                        $role = $rows2['userprivilege'];
+
+                                        //$image_name = $rows2['userpic'];
+
+                                        //display the value in our table
+                            ?>
+                                        <tr>
+                                            <td><?php echo $sn++; ?></td>
+                                            <td><?php echo $full_name; ?></td>
+                                            <td><?php echo $email; ?></td>
+
+
+                                            <td><?php echo $role; ?></td>
+
+
+                                            <td>
+                                                <a href="<?php echo SITEURL; ?>admin/users-changerole.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Role</a>
+                                            </td>
+                                        </tr>
+
+                            <?php
+                                    }
+                                } else {
+                                    //we do not have data in database
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <?php
+                include('includes/script.php');
+                ?>
