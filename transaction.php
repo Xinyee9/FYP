@@ -21,8 +21,7 @@ if (isset($_POST['btn-submit'])) {
 
     $query = "INSERT INTO trans (transaction_date, transaction_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
-    if($result)
-    {
+    if ($result) {
         header("Location: delivery.php");
     }
 
@@ -342,7 +341,7 @@ if (isset($_POST['btn-submit'])) {
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
 
-                        <!-- // $dt1 = date("Y-m-d");
+                    <!-- // $dt1 = date("Y-m-d");
                         // $dt2 = date("Y-m-d H:i:s");
 
                         // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";
