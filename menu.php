@@ -169,6 +169,7 @@ session_start();
 
         function select(selButton) {
             var foodinfo = selButton.value.split(",,");
+            // foodinfo[2] = parseFloat("food_price");
             // console.log(foodinfo);
             quantity = prompt("You have selected " + foodinfo[1] + ".\nHow many quantity you want?", 1);
             // console.log(isNaN(quantity));
@@ -182,7 +183,7 @@ session_start();
                 document.toSubmit.food_price.value = foodinfo[2];
                 document.toSubmit.food_id.value = foodinfo[0];
                 document.toSubmit.food_quantity.value = quantity;
-                document.toSubmit.subtotal.value = foodinfo[2]*quantity;
+                document.toSubmit.subtotal.value = parseFloat(foodinfo[2]) * parseFloat(quantity);
                 document.toSubmit.submit();
             }
 

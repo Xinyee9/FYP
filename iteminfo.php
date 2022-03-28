@@ -36,6 +36,7 @@ if (isset($_POST["food_id"])) {
         $result = mysqli_query($con, "INSERT INTO cart (cart_qty, subtotal, food_id, userid) VALUES ($food_quantity, $subtotal, '$food_id', $userid)");
         echo $userid;
         echo $_POST['food_id'];
+        echo $_POST['subtotal'];
         echo $_POST['food_quantity'];
 
         header("Location: cart.php");
