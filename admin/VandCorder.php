@@ -99,8 +99,9 @@ include('config/constants.php'); ?>
                     <div class="recentOrders">
                         <div class="cardHeader">                    
                             <h2>Order view</h2>
-                            <div class="">View All</div>   
+                            <a href ="../admin/orders.php"  class="btn-add ">Back </a> 
                         </div>
+                        <form action="" method="POST" >
                         <table >
                        
                             <tbody> 
@@ -122,7 +123,7 @@ include('config/constants.php'); ?>
                                 $name = $row['Full_Name'];
                                 $adress = $row['Trans_Address'];
                                 $tran_state = $row['Trans_State'];
-                                
+                                $status = $row['status'];
 
                                 }
                                 
@@ -136,14 +137,43 @@ include('config/constants.php'); ?>
                                     <p><b>State : </b> <?php echo $tran_state; ?> </p>
                                     
                                     <p><b>Status : </b>
-                                    <form action="VandCorder.php" method="POST" > 
+                                     
                                     <select name="status" >
-								        <option value="Yet to be delivered" >Yet to be delivered</option>
-								        <option value="Delivered" >Delivered</option>
-								        <option value="Cancelled by Admin" >Cancelled by Admin</option>
-								        <option value="Paused">Paused</option>								
+                                        <option value="" >--Select--</option>
+								        <option value="Yet to be delivered" 
+                                        <?php
+                                        if($row["status"] == 'Yet to be delivered')
+                                        {
+                                            echo "selected";
+                                        }
+                                        ?>
+                                        >Yet to be delivered</option>
+								        <option value="Delivered" 
+                                        <?php
+                                        if($row["status"] == 'Delivered')
+                                        {
+                                            echo "selected";
+                                        }
+                                        ?>
+                                        >Delivered</option>
+								        <option value="Cancelled by Admin"
+                                        <?php
+                                        if($row["status"] == 'Cancelled by Admin')
+                                        {
+                                            echo "selected";
+                                        }
+                                        ?> 
+                                        >Cancelled by Admin</option>
+								        <option value="Paused"
+                                        <?php
+                                        if($row["status"] == 'Paused')
+                                        {
+                                            echo "selected";
+                                        }
+                                        ?> 
+                                        >Paused</option>								
 								    </select></p>
-                                    </form>
+                                   
                                     </td>
                                 </tr>
                                 <?php
@@ -166,25 +196,30 @@ include('config/constants.php'); ?>
                                     
                                 </tr>
                                 <?php 
-                                $sql1 = "SELECT * FROM transaction_detail WHERE tran_id = $ID";
+                                $id = $row['userid']; 
+                                $sql1 = "SELECT * FROM cart WHERE userid = $id";
                                 $res1 = mysqli_query($conn, $sql1);
                                 //get the value based on query executed
                                 //$row1 = mysqli_fetch_assoc($res1);
+                                $sql4 = "SELECT * FROM carttotal WHERE userid = $id";
+                                $res4 = mysqli_query($conn, $sql4);
+                                $row4 = mysqli_fetch_assoc($res4);
                                 ?>
                                 <?php
                                 while($row1 = mysqli_fetch_assoc($res1))
                                 {
                                 $food_id = $row1['food_id'];
-                                $qty = $row1['trand_quantity'];
-                                $total = $row1['trand_total'];
-                                $subtotal = $row1['trand_subtotal'];
+                                $qty = $row1['cart_qty'];
+                                
+                                $total = $row4['total'];
+                                //$subtotal = $row4['trand_subtotal'];
 
 							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
                                 $res2 = mysqli_query($conn, $sql2);
                                 while($row2=mysqli_fetch_array($res2))
                                 {
 								    $food_name = $row2['food_name'];
-                                    $food_price = $row2['food_price'];
+                                    //$food_price = $row2['food_price'];
                                     $food_image = $row2 ['food_image'];
                                 ?>
                                 <tr>
@@ -222,19 +257,21 @@ include('config/constants.php'); ?>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
+                                        <p >Total: RM <?php echo number_format($total, 2); ?></p><br>
                                     </td>   
                                 </tr>
                                 <tr>
                                 <td>
                                 <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-                                <button type="submit" name="submit" value="Update" class ="btn-add">Update</button></div>
+                                <button type="submit" name="submit" value="Update" class ="btn-update">Update</button></div>
                                    </td>
                                 </tr>
+                                
                             </tbody>
                             
 </table>
-<?php
+</form>
+                                <?php
 
 //check whether the submit buttom is clicked or not
 if (isset($_POST['submit'])) {
@@ -242,25 +279,32 @@ if (isset($_POST['submit'])) {
     $ID = $_POST['ID'];
     $status = $_POST['status'];
     
-    //update the food in database
-    $sql5 = "UPDATE delivery SET
-    delivery_status = '$status'
-    WHERE delivery_id_id='$ID'
+    $sql5 = "UPDATE trans SET
+    status = '$status'
+    WHERE transaction_id ='$ID'
     ";
 
     //Execute the Query
-    $res4 = mysqli_query($conn, $sql4);
+    $res5 = mysqli_query($conn, $sql5);
 
-    if ($res4 == TRUE) {
+    if ($res5 == TRUE) {
         //Query Executed and food Update
-        $_SESSION['update'] = "<div class='success'>Updated Successfully.</div>";
+        //$_SESSION['update'] = "<div class='success'>Updated Successfully.</div>";
         //Redirect to manage food page
-        header('location:' . SITEURL . 'admin/orders.php');
+        //header('location:' . SITEURL . 'admin/orders.php');
+        echo "<script>
+        alert('Updated Successfully.');
+        window.location.href='./orders.php';
+        </script>";
     } else {
         //Faile to update food
-        $_SESSION['update'] = "<div class='error'>Failed to Updatded.</div>";
+        //$_SESSION['update'] = "<div class='error'>Failed to Updatded.</div>";
         //Redirect to manage food page
-        header('location:' . SITEURL . 'admin/orders.php');
+        //header('location:' . SITEURL . 'admin/orders.php');
+        echo "<script>
+        alert('Failed to Updatded.');
+        window.location.href='./orders.php';
+        </script>";
     }
 }
 
