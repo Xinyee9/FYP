@@ -688,7 +688,7 @@ hr{
             {
 				<?php
 						// $subtotal = $_POST["subtotal"];
-						// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id and userid = $userid";
+						// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
 						// $res = mysqli_query($con, $qry);
 						$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
 						$rlt = mysqli_query($con, $query);
