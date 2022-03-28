@@ -19,7 +19,7 @@
       animation: animate 20s linear infinite;
       background-size: 1000%;
       background-color: turquoise;
-      letter-spacing: 3px; 
+      letter-spacing: 3px;
     }
     
   .u-section-1 .u-sheet-1 {
