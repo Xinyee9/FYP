@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 01:04 PM
+-- Generation Time: Mar 28, 2022 at 01:08 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -20,6 +20,247 @@ SET time_zone = "+00:00";
 --
 -- Database: `aurora`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(4) UNSIGNED NOT NULL,
+  `admin_name` varchar(100) NOT NULL,
+  `admin_email` varchar(100) NOT NULL,
+  `admin_gender` varchar(10) NOT NULL,
+  `admin_phone` int(11) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `admin_profile_pic` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_gender`, `admin_phone`, `admin_password`, `admin_profile_pic`) VALUES
+(1, 'Ng Wee Woen', 'ngweewoen@gmail.com', 'female', 1112919518, 'ad57484016654da87125db86f4227ea3', 'Admin_116.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(4) NOT NULL,
+  `cart_qty` int(4) NOT NULL,
+  `subtotal` int(5) NOT NULL,
+  `food_id` int(4) NOT NULL,
+  `userid` int(5) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `cart_qty`, `subtotal`, `food_id`, `userid`) VALUES
+(31, 2, 0, 1, 1),
+(32, 2, 0, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carttotal`
+--
+
+CREATE TABLE `carttotal` (
+  `total_id` int(200) NOT NULL,
+  `total` float NOT NULL,
+  `userid` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carttotal`
+--
+
+INSERT INTO `carttotal` (`total_id`, `total`, `userid`) VALUES
+(1, 20, 1),
+(2, 20, 1),
+(3, 20, 1),
+(4, 20, 1),
+(5, 22, 1),
+(6, 22, 1),
+(7, 22, 1),
+(8, 22, 1),
+(9, 22, 1),
+(10, 22, 1),
+(11, 47, 1),
+(12, 47, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `category_id` int(4) UNSIGNED NOT NULL,
+  `cate_code` int(6) NOT NULL,
+  `cate_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `cate_code`, `cate_name`) VALUES
+(1, 2037, 'burger'),
+(2, 2038, 'pasta'),
+(3, 2039, 'chicken steak');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `conID` int(3) UNSIGNED ZEROFILL NOT NULL,
+  `conName` text NOT NULL,
+  `conEmail` text NOT NULL,
+  `conPhone` text DEFAULT NULL,
+  `conMessage` longtext NOT NULL,
+  `conDatetime` datetime NOT NULL,
+  `conStatus` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`conID`, `conName`, `conEmail`, `conPhone`, `conMessage`, `conDatetime`, `conStatus`) VALUES
+(001, 'Xinyee', 'xinyeee926@gmail.com', '0176339543', 'Your service is good!', '2022-03-08 01:53:47', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `delivery_id` int(4) NOT NULL,
+  `delivery_date` varchar(10) NOT NULL,
+  `delivery_status` varchar(255) NOT NULL,
+  `delivery_address` varchar(150) NOT NULL,
+  `delivery_state` varchar(255) NOT NULL,
+  `delivery_postcode` int(6) NOT NULL,
+  `tran_address` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food`
+--
+
+CREATE TABLE `food` (
+  `food_id` int(4) UNSIGNED NOT NULL,
+  `food_code` varchar(100) NOT NULL,
+  `food_name` varchar(100) NOT NULL,
+  `food_price` float NOT NULL,
+  `food_description` text NOT NULL,
+  `food_image` varchar(255) NOT NULL,
+  `food_stock` int(4) NOT NULL,
+  `food_status` varchar(100) NOT NULL,
+  `admin_id` int(4) UNSIGNED NOT NULL,
+  `cate_id` int(4) UNSIGNED NOT NULL,
+  `active` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`food_id`, `food_code`, `food_name`, `food_price`, `food_description`, `food_image`, `food_stock`, `food_status`, `admin_id`, `cate_id`, `active`) VALUES
+(1, 'food01', 'Blackpepper Chickenchop', 11, 'Marinated chicken grilled or pan-fried in a thick, strong black pepper sauce.', 'c1.jpeg', 500, 'available', 1, 3, 'Yes'),
+(2, 'food02', 'Creammy Rigatoni Vege', 12.5, 'It\'s the ideal mix of handmade vegetable sauce, smoked tomato, and rigatoni pasta, topped with grated cheese and fresh parsley.', 's1.jpg', 500, 'available', 1, 2, 'Yes'),
+(3, 'food03', 'Steamed Cheeseburger', 9.4, 'It is a steamed hamburger with cheese on top.', 'b1.jpg', 500, 'available', 1, 1, 'Yes'),
+(4, 'food04', 'Chickenchop with Mushroom', 10.2, 'Created with partly cooked boneless thigh and leg parts that have been dipped in batter. ', 'c2.jpg', 500, 'available', 1, 3, 'Yes'),
+(5, 'food05', 'Spaghetti Aglio e Olio', 11.6, 'The garlic imparts a rich, nutty taste to the oil, and the salty, starchy pasta boiling water converts it into a highly delicious sauce. ', 's2.jpg', 500, 'available', 1, 2, 'Yes'),
+(6, 'food06', 'Wild Salmon Burgers', 14, 'Made almost entirely with fresh salmon without added breadcrumbs or eggs.', 'b2.jpg', 500, 'available', 1, 1, 'Yes'),
+(7, 'food07', 'Honey Lemon Chicken Chop', 9.2, 'The meat is crispy and drenched in a delicious, sticky honey lemon sauce. The zest of fresh lemon adds so much flavour!', 'c4.jpg', 500, 'available', 1, 3, 'Yes'),
+(8, 'food08', 'Spaghetti Bolognese', 10, 'The Bolognese Sauce is rich and thick, with a wonderful depth of flavour.', 's3.jpg', 500, 'available', 1, 2, 'Yes'),
+(9, 'food09', 'Beef Burgers', 12, 'Packed with onions and herbs for more flavour, and ideal for topping with cheese, lettuce, and tomato.', 'b4.jpg', 500, 'available', 1, 1, 'Yes'),
+(10, 'food10', 'Chicken Parmigiana', 8, 'The sauce is too bland, or cheddar cheese is substituted for mozzarella.', 'c5.jpg', 500, 'available', 1, 3, 'Yes'),
+(11, 'food11', 'Dill Butter Shrimp Farfalle Pasta', 13.9, 'It is a creamy pasta with shrimp, peas, red pepper, and celery mixed in a dill-flavored mayonnaise dressing.', 's4.jpg', 500, 'available', 1, 2, 'Yes'),
+(12, 'food12', 'Spicy Elk Burger', 13, 'To bring out the taste of the meat, season it with simple seasonings such as salt, pepper, onion powder, and garlic powder.', 'b5.jpg', 500, 'available', 1, 1, 'Yes'),
+(13, 'food13', 'Seared Salmon Steak with Wasabi Lemon Vinaigrette', 13.9, 'Simply grilled salmon steak with wasabi lemon vinaigrette, haricots verts, and cress.', 'c6.jpg', 500, 'available', 1, 3, 'Yes'),
+(14, 'food14', 'Creammy Corn Gemelli', 12.2, 'A delectable sauce consisting of puréed fresh corn and fragrant sautéed onions.', 's5.jpg', 500, 'available', 1, 2, 'Yes'),
+(15, 'food15', 'Bison Burgers', 13.4, 'Seasoned with a variety of delectable spices such as onion, garlic, paprika, and parsley.', 'b6.jpg', 500, 'available', 1, 1, 'Yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trans`
+--
+
+CREATE TABLE `trans` (
+  `transaction_id` int(5) NOT NULL,
+  `transaction_date` date NOT NULL,
+  `transaction_time` time NOT NULL,
+  `Full_Name` varchar(50) NOT NULL,
+  `Trans_Address` varchar(150) NOT NULL,
+  `City` varchar(100) NOT NULL,
+  `Trans_State` varchar(255) NOT NULL,
+  `Zip` int(10) NOT NULL,
+  `userid` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trans`
+--
+
+INSERT INTO `trans` (`transaction_id`, `transaction_date`, `transaction_time`, `Full_Name`, `Trans_Address`, `City`, `Trans_State`, `Zip`, `userid`) VALUES
+(19, '2022-03-24', '04:28:55', 'Jayson', '(M.C.Office A-01-01) B-11-07, Ixora Apartment, Bukit Beruang, 75450 Melaka', 'Bukit Beruang', 'Melaka', 75450, 1),
+(20, '2022-03-28', '06:50:58', '', '', '', '', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `tran_id` int(4) NOT NULL,
+  `tran_date` date NOT NULL,
+  `tran_time` time NOT NULL,
+  `tran_name` varchar(50) NOT NULL,
+  `tran_email` varchar(30) NOT NULL,
+  `tran_card_expiry_year` int(4) NOT NULL,
+  `tran_address` varchar(150) NOT NULL,
+  `tran_city` varchar(100) NOT NULL,
+  `tran_card_name` varchar(30) NOT NULL,
+  `tran_state` varchar(255) NOT NULL,
+  `tran_zip` int(10) NOT NULL,
+  `tran_card_expiry_month` varchar(4) NOT NULL,
+  `tran_card_cvv` int(5) NOT NULL,
+  `userid` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction detail`
+--
+
+CREATE TABLE `transaction detail` (
+  `trand_id` int(4) NOT NULL,
+  `trand_shop_stock` int(4) NOT NULL,
+  `trand_total` float NOT NULL,
+  `trand_subtotal` varchar(63) NOT NULL,
+  `trand_quantity` int(4) NOT NULL,
+  `food_id` int(4) NOT NULL,
+  `tran_id` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,6 +298,66 @@ INSERT INTO `users` (`userid`, `username`, `userpassword`, `useremail`, `userpri
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`);
+
+--
+-- Indexes for table `carttotal`
+--
+ALTER TABLE `carttotal`
+  ADD PRIMARY KEY (`total_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`conID`);
+
+--
+-- Indexes for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`delivery_id`);
+
+--
+-- Indexes for table `food`
+--
+ALTER TABLE `food`
+  ADD PRIMARY KEY (`food_id`);
+
+--
+-- Indexes for table `trans`
+--
+ALTER TABLE `trans`
+  ADD PRIMARY KEY (`transaction_id`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`tran_id`);
+
+--
+-- Indexes for table `transaction detail`
+--
+ALTER TABLE `transaction detail`
+  ADD PRIMARY KEY (`trand_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -65,6 +366,60 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `carttotal`
+--
+ALTER TABLE `carttotal`
+  MODIFY `total_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `conID` int(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `delivery_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `food`
+--
+ALTER TABLE `food`
+  MODIFY `food_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `trans`
+--
+ALTER TABLE `trans`
+  MODIFY `transaction_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `tran_id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
