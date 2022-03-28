@@ -135,18 +135,30 @@
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
+		// $sqli = "SELECT * FROM `trans` WHERE userid = $userid";
+		// $result = mysqli_query($con, $sqli);
+		// while ($row = mysqli_fetch_assoc($result)) {
+		// 	echo '<p>Delivery Time &nbsp &nbsp &nbsp: '.$row["transaction_time"].'</p>
+		// 		<p>Delivery Date &nbsp &nbsp &nbsp: '.$row["transaction_date"].'</p>';
+		// }
+		// $delivery_id = $row["transaction_id"];
+		// $sql = "SELECT * from delivery WHERE userid = $userid";
+		$sql = "SELECT * FROM trans";
+		$rlt = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_assoc($rlt)) {
+			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["transaction_id"].'</span>
+				<p>Delivery Date &nbsp &nbsp &nbsp: '.$row["transaction_date"].'</p>
+				<span>Delivery Time &nbsp &nbsp &nbsp: '.$row["transaction_time"].'</span>
+				<p>Delivery Status &nbsp &nbsp: </p>
+				<p>Delivery Address : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
 
-		$sql = "SELECT * from delivery ORDER BY userid";
-		$result = mysqli_query($con, $sql);
-		while ($row = mysqli_fetch_assoc($result)) {
-			echo '<span>Delivery ID &nbsp &nbsp &nbsp &nbsp &nbsp: '.$row["delivery_id"].'</span>';
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
 		}
 		?>
-		<p>Delivery Time &nbsp &nbsp &nbsp: </p>
-		<p>Delivery Date &nbsp &nbsp &nbsp: </p>
-		<p>Delivery Status &nbsp &nbsp: </p>
-		<p>Delivery Address : <br><textarea name="address" placeholder="Please enter your dellivery address here" rows="5" cols="30"></textarea></p>
+		<!-- <p>Delivery Time &nbsp &nbsp &nbsp: </p>
+		<p>Delivery Date &nbsp &nbsp &nbsp: </p> -->
+		<!-- <p>Delivery Status &nbsp &nbsp: </p>
+		<p>Delivery Address : <br><textarea name="address" placeholder="Please enter your dellivery address here" rows="5" cols="30"></textarea></p> -->
 	</div>
 	<!-- <div class="container1">
 		<p>Why choose us?</p>
