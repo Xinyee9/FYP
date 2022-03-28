@@ -236,6 +236,10 @@ hr{
 		// else{
 		// 	$userid = 0;
 		// }
+		
+		// $qry = "INSERT INTO cart (subtotal) values ($subtotal)";
+		// $rlt = mysqli_query($con, $qry);
+		
 		$sql = "SELECT * FROM `cart` , food WHERE cart.food_id = food.food_id AND userid = $userid";
 		// echo $sql;
 		$result = mysqli_query($con, $sql);
@@ -257,7 +261,9 @@ hr{
 				<div class="btn"><span onclick="decrement_quantity('.$row["cart_id"].')"><u>-</u></span></div>
 			</div>
 			<div class="prices">
+				<form method="POST">
 				<div class="amount">RM '.$subtotal.'</div>
+				</form>
 				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
 			</div>
 	  		</div>';

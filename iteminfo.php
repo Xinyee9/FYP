@@ -18,7 +18,7 @@ if (isset($_POST["food_id"])) {
             </script>";
     } else {
 
-
+        $subtotal = $_POST["food_quantity"] * $_POST["food_price"];
         $food_id = $_POST["food_id"];
         $food_quantity = $_POST["food_quantity"];
 
@@ -26,7 +26,7 @@ if (isset($_POST["food_id"])) {
             $userid = $_SESSION['id'];
         }
 
-        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, food_id, userid) VALUES ($food_quantity, '$food_id', $userid)");
+        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, subtotal, food_id, userid) VALUES ($food_quantity, $subtotal, '$food_id', $userid)");
         echo $userid;
         echo $_POST['food_id'];
         echo $_POST['food_quantity'];
