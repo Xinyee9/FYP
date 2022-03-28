@@ -24,7 +24,7 @@
                                         $tran_id = $rows['transaction_id'];
                                         $tran_date = $rows['transaction_date'];
                                         $tran_time = $rows['transaction_time'];
-                                        $tran_state = $rows['Trans_State'];
+                                        $status = $rows['status'];
                                     //$tran_payment_method = $rows['tran_payment_method'];	
                                 ?>
                                 <tr>
@@ -33,7 +33,7 @@
                                     <p><b>Order No.</b> <?php echo $sn++; ?><p>
                                     <p><b>Date : </b> <?php echo $tran_date; ?><p>
                                     <p><b>Time :</b> <?php echo $tran_time;?></p>
-                                    <p><b>State : </b> <?php echo $tran_state; ?> </p>
+                                    <p><b>Status : </b> <?php echo $status; ?> </p>
                                     </td>
                                     <td>
                                         <a href="<?php echo SITEURL;?>admin/VandCorder.php?ID=<?php echo $tran_id; ?>" class="btn-update">View </a>

@@ -121,7 +121,6 @@ img{
                 }*/
                 ?> 
                 <span class="font-weight-bold">Username : <?php echo $full_name; ?></span>
-                <span>Contact : 0<?php echo $phone ?> </span>
                 <span>Email : <?php echo $email; ?></span>
             </div>
         </div>
