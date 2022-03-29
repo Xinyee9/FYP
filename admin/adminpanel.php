@@ -2,42 +2,70 @@
 
                 <div class="cardBox " style="grid-template-columns: repeat(4, 1fr);">
                     <div class="card">
+                        <?php
+                         $sql = "SELECT * FROM category";
+                         $res =mysqli_query($conn,$sql);
+                         $count = mysqli_num_rows($res); 
+                        ?>
                         <div>
-                            <div class="numbers">1024</div>
-                            <div class="cardName">Daily Views</div>
+                            <div class="numbers"><?php echo $count;?></div>
+                            <div class="cardName">Category</div>
                         </div>
                         <div class="iconBox">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="card">
+                        <?php
+                         $sql2 = "SELECT * FROM food WHERE active ='Yes'";
+                         $res2 =mysqli_query($conn,$sql2);
+                         $count2 = mysqli_num_rows($res2); 
+                        ?>
                         <div>
-                            <div class="numbers">80</div>
-                            <div class="cardName">Sales</div>
-                        </div>
-                        <div class="iconBox">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="numbers">208</div>
-                            <div class="cardName">Comments</div>
+                            <div class="numbers"><?php echo $count2;?></div>
+                            <div class="cardName">Food</div>
                         </div>
                         <div class="iconBox">
                             <i class="fa fa-comment" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="card">
+                        <?php
+                         $sql3 = "SELECT * FROM trans";
+                         $res3 =mysqli_query($conn,$sql3);
+                         $count3 = mysqli_num_rows($res3); 
+                        ?>
                         <div>
-                            <div class="numbers">$6,042</div>
-                            <div class="cardName">Earning</div>
+                            <div class="numbers"><?php echo $count3;?></div>
+                            <div class="cardName">Total Orders</div>
+                        </div>
+                        <div class="iconBox">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="card">
+                         <?php
+                         //create SQL Query to Get Total Revenue Generated
+                         //Aggregate Function in SQL
+                         $sql4 = "SELECT SUM(subtotal) AS Total FROM cart";
+                         //Execute the Query
+                         $res4 =mysqli_query($conn,$sql4);
+                         //get the value
+                         $row4=mysqli_fetch_assoc($res4);
+                         //get the total revenue
+                         $total_revenue = $row4['Total']
+                          
+                        ?>
+                        <div>
+                            <div class="numbers">RM<?php echo number_format($total_revenue,2)?></div>
+                            <div class="cardName">Revenue Generated</div>
                         </div>
                         <div class="iconBox">
                             <i class="fa fa-usd" aria-hidden="true"></i>
                         </div>
+                        </div>
                     </div>
-                </div>
+
 
                 <div class="details" style="padding-top: 0; grid-template-columns: 2fr 1fr;">
                     <div class="recentOrders">
