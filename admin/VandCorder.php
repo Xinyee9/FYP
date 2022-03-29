@@ -217,12 +217,13 @@ include('config/constants.php'); ?>
                                 <?php 
                                 $id = $row['userid']; 
                                 $sql1 = "SELECT * FROM cart WHERE userid = $id";
+                                $subtotal = 0;
                                 $res1 = mysqli_query($conn, $sql1);
                                 //get the value based on query executed
                                 //$row1 = mysqli_fetch_assoc($res1);
-                                $sql4 = "SELECT * FROM carttotal WHERE userid = $id";
-                                $res4 = mysqli_query($conn, $sql4);
-                                $row4 = mysqli_fetch_assoc($res4);
+                                //$sql4 = "SELECT * FROM carttotal WHERE userid = $id";
+                                //$res4 = mysqli_query($conn, $sql4);
+                                //$row4 = mysqli_fetch_assoc($res4);
                                 ?>
                                 <?php
                                 while($row1 = mysqli_fetch_assoc($res1))
@@ -231,14 +232,18 @@ include('config/constants.php'); ?>
                                 $qty = $row1['cart_qty']; 
                                 $total = $row1['subtotal'];
                                 // $subtotal = $row4['subtotal'];
-
+                                $subtotal += $row1['subtotal'];
+                                
 							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
                                 $res2 = mysqli_query($conn, $sql2);
+                                
                                 while($row2=mysqli_fetch_array($res2))
                                 {
+                                    
 								    $food_name = $row2['food_name'];
                                     //$food_price = $row2['food_price'];
                                     $food_image = $row2 ['food_image'];
+                                    
                                 ?>
                                 <tr>
                                     
@@ -275,7 +280,7 @@ include('config/constants.php'); ?>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <p >Total: RM <?php echo number_format($total, 2); ?></p><br>
+                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
                                     </td>   
                                 </tr>
                                 <tr>
@@ -298,7 +303,7 @@ if (isset($_POST['submit'])) {
     $status = $_POST['status'];
     
     $sql5 = "UPDATE trans SET
-    status = '$status'
+    delivery_status = '$status'
     WHERE transaction_id ='$ID'
     ";
 
