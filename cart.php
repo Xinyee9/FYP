@@ -690,8 +690,11 @@ hr{
 						// $subtotal = $_POST["subtotal"];
 						// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
 						// $res = mysqli_query($con, $qry);
+
+						// $total = $_POST['total'];
 						$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
 						$rlt = mysqli_query($con, $query);
+						// echo $total;
 				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.$total.'"))
 						{
 							window.location.href = "transaction.php";
@@ -703,7 +706,7 @@ hr{
 				?>
                 // alert("Do you want proceed to Check Out?");
 
-				// if (confirm("Do you want proceed to Check Out?\nYour total is RM<?php $total ?>"))
+				// if (confirm("Do you want proceed to Check Out?\nYour total is RM$total"))
 				// {
 				// 	window.location.href = "transaction.php";
 				// }

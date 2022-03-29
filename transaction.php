@@ -18,11 +18,16 @@ if (isset($_POST['btn-submit'])) {
     $date = date('Y-m-d');
     $time = date('h:i:sa');
     $timet = date('h:i:sa', strtotime('+30 minutes', strtotime($time)));
+    // $status = $_POST['status'];
 
+    // $qry = "UPDATE trans set delivery_status = 'Preparing' where userid = $userid";
+    // $rlt = mysqli_query($con, $qry);
 
-    $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
+    $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, delivery_status, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$status','$userid')";
     $result = mysqli_query($con, $query);
     if ($result) {
+        $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
+        $rlt = mysqli_query($con, $qry);
         header("Location: delivery.php");
     }
 
@@ -336,6 +341,8 @@ if (isset($_POST['btn-submit'])) {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- <form method="POST" name="status">echo 'Preparing'</form> -->
 
                     </div>
                     <label>

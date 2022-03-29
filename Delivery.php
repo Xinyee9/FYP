@@ -151,7 +151,7 @@
 				<p>Delivery Date          : '.$row["transaction_date"].'</p>
 				<p>Delivery Time          : '.$row["transaction_time"].'</p>
 				<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
-				<p>Delivery Status        : </p>
+				<p>Delivery Status        : '.$row["delivery_status"].'</p>
 				<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
 
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
