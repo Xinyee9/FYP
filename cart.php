@@ -262,7 +262,7 @@ hr{
 			</div>
 			<div class="prices">
 				<form method="POST">
-				<div class="amount" name="subtotal">RM '.$subtotal.'</div>
+				<div class="amount" name="subtotal">RM '.number_format($subtotal, 2).'</div>
 				</form>
 				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
 			</div>
@@ -276,7 +276,7 @@ hr{
 					  <div class="Subtotal">Total</div>
 				  </div>
 				  <form method="POST">
-				  <div class="total-amount" name="total">RM '.$total.'</div>
+				  <div class="total-amount" name="total">RM '.number_format($total, 2).'</div>
 				  </form>
 			  </div>';
 
@@ -692,10 +692,10 @@ hr{
 						// $res = mysqli_query($con, $qry);
 
 						// $total = $_POST['total'];
-						$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
-						$rlt = mysqli_query($con, $query);
+						// $query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
+						// $rlt = mysqli_query($con, $query);
 						// echo $total;
-				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.$total.'"))
+				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.number_format($total, 2).'"))
 						{
 							window.location.href = "transaction.php";
 						}

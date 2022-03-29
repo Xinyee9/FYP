@@ -130,11 +130,45 @@
 			<j class="fa fa-home"> HOME</j>
 		</button>
 	</div>
+	<!-- <form method="POST">
+		<?php
+			// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+			// 	$userid = $_SESSION['id'];
+			// }
+			// $sqli = "SELECT * FROM trans where userid = $userid";
+			// $r = mysqli_query($con, $sqli);
+			// if(isset($_POST['transaction_id'])){
+			// 	$transid = $_POST['transaction_id'];
+			// }
+		?>
+		</form> -->
 	<div class="status">
 		<?php
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
+			// $sqli = "SELECT transaction_id FROM trans where userid = $userid";
+			// $r = mysqli_query($con, "SELECT transaction_id FROM trans where userid = $userid");
+			// if($r && mysqli_num_rows($r)>0)
+			// {
+			// 	while($row = mysqli_fetch_assoc($r))
+			// 	{
+			// 		echo 'ID: '.$row["transaction_id"];
+			// 		retrieveData($row["transaction_id"]);
+			// 	}
+			// }
+			// function retrieveData($id){
+			// 	$result = mysqli_query($con,"SELECT * FROM trans WHERE id=".mysqli_real_escape_string($con,$id));
+			// 	if($result && mysqli_num_rows($result)==1){
+			// 		$row = mysqli_fetch_assoc($result);
+			// 		// echo $row;
+			// 	}
+			// }
+			// $transid = $_POST['transaction_id'];
+			// if(isset($_POST['transaction_id'])){
+			// 	$transid = $_POST['transaction_id'];
+			// }
+
 		// $sqli = "SELECT * FROM `trans` WHERE userid = $userid";
 		// $result = mysqli_query($con, $sqli);
 		// while ($row = mysqli_fetch_assoc($result)) {
@@ -143,7 +177,8 @@
 		// }
 		// $delivery_id = $row["transaction_id"];
 		// $sql = "SELECT * from delivery WHERE userid = $userid";
-		$sql = "SELECT * FROM trans WHERE userid = '$userid'";
+		// $sql = "SELECT * FROM trans ORDER BY userid = $userid DESC LIMIT 1";
+		$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
 		$rlt = mysqli_query($con, $sql);
 		// $edt = $row["transaction_time"] + 1800;
 		while ($row = mysqli_fetch_assoc($rlt)) {
