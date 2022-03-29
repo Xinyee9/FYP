@@ -42,6 +42,7 @@ session_start();
         <input type="hidden" name="food_price" value="">
         <input type="hidden" name="food_id" value="">
         <input type="hidden" name="food_quantity" value="" id="food_quantity">
+        <input type="hidden" name="subtotal" value="" id="subtotal">
     </form>
 
     <table id="food" align="center" cellpadding="15px" cellspacing="20px">
@@ -116,7 +117,7 @@ session_start();
                             <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
                             <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
                             <p>" . $row['food_description'] . "</p>
-                            <button class='button' value='" . $row["food_id"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
+                            <button class='button' value='" . $row["food_id"] . ",," . $row["food_name"] . ",," . $row["food_price"] . "'  onclick='select(this)'>SELECT</button>
                         </div>
                     </div>
             </td>";
@@ -168,6 +169,7 @@ session_start();
 
         function select(selButton) {
             var foodinfo = selButton.value.split(",,");
+            // foodinfo[2] = parseFloat("food_price");
             // console.log(foodinfo);
             quantity = prompt("You have selected " + foodinfo[1] + ".\nHow many quantity you want?", 1);
             // console.log(isNaN(quantity));
@@ -178,9 +180,10 @@ session_start();
             if (quantity != null && quantity != isNaN(quantity)) {
                 // $("#foodquantity").val(quantity);
                 // console.log($("#foodquantity").val());
-                document.toSubmit.food_price.value = quantity;
+                document.toSubmit.food_price.value = foodinfo[2];
                 document.toSubmit.food_id.value = foodinfo[0];
                 document.toSubmit.food_quantity.value = quantity;
+                document.toSubmit.subtotal.value = parseFloat(foodinfo[2]) * parseFloat(quantity);
                 document.toSubmit.submit();
             }
 

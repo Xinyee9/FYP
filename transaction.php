@@ -17,12 +17,17 @@ if (isset($_POST['btn-submit'])) {
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date('Y-m-d');
     $time = date('h:i:sa');
+    $timet = date('h:i:sa', strtotime('+30 minutes', strtotime($time)));
+    // $status = $_POST['status'];
 
+    // $qry = "UPDATE trans set delivery_status = 'Preparing' where userid = $userid";
+    // $rlt = mysqli_query($con, $qry);
 
-    $query = "INSERT INTO trans (transaction_date, transaction_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$fullname','$address','$city','$state','$zip','$userid')";
+    $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, delivery_status, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$status','$userid')";
     $result = mysqli_query($con, $query);
-    if($result)
-    {
+    if ($result) {
+        $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
+        $rlt = mysqli_query($con, $qry);
         header("Location: delivery.php");
     }
 
@@ -337,12 +342,14 @@ if (isset($_POST['btn-submit'])) {
                             </div>
                         </div>
 
+                        <!-- <form method="POST" name="status">echo 'Preparing'</form> -->
+
                     </div>
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
 
-                        <!-- // $dt1 = date("Y-m-d");
+                    <!-- // $dt1 = date("Y-m-d");
                         // $dt2 = date("Y-m-d H:i:s");
 
                         // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";

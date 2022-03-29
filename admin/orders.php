@@ -24,7 +24,7 @@
                                         $tran_id = $rows['transaction_id'];
                                         $tran_date = $rows['transaction_date'];
                                         $tran_time = $rows['transaction_time'];
-                                        $status = $rows['status'];
+                                        $status = $rows['delivery_status'];
                                     //$tran_payment_method = $rows['tran_payment_method'];	
                                 ?>
                                 <tr>

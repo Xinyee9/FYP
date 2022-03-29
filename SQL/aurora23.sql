@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 29, 2022 at 03:25 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- 主机： 127.0.0.1
+-- 生成日期： 2022-03-29 12:25:21
+-- 服务器版本： 10.4.22-MariaDB
+-- PHP 版本： 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `aurora`
+-- 数据库： `aurora`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- 表的结构 `admin`
 --
 
 CREATE TABLE `admin` (
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- 转存表中的数据 `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_gender`, `admin_phone`, `admin_password`, `admin_profile_pic`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_gender`, `a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- 表的结构 `cart`
 --
 
 CREATE TABLE `cart` (
@@ -59,17 +59,17 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cart`
+-- 转存表中的数据 `cart`
 --
 
 INSERT INTO `cart` (`cart_id`, `cart_qty`, `subtotal`, `food_id`, `userid`) VALUES
-(31, 2, 0, 1, 1),
-(32, 2, 0, 2, 1);
+(41, 1, 14, 6, 1),
+(42, 2, 22, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carttotal`
+-- 表的结构 `carttotal`
 --
 
 CREATE TABLE `carttotal` (
@@ -79,7 +79,7 @@ CREATE TABLE `carttotal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `carttotal`
+-- 转存表中的数据 `carttotal`
 --
 
 INSERT INTO `carttotal` (`total_id`, `total`, `userid`) VALUES
@@ -94,12 +94,83 @@ INSERT INTO `carttotal` (`total_id`, `total`, `userid`) VALUES
 (9, 22, 1),
 (10, 22, 1),
 (11, 47, 1),
-(12, 47, 1);
+(12, 47, 1),
+(13, 47, 1),
+(14, 25, 1),
+(15, 0, 1),
+(16, 140, 1),
+(17, 126, 1),
+(18, 112, 1),
+(19, 98, 1),
+(20, 84, 1),
+(21, 70, 1),
+(22, 56, 1),
+(23, 42, 1),
+(24, 28, 1),
+(25, 28, 1),
+(26, 28, 1),
+(27, 28, 1),
+(28, 28, 1),
+(29, 42, 1),
+(30, 56, 1),
+(31, 70, 1),
+(32, 84, 1),
+(33, 98, 1),
+(34, 112, 1),
+(35, 126, 1),
+(36, 140, 1),
+(37, 140, 1),
+(38, 140, 1),
+(39, 0, 1),
+(40, 70, 1),
+(41, 70, 1),
+(42, 0, 1),
+(43, 84, 1),
+(44, 84, 1),
+(45, 84, 1),
+(46, 0, 1),
+(47, 50, 1),
+(48, 59.4, 1),
+(49, 49.4, 1),
+(50, 39.4, 1),
+(51, 29.4, 1),
+(52, 19.4, 1),
+(53, 29.4, 1),
+(54, 29.4, 1),
+(55, 29.4, 1),
+(56, 51.4, 1),
+(57, 51.4, 1),
+(58, 31.4, 1),
+(59, 22, 1),
+(60, 0, 1),
+(61, 22, 1),
+(62, 36, 1),
+(63, 36, 1),
+(64, 14, 1),
+(65, 0, 1),
+(66, 14, 1),
+(67, 36, 1),
+(68, 36, 1),
+(69, 36, 1),
+(70, 36, 1),
+(71, 0, 1),
+(72, 36, 1),
+(73, 0, 1),
+(74, 36, 1),
+(75, 36, 1),
+(76, 36, 1),
+(77, 36, 1),
+(78, 36, 1),
+(79, 36, 1),
+(80, 36, 1),
+(81, 36, 1),
+(82, 36, 1),
+(83, 36, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- 表的结构 `category`
 --
 
 CREATE TABLE `category` (
@@ -109,7 +180,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- 转存表中的数据 `category`
 --
 
 INSERT INTO `category` (`category_id`, `cate_code`, `cate_name`) VALUES
@@ -120,7 +191,7 @@ INSERT INTO `category` (`category_id`, `cate_code`, `cate_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactus`
+-- 表的结构 `contactus`
 --
 
 CREATE TABLE `contactus` (
@@ -134,16 +205,32 @@ CREATE TABLE `contactus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `contactus`
+-- 转存表中的数据 `contactus`
 --
 
 INSERT INTO `contactus` (`conID`, `conName`, `conEmail`, `conPhone`, `conMessage`, `conDatetime`, `conStatus`) VALUES
-(001, 'Xinyee', 'xinyeee926@gmail.com', '0176339543', 'Your service is good!', '2022-03-08 01:53:47', 1);
+(001, 'Xinyee', 'xinyeee926@gmail.com', '0176339543', 'Your service is good!', '2022-03-08 01:53:47', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `food`
+-- 表的结构 `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `delivery_id` int(4) NOT NULL,
+  `delivery_date` varchar(10) NOT NULL,
+  `delivery_status` varchar(255) NOT NULL,
+  `delivery_address` varchar(150) NOT NULL,
+  `delivery_state` varchar(255) NOT NULL,
+  `delivery_postcode` int(6) NOT NULL,
+  `tran_address` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `food`
 --
 
 CREATE TABLE `food` (
@@ -161,7 +248,7 @@ CREATE TABLE `food` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `food`
+-- 转存表中的数据 `food`
 --
 
 INSERT INTO `food` (`food_id`, `food_code`, `food_name`, `food_price`, `food_description`, `food_image`, `food_stock`, `food_status`, `admin_id`, `cate_id`, `active`) VALUES
@@ -184,33 +271,73 @@ INSERT INTO `food` (`food_id`, `food_code`, `food_name`, `food_price`, `food_des
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trans`
+-- 表的结构 `trans`
 --
 
 CREATE TABLE `trans` (
   `transaction_id` int(5) NOT NULL,
   `transaction_date` date NOT NULL,
   `transaction_time` time NOT NULL,
+  `e_d_time` time NOT NULL,
   `Full_Name` varchar(50) NOT NULL,
   `Trans_Address` varchar(150) NOT NULL,
   `City` varchar(100) NOT NULL,
   `Trans_State` varchar(255) NOT NULL,
   `Zip` int(10) NOT NULL,
+  `delivery_status` varchar(200) NOT NULL,
   `userid` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `trans`
+-- 转存表中的数据 `trans`
 --
 
-INSERT INTO `trans` (`transaction_id`, `transaction_date`, `transaction_time`, `Full_Name`, `Trans_Address`, `City`, `Trans_State`, `Zip`, `userid`) VALUES
-(19, '2022-03-24', '04:28:55', 'Jayson', '(M.C.Office A-01-01) B-11-07, Ixora Apartment, Bukit Beruang, 75450 Melaka', 'Bukit Beruang', 'Melaka', 75450, 1),
-(20, '2022-03-28', '06:50:58', '', '', '', '', 0, 1);
+INSERT INTO `trans` (`transaction_id`, `transaction_date`, `transaction_time`, `e_d_time`, `Full_Name`, `Trans_Address`, `City`, `Trans_State`, `Zip`, `delivery_status`, `userid`) VALUES
+(32, '2022-03-29', '06:13:33', '06:43:33', 'Jayson', '(M.C.Office A-01-01) B-11-07, Ixora Apartment', 'Bukit Beruang', 'Melaka', 75450, 'Order Confirm', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- 表的结构 `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `tran_id` int(4) NOT NULL,
+  `tran_date` date NOT NULL,
+  `tran_time` time NOT NULL,
+  `tran_name` varchar(50) NOT NULL,
+  `tran_email` varchar(30) NOT NULL,
+  `tran_card_expiry_year` int(4) NOT NULL,
+  `tran_address` varchar(150) NOT NULL,
+  `tran_city` varchar(100) NOT NULL,
+  `tran_card_name` varchar(30) NOT NULL,
+  `tran_state` varchar(255) NOT NULL,
+  `tran_zip` int(10) NOT NULL,
+  `tran_card_expiry_month` varchar(4) NOT NULL,
+  `tran_card_cvv` int(5) NOT NULL,
+  `userid` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `transaction detail`
+--
+
+CREATE TABLE `transaction detail` (
+  `trand_id` int(4) NOT NULL,
+  `trand_shop_stock` int(4) NOT NULL,
+  `trand_total` float NOT NULL,
+  `trand_subtotal` varchar(63) NOT NULL,
+  `trand_quantity` int(4) NOT NULL,
+  `food_id` int(4) NOT NULL,
+  `tran_id` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `users`
 --
 
 CREATE TABLE `users` (
@@ -226,7 +353,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- 转存表中的数据 `users`
 --
 
 INSERT INTO `users` (`userid`, `username`, `userpassword`, `useremail`, `userprivilege`, `userfirstname`, `userlastname`, `block?`, `verify_token`) VALUES
@@ -239,105 +366,135 @@ INSERT INTO `users` (`userid`, `username`, `userpassword`, `useremail`, `userpri
 (00008, 'Chong Xin Yee', '456', 'xinyeeada@hotmail.com', 'admin', NULL, NULL, 0, '2dfd53f56fae8db5c1a16908e6b80398');
 
 --
--- Indexes for dumped tables
+-- 转储表的索引
 --
 
 --
--- Indexes for table `admin`
+-- 表的索引 `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `cart`
+-- 表的索引 `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`);
 
 --
--- Indexes for table `carttotal`
+-- 表的索引 `carttotal`
 --
 ALTER TABLE `carttotal`
   ADD PRIMARY KEY (`total_id`);
 
 --
--- Indexes for table `category`
+-- 表的索引 `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `contactus`
+-- 表的索引 `contactus`
 --
 ALTER TABLE `contactus`
   ADD PRIMARY KEY (`conID`);
 
 --
--- Indexes for table `food`
+-- 表的索引 `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`delivery_id`);
+
+--
+-- 表的索引 `food`
 --
 ALTER TABLE `food`
   ADD PRIMARY KEY (`food_id`);
 
 --
--- Indexes for table `trans`
+-- 表的索引 `trans`
 --
 ALTER TABLE `trans`
   ADD PRIMARY KEY (`transaction_id`);
 
 --
--- Indexes for table `users`
+-- 表的索引 `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`tran_id`);
+
+--
+-- 表的索引 `transaction detail`
+--
+ALTER TABLE `transaction detail`
+  ADD PRIMARY KEY (`trand_id`);
+
+--
+-- 表的索引 `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- 使用表AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- 使用表AUTO_INCREMENT `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `cart_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `carttotal`
+-- 使用表AUTO_INCREMENT `carttotal`
 --
 ALTER TABLE `carttotal`
-  MODIFY `total_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `total_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- AUTO_INCREMENT for table `category`
+-- 使用表AUTO_INCREMENT `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `contactus`
+-- 使用表AUTO_INCREMENT `contactus`
 --
 ALTER TABLE `contactus`
   MODIFY `conID` int(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `food`
+-- 使用表AUTO_INCREMENT `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `delivery_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用表AUTO_INCREMENT `food`
 --
 ALTER TABLE `food`
   MODIFY `food_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `trans`
+-- 使用表AUTO_INCREMENT `trans`
 --
 ALTER TABLE `trans`
-  MODIFY `transaction_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `transaction_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `users`
+-- 使用表AUTO_INCREMENT `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `tran_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用表AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
   MODIFY `userid` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;

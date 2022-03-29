@@ -18,17 +18,25 @@ if (isset($_POST["food_id"])) {
             </script>";
     } else {
 
+        // $subtotal = $_POST["food_quantity"] * $_POST["food_price"];
 
+        // $subtotal = $_POST["subtotal"];
+		// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id and userid = $userid";
+		// $res = mysqli_query($con, $qry);
+        // $food_price = $_POST["food_price"];
         $food_id = $_POST["food_id"];
         $food_quantity = $_POST["food_quantity"];
+        // $subtotal = $food_quantity * $food_price;
+        $subtotal = $_POST["subtotal"];
 
         if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
 
-        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, food_id, userid) VALUES ($food_quantity, '$food_id', $userid)");
+        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, subtotal, food_id, userid) VALUES ($food_quantity, $subtotal, '$food_id', $userid)");
         echo $userid;
         echo $_POST['food_id'];
+        echo $_POST['subtotal'];
         echo $_POST['food_quantity'];
 
         header("Location: cart.php");

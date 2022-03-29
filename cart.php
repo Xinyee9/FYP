@@ -236,6 +236,10 @@ hr{
 		// else{
 		// 	$userid = 0;
 		// }
+		
+		// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id";
+		// $rlt = mysqli_query($con, $qry);
+		
 		$sql = "SELECT * FROM `cart` , food WHERE cart.food_id = food.food_id AND userid = $userid";
 		// echo $sql;
 		$result = mysqli_query($con, $sql);
@@ -257,7 +261,9 @@ hr{
 				<div class="btn"><span onclick="decrement_quantity('.$row["cart_id"].')"><u>-</u></span></div>
 			</div>
 			<div class="prices">
-				<div class="amount">RM '.$subtotal.'</div>
+				<form method="POST">
+				<div class="amount" name="subtotal">RM '.$subtotal.'</div>
+				</form>
 				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
 			</div>
 	  		</div>';
@@ -681,8 +687,14 @@ hr{
             function btn()
             {
 				<?php
+						// $subtotal = $_POST["subtotal"];
+						// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
+						// $res = mysqli_query($con, $qry);
+
+						// $total = $_POST['total'];
 						$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
 						$rlt = mysqli_query($con, $query);
+						// echo $total;
 				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.$total.'"))
 						{
 							window.location.href = "transaction.php";
@@ -694,7 +706,7 @@ hr{
 				?>
                 // alert("Do you want proceed to Check Out?");
 
-				// if (confirm("Do you want proceed to Check Out?\nYour total is RM<?php $total ?>"))
+				// if (confirm("Do you want proceed to Check Out?\nYour total is RM$total"))
 				// {
 				// 	window.location.href = "transaction.php";
 				// }

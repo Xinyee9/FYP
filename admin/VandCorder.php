@@ -122,8 +122,10 @@ include('config/constants.php'); ?>
                                 $tran_time = $row['transaction_time'];
                                 $name = $row['Full_Name'];
                                 $adress = $row['Trans_Address'];
+                                $city = $row['City'];
+                                $zip = $row['Zip'];
                                 $tran_state = $row['Trans_State'];
-                                $status = $row['status'];
+                                $status = $row['delivery_status'];
 
                                 }
                                 
@@ -135,14 +137,31 @@ include('config/constants.php'); ?>
                                     <p><b>Date : </b><?php echo $tran_date ?><p>
                                     <p><b>Time :</b> <?php echo $tran_time;?></p>
                                     <p><b>State : </b> <?php echo $tran_state; ?> </p>
+                                    <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
                                     
-                                    <p><b>Status : </b>
+                                    <p><b>Change Status : </b>
                                      
                                     <select name="status" >
+                                        <?php
+                                        // $dstatus = $row["delivery_status"];
+                                        // $query = "UPDATE trans set delivery_status = $dstatus where transaction_id = $ID";
+                                        // $rlt = mysqli_query($conn, $query);
+                                        // if($row["delivery_status"] == "Yet to be delivered"){
+                                        //     // echo '<option value="Yet to be delivered">'
+                                        //     // if($dstatus = 'Yet to be delivered')
+                                        //     // {
+                                        //         echo "selected";
+                                        //     // }
+                                        // }
+                                        // if($row["delivery_status"] == 'Yet to be delivered')
+                                        // {
+                                        //     echo "selected";
+                                        // }
+                                        ?>
                                         <option value="" >--Select--</option>
 								        <option value="Yet to be delivered" 
                                         <?php
-                                        if($row["status"] == 'Yet to be delivered')
+                                        if($row["delivery_status"] == 'Yet to be delivered')
                                         {
                                             echo "selected";
                                         }
@@ -150,7 +169,7 @@ include('config/constants.php'); ?>
                                         >Yet to be delivered</option>
 								        <option value="Delivered" 
                                         <?php
-                                        if($row["status"] == 'Delivered')
+                                        if($row["delivery_status"] == 'Delivered')
                                         {
                                             echo "selected";
                                         }
@@ -158,20 +177,20 @@ include('config/constants.php'); ?>
                                         >Delivered</option>
 								        <option value="Cancelled by Admin"
                                         <?php
-                                        if($row["status"] == 'Cancelled by Admin')
+                                        if($row["delivery_status"] == 'Cancelled by Admin')
                                         {
                                             echo "selected";
                                         }
                                         ?> 
                                         >Cancelled by Admin</option>
-								        <option value="Paused"
+								        <option value="Preparing"
                                         <?php
-                                        if($row["status"] == 'Paused')
+                                        if($row["delivery_status"] == 'Preparing')
                                         {
                                             echo "selected";
                                         }
                                         ?> 
-                                        >Paused</option>								
+                                        >Preparing</option>								
 								    </select></p>
                                    
                                     </td>
@@ -190,7 +209,7 @@ include('config/constants.php'); ?>
                                 <tr>
                                     <td>
                                         <p><b>Name: </b><?php echo $name; ?></p><br>
-                                        <p><b>Address:</b><?php echo $adress; ?></p><br>
+                                        <p><b>Address:</b><?php echo $adress,', ',$city,', ',$zip,' ',$tran_state; ?></p><br>
                                         <p><b>Email:</b><?php echo $email; ?></p><br>
                                     </td>
                                     
@@ -198,29 +217,33 @@ include('config/constants.php'); ?>
                                 <?php 
                                 $id = $row['userid']; 
                                 $sql1 = "SELECT * FROM cart WHERE userid = $id";
+                                $subtotal = 0;
                                 $res1 = mysqli_query($conn, $sql1);
                                 //get the value based on query executed
                                 //$row1 = mysqli_fetch_assoc($res1);
-                                $sql4 = "SELECT * FROM carttotal WHERE userid = $id";
-                                $res4 = mysqli_query($conn, $sql4);
-                                $row4 = mysqli_fetch_assoc($res4);
+                                //$sql4 = "SELECT * FROM carttotal WHERE userid = $id";
+                                //$res4 = mysqli_query($conn, $sql4);
+                                //$row4 = mysqli_fetch_assoc($res4);
                                 ?>
                                 <?php
                                 while($row1 = mysqli_fetch_assoc($res1))
                                 {
                                 $food_id = $row1['food_id'];
-                                $qty = $row1['cart_qty'];
+                                $qty = $row1['cart_qty']; 
+                                $total = $row1['subtotal'];
+                                // $subtotal = $row4['subtotal'];
+                                $subtotal += $row1['subtotal'];
                                 
-                                $total = $row4['total'];
-                                //$subtotal = $row4['trand_subtotal'];
-
 							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
                                 $res2 = mysqli_query($conn, $sql2);
+                                
                                 while($row2=mysqli_fetch_array($res2))
                                 {
+                                    
 								    $food_name = $row2['food_name'];
                                     //$food_price = $row2['food_price'];
                                     $food_image = $row2 ['food_image'];
+                                    
                                 ?>
                                 <tr>
                                     
@@ -242,7 +265,7 @@ include('config/constants.php'); ?>
                                     ?> 
                                     </td>
                                     <td>
-                                    <p> <?php echo $qty ?> Pieces</p><br>
+                                    <p> <?php echo $qty ?> Quantity</p><br>
                                     </td>
                                     <td>
                                     <p>RM <?php echo number_format($total, 2); ?></p><br>
@@ -257,7 +280,7 @@ include('config/constants.php'); ?>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <p >Total: RM <?php echo number_format($total, 2); ?></p><br>
+                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
                                     </td>   
                                 </tr>
                                 <tr>
@@ -280,7 +303,7 @@ if (isset($_POST['submit'])) {
     $status = $_POST['status'];
     
     $sql5 = "UPDATE trans SET
-    status = '$status'
+    delivery_status = '$status'
     WHERE transaction_id ='$ID'
     ";
 
