@@ -228,9 +228,8 @@ include('config/constants.php'); ?>
                                 while($row1 = mysqli_fetch_assoc($res1))
                                 {
                                 $food_id = $row1['food_id'];
-                                $qty = $row1['cart_qty'];
-                                
-                                $total = $row4['total'];
+                                $qty = $row1['cart_qty']; 
+                                $total = $row1['subtotal'];
                                 // $subtotal = $row4['subtotal'];
 
 							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
