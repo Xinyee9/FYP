@@ -48,7 +48,7 @@
 
                             <?php
                                 //create 
-                                $sql="SELECT * FROM admin ";
+                                $sql="SELECT * FROM users WHERE userprivilege ='admin' ";
 
                                 $res = mysqli_query($conn, $sql);
 
@@ -57,8 +57,8 @@
                                 {
                                     while($row=mysqli_fetch_assoc($res))
                                     {
-                                        $ID=$row['admin_id'];
-                                        $name=$row['admin_name'];
+                                        $ID=$row['userid'];
+                                        $name=$row['username'];
 
                                         ?>
 

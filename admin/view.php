@@ -139,15 +139,15 @@ img{
                     <select name="admin" class="form-control">
                     <?php
                         //create 
-                        $sql = "SELECT * FROM ADMIN ";
+                        $sql = "SELECT * FROM users WHERE userprivilege ='admin' ";
 
                         $res = mysqli_query($conn, $sql);
 
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
-                                $ID = $row['admin_id'];
-                                $name = $row['admin_name'];
+                                $ID=$row['userid'];
+                                $name = $row['username'];
 
                                 //echo "<option value='$ID'>$name</option>";
                     ?>

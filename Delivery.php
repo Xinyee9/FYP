@@ -143,7 +143,7 @@
 		// }
 		// $delivery_id = $row["transaction_id"];
 		// $sql = "SELECT * from delivery WHERE userid = $userid";
-		$sql = "SELECT * FROM trans";
+		$sql = "SELECT * FROM trans WHERE userid = '$userid'";
 		$rlt = mysqli_query($con, $sql);
 		// $edt = $row["transaction_time"] + 1800;
 		while ($row = mysqli_fetch_assoc($rlt)) {
