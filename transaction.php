@@ -7,6 +7,24 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
     $userid = $_SESSION['id'];
 }
 
+$sql = "SELECT * FROM `cart` WHERE userid = $userid";
+$result = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_assoc($result))
+{
+    $cart_qty = $row["cart_qty"];
+    $price = $row["ori_price"];
+    $sub = $row["subtotal"];
+    $food_id = $row["food_id"];
+
+    $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, total, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
+    $r = mysqli_query($con, $insert);
+    if($r)
+    {
+        $dlt = "DELETE FROM cart WHERE userid = $userid";
+        $re = mysqli_query($con, $dlt);
+    }
+}
+
 if (isset($_POST['btn-submit'])) {
     // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
     // $message = $_POST['message'];
@@ -27,6 +45,16 @@ if (isset($_POST['btn-submit'])) {
     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
     if ($result) {
+        // $rl = "SELECT * FROM trans where userid = $userid";
+        // mysqli_query($con, $rl);
+
+        // $trans_id = $row["transaction_id"];
+
+        // if($rl)
+        // {
+        //     $rr = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
+        //     mysqli_query($con, $rr);
+        // }
         // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
         $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
         $rlt = mysqli_query($con, $qry);

@@ -147,6 +147,16 @@
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
+
+		$qq = "SELECT * FROM trans where userid = $userid";
+        $rl = mysqli_query($con, $qq);
+		// $trans_id = $_POST["transaction_id"];
+		while ($row = mysqli_fetch_assoc($rl))
+        {
+			$trans_id = $row["transaction_id"];
+            $que = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
+            $rltt = mysqli_query($con, $que);
+        }
 			// $sqli = "SELECT transaction_id FROM trans where userid = $userid";
 			// $r = mysqli_query($con, "SELECT transaction_id FROM trans where userid = $userid");
 			// if($r && mysqli_num_rows($r)>0)

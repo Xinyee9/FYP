@@ -27,18 +27,21 @@ if (isset($_POST["food_id"])) {
         $food_id = $_POST["food_id"];
         $food_quantity = $_POST["food_quantity"];
         // $subtotal = $food_quantity * $food_price;
+        $food_price = $_POST["food_price"];
         $subtotal = $_POST["subtotal"];
 
         if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
 
-        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, subtotal, food_id, userid) VALUES ($food_quantity, $subtotal, '$food_id', $userid)");
-        echo $userid;
-        echo $_POST['food_id'];
-        echo $_POST['subtotal'];
-        echo $_POST['food_quantity'];
-
+        $result = mysqli_query($con, "INSERT INTO cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ($food_quantity, $food_price, $subtotal, '$food_id', $userid)");
+        // echo $userid;
+        // echo $_POST['food_id'];
+        // echo $_POST['subtotal'];
+        // echo $_POST['food_quantity'];
+        // echo '<script>alert("The item has been added in to cart!")</script>';
+        // header("refresh: 0; url = menu.php");
+        // exit;
         header("Location: cart.php");
     }
 }
