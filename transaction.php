@@ -201,7 +201,7 @@ if (isset($_POST['btn-submit'])) {
             border-radius: 3px;
         }
 
-        input[type=text] {
+        input[type=text] , input[type=password]{
             width: 100%;
             margin-bottom: 20px;
             padding: 12px;
@@ -295,22 +295,22 @@ if (isset($_POST['btn-submit'])) {
                         <div class="col-50">
                             <h3>Delivery Address</h3>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Joshua">
+                            <input type="text" id="fname" name="firstname" required id= "firstname" title="Please Enter your name" placeholder="Joshua">
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                            <input type="text" id="email" name="email" placeholder="example@gmail.com">
+                            <input type="text" id="email" name="email" required id="email" placeholder="example@gmail.com">
                             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                            <input type="text" id="adr" name="address" placeholder="123 Jalan D1">
+                            <input type="text" id="adr" name="address" required id="address" placeholder="123 Jalan D1">
                             <label for="city"><i class="fa fa-institution"></i> City</label>
-                            <input type="text" id="city" name="city" placeholder="Ayer Keroh">
+                            <input type="text" id="city" name="city" required id="city" placeholder="Ayer Keroh">
 
                             <div class="row">
                                 <div class="col-50">
                                     <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="Malacca">
+                                    <input type="text" id="state" name="state" required id="state" placeholder="Malacca">
                                 </div>
                                 <div class="col-50">
                                     <label for="zip">Zip</label>
-                                    <input type="text" id="zip" name="zip" placeholder="75450">
+                                    <input type="text" id="zip" name="zip" required id="zip" placeholder="75450">
                                 </div>
                             </div>
                         </div>
@@ -325,19 +325,19 @@ if (isset($_POST['btn-submit'])) {
                                 <i class="fa fa-cc-discover" style="color:orange;"></i>
                             </div>
                             <label for="cname">Name on Card</label>
-                            <input type="text" id="cname" name="cardname" placeholder="JOSHUA">
+                            <input type="text" id="cname" name="cardname" required id="cardname" pattern="[A-Z].{3,}" title="Please enter capital letter for your card FULL NAME" placeholder="JOSHUA">
                             <label for="ccnum">Card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="1234123412341234">
+                            <input type="text" id="ccnum" name="cardnumber" required id="cardnumber" minlength="16" maxlength= "16" placeholder="1234123412341234">
                             <label for="expmonth">Exp Month</label>
-                            <input type="text" id="expmonth" name="expmonth" placeholder="April">
+                            <input type="text" id="expmonth" name="expmonth" required id="expmonth" pattern="[A-Za-z]{3,}" title="Please enter the correct month" placeholder="April">
                             <div class="row">
                                 <div class="col-50">
                                     <label for="expyear">Exp Year</label>
-                                    <input type="text" id="expyear" name="expyear" placeholder="2022">
+                                    <input type="text" id="expyear" name="expyear" required id="expyear" minlength="4" maxlength= "4" placeholder="2022">
                                 </div>
                                 <div class="col-50">
                                     <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="888">
+                                    <input type="password" id="cvv" name="cvv" required id="cvv" minlength="3" maxlength= "3" placeholder="888">
                                 </div>
                             </div>
                         </div>

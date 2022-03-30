@@ -27,7 +27,7 @@ body{
 	margin: 0;
 	padding: 0;
 	background: linear-gradient(to bottom right, #ffe3e3, #FAFCFF);
-	height: 100vh;
+	/* height: 100vh; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -35,7 +35,11 @@ body{
 
 .CartContainer{
 	width: 70%;
-	height: 90%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding-bottom: 25px;
+	/* height: 90%; */
+	/* height: 300px; */
 	background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 10px 20px #1687d933;
@@ -57,14 +61,14 @@ body{
 	color: #2F3841;
 }
 
-.Action{
+/* .Action{
 	font-size: 14px;
 	font-family: 'Open Sans';
 	font-weight: 600;
 	color: #E44C4C;
 	cursor: pointer;
 	border-bottom: 1px solid #E44C4C;
-}
+} */
 
 .Cart-Items{
 	margin: auto;
@@ -75,8 +79,10 @@ body{
 	align-items: center;
 }
 .image-box{
-	width: 15%;
-	text-align: center;
+	/* width: 15%; */
+	/* width: 100px;
+	height: 100px; */
+	/* text-align: center; */
 }
 .about{
 	height: 100%;
@@ -84,11 +90,10 @@ body{
 }
 .title{
 	padding-top: 10px;
-	line-height: 10px;
+	line-height: 30px;
 	font-size: 32px;
-	/* font-size: 150%; */
 	font-family: 'Open Sans';
-	font-weight: 800;
+	/* font-weight: 800; */
 	color: #202020;
 }
 .subtitle{
@@ -179,13 +184,13 @@ hr{
 	font-weight: 700;
 	color: #202020;
 }
-.items{
+/* .items{
 	font-size: 16px;
 	font-family: 'Open Sans';
 	font-weight: 500;
 	color: #909090;
 	line-height: 10px;
-}
+} */
 .total-amount{
 	font-size: 36px;
 	font-family: 'Open Sans';
@@ -194,6 +199,7 @@ hr{
 }
 .button{
 	margin-top: 10px;
+	/* padding-bottom: 25px; */
 	width: 100%;
 	height: 40px;
 	border: none;
@@ -205,6 +211,45 @@ hr{
 	font-weight: 600;
 	color: #202020;
 }
+a {
+  text-decoration: blue;
+  font-size: 45px;
+  display: inline-block;
+  /* margin-left: 50px; */
+  /* float: left; */
+  padding: 10px 16px 10px 10px;
+}
+
+a:hover {
+  background-color: #99e6ff;
+  color: black;
+}
+
+.previous {
+  background-color: #99e6ff;
+  color: black;
+}
+/* .j {
+  text-decoration: blue;
+  font-size: 45px;
+  display: inline-block;
+  padding: 10px 16px 10px 10px;
+}
+.j:hover {
+  background-color: #99e6ff;
+  color: black;
+}
+.previous {
+  background-color: #99e6ff;
+  color: black;
+} */
+/* .Container{
+	width: 70%;
+	height: 90%;
+	background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px #1687d933;
+} */
 </style>
 
 <html>
@@ -215,12 +260,13 @@ hr{
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<!-- <j href="index.php" class="previous round">&#8249;</j> -->
+<a href="menu.php" class="previous round">&#8249;</a>
+
    <div class="CartContainer">
    	   <div class="Header">
    	   	<h3 class="Heading">Cart</h3>
    	   	<!-- <h5 class="Action">Remove all</h5> -->
-   	   </div>
+   		</div>
 
 	<?php
 	$count = 0;
@@ -245,40 +291,108 @@ hr{
 		$result = mysqli_query($con, $sql);
 		$total = 0;
 		while ($row = mysqli_fetch_assoc($result)) {
+			$cart_qty = $row['cart_qty'];
+			$cart_id = $row['cart_id'];
+			// echo '<script>
+			// console.log('.$cart_qty.');
+			// console.log('.$cart_id.');
+			// </script>';
+			if($cart_qty < 1)
+			{
+				?>
+				<script>
+					// var cart_id = document.getElementById($cart_id ?>);
+					// var cart_id = $(this).attr("cart_id");
+					var cart_id = "<?php echo "$cart_id" ?>";
+					// alert(cart_id);
+					// remove(cart_id);
+					$.ajax({
+							method: "POST",
+							url: "cartremove.php",
+							data: {cart_id: cart_id},
+						success: (response) =>
+						{
+							console.log(response);
+							// console.log(cart_id);
+							location.reload();
+						}
+					})
+					alert("The item has been removed!");
+				</script>
+				<!-- <script>
+				alert("Welcome to Geeks for Geeks")
+				</script> -->
+				<!-- // echo '<script>function remove(cart_id) {
+				// 	$.ajax({
+				// 			method: "POST",
+				// 			url: "cartremove.php",
+				// 			data: {cart_id: cart_id},
+				// 		success: (response) =>
+				// 		{
+				// 			console.log(response);
+				// 			location.reload();
+				// 		}
+				// 	});
+		
+				// }</script>';
+				// </script>'; -->
+				<?php
+			}
 			// echo '<input type="hidden" id="cart_id" value="'.$row["cart_id"].'">';
 			$subtotal = $row['food_price'] * $row['cart_qty'];
 			$total += $subtotal;
 			echo '<div class="Cart-Items">
-			<div class="image-box">
-				<img src="Food/'.$row["food_image"].'" style={{ height="120px" }} />
-			</div>
-			<div class="about">
-				<h4 class="title">'.$row["food_name"].'</h4>
-			</div>
-			<div class="counter">
-				<div class="btn"><span onclick="increment_quantity('.$row["cart_id"].')"><u>+</u></span></div>
-				<div class="count">'.$row["cart_qty"].'</div>
-				<div class="btn"><span onclick="decrement_quantity('.$row["cart_id"].')"><u>-</u></span></div>
-			</div>
-			<div class="prices">
-				<form method="POST">
-				<div class="amount" name="subtotal">RM '.number_format($subtotal, 2).'</div>
-				</form>
-				<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
-			</div>
-	  		</div>';
+					<div class="image-box">
+						<img src="Food/'.$row["food_image"].'" style={{ height="180px" width="180px"}} />
+					</div>
+					<div class="about">
+						<h4 class="title">'.$row["food_name"].'</h4>
+					</div>
+					<div class="counter">
+						<div class="btn"><span onclick="increment_quantity('.$row["cart_id"].')"><u>+</u></span></div>
+						<div class="count" name="qty">'.$row["cart_qty"].'</div>
+						<div class="btn"><span onclick="decrement_quantity('.$row["cart_id"].')"><u>-</u></span></div>
+					</div>
+					<div class="prices">
+
+						<div class="amount" name="subtotal">RM '.number_format($subtotal, 2).'</div>
+
+						<div class="remove"><span onclick="remove('.$row["cart_id"].')"><u>Remove</u></span></div>
+					</div>
+	  			</div>';
 		}
 
 		echo '<hr> 
 			  <div class="checkout">
-			  <div class="total">
-				  <div>
-					  <div class="Subtotal">Total</div>
-				  </div>
-				  <form method="POST">
-				  <div class="total-amount" name="total">RM '.number_format($total, 2).'</div>
-				  </form>
-			  </div>';
+			  	<div class="total">
+					<div class="Subtotal">Total</div>
+
+				  	<div class="total-amount" name="total">RM '.number_format($total, 2).'</div>
+
+			  	</div>';
+
+		// $r = mysqli_query($con, "SELECT * FROM `cart` where userid = $userid");
+		// if($r)
+		// {
+		// 	if($cart_qty == 0)
+		// 	{
+		// 		echo '<script>
+		// 		function remove(cart_id) {
+		// 			$.ajax({
+		// 					method: "POST",
+		// 					url: "cartremove.php",
+		// 					data: {cart_id: cart_id},
+		// 				success: (response) =>
+		// 				{
+		// 					console.log(response);
+		// 					location.reload();
+		// 				}
+		// 			});
+		
+		// 		}
+		// 		</script>';
+		// 	}
+		// }
 
 			//   <form method="post" action="">
 			//   <select name="quantity" class="quantity" onclick="editquantity('.$row["cart_qty"].')">
@@ -682,11 +796,29 @@ hr{
             }
         </script> -->
    	 <!-- <button class="button"><a href="transaction.php">Check Out</button></div> -->
+<!-- </div> -->
+	<?php
+		// echo '<div class="Container">
+		// 		<hr> 
+		// 		<div class="checkout">
+		// 			<div class="total">
+		// 				<div class="Subtotal">Total</div>
+
+		// 				<div class="total-amount" name="total">RM '.number_format($total, 2).'</div>
+
+		// 			</div>
+		// 		</div>
+		// 		<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
+		// 	</div>';
+	?>
 		<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
 		<script>
             function btn()
             {
 				<?php
+						// $qry = "INSERT trans set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
+						// $res = mysqli_query($con, $qry);
+
 						// $subtotal = $_POST["subtotal"];
 						// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
 						// $res = mysqli_query($con, $qry);

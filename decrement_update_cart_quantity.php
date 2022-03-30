@@ -9,6 +9,27 @@
         $cart_id = $_POST["cart_id"];
         {
             mysqli_query($con, "UPDATE cart SET cart_qty = cart_qty - 1 WHERE cart_id = $cart_id;");
+            // if($result)
+            // {
+            //     if($cart_qty == 0)
+            //     {
+            //         echo '<script>
+            //         function remove(cart_id) {
+            //         $.ajax({
+            //                 method: "POST",
+            //                 url: "cartremove.php",
+            //                 data: {cart_id: cart_id},
+            //             success: (response) =>
+            //             {
+            //                 console.log(response);
+            //                 location.reload();
+            //             }
+            //         });
+        
+            //     }
+            //     </script>';
+            //     }
+            // }
         }
     }
 ?>
