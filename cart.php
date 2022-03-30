@@ -219,37 +219,15 @@ a {
   /* float: left; */
   padding: 10px 16px 10px 10px;
 }
-
 a:hover {
   background-color: #99e6ff;
   color: black;
 }
+.previous {
+  background-color: #99e6ff;
+  color: black;
+}
 
-.previous {
-  background-color: #99e6ff;
-  color: black;
-}
-/* .j {
-  text-decoration: blue;
-  font-size: 45px;
-  display: inline-block;
-  padding: 10px 16px 10px 10px;
-}
-.j:hover {
-  background-color: #99e6ff;
-  color: black;
-}
-.previous {
-  background-color: #99e6ff;
-  color: black;
-} */
-/* .Container{
-	width: 70%;
-	height: 90%;
-	background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px #1687d933;
-} */
 </style>
 
 <html>
@@ -269,7 +247,7 @@ a:hover {
    		</div>
 
 	<?php
-	$count = 0;
+		$count = 0;
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
             $userid = $_SESSION['id'];
         }
@@ -290,22 +268,16 @@ a:hover {
 		// echo $sql;
 		$result = mysqli_query($con, $sql);
 		$total = 0;
-		while ($row = mysqli_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result))
+		{
 			$cart_qty = $row['cart_qty'];
 			$cart_id = $row['cart_id'];
-			// echo '<script>
-			// console.log('.$cart_qty.');
-			// console.log('.$cart_id.');
-			// </script>';
+
 			if($cart_qty < 1)
 			{
 				?>
 				<script>
-					// var cart_id = document.getElementById($cart_id ?>);
-					// var cart_id = $(this).attr("cart_id");
 					var cart_id = "<?php echo "$cart_id" ?>";
-					// alert(cart_id);
-					// remove(cart_id);
 					$.ajax({
 							method: "POST",
 							url: "cartremove.php",
@@ -313,29 +285,12 @@ a:hover {
 						success: (response) =>
 						{
 							console.log(response);
-							// console.log(cart_id);
 							location.reload();
 						}
 					})
 					alert("The item has been removed!");
 				</script>
-				<!-- <script>
-				alert("Welcome to Geeks for Geeks")
-				</script> -->
-				<!-- // echo '<script>function remove(cart_id) {
-				// 	$.ajax({
-				// 			method: "POST",
-				// 			url: "cartremove.php",
-				// 			data: {cart_id: cart_id},
-				// 		success: (response) =>
-				// 		{
-				// 			console.log(response);
-				// 			location.reload();
-				// 		}
-				// 	});
-		
-				// }</script>';
-				// </script>'; -->
+				
 				<?php
 			}
 			// echo '<input type="hidden" id="cart_id" value="'.$row["cart_id"].'">';
@@ -371,90 +326,6 @@ a:hover {
 
 			  	</div>';
 
-		// $r = mysqli_query($con, "SELECT * FROM `cart` where userid = $userid");
-		// if($r)
-		// {
-		// 	if($cart_qty == 0)
-		// 	{
-		// 		echo '<script>
-		// 		function remove(cart_id) {
-		// 			$.ajax({
-		// 					method: "POST",
-		// 					url: "cartremove.php",
-		// 					data: {cart_id: cart_id},
-		// 				success: (response) =>
-		// 				{
-		// 					console.log(response);
-		// 					location.reload();
-		// 				}
-		// 			});
-		
-		// 		}
-		// 		</script>';
-		// 	}
-		// }
-
-			//   <form method="post" action="">
-			//   <select name="quantity" class="quantity" onclick="editquantity('.$row["cart_qty"].')">
-			// 	  <option if('.$row["cart_qty"].' == 1) value="1">1</option>
-			// 	  <option if('.$row["cart_qty"].' == 2) value="2">2</option>
-			// 	  <option if('.$row["cart_qty"].' == 3) value="3">3</option>
-			// 	  <option if('.$row["cart_qty"].' == 4) value="4">4</option>
-			// 	  <option if('.$row["cart_qty"].' == 5) value="5">5</option>
-			//   </select>
-			//   </form>
-
-			// <td>
-            //     <div class="qty">                                                         
-            //         <button class="btn-minus" id="minus" onclick="ButtonMinus('.$count.')"><i class="fa fa-minus"></i></button>
-            //         <input type="text" disabled id="quantity_'.$count++.'" value="'.$row["cart_qty"].'" onchange="GetValue('.$row["cart_id"].')"">
-            //         <button class="btn-plus" onclick="ButtonPlus('.$count.')"><i class="fa fa-plus"></i></button>                                                                
-            //     </div>
-            // </td>
-
-			// <div class="counter">
-			// 	<div class="btn"><span onclick="increment_quantity('.$row["cart_qty"].')"><u>+</u></span></div>
-			// 	<div class="count">'.$row["cart_qty"].'</div>
-			// 	<div class="btn"><span onclick="decrement_quantity('.$row["cart_qty"].')"><u>-</u></span></div>
-			// </div>
-
-		// $result = mysqli_query($con, $sql);
-		// $rlt = mysqli_query($con, $qwe);
-
-   	   	// echo "<div class='Cart-Items'></div>
-   	   	//   <div class='about'>
-   	   	//   	<h1 class='title'>".$_POST['food_name']."</h1>
-   	   	//   </div>
-   	   	//   <div class='counter'>
-   	   	//   	<div class='btn'>+</div>
-   	   	//   	<div class='count'>".$_POST['food_quantity']."</div>
-   	   	//   	<div class='btn'>-</div>
-   	   	//   </div>
-   	   	//   <div class='prices'>
-   	   	//   	<div class='amount'>RM</div>
-   	   	//   	<div class='remove'><u>Remove</u></div>
-		// 	<hr> 
-   	 	// 	<div class='checkout'>
-		// 		<div class='total'>
-		// 			<div>";
-		// 				while ($row = mysqli_fetch_assoc($result)) {
-		// 					echo "<span class='price'>RM ". $row['food_price'] . "</span>";
-		// 					$total = $row['food_price'] * $foodqty;
-		// 					echo "<div class='Subtotal'><p>Total <span class='price' style='color:black'><b>RM ". $total ."</b></span></p></div>";
-		// 				}
-		// 				// <!-- <div class='items'>2 foods</div> -->
-		// 			echo"</div>
-		// 			<div class='total-amount'>RM </div>
-		// 		</div>
-		// 	</div>
-   	  	// </div>
-		// ";
-		// if (isset($_POST['btn-submit'])) {
-		// 	// $total = $_POST['total'];
-
-		// 	$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
-		// 	$rlt = mysqli_query($con, $query);
-		// }
 	?>
 
 	<script>
@@ -485,266 +356,9 @@ a:hover {
             });
 
 		}
-		// function ButtonMinus(count)
-        //     {               
-        //         var num;
-        //         var quantity = [];
-        //         for(var i = 0; i < cartItemNumber; i++)
-        //         {
-        //             quantity[i] = $("#quantity_" + i).val(); 
-                                                       
-        //         }  
-        //         minusQuantity = quantity[count] - 1;
-        //         $("#minus").click(function(){
-        //             if(minusQuantity == 0)
-        //             {
-        //                 $("#quantity_" + count).val(1);
-        //             }
-        //         });
-                
-        //         // if(minusQuantity == 0)
-        //         // {    
-        //         //     num = count;
-        //         // }  
-                
-
-        //         if(minusQuantity == 0)
-        //         {
-        //             var cartid = [];
-        //             cartid = getCartID();                    
-        //             window.alert("Item quantity cannot be 0!");
-        //             // console.log(num);
-                   
-        //             // var confirm = window.confirm("Are you sure you want to remove the item?");
-        //             // if(confirm == true)
-        //             // {
-        //             //     removeFromCart(cartid[count]);
-        //             // }
-        //             // else
-        //             // {
-        //             //     //do nothing
-        //             //     if(minusQuantity == 0)
-        //             //     {
-        //             //         $("#quantity_" + count).val('1');
-        //             //     }
-        //             // }
-                    
-        //         }
-        //         else
-        //         {
-        //             quantity[count] = minusQuantity;
-                    
-        //             PostQuantity(quantity);
-        //         }             
-        //     }
-
-        //     function ButtonPlus(count)
-        //     {
-        //         count = count - 1;
-        //         var quantity = [];
-        //         for(var i = 0; i < cartItemNumber; i++)
-        //         {
-        //             quantity[i] = $("#quantity_" + i).val();
-        //         }     
-                               
-        //         addQuantity = parseInt(quantity[count]) + parseInt("1");
-
-        //         quantity[count] = addQuantity;                                             
-                                
-        //         PostQuantity(quantity);
-        //     }
-
-        //     function GetValue(cartid)
-        //     {
-        //         var quantity = [];
-        //         for(var i = 0; i < cartItemNumber; i++)
-        //         {
-        //             quantity[i] = $("#quantity_" + i).val();
-        //         }                               
-                
-        //         PostQuantity(quantity);
-        //     }
-
-        //     function PostQuantity(quantity)
-        //     {
-        //         allquantity = quantity;
-        //     }
-
-        //     function getCartID()
-        //     {
-        //         var cartID = [];
-        //         for(var i = 0; i < cartItemNumber; i++)
-        //         {
-        //             cartID[i] = $("#cartid_" + i).val();  
-        //         }
-
-        //         return cartID;
-        //     }
-
-        //     function updateCart()
-        //     {
-        //         var storageids = [];
-        //         var cartID = [];
-                
-        //         storageids = storageSelected();
-        //         cartID = getCartID();
-
-        //         if(cartItemNumber == 0)
-        //         {
-        //             alert("No item to update!");
-        //         }else{
-        //             $.ajax({
-        //             method: "POST",
-        //             url: "update_cart_quantity.php",
-        //             data: {quantity: allquantity, updateCartID: cartID},
-        //             success: (response) =>
-        //             {                 
-        //                 var results = response; 
-        //                 if(results == "Stock Not Available")
-		// 				{
-		// 					window.alert("Not Enough Stock. Maximum quantity applied.");
-		// 					window.location.href = "cart.php";
-		// 				}
-		// 				else
-		// 				{
-		// 					window.alert("Success! Cart updated.");
-		// 					window.location.href = "cart.php";
-		// 				}
-        //             }
-        //             });
-        //         }
-
-                
-        //     }
-
-		// function increment_quantity(cart_qty)
-		// {
-		// 	var inputQuantityElement = "";
-		// 	console.log(inputQuantityElement);
-
-		// 	// var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
-		// 	// console.log(newQuantity);
-		// 	// save_to_db(cart_qty);
-		// }
-
-		// function decrement_quantity(cart_qty)
-		// {
-		// 	var inputQuantityElement = $(cart_qty);
-
-		// 	if($(inputQuantityElement).val() > 1) 
-		// 	{
-		// 		var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
-		// 		save_to_db(cart_qty);
-		// 	}
-		// }
-
-		// function save_to_db(cart_qty)
-		// {
-		// 	var inputQuantityElement = $(cart_qty);
-
-		// 	$.ajax({
-		// 		method: "POST",
-		// 		url : "update_cart_quantity.php",
-		// 		data : {cart_id: cart_id},
-		// 		success : (response) =>
-		// 		{
-		// 			$(inputQuantityElement).val(cart_qty);
-		// 			console.log(response);
-		// 			location.reload();
-		// 		}
-		// 	});
-		// }
-
-		// function editquantity(cart_qty) {
-		// 	$.ajax({
-        //             method: "POST",
-        //             url: "update_cart_quantity.php",
-        //             data: {cart_qty: cart_qty},
-        //         success: (response) =>
-        //         {
-		// 			console.log(response);
-		// 			// location.reload();
-        //         }
-        //     });
-
-		// }
 	</script>
 
 	<script>
-		// function increment_quantity(count)
-        //     {
-        //         count = count - 1;
-        //         var quantity = [];
-        //         for(var i = 0; i < cart_qty; i++)
-        //         {
-        //             quantity[i] = $("#quantity_" + i).val();
-        //         }     
-                               
-        //         addQuantity = parseInt(quantity[count]) + parseInt("1");
-
-        //         quantity[count] = addQuantity;                                             
-                                
-        //         PostQuantity(quantity);
-        //     }
-
-		// function decrement_quantity(count)
-        //     {               
-        //         var num;
-        //         var quantity = [];
-        //         for(var i = 0; i < cart_qty; i++)
-        //         {
-        //             quantity[i] = $("#quantity_" + i).val(); 
-                                                       
-        //         }  
-        //         minusQuantity = quantity[count] - 1;
-        //         $("#minus").click(function(){
-        //             if(minusQuantity == 0)
-        //             {
-        //                 $("#quantity_" + count).val(1);
-        //             }
-        //         });
-                
-        //         // if(minusQuantity == 0)
-        //         // {    
-        //         //     num = count;
-        //         // }  
-                
-
-        //         if(minusQuantity == 0)
-        //         {
-        //             var cartid = [];
-        //             cartid = getCartID();                    
-        //             window.alert("Item quantity cannot be 0!");
-        //             // console.log(num);
-                   
-        //             // var confirm = window.confirm("Are you sure you want to remove the item?");
-        //             // if(confirm == true)
-        //             // {
-        //             //     removeFromCart(cartid[count]);
-        //             // }
-        //             // else
-        //             // {
-        //             //     //do nothing
-        //             //     if(minusQuantity == 0)
-        //             //     {
-        //             //         $("#quantity_" + count).val('1');
-        //             //     }
-        //             // }
-                    
-        //         }
-        //         else
-        //         {
-        //             quantity[count] = minusQuantity;
-                    
-        //             PostQuantity(quantity);
-        //         }             
-        //     }
-
-		// 	function PostQuantity(quantity)
-        //     {
-        //         allquantity = quantity;
-        //     }
-
 		function remove(cart_id) {
 			$.ajax({
                     method: "POST",
@@ -762,71 +376,23 @@ a:hover {
 
 		}
 	</script>
-   	<!-- //    <div class="Cart-Items pad">
-   	//    	  <div class="image-box">
-   	//    	  	<img src="" style={{ height="120px" }} />
-   	//    	  </div>
-   	//    	  <div class="about">
-   	//    	  	<h1 class="title"></h1>
-   	//    	  </div>
-   	//    	  <div class="counter">
-   	//    	  	<div class="btn">+</div>
-   	//    	  	<div class="count">1</div>
-   	//    	  	<div class="btn">-</div>
-   	//    	  </div>
-   	//    	  <div class="prices">
-   	//    	  	<div class="amount">RM</div>
-   	//    	  	<div class="remove"><u>Remove</u></div>
-   	//    	  </div> -->
-   	   <!-- </div> -->
-   	 <!-- <hr> 
-   	 <div class="checkout">
-   	 <div class="total">
-   	 	<div>
-   	 		<div class="Subtotal">Total</div>
-   	 		<div class="items">2 foods</div>
-   	 	</div>
-   	 	<div class="total-amount">RM </div>
-   	 </div> -->
-        <!-- <button onclick="btn()">Check Out</button>
-        <script>
-            function btn()
-            {
-                alert("Do you want proceed to Check Out?");
-            }
-        </script> -->
-   	 <!-- <button class="button"><a href="transaction.php">Check Out</button></div> -->
-<!-- </div> -->
-	<?php
-		// echo '<div class="Container">
-		// 		<hr> 
-		// 		<div class="checkout">
-		// 			<div class="total">
-		// 				<div class="Subtotal">Total</div>
 
-		// 				<div class="total-amount" name="total">RM '.number_format($total, 2).'</div>
+	<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
+	<script>
+        function btn()
+        {
+			<?php
+				// $qry = "INSERT trans set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
+				// $res = mysqli_query($con, $qry);
 
-		// 			</div>
-		// 		</div>
-		// 		<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
-		// 	</div>';
-	?>
-		<button class="button" name="btn-submit" onclick="btn()">Check Out</button>
-		<script>
-            function btn()
-            {
-				<?php
-						// $qry = "INSERT trans set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
-						// $res = mysqli_query($con, $qry);
+				// $subtotal = $_POST["subtotal"];
+				// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
+				// $res = mysqli_query($con, $qry);
 
-						// $subtotal = $_POST["subtotal"];
-						// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
-						// $res = mysqli_query($con, $qry);
-
-						// $total = $_POST['total'];
-						// $query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
-						// $rlt = mysqli_query($con, $query);
-						// echo $total;
+				// $total = $_POST['total'];
+				// $query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
+				// $rlt = mysqli_query($con, $query);
+				// echo $total;
 				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM '.number_format($total, 2).'"))
 						{
 							window.location.href = "transaction.php";
@@ -835,29 +401,9 @@ a:hover {
 						{
 							window.location.href = "cart.php";
 						}';
-				?>
-                // alert("Do you want proceed to Check Out?");
-
-				// if (confirm("Do you want proceed to Check Out?\nYour total is RM$total"))
-				// {
-				// 	window.location.href = "transaction.php";
-				// }
-				// else
-				// {
-				// 	window.location.href = "cart.php";
-				// }
-            }
-        </script>
-    <!-- <script>
-        if (confirm('Do you want proceed to Check Out?'))
-        {
-            console.log('Thing was saved to the database.');
+			?>
         }
-        else
-        {
-            console.log('Thing was not saved to the database.');
-        }
-    </script> -->
+    </script>
    </div>
 </body>
 </html>
