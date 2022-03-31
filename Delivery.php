@@ -154,6 +154,7 @@
 		while ($row = mysqli_fetch_assoc($rl))
         {
 			$trans_id = $row["transaction_id"];
+			// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
             $que = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
             $rltt = mysqli_query($con, $que);
         }
@@ -218,17 +219,54 @@
 
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
 		}
+		$tt = 0;
 			$select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
 			$rrr = mysqli_query($con, $select);
 			while ($row = mysqli_fetch_assoc($rrr)) {
 				$qty = $row["cart_qty"];
 				$oriprice = $row["ori_price"];
 				$stotal = $row["cart_qty"]*$row["ori_price"];
-				$tt = $tt + $row["subtotal"];
+				$tt += $row["subtotal"];
+				$food_id = $row['food_id'];
+				
+				$sql2 = "SELECT * FROM food WHERE food_id = $food_id";
+                $res2 = mysqli_query($con, $sql2);
+                
+                while($row = mysqli_fetch_array($res2))
+            	{
+                                    
+					$food_name = $row['food_name'];
+                    $food_image = $row['food_image'];
+                                    
+                    ?>
+						<tr>
+                            <td>
+								<?php
+									if ($food_image == "") 
+									{
+										echo "<div class='error'>Image not added.</div>";
+									} 
+									else {
+								?>
+								<?php echo '<pre>';
+									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
+									echo '</pre>';
+								?>
+                                    <img src="Food/<?php echo $food_image; ?>" style={{ height="100px" width="100px"}}>
+                                <?php
+                						}
+                                ?>
+                            </td>
+							<td>
+								<p><?php echo $food_name ?></p>
+                            </td>
+						</tr>
+					<?php
+				}
 				// echo '<p>Item Quantity Price(Quantity) Subtotal</p>';
-				echo '<pre>';
-				echo "$id\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
-				echo '</pre>';
+				// echo '<pre>';
+				// echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
+				// echo '</pre>';
 				// echo 'Total : RM '.$tt.'';
 			}
 			echo 'Total : RM '.number_format($tt, 2).'';
@@ -258,7 +296,8 @@
 	<div class="container3">
 		<img src="delivery3.jpeg" alt="" width="300" height="300">
 	</div> -->
-	<div id="wcu">
+
+	<!-- <div id="wcu">
 		<h2>Why choose us?</h2>
 	</div>
 
@@ -291,7 +330,7 @@
 				<br />
 			</td>
 		</tr>
-	</table>
+	</table> -->
 </body>
 
 </html>
