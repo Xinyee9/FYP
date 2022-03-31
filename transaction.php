@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result))
     $sub = $row["subtotal"];
     $food_id = $row["food_id"];
 
-    $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, total, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
+    $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
     $r = mysqli_query($con, $insert);
     if($r)
     {

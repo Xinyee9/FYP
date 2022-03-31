@@ -192,15 +192,53 @@
 		$rlt = mysqli_query($con, $sql);
 		// $edt = $row["transaction_time"] + 1800;
 		while ($row = mysqli_fetch_assoc($rlt)) {
-			echo '<p>Delivery ID          : '.$row["transaction_id"].'</p>
+			$id = $row["transaction_id"];
+			// $select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
+			// $rrr = mysqli_query($con, $select);
+			// while ($row = mysqli_fetch_assoc($rrr)) {
+			// 	$qty = $row["cart_qty"];
+			// 	$oriprice = $row["ori_price"];
+			// 	$stotal = $row["cart_qty"]*$row["ori_price"];
+			// 	$tt += $stotal;
+			// 	// <p>Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal: '.$id.','.$oriprice.','.$stotal.','.$tt.'</p>
+			// }
+
+			echo '<p>Delivery ID          : '.$id.'</p>
 				<p>Delivery Date          : '.$row["transaction_date"].'</p>
 				<p>Delivery Time          : '.$row["transaction_time"].'</p>
+
 				<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
 				<p>Delivery Status        : '.$row["delivery_status"].'</p>
 				<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
+				echo '<hr>';
+				echo '<pre>';
+				echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
+				echo '</pre>';
+				// echo 'Total : RM ';
 
 			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
 		}
+			$select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
+			$rrr = mysqli_query($con, $select);
+			while ($row = mysqli_fetch_assoc($rrr)) {
+				$qty = $row["cart_qty"];
+				$oriprice = $row["ori_price"];
+				$stotal = $row["cart_qty"]*$row["ori_price"];
+				$tt = $tt + $row["subtotal"];
+				// echo '<p>Item Quantity Price(Quantity) Subtotal</p>';
+				echo '<pre>';
+				echo "$id\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
+				echo '</pre>';
+				// echo 'Total : RM '.$tt.'';
+			}
+			echo 'Total : RM '.number_format($tt, 2).'';
+			// $slt = "SELECT * FROM real_cart WHERE transaction_id = $id and userid = $userid";
+			// $rrrr = mysqli_query($con, $slt);
+			// while ($row = mysqli_fetch_assoc($rrrr)) {
+			// 	// $stotal = $row["subtotal"];
+			// 	$total = $total + $row["subtotal"];
+			// 	echo 'Total : RM '.number_format($total, 2).'';
+			// }
 		?>
 		<!-- <p>Delivery Time &nbsp &nbsp &nbsp: </p>
 		<p>Delivery Date &nbsp &nbsp &nbsp: </p> -->
