@@ -215,8 +215,7 @@ include('config/constants.php'); ?>
                                     
                                 </tr>
                                 <?php 
-                                $id = $row['userid']; 
-                                $sql1 = "SELECT * FROM cart WHERE userid = $id";
+                                $sql1 = "SELECT * FROM real_cart WHERE transaction_id = $ID";
                                 $subtotal = 0;
                                 $res1 = mysqli_query($conn, $sql1);
                                 //get the value based on query executed
