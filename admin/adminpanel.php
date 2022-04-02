@@ -47,7 +47,7 @@
                          <?php
                          //create SQL Query to Get Total Revenue Generated
                          //Aggregate Function in SQL
-                         $sql4 = "SELECT SUM(subtotal) AS Total FROM cart";
+                         $sql4 = "SELECT SUM(subtotal) AS Total FROM real_cart";
                          //Execute the Query
                          $res4 =mysqli_query($conn,$sql4);
                          //get the value
