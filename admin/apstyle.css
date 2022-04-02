@@ -110,7 +110,7 @@ body {
   text-align: center;
   color: #111;
 }
-.search {
+/*.search {
   position: relative;
   width: 400px;
   margin: 0 10px;
@@ -132,7 +132,7 @@ body {
   position: absolute;
   left: 15px;
   top: 4px;
-}
+}*/
 .user {
   position: relative;
   min-width: 50px;

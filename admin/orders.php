@@ -57,4 +57,7 @@
                             </tbody>
                         </table>
                     </div>
+<?php 
+include('includes/script.php'); 
+?>
                 

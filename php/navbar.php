@@ -11,7 +11,7 @@
         echo '
         <a href="./php/logout.php" style="float: right;">LOGOUT</a>
         <a href="aboutus.php" style="float: right;">ABOUT US</a>
-        <a href="" style="float: right;">ORDER HISTORY</a>
+        <a href="orderhistory.php" style="float: right;">ORDER HISTORY</a>
         <a href="cart.php" style="float: right;">CART</a>
         <a href="./user/" style="float: right;">MY PROFILE</a>
         <a style="-webkit-user-select: none; cursor: default;">Welcome, ' . $_SESSION['username'] . '</a>';
