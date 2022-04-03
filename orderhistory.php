@@ -158,13 +158,12 @@ require_once('./php/dbconnect.php');
                                     <h4>Order list</h4>
                                 </label>   
                                 <table>
-                            
-                            
+
                             <?php
                             if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
                                 $userid = $_SESSION['id'];
                             }
-                                $sql = "SELECT * FROM trans WHERE userid = '$userid' AND delivery_status ='Delivered'";
+                                $sql = "SELECT * FROM trans WHERE userid = '$userid' ";
                             
                                 //$sql = "SELECT * FROM trans ";
                                 $res = mysqli_query($con, $sql);
@@ -178,6 +177,7 @@ require_once('./php/dbconnect.php');
                                         $tran_id = $rows['transaction_id'];
                                         $tran_date = $rows['transaction_date'];
                                         $tran_time = $rows['transaction_time'];	
+                                        $status = $rows['delivery_status'];
                                 ?>
                                 <tr>
                                     <td>
@@ -185,6 +185,8 @@ require_once('./php/dbconnect.php');
                                     <p><b>Order No.</b> <?php echo $sn++; ?><p>
                                     <p><b>Date : </b> <?php echo $tran_date; ?><p>
                                     <p><b>Time :</b> <?php echo $tran_time;?></p>
+                                    <p><b>Status : </b> <?php echo $status; ?> </p>
+                                    
                                     </td>
                                     <td>
                                     <button class="btn btn-lg btn-success" type="submit">

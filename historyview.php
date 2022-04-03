@@ -187,7 +187,7 @@ require_once('./php/dbconnect.php');
                            $city = $row['City'];
                            $zip = $row['Zip'];
                            $tran_state = $row['Trans_State'];
-                           //$status = $row['delivery_status'];
+                           $status = $row['delivery_status'];
 
                            }
                            
@@ -197,6 +197,7 @@ require_once('./php/dbconnect.php');
                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                <p><b>Date : </b><?php echo $tran_date ?><p>
                                <p><b>Time :</b> <?php echo $tran_time;?></p>
+                               <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
                                <p><b>Address: </b> <?php echo $adress,', ',$city,', ',$zip,' ',$tran_state; ?> </p>
                                </td>
                            </tr>
