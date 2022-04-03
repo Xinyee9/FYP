@@ -4,6 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <link rel="shortcut icon" href="./image/cherry.ico" rel="icon" type="image/x-icon" />
@@ -13,6 +14,7 @@ session_start();
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bubblegum+Sans&family=Creepster&family=Fredericka+the+Great&family=Indie+Flower&family=Sigmar+One&display=swap" rel="stylesheet" />
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
+  <link rel="stylesheet" href="./css/button.css" />
 
   <style>
     body {
@@ -143,40 +145,35 @@ session_start();
   <?php
   require_once('./php/dbconnect.php');
 
-if (isset($_POST['password_reset_link'])) 
-{
-  $email = mysqli_real_escape_string($con, $_POST['email']); 
-  //$token = md5(rand());
+  if (isset($_POST['password_reset_link'])) {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    //$token = md5(rand());
 
-  $emailquery = "SELECT * FROM users WHERE useremail='$email' LIMIT 1";
-  $query = mysqli_query($con, $emailquery);
+    $emailquery = "SELECT * FROM users WHERE useremail='$email' LIMIT 1";
+    $query = mysqli_query($con, $emailquery);
 
-  $emailcount = mysqli_num_rows($query);  
-  if($emailcount)
-  {
-    $userdata = mysqli_fetch_array($query);
-    $username = $userdata['username'];
-    $token = $userdata['verify_token'];
+    $emailcount = mysqli_num_rows($query);
+    if ($emailcount) {
+      $userdata = mysqli_fetch_array($query);
+      $username = $userdata['username'];
+      $token = $userdata['verify_token'];
 
-    $subject = "Password Reset";
-    $body = "Hello,$username. You are receiving this email because we received a password reset request for your account. 
+      $subject = "Password Reset";
+      $body = "Hello,$username. You are receiving this email because we received a password reset request for your account. 
     http://localhost/FYP/pwd-change.php?token=$token&email=$email ";
-    $sender_email = "From: auroracutie2022@gmail.com";
+      $sender_email = "From: auroracutie2022@gmail.com";
 
-    if(mail($email, $subject, $body, $sender_email))
-    {
-      echo "<script>
+      if (mail($email, $subject, $body, $sender_email)) {
+        echo "<script>
           alert('we e-mailed you a password reset link.');
           window.location.href='./login.php';
           </script>";
-    }
-    else{
-      echo "<script>
+      } else {
+        echo "<script>
           alert('Something wrong.');
           window.location.href='./password-reset.php';
           </script>";
-          
-    }
+      }
       /*$row = mysqli_fetch_array($check_email_run);
       $get_name = $row['username'];
       $get_email = $row['useremail'];
@@ -199,15 +196,13 @@ if (isset($_POST['password_reset_link']))
           window.location.href='./password-reset.php';
           </script>";
       }*/
-  }
-  else
-  {
-    echo "<script>
+    } else {
+      echo "<script>
           alert('No email found.');
           window.location.href='./password-reset.php';
           </script>";
+    }
   }
-}
   ?>
   <div class="header">
     <div id="title">
@@ -223,7 +218,7 @@ if (isset($_POST['password_reset_link']))
   } */
   ?>
   <span class="font_bk">
-  <form action="" method="POST" >
+    <form action="" method="POST">
       <h1><strong>Reset Password</strong></h1>
       <hr />
       <p>
@@ -233,13 +228,13 @@ if (isset($_POST['password_reset_link']))
       <div align="center">
         <!-- <input type="button" value="LOG IN" onclick="backtologin();" /> -->
         <!-- <input type="submit" value="LOG IN" /> -->
-        <button type="submit" name ="password_reset_link" class="btn btn-primary">Reset Link</button>
-        <button onclick="goBack()">GO BACK</button>
-        <script>
-          function goBack() {
-            window.history.back();
-          }
-        </script>
+        <button type="submit" name="password_reset_link" class="slide">Reset Link<<i class="icon-arrow-right"></i>/button>
+            <button onclick="goBack()" class="fill">>GO BACK</button>
+            <script>
+              function goBack() {
+                window.history.back();
+              }
+            </script>
 
       </div>
     </form>

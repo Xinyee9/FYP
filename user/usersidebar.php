@@ -22,8 +22,8 @@
         top: 0;
         /* Stay at the top */
         left: 0;
-        background-color: #111;
-        /* Black */
+        background-color: #3939ac;
+        /* 45% darker blue */
         overflow-x: hidden;
         /* Disable horizontal scroll */
         padding-top: 20px;

@@ -6,15 +6,15 @@ require_once('../php/dbconnect.php');
 if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
     $userid = $_SESSION['id'];
 }
-    $query = "SELECT * FROM users WHERE userid = '$userid'";
-    $result = mysqli_query($con, $query);
-    if ($result) {
-        $row = mysqli_fetch_assoc($result);
-        $userfirstname = $row['userfirstname'];
-        $userlastname = $row['userlastname'];
-        $useremail = $row['useremail'];
-        $username = $row['username'];
-    }
+$query = "SELECT * FROM users WHERE userid = '$userid'";
+$result = mysqli_query($con, $query);
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $userfirstname = $row['userfirstname'];
+    $userlastname = $row['userlastname'];
+    $useremail = $row['useremail'];
+    $username = $row['username'];
+}
 
 if (isset($_POST['save']) && $_POST['save'] == 1) {
     $userfirstname = $_POST['first_name'];
@@ -65,7 +65,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     include('./include/header.php');
     ?>
     <title>User Information</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./image/information.ico" rel="icon" type="image/x-icon" />
 </head>
 
 <body>
