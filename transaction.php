@@ -22,6 +22,13 @@ while ($row = mysqli_fetch_assoc($result))
     {
         $dlt = "DELETE FROM cart WHERE userid = $userid";
         $re = mysqli_query($con, $dlt);
+
+        $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
+        $rrll = mysqli_query($con, $qqqq);
+        while ($row = mysqli_fetch_assoc($rrll))
+        {
+            $real_cart_id = $row["real_cart_id"];
+        }
     }
 }
 
@@ -41,6 +48,32 @@ if (isset($_POST['btn-submit'])) {
 
     // $qry = "UPDATE trans set delivery_status = 'Preparing' where userid = $userid";
     // $rlt = mysqli_query($con, $qry);
+
+    // $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
+	// $rrll = mysqli_query($con, $qqqq);
+	// while ($row = mysqli_fetch_assoc($rrll))
+	// {
+	// 	$real_cart_id = $row["real_cart_id"];
+
+    //     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, real_cart_id, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$real_cart_id','$userid')";
+    //     $result = mysqli_query($con, $query);
+    //     if ($result) {
+    //         // $rl = "SELECT * FROM trans where userid = $userid";
+    //         // mysqli_query($con, $rl);
+
+    //         // $trans_id = $row["transaction_id"];
+
+    //         // if($rl)
+    //         // {
+    //         //     $rr = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
+    //         //     mysqli_query($con, $rr);
+    //         // }
+    //         // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
+    //         $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
+    //         $rlt = mysqli_query($con, $qry);
+    //         header("Location: delivery.php");
+    //     }
+    // }
 
     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
