@@ -47,7 +47,7 @@
                 {
                     //echo "Category Name is duplicate enter";
                     echo "<script>
-                        alert('Category Name is duplicate enter');
+                        alert('Category is duplicate enter');
                         window.location.href='./category.php';
                         </script>";
                 }
