@@ -33,7 +33,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Stock:</span>
-                        <input type="number" name="stock" placeholder="xx" min="1" max="500" required> 
+                        <input type="number" name="stock" placeholder="xx" min="0" max="500" required> 
                     </div>
                     <div class="input-box">
                         <span class="details">Description:</span>

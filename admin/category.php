@@ -69,8 +69,8 @@
                                     <td><?php echo $ccode; ?></td>  
                                     <td><?php echo $ccname ; ?></td>                            
                                     <td>
-                                        <a href="<?php echo SITEURL;?>admin/edit-category.php?ID=<?php echo $ID?>" class="btn-update">Update Admin</a>
-                                        <a href="<?php echo SITEURL;?>admin/delete-category.php?ID=<?php echo $ID?>" class="btn-delete">Delete Admin</a>
+                                        <a href="<?php echo SITEURL;?>admin/edit-category.php?ID=<?php echo $ID?>" class="btn-update">Update Category</a>
+                                        <a href="<?php echo SITEURL;?>admin/delete-category.php?ID=<?php echo $ID?>" class="btn-delete">Delete Category</a>
                                     </td>  
                                 </tr>
 
