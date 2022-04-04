@@ -209,11 +209,15 @@
             $image_name = ""; //setting default value as blank
         }
 
-        $dup = mysqli_query($conn, "SELECT FROM FOOD WHERE food_name = '$food_name' ");
+        $dup = mysqli_query($conn, "SELECT * FROM FOOD WHERE food_name = '$food_name' ");
 
         if(mysqli_num_rows($dup)>0)
         {
-            echo "Food Name is duplicate enter";
+            //echo "Food Name is duplicate enter";
+            echo "<script>
+            alert('Food Name is duplicate enter');
+            window.location.href='./food.php';
+            </script>";
         }
         else{
 

@@ -41,11 +41,15 @@
                 $ccode = $_POST['ccode'];
                 $ccname = $_POST['cname'];
 
-                $dup = mysqli_query($conn, "SELECT FROM category WHERE cate_name = '$ccname' ");
+                $dup = mysqli_query($conn, "SELECT * FROM category WHERE cate_name = '$ccname' ");
 
                 if(mysqli_num_rows($dup)>0)
                 {
-                    echo "Category Name is duplicate enter";
+                    //echo "Category Name is duplicate enter";
+                    echo "<script>
+                        alert('Category Name is duplicate enter');
+                        window.location.href='./category.php';
+                        </script>";
                 }
                 else{
                 $sql = "INSERT INTO CATEGORY SET

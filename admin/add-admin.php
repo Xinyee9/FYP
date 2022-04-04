@@ -107,11 +107,15 @@
             $image_name="";
         }*/
 
-        $dup = mysqli_query($conn, "SELECT FROM users WHERE username = '$full_name' ");
+        $dup = mysqli_query($conn, "SELECT * FROM users WHERE username = '$full_name' ");
 
         if(mysqli_num_rows($dup)>0)
         {
-            echo "Admin Name is duplicate enter";
+            //echo "Admin Name is duplicate enter";
+            echo "<script>
+            alert('Admin Name is duplicate enter');
+            window.location.href='./userstest.php';
+            </script>";
         }
         else{
 
