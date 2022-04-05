@@ -7,30 +7,30 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
     $userid = $_SESSION['id'];
 }
 
-$sql = "SELECT * FROM `cart` WHERE userid = $userid";
-$result = mysqli_query($con, $sql);
-while ($row = mysqli_fetch_assoc($result))
-{
-    $cart_qty = $row["cart_qty"];
-    $price = $row["ori_price"];
-    $sub = $row["subtotal"];
-    $food_id = $row["food_id"];
+// $sql = "SELECT * FROM `cart` WHERE userid = $userid";
+// $result = mysqli_query($con, $sql);
+// while ($row = mysqli_fetch_assoc($result))
+// {
+//     $cart_qty = $row["cart_qty"];
+//     $price = $row["ori_price"];
+//     $sub = $row["subtotal"];
+//     $food_id = $row["food_id"];
 
-    $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
-    $r = mysqli_query($con, $insert);
-    if($r)
-    {
-        $dlt = "DELETE FROM cart WHERE userid = $userid";
-        $re = mysqli_query($con, $dlt);
+//     $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
+//     $r = mysqli_query($con, $insert);
+//     if($r)
+//     {
+//         $dlt = "DELETE FROM cart WHERE userid = $userid";
+//         $re = mysqli_query($con, $dlt);
 
-        $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
-        $rrll = mysqli_query($con, $qqqq);
-        while ($row = mysqli_fetch_assoc($rrll))
-        {
-            $real_cart_id = $row["real_cart_id"];
-        }
-    }
-}
+//         $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
+//         $rrll = mysqli_query($con, $qqqq);
+//         while ($row = mysqli_fetch_assoc($rrll))
+//         {
+//             $real_cart_id = $row["real_cart_id"];
+//         }
+//     }
+// }
 
 if (isset($_POST['btn-submit'])) {
     // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
@@ -44,43 +44,18 @@ if (isset($_POST['btn-submit'])) {
     $date = date('Y-m-d');
     $time = date('h:i:sa');
     $timet = date('h:i:sa', strtotime('+30 minutes', strtotime($time)));
-    // $status = $_POST['status'];
-
-    // $qry = "UPDATE trans set delivery_status = 'Preparing' where userid = $userid";
-    // $rlt = mysqli_query($con, $qry);
-
-    // $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
-	// $rrll = mysqli_query($con, $qqqq);
-	// while ($row = mysqli_fetch_assoc($rrll))
-	// {
-	// 	$real_cart_id = $row["real_cart_id"];
-
-    //     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, real_cart_id, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$real_cart_id','$userid')";
-    //     $result = mysqli_query($con, $query);
-    //     if ($result) {
-    //         // $rl = "SELECT * FROM trans where userid = $userid";
-    //         // mysqli_query($con, $rl);
-
-    //         // $trans_id = $row["transaction_id"];
-
-    //         // if($rl)
-    //         // {
-    //         //     $rr = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
-    //         //     mysqli_query($con, $rr);
-    //         // }
-    //         // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
-    //         $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
-    //         $rlt = mysqli_query($con, $qry);
-    //         header("Location: delivery.php");
-    //     }
-    // }
 
     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
-    if ($result) {
-        // $rl = "SELECT * FROM trans where userid = $userid";
-        // mysqli_query($con, $rl);
+    if($result)
+    {
 
+        $query1 = "SELECT * FROM trans where userid = $userid";
+        $result1 = mysqli_query($con, $query1);
+        while ($row = mysqli_fetch_assoc($result1))
+        {
+            $trans_id = $row["transaction_id"];
+        }
         // $trans_id = $row["transaction_id"];
 
         // if($rl)
@@ -91,36 +66,34 @@ if (isset($_POST['btn-submit'])) {
         // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
         $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
         $rlt = mysqli_query($con, $qry);
+
+        $sql = "SELECT * FROM `cart` WHERE userid = $userid";
+        $result2 = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result2))
+        {
+            $cart_qty = $row["cart_qty"];
+            $price = $row["ori_price"];
+            $sub = $row["subtotal"];
+            $food_id = $row["food_id"];
+
+            $sql1 = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, transaction_id) VALUES ('$cart_qty','$price','$sub','$food_id','$trans_id')";
+            $result3 = mysqli_query($con, $sql1);
+            if($result3)
+            {
+                $delete = "DELETE FROM cart WHERE userid = $userid";
+                $result4 = mysqli_query($con, $delete);
+
+                // $sql2 = "SELECT * FROM `real_cart` where userid = $userid";
+                // $result4 = mysqli_query($con, $sql2);
+                // while ($row = mysqli_fetch_assoc($result4))
+                // {
+                //     $real_cart_id = $row["real_cart_id"];
+                // }
+            }
+        }
+
         header("Location: delivery.php");
     }
-
-    // if ($result) {
-    //     // $to = $email;
-    //     // $subject = "Thank You for Contacting Us";
-    //     // $message = "Your information has been received. Just a moment, our team will get back to you as soon as possible.\n\n";
-    //     // $message .= "<br/>\nBest regards,<br/>Aurora Team";
-
-    //     // $headers = "From: Aurora Admin <auroracutie2022@gmail.com>\r\n";
-    //     // $headers .= "Reply-To: auroracutie2022@gmail.com\r\n";
-    //     // $headers .= "Content-type: text/html\r\n";
-    //     // $headers .= "MIME-Version: 1.0\r\n";
-
-    //     // if ($subject) {
-    //     echo'<script>
-    //     function input() {
-    //         window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
-
-    //         display();
-
-    //         // showAlert();
-    //     }
-
-    //     function display() {
-    //         window.location.href = "delivery.php";
-    //     }
-    // </script>';
-    //     // }
-    // }
 }
 
 // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
