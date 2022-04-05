@@ -51,43 +51,6 @@
 			left: 2;
 		}
 
-		/* img
-	{ 
-		width: 30%;
-		height: auto;
-	}
-
-	.container1
-	{
-  		position: relative;
-		position: absolute;
-		bottom: 8px;
-		left: 16px;
-		font-size: 18px;
-	}
-
-	.container2
-	{
-  		position: relative;
-		position: absolute;
-		bottom: 8px;
-		left: 16px;
-	}
-
-	.container3
-	{
-  		position: relative;
-		position: absolute;
-		right: 0px;
-		bottom: 0px;
-	}
-
-	.container1 p
-	{
-		font-style:italic;
-		text-align: center;
-	} */
-
 		#wcu h2 {
 			margin: auto;
 			width: 33.33%;
@@ -130,155 +93,102 @@
 			<j class="fa fa-home"> HOME</j>
 		</button>
 	</div>
-	<!-- <form method="POST">
-		<?php
-			// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-			// 	$userid = $_SESSION['id'];
-			// }
-			// $sqli = "SELECT * FROM trans where userid = $userid";
-			// $r = mysqli_query($con, $sqli);
-			// if(isset($_POST['transaction_id'])){
-			// 	$transid = $_POST['transaction_id'];
-			// }
-		?>
-		</form> -->
 	<div class="status">
 		<?php
-		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-            $userid = $_SESSION['id'];
-        }
-
-		// $qqqqq = "SELECT * FROM real_cart, trans WHERE real_cart.transaction_id = trans.transaction_id and real_cart.userid = $userid and trans.userid = $userid";
-		// $rrrlll = mysqli_query($con, $qqqqq);
-		// while ($row = mysqli_fetch_assoc($rrrlll))
-		// {
-		// 	$real_cart_id = $row["real_cart_id"];
-		// 	$trans_id = $row["transaction_id"];
-		// 	// echo $real_cart_id;
-		// 	// echo $trans_id;
-		// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-		// 	$rltt = mysqli_query($con, $que);
-
-		// 	// $qq = "SELECT * FROM trans where userid = $userid";
-		// 	// $rl = mysqli_query($con, $qq);
-		// 	// // $trans_id = $_POST["transaction_id"];
-		// 	// while ($row = mysqli_fetch_assoc($rl))
-		// 	// {
-		// 	// 	$trans_id = $row["transaction_id"];
-		// 	// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-		// 	// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-		// 	// 	$rltt = mysqli_query($con, $que);
-		// 	// }
-		// }
-
-		// include 'transaction.php';
-		$query = "SELECT * FROM `real_cart` where userid = $userid";
-		$result = mysqli_query($con, $query);
-		while ($row = mysqli_fetch_assoc($result))
-		{
-			$real_cart_id = $row["real_cart_id"];
-		}
-		$query1 = "SELECT * FROM `real_cart` where real_cart_id = $real_cart_id and userid = $userid";
-		$result1 = mysqli_query($con, $query1);
-		while ($row = mysqli_fetch_assoc($result1))
-		{
-			// $real_cart_id = $row["real_cart_id"];
-
-			$query2 = "SELECT * FROM trans where userid = $userid";
-			$result2 = mysqli_query($con, $query2);
-			// $trans_id = $_POST["transaction_id"];
-			while ($row = mysqli_fetch_assoc($result2))
-			{
-				$trans_id = $row["transaction_id"];
-				// echo $trans_id;
-				// echo $real_cart_id;
-				// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-				$query3 = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-				// $que = "UPDATE real_cart SET transaction_id = CONCAT(transaction_id, ' ', '$trans_id') WHERE userid = $userid";
-				$result3 = mysqli_query($con, $query3);
+			if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1)
+			{ //check login
+				$userid = $_SESSION['id'];
 			}
-		}
 
-		// $qq = "SELECT * FROM trans where userid = $userid";
-        // $rl = mysqli_query($con, $qq);
-		// // $trans_id = $_POST["transaction_id"];
-		// while ($row = mysqli_fetch_assoc($rl))
-        // {
-		// 	$trans_id = $row["transaction_id"];
-		// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-        //     $que = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
-        //     $rltt = mysqli_query($con, $que);
-        // }
-			// $sqli = "SELECT transaction_id FROM trans where userid = $userid";
-			// $r = mysqli_query($con, "SELECT transaction_id FROM trans where userid = $userid");
-			// if($r && mysqli_num_rows($r)>0)
+			// $qqqqq = "SELECT * FROM real_cart, trans WHERE real_cart.transaction_id = trans.transaction_id and real_cart.userid = $userid and trans.userid = $userid";
+			// $rrrlll = mysqli_query($con, $qqqqq);
+			// while ($row = mysqli_fetch_assoc($rrrlll))
 			// {
-			// 	while($row = mysqli_fetch_assoc($r))
-			// 	{
-			// 		echo 'ID: '.$row["transaction_id"];
-			// 		retrieveData($row["transaction_id"]);
-			// 	}
-			// }
-			// function retrieveData($id){
-			// 	$result = mysqli_query($con,"SELECT * FROM trans WHERE id=".mysqli_real_escape_string($con,$id));
-			// 	if($result && mysqli_num_rows($result)==1){
-			// 		$row = mysqli_fetch_assoc($result);
-			// 		// echo $row;
-			// 	}
-			// }
-			// $transid = $_POST['transaction_id'];
-			// if(isset($_POST['transaction_id'])){
-			// 	$transid = $_POST['transaction_id'];
-			// }
+			// 	$real_cart_id = $row["real_cart_id"];
+			// 	$trans_id = $row["transaction_id"];
+			// 	// echo $real_cart_id;
+			// 	// echo $trans_id;
+			// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
+			// 	$rltt = mysqli_query($con, $que);
 
-		// $sqli = "SELECT * FROM `trans` WHERE userid = $userid";
-		// $result = mysqli_query($con, $sqli);
-		// while ($row = mysqli_fetch_assoc($result)) {
-		// 	echo '<p>Delivery Time &nbsp &nbsp &nbsp: '.$row["transaction_time"].'</p>
-		// 		<p>Delivery Date &nbsp &nbsp &nbsp: '.$row["transaction_date"].'</p>';
-		// }
-		// $delivery_id = $row["transaction_id"];
-		// $sql = "SELECT * from delivery WHERE userid = $userid";
-		// $sql = "SELECT * FROM trans ORDER BY userid = $userid DESC LIMIT 1";
-		$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
-		$result4 = mysqli_query($con, $sql);
-		// $edt = $row["transaction_time"] + 1800;
-		while ($row = mysqli_fetch_assoc($result4)) {
-			$id = $row["transaction_id"];
-			// $select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
-			// $rrr = mysqli_query($con, $select);
-			// while ($row = mysqli_fetch_assoc($rrr)) {
-			// 	$qty = $row["cart_qty"];
-			// 	$oriprice = $row["ori_price"];
-			// 	$stotal = $row["cart_qty"]*$row["ori_price"];
-			// 	$tt += $stotal;
-			// 	// <p>Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal: '.$id.','.$oriprice.','.$stotal.','.$tt.'</p>
+			// 	// $qq = "SELECT * FROM trans where userid = $userid";
+			// 	// $rl = mysqli_query($con, $qq);
+			// 	// // $trans_id = $_POST["transaction_id"];
+			// 	// while ($row = mysqli_fetch_assoc($rl))
+			// 	// {
+			// 	// 	$trans_id = $row["transaction_id"];
+			// 	// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
+			// 	// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
+			// 	// 	$rltt = mysqli_query($con, $que);
+			// 	// }
 			// }
 
-			echo '<p>Delivery ID          : '.$id.'</p>
-				<p>Delivery Date          : '.$row["transaction_date"].'</p>
-				<p>Delivery Time          : '.$row["transaction_time"].'</p>
+			// include 'transaction.php';
+			$query = "SELECT * FROM `real_cart` where userid = $userid";
+			$result = mysqli_query($con, $query);
+			while ($row = mysqli_fetch_assoc($result))
+			{
+				$real_cart_id = $row["real_cart_id"];
+			}
+			$query1 = "SELECT * FROM `real_cart` where real_cart_id = $real_cart_id and userid = $userid";
+			$result1 = mysqli_query($con, $query1);
+			while ($row = mysqli_fetch_assoc($result1))
+			{
+				// $real_cart_id = $row["real_cart_id"];
 
-				<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
-				<p>Delivery Status        : '.$row["delivery_status"].'</p>
-				<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
-				echo '<hr>';
-				echo '<pre>';
-				echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
-				echo '</pre>';
-				// echo 'Total : RM ';
+				$query2 = "SELECT * FROM trans where userid = $userid";
+				$result2 = mysqli_query($con, $query2);
+				// $trans_id = $_POST["transaction_id"];
+				while ($row = mysqli_fetch_assoc($result2))
+				{
+					$trans_id = $row["transaction_id"];
+					// echo $trans_id;
+					// echo $real_cart_id;
+					// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
+					$query3 = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
+					// $que = "UPDATE real_cart SET transaction_id = CONCAT(transaction_id, ' ', '$trans_id') WHERE userid = $userid";
+					$result3 = mysqli_query($con, $query3);
+				}
+			}
 
-			// echo '<p>Delivery ID : '.$row["cart_qty"].','.$row["food_id"].','.$row["user_id"].'</p>';
-		}
-		$tt = 0;
-			// $select = "SELECT * from real_cart, trans WHERE real_cart.real_cart_id = trans.real_cart_id and real_cart.userid = $userid and trans.userid = $userid";
+			// $qq = "SELECT * FROM trans where userid = $userid";
+			// $rl = mysqli_query($con, $qq);
+			// // $trans_id = $_POST["transaction_id"];
+			// while ($row = mysqli_fetch_assoc($rl))
+			// {
+			// 	$trans_id = $row["transaction_id"];
+			// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
+			//     $que = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
+			//     $rltt = mysqli_query($con, $que);
+			// }
+
+			$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
+			$result4 = mysqli_query($con, $sql);
+			while ($row = mysqli_fetch_assoc($result4))
+			{
+				$id = $row["transaction_id"];
+
+				echo '<p>Delivery ID          : '.$id.'</p>
+					<p>Delivery Date          : '.$row["transaction_date"].'</p>
+					<p>Delivery Time          : '.$row["transaction_time"].'</p>
+
+					<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
+					<p>Delivery Status        : '.$row["delivery_status"].'</p>
+					<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
+					echo '<hr>';
+					echo '<pre>';
+					echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
+					echo '</pre>';
+			}
+			
+			$total = 0;
 			$sql1 = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
 			$result5 = mysqli_query($con, $sql1);
 			while ($row = mysqli_fetch_assoc($result5)) {
 				$qty = $row["cart_qty"];
 				$oriprice = $row["ori_price"];
-				$stotal = $row["cart_qty"]*$row["ori_price"];
-				$tt += $row["subtotal"];
+				$subtotal = $row["cart_qty"]*$row["ori_price"];
+				$total += $row["subtotal"];
 				$food_id = $row['food_id'];
 				
 				$sql2 = "SELECT * FROM food WHERE food_id = $food_id";
@@ -301,7 +211,7 @@
 									else {
 								?>
 								<?php echo '<pre>';
-									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
+									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($subtotal, 2)."";
 									echo '</pre>';
 								?>
                                     <img src="Food/<?php echo $food_image; ?>" style={{ height="100px" width="100px"}}>
@@ -315,74 +225,9 @@
 						</tr>
 					<?php
 				}
-				// echo '<p>Item Quantity Price(Quantity) Subtotal</p>';
-				// echo '<pre>';
-				// echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($stotal, 2)."";
-				// echo '</pre>';
-				// echo 'Total : RM '.$tt.'';
 			}
-			echo 'Total : RM '.number_format($tt, 2).'';
-			// $slt = "SELECT * FROM real_cart WHERE transaction_id = $id and userid = $userid";
-			// $rrrr = mysqli_query($con, $slt);
-			// while ($row = mysqli_fetch_assoc($rrrr)) {
-			// 	// $stotal = $row["subtotal"];
-			// 	$total = $total + $row["subtotal"];
-			// 	echo 'Total : RM '.number_format($total, 2).'';
-			// }
+			echo 'Total : RM '.number_format($total, 2).'';
 		?>
-		<!-- <p>Delivery Time &nbsp &nbsp &nbsp: </p>
-		<p>Delivery Date &nbsp &nbsp &nbsp: </p> -->
-		<!-- <p>Delivery Status &nbsp &nbsp: </p>
-		<p>Delivery Address : <br><textarea name="address" placeholder="Please enter your dellivery address here" rows="5" cols="30"></textarea></p> -->
 	</div>
-	<!-- <div class="container1">
-		<p>Why choose us?</p>
-		<p>Fast Delivery</p>
-		<p>Delivery in Time</p>
-		<p>Responsibility Rider</p>
-		<img src="delivery1.jpg" alt="" width="300" height="300">
-	</div>
-	<div class="container2">
-		<img src="delivery2.jpg" alt="" width="300" height="300">
-	</div>
-	<div class="container3">
-		<img src="delivery3.jpeg" alt="" width="300" height="300">
-	</div> -->
-
-	<!-- <div id="wcu">
-		<h2>Why choose us?</h2>
-	</div>
-
-	<table id="delivery" align="center" cellpadding="15px" cellspacing="20px">
-		<tr>
-			<td>
-				<div id="delivery-name">
-					<h1>Fast Delivery</h1>
-				</div>
-				<div id="delivery-image"><img src="./image/delivery1.jpg"></div>
-				<br />
-				<br />
-			</td>
-
-			<td>
-				<div id="delivery-name">
-					<h1>Delivery in Time</h1>
-				</div>
-				<div id="delivery-image"><img src="./image/delivery2.jpg"></div>
-				<br />
-				<br />
-			</td>
-
-			<td>
-				<div id="delivery-name">
-					<h1>Responsibility Rider</h1>
-				</div>
-				<div id="delivery-image"><img src="./image/delivery3.jpeg"></div>
-				<br />
-				<br />
-			</td>
-		</tr>
-	</table> -->
 </body>
-
 </html>
