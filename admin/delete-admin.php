@@ -3,7 +3,8 @@
     //include constants.php file here
     include ('config/constants.php');
 
-    if(isset($_GET['ID']) AND isset($_GET['image_name']))
+    // if(isset($_GET['ID']) AND isset($_GET['image_name']))
+    if(isset($_GET['ID']))
     {
         //1.get the value and delete 
         $ID = $_GET['ID'];
@@ -46,4 +47,3 @@
     {
         header('location:'.SITEURL.'admin/userstest.php');
     }
-?>

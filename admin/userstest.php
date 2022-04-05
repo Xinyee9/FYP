@@ -86,7 +86,7 @@ include('config/constants.php'); ?>
         <div class="main">
             <div class="topbar">
                 <div class="toggle " onclick="toggleMenu();"></div>
-                
+
                 <div class="user">
                     <img src="user.jpg">
                 </div>
@@ -149,8 +149,13 @@ include('config/constants.php'); ?>
                                             <td><?php echo $role; ?></td>
                                             <td>
                                                 <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
-                                                <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update&View</a>
-                                                <a href="<?php echo SITEURL; ?>admin/delete-admin.php?ID=<?php echo $ID; ?>&image_name=<?php echo $image_name; ?>" class="btn-delete">Block</a>
+                                                <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update & View</a>
+                                                <!-- <a href="?php echo SITEURL; ?>admin/delete-admin.php?ID=?php echo $ID; ?>&image_name=?php echo $image_name; ?>" class="btn-delete">Block</a> -->
+                                                <?php if ($rows['block'] == 1) { ?>
+                                                    <a href="<?php echo SITEURL; ?>admin/unblock-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
+                                                <?php } else { ?>
+                                                    <a href="<?php echo SITEURL; ?>admin/block-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
 
