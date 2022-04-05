@@ -170,16 +170,16 @@ require_once('./php/dbconnect.php');
                        <?php
                            if(isset($_GET['ID'])) {
                            //1.get the id of selected admin
-                           $ID = $_GET['ID'];
+                           $userID = $_GET['ID'];
                            
                            //2.create sql query to get the details
-                           $sql = "SELECT * FROM trans WHERE transaction_id =$ID";
+                           $sql = "SELECT * FROM trans WHERE transaction_id =$userID";
                            //Execute the query
-                           $res = mysqli_query($con, $sql);
+                           $result = mysqli_query($con, $sql);
                            //get the value based on query executed
-                           $row = mysqli_fetch_assoc($res);
+                           $row = mysqli_fetch_assoc($result);
            
-                           //$tran_id = $row['transaction_id'];
+                           $trans_id = $row['transaction_id'];
                            $tran_date = $row['transaction_date'];
                            $tran_time = $row['transaction_time'];
                            //$name = $row['Full_Name'];
@@ -195,6 +195,7 @@ require_once('./php/dbconnect.php');
                            <tr>
                                <td>       
                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                               <p><b>Delivery ID : </b><?php echo $trans_id ?><p>
                                <p><b>Date : </b><?php echo $tran_date ?><p>
                                <p><b>Time :</b> <?php echo $tran_time;?></p>
                                <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
@@ -203,60 +204,60 @@ require_once('./php/dbconnect.php');
                            </tr>
                            
                            <?php 
-                           $sql1 = "SELECT * FROM real_cart WHERE transaction_id = $ID";
+                           $sql1 = "SELECT * FROM real_cart WHERE transaction_id = $userID";
                            $subtotal = 0;
-                           $res1 = mysqli_query($con, $sql1);
+                           $result1 = mysqli_query($con, $sql1);
                            ?>
                            <?php
-                           while($row1 = mysqli_fetch_assoc($res1))
+                           while($row1 = mysqli_fetch_assoc($result1))
                            {
-                           $food_id = $row1['food_id'];
-                           $qty = $row1['cart_qty']; 
-                           $total = $row1['subtotal'];
-                           // $subtotal = $row4['subtotal'];
-                           $subtotal += $row1['subtotal'];
-                           
-                           $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
-                           $res2 = mysqli_query($con, $sql2);
-                           
-                           while($row2=mysqli_fetch_array($res2))
-                           {
-                               
-                               $food_name = $row2['food_name'];
-                               //$food_price = $row2['food_price'];
-                               $food_image = $row2 ['food_image'];
-                               
-                           ?>
-                           <tr>
-                               
-                               <td>
-                               <p> <?php echo $food_name ?></p><br>
-                               </td>
-                               <td>
-                               <?php
-                               if ($food_image == "") 
-                               {
-                                   echo "<div class='error'>Image not added.</div>";
-                               } 
-                               else {
-                                   //display image
-                               ?>
-                                   <img src="Food/<?php echo $food_image; ?>">
-                                   <?php
-                               }
-                               ?> 
-                               </td>
-                               <td>
-                               <p> <?php echo $qty ?> Quantity</p><br>
-                               </td>
-                               <td>
-                               <p>RM <?php echo number_format($total, 2); ?></p><br>
-                               </td> 
-                           </tr>
-                           <?php 
-                       } 
-                   }
-                       ?> 
+                                $food_id = $row1['food_id'];
+                                $qty = $row1['cart_qty']; 
+                                $total = $row1['subtotal'];
+                                // $subtotal = $row4['subtotal'];
+                                $subtotal += $row1['subtotal'];
+                                
+                                $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
+                                $res2 = mysqli_query($con, $sql2);
+                                
+                                while($row2=mysqli_fetch_array($res2))
+                                {
+                                    
+                                    $food_name = $row2['food_name'];
+                                    //$food_price = $row2['food_price'];
+                                    $food_image = $row2 ['food_image'];
+                                    
+                                ?>
+                                <tr>
+                                    
+                                    <td>
+                                    <p> <?php echo $food_name ?></p><br>
+                                    </td>
+                                    <td>
+                                    <?php
+                                    if ($food_image == "") 
+                                    {
+                                        echo "<div class='error'>Image not added.</div>";
+                                    } 
+                                    else {
+                                        //display image
+                                    ?>
+                                        <img src="Food/<?php echo $food_image; ?>">
+                                        <?php
+                                    }
+                                    ?> 
+                                    </td>
+                                    <td>
+                                    <p> <?php echo $qty ?> Quantity</p><br>
+                                    </td>
+                                    <td>
+                                    <p>RM <?php echo number_format($total, 2); ?></p><br>
+                                    </td> 
+                                </tr>
+                                <?php 
+                                }
+                            }
+                            ?> 
                            <tr>
                                <td></td>
                                <td></td>

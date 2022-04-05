@@ -85,14 +85,14 @@ include('config/constants.php'); ?>
         <div class="main">
             <div class="topbar">
                 <div class="toggle " onclick="toggleMenu();"></div>
-                <div class="search">
+                <!-- <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </label>
-                </div>
+                </div> -->
                 <div class="user">
-                    <img src="user.jpg">
+                    <img src="admin_image/Admin.png">
                 </div>
             </div>
                 <div class="details">
@@ -133,9 +133,9 @@ include('config/constants.php'); ?>
                                 <tr>
                                     <td>       
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <p><b>Order No.</b> <?php echo $ID; ?><p>
+                                    <p><b>Order No : </b> <?php echo $ID; ?><p>
                                     <p><b>Date : </b><?php echo $tran_date ?><p>
-                                    <p><b>Time :</b> <?php echo $tran_time;?></p>
+                                    <p><b>Time : </b> <?php echo $tran_time;?></p>
                                     <p><b>State : </b> <?php echo $tran_state; ?> </p>
                                     <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
                                     
@@ -208,9 +208,9 @@ include('config/constants.php'); ?>
                                 ?>
                                 <tr>
                                     <td>
-                                        <p><b>Name: </b><?php echo $name; ?></p><br>
-                                        <p><b>Address:</b><?php echo $adress,', ',$city,', ',$zip,' ',$tran_state; ?></p><br>
-                                        <p><b>Email:</b><?php echo $email; ?></p><br>
+                                        <p><b>Name : </b><?php echo $name; ?></p><br>
+                                        <p><b>Address : </b><?php echo $adress,', ',$city,', ',$zip,' ',$tran_state; ?></p><br>
+                                        <p><b>Email : </b><?php echo $email; ?></p><br>
                                     </td>
                                     
                                 </tr>

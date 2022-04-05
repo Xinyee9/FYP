@@ -74,7 +74,7 @@ function gettransactionID()
     // $timenow = date('h:i:s');
 
     // $datesql = mysqli_query($connect, "SELECT * FROM Users, Payment, Orders WHERE Payment.PaymentDate = '$datenow' AND Payment.OrderID = Orders.OrderID AND Users.UserID = 1");
-    $sql = mysqli_query($connect, "SELECT * from trans");
+    $sql = mysqli_query($con, "SELECT * from trans");
     while($row = $sql->fetch_assoc())
     {
         $output .= '<td>'.$row["transaction_id"].'</td>';
@@ -91,7 +91,7 @@ function getname()
         $userid = $_SESSION['id'];
     }
 
-    $name = mysqli_query($connect, "SELECT * FROM user WHERE userid = $userid");
+    $name = mysqli_query($con, "SELECT * FROM user WHERE userid = $userid");
     while($row = $name->fetch_assoc())
     {
         $output .= '<td>'.$row["username"].'</td>';
@@ -129,7 +129,7 @@ function gettotal()
         $userid = $_SESSION['id'];
     }
     $output = '';  
-    $connect= mysqli_connect("localhost","root","","aurora");
+    $con= mysqli_connect("localhost","root","","aurora");
 
     $sql = "SELECT * FROM real_cart, food WHERE real_cart.food_id = food.food_id and food.active = 'Yes'";
     // $sql1 = mysqli_query($con, "SELECT * FROM Buynow, Product, Stock WHERE Buynow.UserID = $userid AND Product.ProductID = Buynow.ProductID AND Stock.StockID = Buynow.StockID AND Buynow.ActiveStatus = 1");  
@@ -265,7 +265,7 @@ function gettotal()
     ob_end_clean();	  
     $obj_pdf->Output('file.pdf', 'I');
 
-    $getuseremail = mysqli_query($connect , "SELECT * FROM user WHERE userid = '$userid' ");
+    $getuseremail = mysqli_query($con , "SELECT * FROM user WHERE userid = '$userid' ");
     $email = mysqli_fetch_array($getuseremail);
     $to = $email['useremail'];
     $from = "auroraadmin@gmail.com";

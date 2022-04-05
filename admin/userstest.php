@@ -88,7 +88,7 @@ include('config/constants.php'); ?>
                 <div class="toggle " onclick="toggleMenu();"></div>
 
                 <div class="user">
-                    <img src="user.jpg">
+                    <img src="admin_image/Admin.png">
                 </div>
             </div>
             <div class="details ">

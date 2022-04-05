@@ -128,13 +128,13 @@ include('config/constants.php'); ?>
             <div class="topbar">
                 <div class="toggle " onclick="toggleMenu();"></div>
                 <div class="search">
-                    <label>
+                    <!-- <label>
                         <input type="text" placeholder="Search here">
                         <i class="fa fa-search" aria-hidden="true"></i>
-                    </label>
+                    </label> -->
                 </div>
                 <div class="user">
-                    <img src="user.jpg">
+                    <img src="admin_image/Admin.png">
                 </div>
             </div>
             <form action="" method ="POST">

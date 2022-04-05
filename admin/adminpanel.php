@@ -142,34 +142,45 @@
                     </div>
                     <div class="recentCustomer">  
                         <div class="cardHeader">
-                            <h2>Recent Customers</h2>
+                            <h2>Customers</h2>
                         </div>
                         <table>
                             <tbody>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img1.jpg"></div></td>
-                                    <td><h4>David<br><span>Italy</span></h4></td>
+                                <?php
+                                    $mysql = "SELECT * FROM users WHERE userprivilege = 'user'";
+                                    $result = mysqli_query($conn, $mysql);
+                                    while($row = mysqli_fetch_assoc($result))
+                                    {
+                                        echo '<tr>
+                                                <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
+                                                <td><h4>'.$row["username"].'<br></h4></td>
+                                            </tr>';
+                                    }
+                                ?>
+                                <!-- <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
+                                    <td><h4>echo $username<br><span>Italy</span></h4></td>
                                 </tr>
                                 <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img2.jpg"></div></td>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
                                     <td><h4>Muhammad<br><span>India</span></h4></td>
                                 </tr>
                                 <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img3.jpg"></div></td>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
                                     <td><h4>Amelia<br><span>France</span></h4></td>
                                 </tr>
                                 <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img4.jpg"></div></td>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
                                     <td><h4>Olivia<br><span>USA</span></h4></td>
                                 </tr>
                                 <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img5.jpg"></div></td>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
                                     <td><h4>Amit<br><span>Japan</span></h4></td>
                                 </tr>
                                 <tr>
-                                    <td width="60px"><div class="imgBx"><img src="img6.jpg"></div></td>
+                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
                                     <td><h4>Ashraf<br><span>India</span></h4></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

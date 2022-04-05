@@ -92,6 +92,6 @@ include('config/constants.php'); ?>
                     </label> -->
                 </div>
                 <div class="user">
-                    <img src="user.jpg">
+                    <img src="admin_image/Admin.png">
                 </div>
             </div>
