@@ -77,6 +77,26 @@ if (isset($_POST['btn-submit'])) {
                 $result4 = mysqli_query($con, $delete);
             }
         }
+        ?>
+        <script>
+		var userid = $("#userid").val();
+            $.ajax({
+                method: "POST",
+                url: "pdf.php",
+                data: {userid: userid},
+            success: (response) =>
+            { 
+                response();
+            }
+            });
+
+		function response()
+		{
+			window.alert("Payment successful! \nWe have sent an invoice to your email.");
+			// window.location.href = "index.php";
+		}
+	    </script>
+        <?php
         echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!")</script>';
         echo '<script>window.location.href = "delivery.php"</script>';
     }

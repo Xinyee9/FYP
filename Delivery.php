@@ -166,5 +166,23 @@
 			echo 'Total : RM '.number_format($total, 2).'';
 		?>
 	</div>
+	<!-- <script>
+		var userid = $("#userid").val();
+            $.ajax({
+                method: "POST",
+                url: "pdf.php",
+                data: {userid: userid},
+            success: (response) =>
+            { 
+                response();
+            }
+            });
+
+		function response()
+		{
+			window.alert("Payment successful! \nWe have sent an invoice to your email.");
+			// window.location.href = "index.php";
+		}
+	</script> -->
 </body>
 </html>
