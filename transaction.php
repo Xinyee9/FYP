@@ -56,14 +56,7 @@ if (isset($_POST['btn-submit'])) {
         {
             $trans_id = $row["transaction_id"];
         }
-        // $trans_id = $row["transaction_id"];
 
-        // if($rl)
-        // {
-        //     $rr = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
-        //     mysqli_query($con, $rr);
-        // }
-        // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
         $qry = "UPDATE trans set delivery_status = 'Order Confirm' where userid = $userid";
         $rlt = mysqli_query($con, $qry);
 
@@ -82,84 +75,13 @@ if (isset($_POST['btn-submit'])) {
             {
                 $delete = "DELETE FROM cart WHERE userid = $userid";
                 $result4 = mysqli_query($con, $delete);
-
-                // $sql2 = "SELECT * FROM `real_cart` where userid = $userid";
-                // $result4 = mysqli_query($con, $sql2);
-                // while ($row = mysqli_fetch_assoc($result4))
-                // {
-                //     $real_cart_id = $row["real_cart_id"];
-                // }
             }
         }
-
-        header("Location: delivery.php");
+        echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!")</script>';
+        echo '<script>window.location.href = "delivery.php"</script>';
     }
 }
 
-// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-//         $userid = $_SESSION['id'];
-//     }
-// if (isset($_POST["foodcode"])) {
-//     echo "
-//     <script>
-//     console.log('" . $_POST["foodcode"] . "');
-//     console.log('" . $_POST["foodquantity"] . "');
-//     </script>
-//     ";
-// }
-// session_start();
-// require_once('./php/dbconnect.php');
-// if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-//     $userid = $_SESSION['id'];
-// }
-
-// if (isset($_POST['btn-submit'])) {
-//     // $name = $_POST['fname'];
-//     // $cardname = $_POST['cname'];
-//     // $email = $_POST['email'];
-//     // $card_exp_year = $_POST['expyear'];
-//     // $address = $_POST['address'];
-//     // $city = $_POST['city'];
-//     // $state = $_POST['state'];
-//     // $zip = $_POST['zip'];
-//     // $card_exp_month = $_POST['expmonth'];
-//     // $cvv = $_POST['cvv'];
-
-//     // date_default_timezone_set("Asia/Kuala_Lumpur");
-//     // $datetime = date('Y-m-d h:i:sa');
-
-//     // $query = "INSERT INTO trans (transactiondatetime, userid) VALUES ('$datetime', '$userid')";
-//     // $result = mysqli_query($con, $query);
-
-//     // date_default_timezone_set("Asia/Kuala_Lumpur");
-//     // $date = date('Y-m-d');
-//     // // $time = date('h:i:sa');
-
-//     // // echo 'abc';
-
-//     // // $sql = "INSERT INTO trans (transaction_date, transaction_time, userid) VALUES ($date, $time, $userid)";
-//     // $result = mysqli_query($con, "INSERT INTO trans (transaction_date, userid) VALUES ($date, $userid)");
-//     // if($result)
-//     // {
-//     //     echo '<span onclick="input()"></span>';
-//     // }
-
-//     // if($result)
-//     // {
-//     //     echo "<input type='button' name='btn-submit' value='Submit and Pay' class='btn' onclick='input()'>";
-//     // }
-
-//     // $query = "INSERT INTO `transaction` (tran_date, tran_time, tran_name, tran_email ,tran_card_expiry_year, tran_address, tran_city, tran_card_name, tran_state, tran_zip, tran_card_expiry_month, tran_card_cvv) VALUE ('$date','$time','$name','$email','$card_exp_year','$address','$city','$cardname','$state','$zip','$card_exp_month','$cvv')";
-//     // $result = mysqli_query($con, $query);
-
-//     // if ($result)
-//     // {
-//     //     echo "<script>
-//     //     alert('Thank You for your order! Your payment is SUCCESSFUL!');
-//     //     window.location.href='./delivery.php';
-//     //     </script>";
-//     // }
-// }
 ?>
 
 <!DOCTYPE html>
@@ -317,9 +239,6 @@ if (isset($_POST['btn-submit'])) {
         </div>
     </div>
     <p align="right">
-        <!-- <button href="menu.php">
-            Back</button> -->
-        <!-- <button onclick="menu.php">Back</button> -->
         <button onclick="window.location.href='cart.php'">Back</button>
     </p>
     <h2>Transaction</h2>
@@ -377,25 +296,11 @@ if (isset($_POST['btn-submit'])) {
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <form method="POST" name="status">echo 'Preparing'</form> -->
-
                     </div>
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
 
-                    <!-- // $dt1 = date("Y-m-d");
-                        // $dt2 = date("Y-m-d H:i:s");
-
-                        // $sql = "INSERT INTO transaction(tran_date) VALUES ('$dt1', '$dt2')";
-                        // if(isset($_POST['btn']))
-                        // {
-                        //     $date_clicked = date('Y-m-d H:i:s');
-                        //     $sql = "INSERT INTO transaction(tran_date) VALUE $date_clicked";
-                        // } -->
-
-                    <!-- <input type="button" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()"> -->
                     <input type="submit" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
             </div>
@@ -593,18 +498,6 @@ if (isset($_POST['btn-submit'])) {
                 document.getElementById("eye").className = "fa fa-eye";
             }
         }
-
-        // function input() {
-        //     window.alert("Thank You for your order! Your payment is SUCCESSFUL!");
-
-        //     // display();
-
-        //     // showAlert();
-        // }
-
-        // function display() {
-        //     window.location.href = "delivery.php";
-        // }
     </script>
 </body>
 

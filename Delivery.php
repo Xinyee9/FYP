@@ -100,71 +100,6 @@
 				$userid = $_SESSION['id'];
 			}
 
-			// $qqqqq = "SELECT * FROM real_cart, trans WHERE real_cart.transaction_id = trans.transaction_id and real_cart.userid = $userid and trans.userid = $userid";
-			// $rrrlll = mysqli_query($con, $qqqqq);
-			// while ($row = mysqli_fetch_assoc($rrrlll))
-			// {
-			// 	$real_cart_id = $row["real_cart_id"];
-			// 	$trans_id = $row["transaction_id"];
-			// 	// echo $real_cart_id;
-			// 	// echo $trans_id;
-			// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-			// 	$rltt = mysqli_query($con, $que);
-
-			// 	// $qq = "SELECT * FROM trans where userid = $userid";
-			// 	// $rl = mysqli_query($con, $qq);
-			// 	// // $trans_id = $_POST["transaction_id"];
-			// 	// while ($row = mysqli_fetch_assoc($rl))
-			// 	// {
-			// 	// 	$trans_id = $row["transaction_id"];
-			// 	// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-			// 	// 	$que = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-			// 	// 	$rltt = mysqli_query($con, $que);
-			// 	// }
-			// }
-
-			// include 'transaction.php';
-			// $query = "SELECT * FROM `real_cart` where userid = $userid";
-			// $query = "SELECT * FROM real_cart, trans WHERE real_cart.transaction_id = trans.transaction_id";
-			// $result = mysqli_query($con, $query);
-			// while ($row = mysqli_fetch_assoc($result))
-			// {
-			// 	$real_cart_id = $row["real_cart_id"];
-			// 	$trans_id = $row["transaction_id"];
-			// }
-			// // $query1 = "SELECT * FROM `real_cart` where real_cart_id = $real_cart_id and userid = $userid";
-			// $query1 = "SELECT * FROM `real_cart` where real_cart_id = $real_cart_id";
-			// $result1 = mysqli_query($con, $query1);
-			// while ($row = mysqli_fetch_assoc($result1))
-			// {
-			// 	// $real_cart_id = $row["real_cart_id"];
-
-			// 	$query2 = "SELECT * FROM trans where userid = $userid";
-			// 	$result2 = mysqli_query($con, $query2);
-			// 	// $trans_id = $_POST["transaction_id"];
-			// 	while ($row = mysqli_fetch_assoc($result2))
-			// 	{
-			// 		$trans_id = $row["transaction_id"];
-			// 		// echo $trans_id;
-			// 		// echo $real_cart_id;
-			// 		// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-			// 		$query3 = "UPDATE real_cart set transaction_id = $trans_id where real_cart_id = $real_cart_id AND userid = $userid";
-			// 		// $que = "UPDATE real_cart SET transaction_id = CONCAT(transaction_id, ' ', '$trans_id') WHERE userid = $userid";
-			// 		$result3 = mysqli_query($con, $query3);
-			// 	}
-			// }
-
-			// $qq = "SELECT * FROM trans where userid = $userid";
-			// $rl = mysqli_query($con, $qq);
-			// // $trans_id = $_POST["transaction_id"];
-			// while ($row = mysqli_fetch_assoc($rl))
-			// {
-			// 	$trans_id = $row["transaction_id"];
-			// 	// UPDATE real_cart set transaction_id = 60 where real_cart_id = 37 and userid = 1;
-			//     $que = "UPDATE real_cart set transaction_id = $trans_id where userid = $userid";
-			//     $rltt = mysqli_query($con, $que);
-			// }
-
 			$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
 			$result4 = mysqli_query($con, $sql);
 			while ($row = mysqli_fetch_assoc($result4))
@@ -184,7 +119,6 @@
 			}
 			
 			$total = 0;
-			// $sql1 = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
 			$sql1 = "SELECT * from real_cart WHERE transaction_id = $id";
 			$result5 = mysqli_query($con, $sql1);
 			while ($row = mysqli_fetch_assoc($result5)) {
