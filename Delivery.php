@@ -241,9 +241,9 @@
 		// $sql = "SELECT * from delivery WHERE userid = $userid";
 		// $sql = "SELECT * FROM trans ORDER BY userid = $userid DESC LIMIT 1";
 		$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
-		$rlt = mysqli_query($con, $sql);
+		$result4 = mysqli_query($con, $sql);
 		// $edt = $row["transaction_time"] + 1800;
-		while ($row = mysqli_fetch_assoc($rlt)) {
+		while ($row = mysqli_fetch_assoc($result4)) {
 			$id = $row["transaction_id"];
 			// $select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
 			// $rrr = mysqli_query($con, $select);
@@ -272,9 +272,9 @@
 		}
 		$tt = 0;
 			// $select = "SELECT * from real_cart, trans WHERE real_cart.real_cart_id = trans.real_cart_id and real_cart.userid = $userid and trans.userid = $userid";
-			$select = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
-			$rrr = mysqli_query($con, $select);
-			while ($row = mysqli_fetch_assoc($rrr)) {
+			$sql1 = "SELECT * from real_cart WHERE transaction_id = $id and userid = $userid";
+			$result5 = mysqli_query($con, $sql1);
+			while ($row = mysqli_fetch_assoc($result5)) {
 				$qty = $row["cart_qty"];
 				$oriprice = $row["ori_price"];
 				$stotal = $row["cart_qty"]*$row["ori_price"];
@@ -282,9 +282,9 @@
 				$food_id = $row['food_id'];
 				
 				$sql2 = "SELECT * FROM food WHERE food_id = $food_id";
-                $res2 = mysqli_query($con, $sql2);
+                $result6 = mysqli_query($con, $sql2);
                 
-                while($row = mysqli_fetch_array($res2))
+                while($row = mysqli_fetch_array($result6))
             	{
                                     
 					$food_name = $row['food_name'];
