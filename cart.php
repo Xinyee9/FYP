@@ -79,13 +79,6 @@ session_start();
 		align-items: center;
 	}
 
-	.image-box {
-		/* width: 15%; */
-		/* width: 100px;
-	height: 100px; */
-		/* text-align: center; */
-	}
-
 	.about {
 		height: 100%;
 		width: 50%;
