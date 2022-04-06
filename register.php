@@ -141,11 +141,26 @@ if (isset($_POST['mem_name'])) {
       text-align: center;
     }
 
-    /* .button {
-      background-color: blue; 
-      color: black; 
-      border: 2px solid #008CBA;
-    } */
+    .button {
+      margin: 20px;
+			cursor: pointer;
+			float: right;
+			overflow: auto;
+			font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			margin-top: 5px;
+			text-decoration: none;
+			outline: none;
+			color: #6495ED;
+			border: none;
+			border-radius: 15px;
+			box-shadow: 0 9px #999;
+		}
+
+		.button:hover {
+			background-color: #ddd;
+			color: black;
+		}
   </style>
 </head>
 
@@ -158,6 +173,9 @@ if (isset($_POST['mem_name'])) {
 </body>
 
 <body>
+    <p align="right">
+      <button class="button" onclick="window.location.href='cart.php'">Back to LOGIN</button>
+    </p>
   <span class="font_bk">
     <h4><strong>Register for a New Account</strong></h4>
     <hr />
