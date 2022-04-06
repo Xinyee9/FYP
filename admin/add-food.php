@@ -37,7 +37,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Description:</span>
-                        <textarea name="description" cols="40" rows="3" placeholder="Description of the food" ></textarea>
+                        <input type="text" name="description" cols="40" rows="3" placeholder="Description of the food" required>
                     </div>
                     
                 </div>
