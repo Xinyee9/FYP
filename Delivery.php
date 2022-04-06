@@ -1,3 +1,8 @@
+<?php
+	require_once('./php/dbconnect.php');
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
