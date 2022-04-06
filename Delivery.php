@@ -48,6 +48,7 @@
 		}
 
 		.title {
+			text-align: center;
 			height: 60px;
 			border-bottom: 1px solid #E1E8EE;
 			margin-top: 20px;
