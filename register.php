@@ -174,7 +174,7 @@ if (isset($_POST['mem_name'])) {
 
 <body>
     <p align="right">
-      <button class="button" onclick="window.location.href='cart.php'">Back to LOGIN</button>
+      <button class="button" onclick="window.location.href='login.php'">Back to LOGIN</button>
     </p>
   <span class="font_bk">
     <h4><strong>Register for a New Account</strong></h4>

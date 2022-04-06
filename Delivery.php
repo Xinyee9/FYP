@@ -373,7 +373,7 @@
 								?>
 								<?php echo '<pre>';
 									echo '<div class = "details">';
-									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t\t","RM ".number_format($subtotal, 2)."";
+									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($subtotal, 2)."";
 									echo '</div>';
 									echo '</pre>';
 								?>
