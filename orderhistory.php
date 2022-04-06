@@ -120,6 +120,32 @@ require_once('./php/dbconnect.php');
     table tr td {
         padding: 9px 5px;
     }
+
+    /* .button {
+    background-color: #FF0000;
+    border: none;
+    color: white;
+    padding: 11px 11px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding-top: -10px;
+    padding-bottom: 13px;
+    }
+
+    .button1 {
+    background-color: #FF0000;
+    color: black;
+    border-radius: 8px;
+    }
+
+    .button1:hover {
+    background-color: #FF0000;
+    color: white;
+    } */
 </style>
 
 <head>
