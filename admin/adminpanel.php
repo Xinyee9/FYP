@@ -12,7 +12,7 @@
                             <div class="cardName">Category</div>
                         </div>
                         <div class="iconBox">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <i class="fa fa-pie-chart" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="card">
@@ -26,7 +26,7 @@
                             <div class="cardName">Food</div>
                         </div>
                         <div class="iconBox">
-                            <i class="fa fa-comment" aria-hidden="true"></i>
+                            <i class="fa fa-cutlery" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="card">
