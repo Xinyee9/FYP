@@ -1,8 +1,6 @@
 <?php
 	require_once('./php/dbconnect.php');
 	session_start();
-
-	header("refresh: 4");
 ?>
 
 <!DOCTYPE html>
