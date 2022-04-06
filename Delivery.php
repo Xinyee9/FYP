@@ -1,8 +1,8 @@
 <?php
-	require_once('./php/dbconnect.php');
-	session_start();
+require_once('./php/dbconnect.php');
+session_start();
 
-	header("refresh: 4");
+header("refresh: 4");
 ?>
 
 <!DOCTYPE html>
@@ -65,20 +65,23 @@
 		}
 
 		@keyframes blink {
+
 			0%,
 			22%,
 			36%,
 			75% {
 				color: #ffe6ff;
 				text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
-				-0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
-				0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+					-0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+					0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
 			}
+
 			28%,
 			33% {
 				color: #ff65bd;
 				text-shadow: none;
 			}
+
 			82%,
 			97% {
 				color: #ff2483;
@@ -87,11 +90,11 @@
 		}
 
 		.flicker {
-		animation: shine 2s forwards, blink 3s 2s infinite;
+			animation: shine 2s forwards, blink 3s 2s infinite;
 		}
 
 		.fast-flicker {
-		animation: shine 2s forwards, blink 2s 1s infinite;
+			animation: shine 2s forwards, blink 2s 1s infinite;
 		}
 
 		@keyframes shine {
@@ -99,11 +102,12 @@
 				color: #6b1839;
 				text-shadow: none;
 			}
+
 			100% {
 				color: #ffe6ff;
 				text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
-				-0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
-				0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+					-0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+					0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
 			}
 		}
 
@@ -272,15 +276,15 @@
 
 		.container {
 			margin-left: 200px;
-            background-color: rgba(255, 255, 255, .8);
-            padding: 5px 20px 15px 20px;
-            border: 1px solid lightgrey;
-            border-radius: 3px;
+			background-color: rgba(255, 255, 255, .8);
+			padding: 5px 20px 15px 20px;
+			border: 1px solid lightgrey;
+			border-radius: 3px;
 			margin-top: -50px;
 			font-family: "Times New Roman", Times, serif;
 			font-size: 16px;
-  			width: 100%;
-        }
+			width: 100%;
+		}
 
 		.total {
 			text-align: right;
@@ -322,88 +326,83 @@
 	</div>
 	<div class="status">
 		<?php
-			if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1)
-			{ //check login
-				$userid = $_SESSION['id'];
-			}
+		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
+			$userid = $_SESSION['id'];
+		}
 
-			$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
-			$result4 = mysqli_query($con, $sql);
-			while ($row = mysqli_fetch_assoc($result4))
-			{
-				$id = $row["transaction_id"];
+		$sql = "SELECT * FROM trans WHERE userid = $userid ORDER BY transaction_id DESC LIMIT 1";
+		$result4 = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_assoc($result4)) {
+			$id = $row["transaction_id"];
 
-				echo '<div class="container">
-					<p>Delivery ID          : '.$id.'</p>
-					<p>Delivery Date          : '.$row["transaction_date"].'</p>
-					<p>Delivery Time          : '.$row["transaction_time"].'</p>
-					<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
-					<p>Delivery Status        : '.$row["delivery_status"].'</p>
-					<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
-					echo '<hr>';
-					echo '<pre>';
-					echo '<div class = "text">';
-					echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
-					echo '</div>';
-					echo '</pre>';
-					// echo '</div>';
-			}
-			
-			$total = 0;
-			$sql1 = "SELECT * from real_cart WHERE transaction_id = $id";
-			$result5 = mysqli_query($con, $sql1);
-			while ($row = mysqli_fetch_assoc($result5)) {
-				$qty = $row["cart_qty"];
-				$oriprice = $row["ori_price"];
-				$subtotal = $row["cart_qty"]*$row["ori_price"];
-				$total += $row["subtotal"];
-				$food_id = $row['food_id'];
-				
-				$sql2 = "SELECT * FROM food WHERE food_id = $food_id";
-                $result6 = mysqli_query($con, $sql2);
-                
-                while($row = mysqli_fetch_array($result6))
-            	{
-                                    
-					$food_name = $row['food_name'];
-                    $food_image = $row['food_image'];
-                                    
-                    ?>
-						<tr>
-                            <td>
-								<?php
-									if ($food_image == "") 
-									{
-										echo "<div class='error'>Image not added.</div>";
-									} 
-									else {
-								?>
-								<?php echo '<pre>';
-									echo '<div class = "details">';
-									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t\t","RM ".number_format($subtotal, 2)."";
-									echo '</div>';
-									echo '</pre>';
-								?>
-								<div class="image">
-                                    <img src="Food/<?php echo $food_image; ?>" style={{ height="100px" width="100px"}}>
-								</div>
-                                <?php
-                						}
-                                ?>
-                            </td>
-							<td>
-								<p class="p1"><?php echo $food_name ?></p>
-                            </td>
-						</tr>
-					<?php
-				}
-			}
+			echo '<div class="container">
+					<p>Delivery ID          : ' . $id . '</p>
+					<p>Delivery Date          : ' . $row["transaction_date"] . '</p>
+					<p>Delivery Time          : ' . $row["transaction_time"] . '</p>
+					<p>Estimate Delivery Time : ' . $row["e_d_time"] . '</p>
+					<p>Delivery Status        : ' . $row["delivery_status"] . '</p>
+					<p>Delivery Address       : ' . $row["Trans_Address"] . ',' . $row["City"] . ',' . $row["Zip"] . ',' . $row["Trans_State"] . '</p>';
 			echo '<hr>';
-			echo '<div class = "total">
-					Total : RM '.number_format($total, 2).'
-				</div>';
-			echo '<hr>';
+			echo '<pre>';
+			echo '<div class = "text">';
+			echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
 			echo '</div>';
+			echo '</pre>';
+			// echo '</div>';
+		}
+
+		$total = 0;
+		$sql1 = "SELECT * from real_cart WHERE transaction_id = $id";
+		$result5 = mysqli_query($con, $sql1);
+		while ($row = mysqli_fetch_assoc($result5)) {
+			$qty = $row["cart_qty"];
+			$oriprice = $row["ori_price"];
+			$subtotal = $row["cart_qty"] * $row["ori_price"];
+			$total += $row["subtotal"];
+			$food_id = $row['food_id'];
+
+			$sql2 = "SELECT * FROM food WHERE food_id = $food_id";
+			$result6 = mysqli_query($con, $sql2);
+
+			while ($row = mysqli_fetch_array($result6)) {
+
+				$food_name = $row['food_name'];
+				$food_image = $row['food_image'];
+
+		?>
+				<tr>
+					<td>
+						<?php
+						if ($food_image == "") {
+							echo "<div class='error'>Image not added.</div>";
+						} else {
+						?>
+							<?php echo '<pre>';
+							echo '<div class = "details">';
+							echo "\t\t\t$qty\t\t\t\t", "RM " . number_format($oriprice, 2) . "\t\t\t", "RM " . number_format($subtotal, 2) . "";
+							echo '</div>';
+							echo '</pre>';
+							?>
+							<div class="image">
+								<img src="Food/<?php echo $food_image; ?>" style={{ height="100px" width="100px"}}>
+							</div>
+						<?php
+						}
+						?>
+					</td>
+					<td>
+						<p class="p1"><?php echo $food_name ?></p>
+					</td>
+				</tr>
+		<?php
+			}
+		}
+		echo '<hr>';
+		echo '<div class = "total">
+					Total : RM ' . number_format($total, 2) . '
+				</div>';
+		echo '<hr>';
+		echo '</div>';
 		?>
 	</div>
 	<!-- <script>
@@ -425,4 +424,5 @@
 		}
 	</script> -->
 </body>
+
 </html>
