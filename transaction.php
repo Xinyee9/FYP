@@ -20,13 +20,11 @@ if (isset($_POST['btn-submit'])) {
 
     $query = "INSERT INTO trans (transaction_date, transaction_time, e_d_time, Full_Name, Trans_Address, City, Trans_State, Zip, userid) VALUES ('$date','$time','$timet','$fullname','$address','$city','$state','$zip','$userid')";
     $result = mysqli_query($con, $query);
-    if($result)
-    {
+    if ($result) {
 
         $query1 = "SELECT * FROM trans where userid = $userid";
         $result1 = mysqli_query($con, $query1);
-        while ($row = mysqli_fetch_assoc($result1))
-        {
+        while ($row = mysqli_fetch_assoc($result1)) {
             $trans_id = $row["transaction_id"];
         }
 
@@ -35,8 +33,7 @@ if (isset($_POST['btn-submit'])) {
 
         $sql = "SELECT * FROM `cart` WHERE userid = $userid";
         $result2 = mysqli_query($con, $sql);
-        while ($row = mysqli_fetch_assoc($result2))
-        {
+        while ($row = mysqli_fetch_assoc($result2)) {
             $cart_qty = $row["cart_qty"];
             $price = $row["ori_price"];
             $sub = $row["subtotal"];
@@ -44,13 +41,12 @@ if (isset($_POST['btn-submit'])) {
 
             $sql1 = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, transaction_id) VALUES ('$cart_qty','$price','$sub','$food_id','$trans_id')";
             $result3 = mysqli_query($con, $sql1);
-            if($result3)
-            {
+            if ($result3) {
                 $delete = "DELETE FROM cart WHERE userid = $userid";
                 $result4 = mysqli_query($con, $delete);
             }
         }
-        ?>
+?>
         <!-- <script>
 		var userid = $("#userid").val();
             $.ajax({
@@ -69,7 +65,7 @@ if (isset($_POST['btn-submit'])) {
 			// window.location.href = "index.php";
 		}
 	    </script> -->
-        <?php
+<?php
         echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!")</script>';
         echo '<script>window.location.href = "delivery.php"</script>';
     }
@@ -152,7 +148,8 @@ if (isset($_POST['btn-submit'])) {
             border-radius: 3px;
         }
 
-        input[type=text] , input[type=password]{
+        input[type=text],
+        input[type=password] {
             width: 100%;
             margin-bottom: 20px;
             padding: 12px;
@@ -243,7 +240,7 @@ if (isset($_POST['btn-submit'])) {
                         <div class="col-50">
                             <h3>Delivery Address</h3>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                            <input type="text" id="fname" name="firstname" required id= "firstname" title="Please Enter your name" placeholder="Joshua">
+                            <input type="text" id="fname" name="firstname" required id="firstname" title="Please Enter your name" placeholder="Joshua">
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
                             <input type="text" id="email" name="email" required id="email" placeholder="example@gmail.com">
                             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
@@ -257,7 +254,7 @@ if (isset($_POST['btn-submit'])) {
                                     <input type="text" id="state" name="state" required id="state" placeholder="Malacca">
                                 </div>
                                 <div class="col-50">
-                                    <label for="zip">Zip</label>
+                                    <label for="zip">Postcode</label>
                                     <input type="text" id="zip" name="zip" required id="zip" placeholder="75450">
                                 </div>
                             </div>
@@ -275,17 +272,17 @@ if (isset($_POST['btn-submit'])) {
                             <label for="cname">Cardholder Name</label>
                             <input type="text" id="cname" name="cardname" required id="cardname" pattern="[A-Z].{3,}" title="Please enter capital letter for your card FULL NAME" placeholder="JOSHUA">
                             <label for="ccnum">Card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" required id="cardnumber" minlength="16" maxlength= "16" placeholder="1234123412341234">
+                            <input type="text" id="ccnum" name="cardnumber" required id="cardnumber" minlength="16" maxlength="16" placeholder="1234123412341234">
                             <label for="expmonth">Exp Month</label>
                             <input type="text" id="expmonth" name="expmonth" required id="expmonth" pattern="[A-Za-z]{3,}" title="Please enter the correct month" placeholder="April">
                             <div class="row">
                                 <div class="col-50">
                                     <label for="expyear">Exp Year</label>
-                                    <input type="text" id="expyear" name="expyear" required id="expyear" minlength="4" maxlength= "4" placeholder="2022">
+                                    <input type="text" id="expyear" name="expyear" required id="expyear" minlength="4" maxlength="4" placeholder="2022">
                                 </div>
                                 <div class="col-50">
-                                    <label for="cvv" >CVV<i class="fa fa-eye" id="eye" onclick="ShowCVV();"></i></label>
-                                    <input type="password" id="cvv" name="cvv" required id="cvv" minlength="3" maxlength= "3" placeholder="888">
+                                    <label for="cvv">CVV<i class="fa fa-eye" id="eye" onclick="ShowCVV();"></i></label>
+                                    <input type="password" id="cvv" name="cvv" required id="cvv" minlength="3" maxlength="3" placeholder="888">
                                 </div>
                             </div>
                         </div>
@@ -345,7 +342,7 @@ if (isset($_POST['btn-submit'])) {
         //         $("#errorexpirydate").hide();
         //         isValidDate = true;
         //     }
-                
+
         //     if(name == "")
         //     {
         //         $("#errorcardholder").text("The Name field is required!");
@@ -431,11 +428,11 @@ if (isset($_POST['btn-submit'])) {
         //                         $('#errorcardno').attr("style", "display: inline !important; color: red;");
         //                         isValidCreditDebitCard = false;
         //                     }
-                            
+
         //                 }
         //             }
         //         }
-                
+
         //     }
         //     if(cvv == "")
         //     {
@@ -479,8 +476,7 @@ if (isset($_POST['btn-submit'])) {
         //     }
         // }
 
-        function ShowCVV()
-        {
+        function ShowCVV() {
             var cvv = document.getElementById("cvv");
 
             if (cvv.type === "password") {

@@ -147,7 +147,6 @@
             $description = $_POST['description'];
             $stock = $_POST['stock'];
             $status = $_POST['status'];
-            $admin = $_POST['admin'];
             $category = $_POST['category'];
             if (isset($_POST['active'])) {
                 $active = $_POST['active'];
@@ -214,7 +213,6 @@
             food_image = '$image_name',
             food_stock = '$stock',
             food_status= '$status',
-            admin_id = '$admin',
             cate_id = '$category',
             active = '$active'
         ";
