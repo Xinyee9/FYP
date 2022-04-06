@@ -192,6 +192,9 @@ require_once('./php/dbconnect.php');
                                     <button class="btn btn-lg btn-success" type="submit">
                                         <a href="historyview.php?ID=<?php echo $tran_id; ?>" class="glyphicon glyphicon-ok-sign" style="color: white"; >View </a>
                                     </button>
+                                    <button class="btn btn-lg btn-success" type="submit">
+                                        <a href="cancelorder.php?ID=<?php echo $tran_id; ?>" class="glyphicon glyphicon-ok-sign" style="color: white"; >Cancel Order </a>
+                                    </button>
                                     </td>  
                                 </tr>
                                 
