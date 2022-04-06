@@ -15,48 +15,41 @@ include('config/constants.php'); ?>
 </head>
 
 <body>
-<?php
-                if(isset($_GET['ID']))
-                {
-                    //1.get the id of selected admin
-                    $ID = $_GET['ID'];
-                    
-                    //2.create sql query to get the details
-                    $sql = "SELECT * FROM users WHERE userid =$ID";
-                    
-                    //Execute the query
-                    $res = mysqli_query($conn, $sql);
+    <?php
+    if (isset($_GET['ID'])) {
+        //1.get the id of selected admin
+        $ID = $_GET['ID'];
 
-                    //count the rows to check whether the id is valid or not
-                    $count = mysqli_num_rows($res);
+        //2.create sql query to get the details
+        $sql = "SELECT * FROM users WHERE userid =$ID";
 
-                    if($count == 1)
-                    {
-                        //get the details
-                        //echo "Admin Available"
-                        $row = mysqli_fetch_assoc($res);
-                        $full_name = $row['username'];
-                        $email = $row['useremail'];
-                        //$phone = $row['userphone'];
-                        //$adress = $row['useradress'];
-                        //$current_image = $row['userpic'];
-                        $role = $row['userprivilege'];
-                        $userfirstname = $row['userfirstname'];
-                        $userlastname = $row['userlastname'];
-                    }
-                    else
-                    {
-                        $_SESSION['admin-no-found'] = "<div class='error'>user not found.</div>";
-                        //Redirect to manage admin page
-                        header('location:'.SITEURL.'admin/userstest.php');
-                    }
+        //Execute the query
+        $res = mysqli_query($conn, $sql);
 
-                }
-                else
-                {
-                    header('location:'.SITEURL.'admin/userstest.php');
-                }    
-        ?>
+        //count the rows to check whether the id is valid or not
+        $count = mysqli_num_rows($res);
+
+        if ($count == 1) {
+            //get the details
+            //echo "Admin Available"
+            $row = mysqli_fetch_assoc($res);
+            $full_name = $row['username'];
+            $email = $row['useremail'];
+            //$phone = $row['userphone'];
+            //$adress = $row['useradress'];
+            //$current_image = $row['userpic'];
+            $role = $row['userprivilege'];
+            $userfirstname = $row['userfirstname'];
+            $userlastname = $row['userlastname'];
+        } else {
+            $_SESSION['admin-no-found'] = "<div class='error'>user not found.</div>";
+            //Redirect to manage admin page
+            header('location:' . SITEURL . 'admin/userstest.php');
+        }
+    } else {
+        header('location:' . SITEURL . 'admin/userstest.php');
+    }
+    ?>
     <div class="container">
         <div class="navigation">
             <ul>
@@ -137,106 +130,104 @@ include('config/constants.php'); ?>
                     <img src="admin_image/Admin.png">
                 </div>
             </div>
-            <form action="" method ="POST">
-            <div class="details">
+            <form action="" method="POST">
+                <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>User Details</h2>
-                            <a href ="../admin/userstest.php"  class="btn-add ">Back </a>
+                            <a href="../admin/userstest.php" class="btn-add ">Back </a>
                         </div>
-                        
-                        <table >
+
+                        <table>
                             <tr>
-                                <th style="text-align: left";>Detail</th>
-                                <th style="text-align: left";>Actions</th> 
+                                <th style="text-align: left" ;>Detail</th>
+                                <th style="text-align: left" ;>Actions</th>
                             </tr>
                             <tr>
-                                
-                                <td style="text-align: left";>
-                                    <p><b>Username        :  </b> <?php echo $full_name; ?></p>
-                                    <p><b>Email           :  </b> <?php echo $email; ?></p> 
-                                    
-                                    
-                                    <p><b>User first Name :  </b> <?php echo $userfirstname; ?></p>
-                                    <p><b>User Last Name  :  </b> <?php echo $userlastname; ?></p>
+
+                                <td style="text-align: left" ;>
+                                    <p><b>Username : </b> <?php echo $full_name; ?></p>
+                                    <p><b>Email : </b> <?php echo $email; ?></p>
+
+
+                                    <p><b>User first Name : </b> <?php echo $userfirstname; ?></p>
+                                    <p><b>User Last Name : </b> <?php echo $userlastname; ?></p>
                                     <br>
                                     <div>
                                         <p><b>Role : </b>
-                                            <input <?php if($role == "user"){echo "checked";} ?> type="radio" name="role" value="user" > User
-                                            <input <?php if($role == "admin"){echo "checked";} ?> type="radio" name="role" value="admin" > Admin
+                                            <input <?php if ($role == "user") {
+                                                        echo "checked";
+                                                    } ?> type="radio" name="role" value="user"> User
+                                            <input <?php if ($role == "admin") {
+                                                        echo "checked";
+                                                    } ?> type="radio" name="role" value="admin"> Admin
                                         </p>
                                     </div>
                                 </td>
                                 <td style="text-align: left;">
-                                    <input type="hidden" name = "ID" value="<?php echo $ID;?>">
+                                    <input type="hidden" name="ID" value="<?php echo $ID; ?>">
                                     <button type="submit" name="submit" class="btn-add" value="Change Role">Change Role
                                 </td>
                             </tr>
-                        </table>  
-                            
-                              
-                    </div>        
-                </div>
-            
-                                    </form>  
-                
-                                   
-                    <?php
+                        </table>
 
-//check whether the submit buttom is clicked or not
-if(isset($_POST['submit']))
-{
-    //GET all the values from form to update
-    $ID = $_POST['ID'];
-    $role = $_POST['role'];
-    
-    
-    //create a sql query to update admin
-    $sql2 = "UPDATE users SET
+
+                    </div>
+                </div>
+
+            </form>
+
+
+            <?php
+
+            //check whether the submit buttom is clicked or not
+            if (isset($_POST['submit'])) {
+                //GET all the values from form to update
+                $ID = $_POST['ID'];
+                $role = $_POST['role'];
+
+
+                //create a sql query to update admin
+                $sql2 = "UPDATE users SET
         userprivilege = '$role'
         WHERE userid = '$ID'
     ";
 
-    //Execute the Query
-    $res2 = mysqli_query($conn, $sql2);
+                //Execute the Query
+                $res2 = mysqli_query($conn, $sql2);
 
-    if($res2 == TRUE)
-    {
-        //Query Executed and Admin Update
-        //$_SESSION['update'] = "<div class='success'>Role Change Successfully.</div>";
-        //Redirect to manage admin page
-        //header('location:'.SITEURL.'admin/userstest.php');
-        echo "<script>
+                if ($res2 == TRUE) {
+                    //Query Executed and Admin Update
+                    //$_SESSION['update'] = "<div class='success'>Role Change Successfully.</div>";
+                    //Redirect to manage admin page
+                    //header('location:'.SITEURL.'admin/userstest.php');
+                    echo "<script>
           alert('Role Change Successfully.');
           window.location.href='./userstest.php';
           </script>";
-    }
-    else
-    {
-        //Faile to update Admin
-        //$_SESSION['update'] = "<div class='error'>Failed to Change Role.</div>";
-        //Redirect to manage admin page
-        //header('location:'.SITEURL.'admin/userstest.php');
-        echo "<script>
+                } else {
+                    //Faile to update Admin
+                    //$_SESSION['update'] = "<div class='error'>Failed to Change Role.</div>";
+                    //Redirect to manage admin page
+                    //header('location:'.SITEURL.'admin/userstest.php');
+                    echo "<script>
           alert('Failed to Change Role.');
           window.location.href='./userstest.php';
           </script>";
-    }
-    
-}
+                }
+            }
 
-?>
-        
+            ?>
 
 
 
-   </div>
-</div>
-<?php 
 
-include('includes/script.php')
-?>
-</body> 
-</html> 
+        </div>
+    </div>
+    <?php
 
+    include('includes/script.php')
+    ?>
+</body>
 
+</html>

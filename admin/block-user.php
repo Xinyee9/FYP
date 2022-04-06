@@ -12,11 +12,11 @@ if (isset($_GET['ID'])) {
     //check whether the query executed successfully or not
     if ($res == true) {
 
-        $_SESSION['adminblock'] = "<div class='success'>Admin Blocked Successfully.</div>";
+        $_SESSION['userblock'] = "<div class='success'>User Blocked Successfully.</div>";
         header('location:' . SITEURL . 'admin/userstest.php');
     } else {
 
-        $_SESSION['adminblock'] = "<div class='error'>Failed to Block Admin. Try Again Later.</div>";
+        $_SESSION['userblock'] = "<div class='error'>Failed to Block User. Try Again Later.</div>";
         header('location:' . SITEURL . 'admin/userstest.php');
     }
 } else {

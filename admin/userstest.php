@@ -97,6 +97,12 @@ include('config/constants.php'); ?>
                         <h2>Manage Admin</h2>
                         <a href="add-admin.php" class="btn">Add Admin</a>
                     </div>
+                    <?php
+                    if (isset($_SESSION['adminblock'])) {
+                        echo $_SESSION['adminblock']; //Display Session Message
+                        unset($_SESSION['adminblock']); //REMoving Session Message
+                    }
+                    ?>
                     <table>
                         <thead>
                             <tr>
@@ -176,6 +182,11 @@ include('config/constants.php'); ?>
                         <h2>Users list</h2>
 
                     </div>
+                    <?php
+                    if (isset($_SESSION['userblock'])) {
+                        echo $_SESSION['userblock']; //Display Session Message
+                        unset($_SESSION['userblock']); //REMoving Session Message
+                    } ?>
                     <table>
                         <thead>
                             <tr>
@@ -232,6 +243,11 @@ include('config/constants.php'); ?>
 
                                             <td>
                                                 <a href="<?php echo SITEURL; ?>admin/users-changerole.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Role</a>
+                                                <?php if ($rows2['block'] == 1) { ?>
+                                                    <a href="<?php echo SITEURL; ?>admin/unblock-user.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
+                                                <?php } else { ?>
+                                                    <a href="<?php echo SITEURL; ?>admin/block-user.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
 
