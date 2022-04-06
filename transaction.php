@@ -219,6 +219,27 @@ if (isset($_POST['btn-submit'])) {
             background-color: #ddd;
             color: white;
         }
+
+        .button {
+            margin: 20px;
+			cursor: pointer;
+			float: right;
+			overflow: auto;
+			font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			margin-top: 5px;
+			text-decoration: none;
+			outline: none;
+			color: #6495ED;
+			border: none;
+			border-radius: 15px;
+			box-shadow: 0 9px #999;
+		}
+
+		.button:hover {
+			background-color: #ddd;
+			color: black;
+		}
     </style>
 </head>
 
@@ -229,7 +250,7 @@ if (isset($_POST['btn-submit'])) {
         </div>
     </div>
     <p align="right">
-        <button onclick="window.location.href='cart.php'">Back</button>
+        <button class="button" onclick="window.location.href='cart.php'">Back</button>
     </p>
     <h2>Transaction</h2>
     <div class="row">
