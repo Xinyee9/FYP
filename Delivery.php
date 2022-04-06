@@ -13,7 +13,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 		body {
-			background-color: #C0C0C0;
+			/* background-color: #C0C0C0; */
+			background-image: url(image/delivery.jpg);
+			background-repeat: no-repeat;
+			background-size: 100%;
 		}
 
 		.btn {
@@ -22,6 +25,13 @@
 			overflow: auto;
 			font-size: 20px;
 			font-family: Arial, Helvetica, sans-serif;
+			margin-top: 5px;
+			text-decoration: none;
+			outline: none;
+			color: #fff;
+			border: none;
+			border-radius: 15px;
+			box-shadow: 0 9px #999;
 		}
 
 		.right j {
@@ -81,6 +91,43 @@
 		#delivery td {
 			width: 300px;
 		}
+
+		.container {
+            background-color: rgba(255, 255, 255, .7);
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+			margin-top: -50px;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 16px;
+        }
+
+		.total {
+			text-align: right;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.image {
+			margin-top: -30px;
+		}
+
+		.text {
+			font-style: italic;
+			font-weight: bold;
+			font-size: 14px;
+		}
+
+		.details {
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		.p1 {
+			font-style: italic;
+			font-weight: bold;
+			font-size: 16px;
+		}
 	</style>
 </head>
 
@@ -106,7 +153,8 @@
 			{
 				$id = $row["transaction_id"];
 
-				echo '<p>Delivery ID          : '.$id.'</p>
+				echo '<div class="container">
+					<p>Delivery ID          : '.$id.'</p>
 					<p>Delivery Date          : '.$row["transaction_date"].'</p>
 					<p>Delivery Time          : '.$row["transaction_time"].'</p>
 					<p>Estimate Delivery Time : '.$row["e_d_time"].'</p>
@@ -114,8 +162,11 @@
 					<p>Delivery Address       : '.$row["Trans_Address"].','.$row["City"].','.$row["Zip"].','.$row["Trans_State"].'</p>';
 					echo '<hr>';
 					echo '<pre>';
+					echo '<div class = "text">';
 					echo "Item\t\t\tQuantity\t\t\tPrice(Quantity)\t\t\tSubtotal";
+					echo '</div>';
 					echo '</pre>';
+					// echo '</div>';
 			}
 			
 			$total = 0;
@@ -148,22 +199,31 @@
 									else {
 								?>
 								<?php echo '<pre>';
+									echo '<div class = "details">';
 									echo "\t\t\t$qty\t\t\t\t","RM ".number_format($oriprice, 2)."\t\t\t","RM ".number_format($subtotal, 2)."";
+									echo '</div>';
 									echo '</pre>';
 								?>
+								<div class="image">
                                     <img src="Food/<?php echo $food_image; ?>" style={{ height="100px" width="100px"}}>
+								</div>
                                 <?php
                 						}
                                 ?>
                             </td>
 							<td>
-								<p><?php echo $food_name ?></p>
+								<p class="p1"><?php echo $food_name ?></p>
                             </td>
 						</tr>
 					<?php
 				}
 			}
-			echo 'Total : RM '.number_format($total, 2).'';
+			echo '<hr>';
+			echo '<div class = "total">
+					Total : RM '.number_format($total, 2).'
+				</div>';
+			echo '<hr>';
+			echo '</div>';
 		?>
 	</div>
 	<!-- <script>

@@ -7,34 +7,7 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
     $userid = $_SESSION['id'];
 }
 
-// $sql = "SELECT * FROM `cart` WHERE userid = $userid";
-// $result = mysqli_query($con, $sql);
-// while ($row = mysqli_fetch_assoc($result))
-// {
-//     $cart_qty = $row["cart_qty"];
-//     $price = $row["ori_price"];
-//     $sub = $row["subtotal"];
-//     $food_id = $row["food_id"];
-
-//     $insert = "INSERT INTO real_cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ('$cart_qty','$price','$sub','$food_id','$userid')";
-//     $r = mysqli_query($con, $insert);
-//     if($r)
-//     {
-//         $dlt = "DELETE FROM cart WHERE userid = $userid";
-//         $re = mysqli_query($con, $dlt);
-
-//         $qqqq = "SELECT * FROM `real_cart` where userid = $userid";
-//         $rrll = mysqli_query($con, $qqqq);
-//         while ($row = mysqli_fetch_assoc($rrll))
-//         {
-//             $real_cart_id = $row["real_cart_id"];
-//         }
-//     }
-// }
-
 if (isset($_POST['btn-submit'])) {
-    // echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!");</script>';
-    // $message = $_POST['message'];
     $fullname = $_POST['firstname'];
     $address = $_POST['address'];
     $city = $_POST['city'];
@@ -78,7 +51,7 @@ if (isset($_POST['btn-submit'])) {
             }
         }
         ?>
-        <script>
+        <!-- <script>
 		var userid = $("#userid").val();
             $.ajax({
                 method: "POST",
@@ -95,7 +68,7 @@ if (isset($_POST['btn-submit'])) {
 			window.alert("Payment successful! \nWe have sent an invoice to your email.");
 			// window.location.href = "index.php";
 		}
-	    </script>
+	    </script> -->
         <?php
         echo '<script>alert("Thank You for your order! Your payment is SUCCESSFUL!")</script>';
         echo '<script>window.location.href = "delivery.php"</script>';
