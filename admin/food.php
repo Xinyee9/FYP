@@ -94,11 +94,7 @@
                         <td><?php echo $active; ?></td>
                         <td>
                             <a href="<?php echo SITEURL; ?>admin/view.php?ID=<?php echo $ID; ?>" class="btn-update">View Food</a>
-                            <?php if ($rows['block'] == 1) { ?>
-                                <a href="<?php echo SITEURL; ?>admin/unblock-food.php?ID=<?php echo $ID; ?>" class="btn-delete">Unhide</a>
-                            <?php } else { ?>
-                                <a href="<?php echo SITEURL; ?>admin/block-food.php?ID=<?php echo $ID; ?>" class="btn-delete">Hide</a>
-                            <?php } ?>
+
                         </td>
                     </tr>
 

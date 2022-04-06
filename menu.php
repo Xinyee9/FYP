@@ -90,7 +90,7 @@ session_start();
         //         header("Location: cart.php");
         //     }
         // } 
-        $result = mysqli_query($con, "SELECT * FROM food WHERE active='Yes' ");
+        $result = mysqli_query($con, "SELECT * FROM food, category WHERE food.cate_id = category.category_id AND active='Yes' AND category.block = 0");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
             $counter;
