@@ -13,6 +13,7 @@ include('config/constants.php'); ?>
     <link rel="stylesheet" type="text/css" href="apstyle.css">
 
 </head>
+
 <body>
 
     <div class="container">
@@ -92,107 +93,97 @@ include('config/constants.php'); ?>
                     </label>
                 </div> -->
                 <div class="user">
-                    <img src="admin_image/Admin.png">
+                    <img src="../image/admin_image/Admin.png">
                 </div>
             </div>
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">                    
-                            <h2>Order view</h2>
-                            <a href ="../admin/orders.php"  class="btn-add ">Back </a> 
-                        </div>
-                        <form action="" method="POST" >
-                        <table >
-                       
-                            <tbody> 
-                            <?php
-                                if(isset($_GET['ID'])) {
-                                //1.get the id of selected admin
-                                $ID = $_GET['ID'];
-                                
-                                //2.create sql query to get the details
-                                $sql = "SELECT * FROM trans WHERE transaction_id =$ID";
-                                //Execute the query
-                                $res = mysqli_query($conn, $sql);
-                                //get the value based on query executed
-                                $row = mysqli_fetch_assoc($res);
-                
-                                //$tran_id = $row['transaction_id'];
-                                $tran_date = $row['transaction_date'];
-                                $tran_time = $row['transaction_time'];
-                                $name = $row['Full_Name'];
-                                $adress = $row['Trans_Address'];
-                                $city = $row['City'];
-                                $zip = $row['Zip'];
-                                $tran_state = $row['Trans_State'];
-                                $status = $row['delivery_status'];
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Order view</h2>
+                        <a href="../admin/orders.php" class="btn-add ">Back </a>
+                    </div>
+                    <form action="" method="POST">
+                        <table>
 
+                            <tbody>
+                                <?php
+                                if (isset($_GET['ID'])) {
+                                    //1.get the id of selected admin
+                                    $ID = $_GET['ID'];
+
+                                    //2.create sql query to get the details
+                                    $sql = "SELECT * FROM trans WHERE transaction_id =$ID";
+                                    //Execute the query
+                                    $res = mysqli_query($conn, $sql);
+                                    //get the value based on query executed
+                                    $row = mysqli_fetch_assoc($res);
+
+                                    //$tran_id = $row['transaction_id'];
+                                    $tran_date = $row['transaction_date'];
+                                    $tran_time = $row['transaction_time'];
+                                    $name = $row['Full_Name'];
+                                    $adress = $row['Trans_Address'];
+                                    $city = $row['City'];
+                                    $zip = $row['Zip'];
+                                    $tran_state = $row['Trans_State'];
+                                    $status = $row['delivery_status'];
                                 }
-                                
+
                                 ?>
                                 <tr>
-                                    <td>       
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <p><b>Order No : </b> <?php echo $ID; ?><p>
-                                    <p><b>Date : </b><?php echo $tran_date ?><p>
-                                    <p><b>Time : </b> <?php echo $tran_time;?></p>
-                                    <p><b>State : </b> <?php echo $tran_state; ?> </p>
-                                    <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
-                                    
-                                    <p><b>Change Status : </b>
-                                     
-                                    <select name="status" >
-                                        <?php
-                                        // $dstatus = $row["delivery_status"];
-                                        // $query = "UPDATE trans set delivery_status = $dstatus where transaction_id = $ID";
-                                        // $rlt = mysqli_query($conn, $query);
-                                        // if($row["delivery_status"] == "Yet to be delivered"){
-                                        //     // echo '<option value="Yet to be delivered">'
-                                        //     // if($dstatus = 'Yet to be delivered')
-                                        //     // {
-                                        //         echo "selected";
-                                        //     // }
-                                        // }
-                                        // if($row["delivery_status"] == 'Yet to be delivered')
-                                        // {
-                                        //     echo "selected";
-                                        // }
-                                        ?>
-                                        <option value="" >--Select--</option>
-								        <option value="Yet to be delivered" 
-                                        <?php
-                                        if($row["delivery_status"] == 'Yet to be delivered')
-                                        {
-                                            echo "selected";
-                                        }
-                                        ?>
-                                        >Yet to be delivered</option>
-								        <option value="Delivered" 
-                                        <?php
-                                        if($row["delivery_status"] == 'Delivered')
-                                        {
-                                            echo "selected";
-                                        }
-                                        ?>
-                                        >Delivered</option>
-								        <option value="Cancelled by Admin"
-                                        <?php
-                                        if($row["delivery_status"] == 'Cancelled by Admin')
-                                        {
-                                            echo "selected";
-                                        }
-                                        ?> 
-                                        >Cancelled by Admin</option>
-								        <option value="Preparing"
-                                        <?php
-                                        if($row["delivery_status"] == 'Preparing')
-                                        {
-                                            echo "selected";
-                                        }
-                                        ?> 
-                                        >Preparing</option>								
-								    </select></p>
-                                   
+                                    <td>
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <p><b>Order No : </b> <?php echo $ID; ?>
+                                        <p>
+                                        <p><b>Date : </b><?php echo $tran_date ?>
+                                        <p>
+                                        <p><b>Time : </b> <?php echo $tran_time; ?></p>
+                                        <p><b>State : </b> <?php echo $tran_state; ?> </p>
+                                        <p><b>Delivery Status : </b> <?php echo $status; ?> </p>
+
+                                        <p><b>Change Status : </b>
+
+                                            <select name="status">
+                                                <?php
+                                                // $dstatus = $row["delivery_status"];
+                                                // $query = "UPDATE trans set delivery_status = $dstatus where transaction_id = $ID";
+                                                // $rlt = mysqli_query($conn, $query);
+                                                // if($row["delivery_status"] == "Yet to be delivered"){
+                                                //     // echo '<option value="Yet to be delivered">'
+                                                //     // if($dstatus = 'Yet to be delivered')
+                                                //     // {
+                                                //         echo "selected";
+                                                //     // }
+                                                // }
+                                                // if($row["delivery_status"] == 'Yet to be delivered')
+                                                // {
+                                                //     echo "selected";
+                                                // }
+                                                ?>
+                                                <option value="">--Select--</option>
+                                                <option value="Yet to be delivered" <?php
+                                                                                    if ($row["delivery_status"] == 'Yet to be delivered') {
+                                                                                        echo "selected";
+                                                                                    }
+                                                                                    ?>>Yet to be delivered</option>
+                                                <option value="Delivered" <?php
+                                                                            if ($row["delivery_status"] == 'Delivered') {
+                                                                                echo "selected";
+                                                                            }
+                                                                            ?>>Delivered</option>
+                                                <option value="Cancelled by Admin" <?php
+                                                                                    if ($row["delivery_status"] == 'Cancelled by Admin') {
+                                                                                        echo "selected";
+                                                                                    }
+                                                                                    ?>>Cancelled by Admin</option>
+                                                <option value="Preparing" <?php
+                                                                            if ($row["delivery_status"] == 'Preparing') {
+                                                                                echo "selected";
+                                                                            }
+                                                                            ?>>Preparing</option>
+                                            </select>
+                                        </p>
+
                                     </td>
                                 </tr>
                                 <?php
@@ -209,12 +200,12 @@ include('config/constants.php'); ?>
                                 <tr>
                                     <td>
                                         <p><b>Name : </b><?php echo $name; ?></p><br>
-                                        <p><b>Address : </b><?php echo $adress,', ',$city,', ',$zip,' ',$tran_state; ?></p><br>
+                                        <p><b>Address : </b><?php echo $adress, ', ', $city, ', ', $zip, ' ', $tran_state; ?></p><br>
                                         <p><b>Email : </b><?php echo $email; ?></p><br>
                                     </td>
-                                    
+
                                 </tr>
-                                <?php 
+                                <?php
                                 $sql1 = "SELECT * FROM real_cart WHERE transaction_id = $ID";
                                 $subtotal = 0;
                                 $res1 = mysqli_query($conn, $sql1);
@@ -225,116 +216,115 @@ include('config/constants.php'); ?>
                                 //$row4 = mysqli_fetch_assoc($res4);
                                 ?>
                                 <?php
-                                while($row1 = mysqli_fetch_assoc($res1))
-                                {
-                                $food_id = $row1['food_id'];
-                                $qty = $row1['cart_qty']; 
-                                $total = $row1['subtotal'];
-                                // $subtotal = $row4['subtotal'];
-                                $subtotal += $row1['subtotal'];
-                                
-							    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
-                                $res2 = mysqli_query($conn, $sql2);
-                                
-                                while($row2=mysqli_fetch_array($res2))
-                                {
-                                    
-								    $food_name = $row2['food_name'];
-                                    //$food_price = $row2['food_price'];
-                                    $food_image = $row2 ['food_image'];
-                                    
+                                while ($row1 = mysqli_fetch_assoc($res1)) {
+                                    $food_id = $row1['food_id'];
+                                    $qty = $row1['cart_qty'];
+                                    $total = $row1['subtotal'];
+                                    // $subtotal = $row4['subtotal'];
+                                    $subtotal += $row1['subtotal'];
+
+                                    $sql2 = "SELECT * FROM food WHERE food_id = $food_id";
+                                    $res2 = mysqli_query($conn, $sql2);
+
+                                    while ($row2 = mysqli_fetch_array($res2)) {
+
+                                        $food_name = $row2['food_name'];
+                                        //$food_price = $row2['food_price'];
+                                        $food_image = $row2['food_image'];
+
+                                ?>
+                                        <tr>
+
+                                            <td>
+                                                <p> <?php echo $food_name ?></p><br>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($food_image == "") {
+                                                    echo "<div class='error'>Image not added.</div>";
+                                                } else {
+                                                    //display image
+                                                ?>
+                                                    <img src="<?php echo SITEURL; ?>Food/<?php echo $food_image; ?>">
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <p> <?php echo $qty ?> Quantity</p><br>
+                                            </td>
+                                            <td>
+                                                <p>RM <?php echo number_format($total, 2); ?></p><br>
+                                            </td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
                                 ?>
                                 <tr>
-                                    
-                                    <td>
-                                    <p> <?php echo $food_name ?></p><br>
-                                    </td>
-                                    <td>
-                                    <?php
-                                    if ($food_image == "") 
-                                    {
-                                        echo "<div class='error'>Image not added.</div>";
-                                    } 
-                                    else {
-                                        //display image
-                                    ?>
-                                        <img src="<?php echo SITEURL; ?>Food/<?php echo $food_image; ?>">
-                                        <?php
-                                    }
-                                    ?> 
-                                    </td>
-                                    <td>
-                                    <p> <?php echo $qty ?> Quantity</p><br>
-                                    </td>
-                                    <td>
-                                    <p>RM <?php echo number_format($total, 2); ?></p><br>
-                                    </td> 
-                                </tr>
-                                <?php 
-                            } 
-                        }
-                            ?> 
-                                <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <p >Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
-                                    </td>   
+                                        <p>Total: RM <?php echo number_format($subtotal, 2); ?></p><br>
+                                    </td>
                                 </tr>
                                 <tr>
-                                <td>
-                                <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-                                <button type="submit" name="submit" value="Update" class ="btn-update">Update</button></div>
-                                   </td>
-                                </tr>
-                                
-                            </tbody>
-                            
-</table>
-</form>
-                                <?php
+                                    <td>
+                                        <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+                                        <button type="submit" name="submit" value="Update" class="btn-update">Update</button>
+                </div>
+                </td>
+                </tr>
 
-//check whether the submit buttom is clicked or not
-if (isset($_POST['submit'])) {
-    //GET all the data from the form 
-    $ID = $_POST['ID'];
-    $status = $_POST['status'];
-    
-    $sql5 = "UPDATE trans SET
+                </tbody>
+
+                </table>
+                </form>
+                <?php
+
+                //check whether the submit buttom is clicked or not
+                if (isset($_POST['submit'])) {
+                    //GET all the data from the form 
+                    $ID = $_POST['ID'];
+                    $status = $_POST['status'];
+
+                    $sql5 = "UPDATE trans SET
     delivery_status = '$status'
     WHERE transaction_id ='$ID'
     ";
 
-    //Execute the Query
-    $res5 = mysqli_query($conn, $sql5);
+                    //Execute the Query
+                    $res5 = mysqli_query($conn, $sql5);
 
-    if ($res5 == TRUE) {
-        //Query Executed and food Update
-        //$_SESSION['update'] = "<div class='success'>Updated Successfully.</div>";
-        //Redirect to manage food page
-        //header('location:' . SITEURL . 'admin/orders.php');
-        echo "<script>
+                    if ($res5 == TRUE) {
+                        //Query Executed and food Update
+                        //$_SESSION['update'] = "<div class='success'>Updated Successfully.</div>";
+                        //Redirect to manage food page
+                        //header('location:' . SITEURL . 'admin/orders.php');
+                        echo "<script>
         alert('Updated Successfully.');
         window.location.href='./orders.php';
         </script>";
-    } else {
-        //Faile to update food
-        //$_SESSION['update'] = "<div class='error'>Failed to Updatded.</div>";
-        //Redirect to manage food page
-        //header('location:' . SITEURL . 'admin/orders.php');
-        echo "<script>
+                    } else {
+                        //Faile to update food
+                        //$_SESSION['update'] = "<div class='error'>Failed to Updatded.</div>";
+                        //Redirect to manage food page
+                        //header('location:' . SITEURL . 'admin/orders.php');
+                        echo "<script>
         alert('Failed to Updatded.');
         window.location.href='./orders.php';
         </script>";
-    }
-}
+                    }
+                }
 
 
-?>
-</div></div>
+                ?>
+            </div>
+        </div>
 </body>
+
 </html>
-<?php 
-include('includes/script.php'); 
+<?php
+include('includes/script.php');
 ?>
