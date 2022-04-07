@@ -77,7 +77,7 @@
         <table>
             <thead>
                 <tr>
-                    <td>Orders No.</td>
+                    <td>No.</td>
                     <td>Transaction ID</td>
                     <td>Estimated Finish Order Time</td>
                     <td>Status</td>
@@ -98,12 +98,14 @@
                         $status = '<td><span class="status inprogress">Yet to be delivered</span></td>';
                     } else if ($row['delivery_status'] == 'Cancelled by Admin') {
                         $status = '<td><span class="status return">Cancelled by Admin</span></td>';
+                    } else if ($row['delivery_status'] == 'Cancelled by User') {
+                        $status = '<td><span class="status return">Cancelled by User</span></td>';
                     } else {
                         $status = '<td><span class="status confirm">Order Confirmed</span></td>';
                     }
                 ?>
                     <tr>
-                        <td>Order No <?php echo $count ?> </td>
+                        <td><?php echo $count ?> </td>
                         <td><a href="./VandCorder.php?ID=<?php echo $row['transaction_id'] ?>"><?php echo $row['transaction_id'] ?></a></td>
                         <td><?php echo $row['e_d_time'] ?></td>
                         <?php echo $status ?>
@@ -111,60 +113,6 @@
                 <?php
                 }
                 ?>
-                <!-- <tr>
-                    <td>Blackpepper Chickenchop</td>
-                    <td>$20</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Delivered</span></td>
-                </tr>
-                <tr>
-                    <td>Creammy Rigatoni Vege</td>
-                    <td>$11</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                </tr>
-                <tr>
-                    <td>Steamed Cheeseburger</td>
-                    <td>$15</td>
-                    <td>Paid</td>
-                    <td><span class="status return">Return</span></td>
-                </tr>
-                <tr>
-                    <td>Chickenchop with Mushroom</td>
-                    <td>$6</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                </tr>
-                <tr>
-                    <td>Spaghetti Aglio e Olio</td>
-                    <td>$12</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Delivered</span></td>
-                </tr>
-                <tr>
-                    <td>Wild Salmon Burgers</td>
-                    <td>$11</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                </tr>
-                <tr>
-                    <td>Spaghetti Bolognese</td>
-                    <td>$9</td>
-                    <td>Paid</td>
-                    <td><span class="status return">Return</span></td>
-                </tr>
-                <tr>
-                    <td>Beef Burgers</td>
-                    <td>$16</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                </tr>
-                <tr>
-                    <td>Creammy Corn Gemelli</td>
-                    <td>$8</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Delivered</span></td>
-                </tr> -->
             </tbody>
         </table>
     </div>
