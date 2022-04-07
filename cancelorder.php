@@ -14,7 +14,7 @@ if (isset($_GET['ID'])) {
     while ($row = mysqli_fetch_assoc($result)) {
         $trans_id = $row["transaction_id"];
 
-        $sql1 = "UPDATE trans set delivery_status = 'Cancelled by Admin' where transaction_id = $trans_id and userid = $userid";
+        $sql1 = "UPDATE trans set delivery_status = 'Cancelled by User' where transaction_id = $trans_id and userid = $userid";
         $result1 = mysqli_query($con, $sql1);
     }
 }
