@@ -145,6 +145,7 @@
             $stock = $_POST['stock'];
             $status = $_POST['status'];
             $category = $_POST['category'];
+            $admin = $_POST['admin'];
             if (isset($_POST['active'])) {
                 $active = $_POST['active'];
             } else {
@@ -210,7 +211,8 @@
             food_image = '$image_name',
             food_stock = '$stock',
             food_status= '$status',
-            cate_id = '$category',
+            userid = '$category',
+            cate_id = '$admin',
             active = '$active'";
                 //execute the query
                 $res3 = mysqli_query($conn, $sql3);
@@ -220,11 +222,11 @@
                 if ($res3 == TRUE) {
                     //echo "Data Inserted";
                     $_SESSION['add'] = "<div class='success'>Food Added Successfully.</div>";
-                    header("location:" . SITEURL . 'admin/food.php');
+                    header("location: ../admin/food.php");
                 } else {
                     //echo "Faile to Insert Data";
                     $_SESSION['add'] = "<div class='error'>Failed to Add Food.</div>";
-                    header("location:" . SITEURL . 'admin/food.php');
+                    header("location: ../admin/food.php");
                 }
             }
         }
