@@ -76,7 +76,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
             top: 0;
             /* Stay at the top */
             left: 0;
-            background-color: #3939ac;
+            background-color: #003147;
             /* 45% darker blue */
             overflow-x: hidden;
             /* Disable horizontal scroll */
@@ -163,7 +163,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                 ?></span>
         <a href="adminprofile.php">Admin Information</a>
         <a href="adminchange.php">Change Password</a>
-        <button class="btn btn-secondary btn-lg" onclick="location.href ='php/logout.php'">Log out</button>
+        
     
     </div>
         <div class="container-fluid">

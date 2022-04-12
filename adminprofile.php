@@ -27,9 +27,9 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     $query = "SELECT * FROM users WHERE username='$newusername' AND username!='$username'";
     $result = mysqli_query($con, $query);
     $rows = mysqli_num_rows($result);
-    $sql = "SELECT * FROM users WHERE useremail='$newemail' AND useremail!='$useremail'";
-    $result = mysqli_query($con, $sql);
-    $rowss = mysqli_num_rows($result);
+    //$sql = "SELECT * FROM users WHERE useremail='$newemail' AND useremail!='$useremail'";
+    //$result = mysqli_query($con, $sql);
+    //$rowss = mysqli_num_rows($result);
     if ($rows >= 1) { //check username in use
         echo "<script>
         alert('Username in used!\\nPlease try again.');
@@ -45,7 +45,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
     //     exit;
     // }
     else {
-        $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname', useremail = '$newemail',username = '$newusername' WHERE userid = $userid";
+        $query = "UPDATE users SET userfirstname = '$userfirstname', userlastname = '$userlastname',username = '$newusername' WHERE userid = $userid";
         $result = mysqli_query($con, $query);
         if ($result) {
             $_SESSION['username'] = $newusername;
@@ -95,7 +95,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
             top: 0;
             /* Stay at the top */
             left: 0;
-            background-color: #3939ac;
+            background-color: #003147;
             /* 45% darker blue */
             overflow-x: hidden;
             /* Disable horizontal scroll */
@@ -182,7 +182,7 @@ if (isset($_POST['save']) && $_POST['save'] == 1) {
                 ?></span>
         <a href="adminprofile.php">Admin Information</a>
         <a href="adminchange.php">Change Password</a>
-        <button class="btn btn-secondary btn-lg" onclick="location.href ='php/logout.php'">Log out</button>
+        
     
     </div>
        
