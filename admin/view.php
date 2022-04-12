@@ -20,7 +20,7 @@ if (isset($_GET['ID'])) {
     $current_image = $row3['food_image'];
     $stock = $row3['food_stock'];
     $status = $row3['food_status'];
-    $current_admin = $row3['admin_id'];
+    $current_admin = $row3['userid'];
     $current_category = $row3['cate_id'];
     $active = $row3['active'];
 } else {
@@ -106,7 +106,7 @@ if (isset($_GET['ID'])) {
                         } else {
                             //display image
                         ?>
-                            <img src="<?php echo SITEURL; ?>Food/<?php echo $current_image; ?>">
+                            <img src="../Food/<?php echo $current_image; ?>">
                         <?php
                         }
                         ?>
