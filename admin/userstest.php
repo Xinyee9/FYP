@@ -118,7 +118,7 @@ include('config/constants.php'); ?>
                         <tbody>
                             <?php
                             //Query to get all admin
-                            $sql = "SELECT * FROM users WHERE userprivilege ='admin'";
+                            $sql = "SELECT * FROM users WHERE userprivilege ='superadmin' or userprivilege ='admin'";
                             //Execture the Query
                             $res = mysqli_query($conn, $sql);
 
@@ -149,19 +149,37 @@ include('config/constants.php'); ?>
                                         //display the value in our table
                             ?>
                                         <tr>
-                                            <td><?php echo $sn++; ?></td>
-                                            <td><?php echo $full_name; ?></td>
-                                            <td><?php echo $email; ?></td>
-                                            <td><?php echo $role; ?></td>
-                                            <td>
-                                                <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
-                                                <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update & View</a>
-                                                <!-- <a href="?php echo SITEURL; ?>admin/delete-admin.php?ID=?php echo $ID; ?>&image_name=?php echo $image_name; ?>" class="btn-delete">Block</a> -->
-                                                <?php if ($rows['block'] == 1) { ?>
-                                                    <a href="<?php echo SITEURL; ?>admin/unblock-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
-                                                <?php } else { ?>
-                                                    <a href="<?php echo SITEURL; ?>admin/block-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
-                                                <?php } ?>
+                                                <?php
+                                                    if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "superadmin")
+                                                    {
+                                                        ?>
+                                                        <td><?php echo $sn++; ?></td>
+                                                        <td><?php echo $full_name; ?></td>
+                                                        <td><?php echo $email; ?></td>
+                                                        <td><?php echo $role; ?></td>
+                                                        <td>
+                                                        <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
+                                                        <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update & View</a>
+                                                        <?php if ($rows['block'] == 1) { ?>
+                                                            <a href="<?php echo SITEURL; ?>admin/unblock-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
+                                                        <?php } else { ?>
+                                                            <a href="<?php echo SITEURL; ?>admin/block-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
+                                                        <?php } ?>
+                                                        <?php
+                                                    }
+                                                    else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "admin")
+                                                    {
+                                                        ?>
+                                                        <td><?php echo $sn++; ?></td>
+                                                        <td><?php echo $full_name; ?></td>
+                                                        <td><?php echo $email; ?></td>
+                                                        <td><?php echo $role; ?></td>
+                                                        <td>
+                                                            <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>"></a>
+                                                            <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>"></a>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </td>
                                         </tr>
 
