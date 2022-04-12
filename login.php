@@ -47,7 +47,7 @@ if (isset($_POST['email'])) {
           </script>";
   } else {
     echo "<script>
-          alert('Username/password is incorrect.');
+          alert('Email/password is incorrect.');
           window.location.href='./login.php';
           </script>";
   }
