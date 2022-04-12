@@ -5,7 +5,7 @@
         <h1>Manage Food</h1>
         <br /><br />
         <!-- Buttom to Add Admin -->
-        <a href="<?php echo SITEURL; ?>admin/add-food.php" class="btn-add">Add Food</a>
+        <a href="./add-food.php" class="btn-add">Add Food</a>
         <br /><br /><br />
 
         <?php
@@ -85,7 +85,7 @@
                             } else {
                                 //display image
                             ?>
-                                <img src="<?php echo SITEURL; ?>Food/<?php echo $image_name; ?>" width="100px">
+                                <img src="../Food/<?php echo $image_name; ?>" width="100px">
 
                             <?php
                             }
@@ -93,7 +93,7 @@
                         </td>
                         <td><?php echo $active; ?></td>
                         <td>
-                            <a href="<?php echo SITEURL; ?>admin/view.php?ID=<?php echo $ID; ?>" class="btn-update">View Food</a>
+                            <a href="../admin/view.php?ID=<?php echo $ID; ?>" class="btn-update">View Food</a>
 
                         </td>
                     </tr>

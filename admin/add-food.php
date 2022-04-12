@@ -19,7 +19,7 @@
         }
         ?>
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Code:</span>
@@ -51,15 +51,12 @@
                         <?php
                         //create 
                         $sql = "SELECT * FROM users WHERE userprivilege ='admin' ";
-
                         $res = mysqli_query($conn, $sql);
-
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
                                 $ID = $row['userid'];
                                 $name = $row['username'];
-
                         ?>
 
                                 <option value="<?php echo $ID; ?>"><?php echo $name; ?></option>
@@ -68,11 +65,11 @@
                             }
                         } else {
                             ?>
+
                             <option value="0">no admin found</option>
+
                         <?php
-
                         }
-
                         ?>
                     </select>
                 </div>
@@ -183,7 +180,7 @@
                     //check whether image upload or not
                     if ($upload == false) {
                         $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-                        header('location:' . SITEURL . 'admin/add-food.php');
+                        header('location: ../admin/add-food.php');
                         //stop process
                         die();
                     }
@@ -214,8 +211,7 @@
             food_stock = '$stock',
             food_status= '$status',
             cate_id = '$category',
-            active = '$active'
-        ";
+            active = '$active'";
                 //execute the query
                 $res3 = mysqli_query($conn, $sql3);
 
