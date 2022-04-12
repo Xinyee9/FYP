@@ -20,6 +20,7 @@
         <a href="./php/logout.php" style="float: right;">LOGOUT</a>
         <a href="aboutus.php" style="float: right;">ABOUT US</a>
         <a href="./admin/adminpanel.php" style="float: right;">ADMIN PANEL</a>
+        <a href="adminprofile.php" style="float: right;">MY PROFILE</a>
         <a style="-webkit-user-select: none; cursor: default;">Welcome, ' . $_SESSION['username'] . '</a>';
     } else {
         echo '
