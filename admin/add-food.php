@@ -172,6 +172,17 @@
                     //source path is the current location of the image
                     $src = $_FILES['image']['tmp_name'];
 
+                    $allimg = scandir("../Food");
+
+                    foreach ($allimg as $img) {
+                        if ($image_name == $img) {
+                            echo "<script>
+                            alert('Please use different file name for the image file.');
+                            </script>";
+                            die();
+                        }
+                    }
+
                     //destination path for the image to be upload
                     $dst = "../Food/" . $image_name;
 
@@ -196,7 +207,7 @@
             if (mysqli_num_rows($dup) > 0) {
                 //echo "Food Name is duplicate enter";
                 echo "<script>
-            alert('Food Name is duplicate enter');
+            alert('The food name entered is duplicate with a food name in database!');
             window.location.href='./food.php';
             </script>";
             } else {
