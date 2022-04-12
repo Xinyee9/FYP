@@ -275,7 +275,7 @@ session_start();
 		// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id";
 		// $rlt = mysqli_query($con, $qry);
 
-		$sql = "SELECT * FROM `cart` , food WHERE cart.food_id = food.food_id AND userid = $userid";
+		$sql = "SELECT * FROM cart, food WHERE cart.food_id = food.food_id AND cart.userid = $userid";
 		// echo $sql;
 		$result = mysqli_query($con, $sql);
 		$total = 0;

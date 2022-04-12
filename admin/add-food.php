@@ -194,7 +194,7 @@
                         $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
                         header('location: ../admin/add-food.php');
                         //stop process
-                        die();
+                        exit();
                     }
                 }
             } else {
