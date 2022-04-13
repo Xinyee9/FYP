@@ -174,28 +174,6 @@ session_start();
           window.location.href='./password-reset.php';
           </script>";
       }
-      /*$row = mysqli_fetch_array($check_email_run);
-      $get_name = $row['username'];
-      $get_email = $row['useremail'];
-
-      $update_token = "UPDATE users SET verify_token ='$token' WHERE useremail='$get_email' LIMIT 1";
-      $update_token_run = mysqli_query($con, $update_token);
-
-      if($update_token_run)
-      {
-          send_password_reset($get_name,$get_email,$token);
-          echo "<script>
-          alert('we e-mailed you a password reset link.');
-          window.location.href='./password-reset.php';
-          </script>";
-      }
-      else
-      {
-        echo "<script>
-          alert('Something wrong.');
-          window.location.href='./password-reset.php';
-          </script>";
-      }*/
     } else {
       echo "<script>
           alert('No email found.');
@@ -210,13 +188,7 @@ session_start();
     </div>
   </div>
 
-  <?php
-  /*if(isset($_SESSION['status']))//Checking whether the session is set or not
-  {
-      echo $_SESSION['status']; //Display Session Message
-      unset($_SESSION['status']); //REMoving Session Message
-  } */
-  ?>
+
   <span class="font_bk">
     <form action="" method="POST">
       <h1><strong>Reset Password</strong></h1>

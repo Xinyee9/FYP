@@ -222,24 +222,24 @@ if (isset($_POST['btn-submit'])) {
 
         .button {
             margin: 20px;
-			cursor: pointer;
-			float: right;
-			overflow: auto;
-			font-size: 20px;
-			font-family: Arial, Helvetica, sans-serif;
-			margin-top: 5px;
-			text-decoration: none;
-			outline: none;
-			color: #6495ED;
-			border: none;
-			border-radius: 15px;
-			box-shadow: 0 9px #999;
-		}
+            cursor: pointer;
+            float: right;
+            overflow: auto;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 5px;
+            text-decoration: none;
+            outline: none;
+            color: #6495ED;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
 
-		.button:hover {
-			background-color: #ddd;
-			color: black;
-		}
+        .button:hover {
+            background-color: #ddd;
+            color: black;
+        }
     </style>
 </head>
 
@@ -319,184 +319,6 @@ if (isset($_POST['btn-submit'])) {
 
     </div>
     <script>
-        // function ValidateCard()
-        // {
-        //     let isValidCardHolderName = false;
-        //     let isValidCreditDebitCard   = false;
-        //     let isValidCVV = false;
-        //     let isValidCardPlatform = false;
-        //     let isValidDate = false;
-
-        //     var name = $("#cardHolderName").val();
-        //     var card = $("#creditDebitCardNum").val();
-        //     var cvv = $("#bankCVV").val();
-        //     var cardplatform = $("#creditDebitPlatform").val();
-        //     var date = $("#startDate").val();
-
-        //     var numbers = /^[0-9]+$/;
-        //     var letters = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
-        //     // var cardno = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-        //     // var masterno = /^(?:5[1-5][0-9]{14})$/;
-        //     var cardno =/^4[0-9]{12}(?:[0-9]{3})?$/;
-        //     var masterno = /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/;
-
-        //     if(cardplatform == 0)
-        //     {
-        //         $("#errorcreditdebit").show();
-        //         $('#errorcreditdebit').attr("style", "display: inline !important; color: red;");
-        //         isValidCardPlatform = false;
-        //     }
-        //     else
-        //     {
-        //         $("#errorcreditdebit").hide();
-        //         isValidCardPlatform = true;
-        //     }
-
-        //     if(date == "")
-        //     {
-        //         $("#errorexpirydate").show();
-        //         $('#errorexpirydate').attr("style", "display: inline !important; color: red;");
-        //         isValidDate = false;
-        //     }
-        //     else
-        //     {
-        //         $("#errorexpirydate").hide();
-        //         isValidDate = true;
-        //     }
-
-        //     if(name == "")
-        //     {
-        //         $("#errorcardholder").text("The Name field is required!");
-        //         $("#errorcardholder").show();
-        //         $('#errorcardholder').attr("style", "display: inline !important; color: red;");
-        //         isValidCardHolderName = false;
-        //     }
-        //     else
-        //     {
-        //         if(name.match(letters) && name != "")
-        //         {
-        //             $("#errorcardholder").hide();
-        //             isValidCardHolderName = true;
-        //         }
-        //         else
-        //         {
-        //             if(name == "")
-        //             {
-        //                 $("#errorcardholder").text("The Name field is required!");
-        //                 $("#errorcardholder").show();
-        //                 $('#errorcardholder').attr("style", "display: inline !important; color: red;");
-        //                 isValidCardHolderName = false;
-        //             }
-        //             else if(!(name.match(letters)))
-        //             {
-        //                 $("#errorcardholder").text("Invalid cardholder name format");
-        //                 $("#errorcardholder").show();
-        //                 $('#errorcardholder').attr("style", "display: inline !important; color: red;");
-        //                 isValidCardHolderName = false;
-        //             }
-        //         }
-        //     }
-
-        //     if(card == "")
-        //     {
-        //         $("#errorcardno").text("The Credit / Debit Card field is required!");
-        //         $("#errorcardno").show();
-        //         $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //         isValidCreditDebitCard = false;
-        //     }
-        //     else
-        //     {
-        //         if(!card.match(numbers))
-        //         {
-        //             $("#errorcardno").text("Invalid format, input numbers only!");
-        //             $("#errorcardno").show();
-        //             $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //             isValidCreditDebitCard = false;
-        //         }
-        //         else
-        //         {
-        //             if(card.match(cardno)||card.match(masterno) && card != "")
-        //             {
-        //                 $("#errorcardno").hide();
-        //                 isValidCreditDebitCard = true;
-        //             }
-        //             else
-        //             {
-        //                 if(card == "")
-        //                 {
-        //                     $("#errorcardno").show();
-        //                     $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //                     isValidCreditDebitCard = false;
-        //                 }
-        //                 else if(!card.match(cardno) || !card.match(masterno))
-        //                 {
-        //                     $("#errorcardno").text("Invalid Card Number format.");
-        //                     $("#errorcardno").show();
-        //                     $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //                     isValidCreditDebitCard = false;
-
-        //                     if(card.match(/^4/))
-        //                     {
-        //                         $("#errorcardno").text("Invalid Visa Card Number format.");
-        //                         $("#errorcardno").show();
-        //                         $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //                         isValidCreditDebitCard = false;
-        //                     }
-        //                     else if(card.match(/^5/))
-        //                     {
-        //                         $("#errorcardno").text("Invalid Master Card Number format.");
-        //                         $("#errorcardno").show();
-        //                         $('#errorcardno').attr("style", "display: inline !important; color: red;");
-        //                         isValidCreditDebitCard = false;
-        //                     }
-
-        //                 }
-        //             }
-        //         }
-
-        //     }
-        //     if(cvv == "")
-        //     {
-        //         $("#errorcardcvv").text("The CVV field is required!");
-        //         $("#errorcardcvv").show();
-        //         $('#errorcardcvv').attr("style", "display: inline !important; color: red;");
-        //         isValidCVV = false;
-        //     }
-        //     else
-        //     {
-        //         if(cvv.match(numbers) && cvv != "")
-        //         {
-        //             $("#errorcardcvv").hide();
-        //             isValidCVV = true;
-        //         }
-        //         else
-        //         {
-        //             if(cvv == "")
-        //             {
-        //                 $("#errorcardcvv").show();
-        //                 $('#errorcardcvv').attr("style", "display: inline !important; color: red;");
-        //                 isValidCVV = false;
-        //             }
-        //             else if(!(cvv.match(numbers)))
-        //             {
-        //                 $("#errorcardcvv").text("Invalid CVV format");
-        //                 $("#errorcardcvv").show();
-        //                 $('#errorcardcvv').attr("style", "display: inline !important; color: red;");
-        //                 isValidCVV = false;
-        //             }
-        //         }
-        //     }
-
-        //     if(isValidCardHolderName && isValidCreditDebitCard && isValidCVV && isValidCardPlatform && isValidDate)
-        //     {
-        //         return true;            
-        //     }
-        //     else
-        //     {
-        //         return false;
-        //     }
-        // }
-
         function ShowCVV() {
             var cvv = document.getElementById("cvv");
 

@@ -61,35 +61,7 @@ session_start();
             window.location.href='login.php';
             </script>");
         }
-        // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-        //     $userid = $_SESSION['id'];
-        //     echo ("<script LANGUAGE='JavaScript'>
-        //     window.location.href='menu.php';
-        //     </script>");
-        // }
-        // else{
-        //     echo ("<script LANGUAGE='JavaScript'>
-        //     window.alert('Please Login to view menu.');
-        //     window.location.href='login.php';
-        //     </script>");
-        //     // $message = "Please Login to view menu.";
-        //     // echo "<script type='text/javascript'>alert('$message');</script>";
-        //     // function_alert("Please Login to view menu.");
-        //     // echo "<script>alert('Please Login to view menu.')</script>";
-        //     // header("Location: login.php");
-        // }
 
-        // if (isset($_POST["food_id"])) {
-        //     $food_id = $_POST["food_id"];
-
-        //     $result = mysqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
-        //     $numrow = mysqli_num_rows($result);
-        //     if ($numrow > 0) {
-        //         echo ('Item already in cart!');
-        //     } else {
-        //         header("Location: cart.php");
-        //     }
-        // } 
         $result = mysqli_query($con, "SELECT * FROM food, category WHERE food.cate_id = category.category_id AND active='Yes' AND category.block = 0");
         $counter = 0;
         while ($row = mysqli_fetch_assoc($result)) {
@@ -97,19 +69,7 @@ session_start();
             if ($counter % 3 == 0) {
                 echo "<tr>";
             }
-            // echo "<td style='height: 500px;'>
-            //     <div class='row'>
-            //         <div class='leftcolumn'>
-            //             <div class='card'>
-            //                 <div id='menu-name'><h2>" . $row["food_name"] . "</h2></div>
-            //                 <div class='fake-image'><img src='Food/" . $row["food_image"] . "'></div>
-            //                 <p>RM" . number_format((float)$row['food_price'], 2, '.', '') . "</p>
-            //                 <p>".$row['food_description'] . "</p>
-            //                 <button class='button' value='" . $row["food_id"] . ",," . $row["food_name"] . "'  onclick='select(this)'>SELECT</button>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </td>";
+
             echo "<td style='height: 700px;'>
                     <div class='leftcolumn'>
                         <div class='card'>
@@ -121,21 +81,7 @@ session_start();
                         </div>
                     </div>
             </td>";
-            // function function_alert($message) {
 
-            //     // Display the alert box 
-            //     echo "<script>alert('$message');</script>";
-            // }
-            // if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
-            //     $userid = $_SESSION['id'];
-            // }
-            // else{
-            //     // $message = "wrong answer";
-            //     // echo "<script type='text/javascript'>alert('$message');</script>";
-            //     // function_alert("Please Login to view menu.");
-            //     // echo "<script>alert('Please Login to view menu.')</script>";
-            //     header("Location: login.php");
-            // }
             if ($counter - 2 % 3 == 0) {
                 echo "</tr>";
             }
@@ -187,14 +133,7 @@ session_start();
                 document.toSubmit.submit();
             }
 
-            // <?php
-                //     $check_item = msqli_query($con, "SELECT * FROM cart WHERE food_id = $food_id and userid = $userid");
-                //     if(mysqli_num_rows($check_item) > 0)
-                //     {
-                //         echo('Item already in cart!');
-                //     }
-                // 
-                ?>
+
 
         }
     </script>

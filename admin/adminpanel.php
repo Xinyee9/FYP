@@ -132,30 +132,7 @@
                                             </tr>';
                 }
                 ?>
-                <!-- <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>echo $username<br><span>Italy</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>Muhammad<br><span>India</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>Amelia<br><span>France</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>Olivia<br><span>USA</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>Amit<br><span>Japan</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div class="imgBx"><img src="../image/user.png"></div></td>
-                                    <td><h4>Ashraf<br><span>India</span></h4></td>
-                                </tr> -->
+
             </tbody>
         </table>
     </div>

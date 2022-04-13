@@ -18,12 +18,7 @@ if (isset($_POST["food_id"])) {
             </script>";
     } else {
 
-        // $subtotal = $_POST["food_quantity"] * $_POST["food_price"];
 
-        // $subtotal = $_POST["subtotal"];
-		// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id and userid = $userid";
-		// $res = mysqli_query($con, $qry);
-        // $food_price = $_POST["food_price"];
         $food_id = $_POST["food_id"];
         $food_quantity = $_POST["food_quantity"];
         // $subtotal = $food_quantity * $food_price;
@@ -35,13 +30,7 @@ if (isset($_POST["food_id"])) {
         }
 
         $result = mysqli_query($con, "INSERT INTO cart (cart_qty, ori_price, subtotal, food_id, userid) VALUES ($food_quantity, $food_price, $subtotal, '$food_id', $userid)");
-        // echo $userid;
-        // echo $_POST['food_id'];
-        // echo $_POST['subtotal'];
-        // echo $_POST['food_quantity'];
-        // echo '<script>alert("The item has been added in to cart!")</script>';
-        // header("refresh: 0; url = menu.php");
-        // exit;
+
         header("Location: cart.php");
     }
 }

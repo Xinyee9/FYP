@@ -2,27 +2,11 @@
 require_once('./php/dbconnect.php');
 session_start();
 
-// if (isset($_POST['remove'])){
-// 	if ($_GET['action'] == 'remove'){
-// 		foreach ($_SESSION['cart'] as $key => $value){
-// 			if($value["cart_id"] == $_GET['id']){
-// 				unset($_SESSION['cart'][$key]);
-// 				echo "<script>alert('Product has been Removed!')</script>";
-// 				echo "<script>window.location = 'cart.php'</script>";
-// 			}
-// 		}
-// 	}
-//   }
+
 ?>
 
 <!DOCTYPE html>
 <style>
-	/* .j {
-	text-decoration: blue;
-	font-size: 45px;
-	display: inline-block;
-	padding: 10px 16px 10px 10px;
-} */
 	body {
 		margin: 0;
 		padding: 0;
@@ -61,14 +45,7 @@ session_start();
 		color: #2F3841;
 	}
 
-	/* .Action{
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-	cursor: pointer;
-	border-bottom: 1px solid #E44C4C;
-} */
+
 
 	.Cart-Items {
 		margin: auto;
@@ -190,13 +167,7 @@ session_start();
 		color: #202020;
 	}
 
-	/* .items{
-	font-size: 16px;
-	font-family: 'Open Sans';
-	font-weight: 500;
-	color: #909090;
-	line-height: 10px;
-} */
+
 	.total-amount {
 		font-size: 36px;
 		font-family: 'Open Sans';
@@ -262,18 +233,7 @@ session_start();
 		if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) { //check login
 			$userid = $_SESSION['id'];
 		}
-		// if (isset($_POST['btn-submit'])) {
-		// 	$total = $_POST['total'];
 
-		// 	$query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
-		// 	$rlt = mysqli_query($con, $query);
-		// }
-		// else{
-		// 	$userid = 0;
-		// }
-
-		// $qry = "UPDATE cart set subtotal = $subtotal where cart_id = $cart_id";
-		// $rlt = mysqli_query($con, $qry);
 
 		$sql = "SELECT * FROM cart, food WHERE cart.food_id = food.food_id AND cart.userid = $userid";
 		// echo $sql;
@@ -282,10 +242,7 @@ session_start();
 		while ($row = mysqli_fetch_assoc($result)) {
 			$cart_qty = $row['cart_qty'];
 			$cart_id = $row['cart_id'];
-			// echo '<script>
-			// console.log('.$cart_qty.');
-			// console.log('.$cart_id.');
-			// </script>';
+
 			if ($cart_qty < 1) {
 		?>
 				<script>
@@ -308,23 +265,7 @@ session_start();
 					})
 					alert("The item has been removed!");
 				</script>
-				<!-- <script>
-				alert("Welcome to Geeks for Geeks")
-				</script> -->
-				<!-- // echo '<script>function remove(cart_id) {
-				// 	$.ajax({
-				// 			method: "POST",
-				// 			url: "cartremove.php",
-				// 			data: {cart_id: cart_id},
-				// 		success: (response) =>
-				// 		{
-				// 			console.log(response);
-				// 			location.reload();
-				// 		}
-				// 	});
-		
-				// }</script>';
-				// </script>'; -->
+
 		<?php
 			}
 			// echo '<input type="hidden" id="cart_id" value="'.$row["cart_id"].'">';
@@ -416,17 +357,7 @@ session_start();
 		<script>
 			function btn() {
 				<?php
-				// $qry = "INSERT trans set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
-				// $res = mysqli_query($con, $qry);
 
-				// $subtotal = $_POST["subtotal"];
-				// $qry = "UPDATE cart set subtotal = ($total * $foodqty) where cart_id = $cart_id and userid = $userid";
-				// $res = mysqli_query($con, $qry);
-
-				// $total = $_POST['total'];
-				// $query = "INSERT INTO carttotal (total, userid) VALUES ('$total','$userid')";
-				// $rlt = mysqli_query($con, $query);
-				// echo $total;
 				echo	'if (confirm("Do you want proceed to Check Out?\nYour total is RM ' . number_format($total, 2) . '"))
 						{
 							window.location.href = "transaction.php";
@@ -436,28 +367,10 @@ session_start();
 							window.location.href = "cart.php";
 						}';
 				?>
-				// alert("Do you want proceed to Check Out?");
 
-				// if (confirm("Do you want proceed to Check Out?\nYour total is RM$total"))
-				// {
-				// 	window.location.href = "transaction.php";
-				// }
-				// else
-				// {
-				// 	window.location.href = "cart.php";
-				// }
 			}
 		</script>
-		<!-- <script>
-        if (confirm('Do you want proceed to Check Out?'))
-        {
-            console.log('Thing was saved to the database.');
-        }
-        else
-        {
-            console.log('Thing was not saved to the database.');
-        }
-    </script> -->
+
 	</div>
 </body>
 
