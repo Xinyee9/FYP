@@ -183,19 +183,19 @@ if (isset($_POST['mem_name'])) {
     <form name="signupfrm" action="" method="POST">
       <p>
         &nbsp &nbspUsername :
-        <input type="text" name="mem_name" placeholder="Type your username here" />
+        <input type="text" name="mem_name" placeholder="Type your username here" required />
       </p>
       <p>
         &nbsp &nbspEmail &nbsp &nbsp &nbsp:
-        <input type="email" name="mem_email" placeholder="example@gmail.com" />
+        <input type="email" name="mem_email" placeholder="example@gmail.com" required />
       </p>
       <p>
         &nbsp &nbspPassword :
-        <input type="password" name="mem_password" placeholder="Type your password here" />
+        <input type="password" name="mem_password" placeholder="Type your password here" required />
       </p>
       <p>
         &nbsp &nbspConfirm Password :
-        <input type="password" name="mem_confirmpassword" placeholder="Please re-type your password" />
+        <input type="password" name="mem_confirmpassword" placeholder="Please re-type your password" required />
       </p>
 
       <div align="right">

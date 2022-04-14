@@ -200,13 +200,13 @@ session_start();
       <div align="center">
         <!-- <input type="button" value="LOG IN" onclick="backtologin();" /> -->
         <!-- <input type="submit" value="LOG IN" /> -->
-        <button type="submit" name="password_reset_link" class="slide">Reset Link<<i class="icon-arrow-right"></i>/button>
-            <button onclick="goBack()" class="fill">>GO BACK</button>
-            <script>
-              function goBack() {
-                window.history.back();
-              }
-            </script>
+        <button type="submit" name="password_reset_link" class="slide">Reset Link<i class="icon-arrow-right"></i>
+          <button onclick="goBack()" class="fill">GO BACK</button>
+          <script>
+            function goBack() {
+              window.history.back();
+            }
+          </script>
 
       </div>
     </form>
