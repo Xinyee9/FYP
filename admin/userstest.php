@@ -42,7 +42,7 @@ include('config/constants.php'); ?>
                 <li>
                     <a href="food.php">
                         <span class="icon"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                        <span class="title">Product</span>
+                        <span class="title">Food</span>
                     </a>
                 </li>
 
@@ -149,38 +149,35 @@ include('config/constants.php'); ?>
                                         //display the value in our table
                             ?>
                                         <tr>
+                                            <?php
+                                            if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "superadmin") {
+                                            ?>
+                                                <td><?php echo $sn++; ?></td>
+                                                <td><?php echo $full_name; ?></td>
+                                                <td><?php echo $email; ?></td>
+                                                <td><?php echo $role; ?></td>
+                                                <td>
+                                                    <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
+                                                    <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update & View</a>
+                                                    <?php if ($rows['block'] == 1) { ?>
+                                                        <a href="<?php echo SITEURL; ?>admin/unblock-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo SITEURL; ?>admin/block-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
+                                                    <?php } ?>
                                                 <?php
-                                                    if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "superadmin")
-                                                    {
-                                                        ?>
-                                                        <td><?php echo $sn++; ?></td>
-                                                        <td><?php echo $full_name; ?></td>
-                                                        <td><?php echo $email; ?></td>
-                                                        <td><?php echo $role; ?></td>
-                                                        <td>
-                                                        <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>" class="btn-add"> Change Password</a>
-                                                        <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>" class="btn-update">Update & View</a>
-                                                        <?php if ($rows['block'] == 1) { ?>
-                                                            <a href="<?php echo SITEURL; ?>admin/unblock-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Unblock</a>
-                                                        <?php } else { ?>
-                                                            <a href="<?php echo SITEURL; ?>admin/block-admin.php?ID=<?php echo $ID; ?>" class="btn-delete">Block</a>
-                                                        <?php } ?>
-                                                        <?php
-                                                    }
-                                                    else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "admin")
-                                                    {
-                                                        ?>
-                                                        <td><?php echo $sn++; ?></td>
-                                                        <td><?php echo $full_name; ?></td>
-                                                        <td><?php echo $email; ?></td>
-                                                        <td><?php echo $role; ?></td>
-                                                        <td>
-                                                            <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>"></a>
-                                                            <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>"></a>
-                                                        <?php
-                                                    }
+                                            } else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['privilege'] == "admin") {
                                                 ?>
-                                            </td>
+                                                <td><?php echo $sn++; ?></td>
+                                                <td><?php echo $full_name; ?></td>
+                                                <td><?php echo $email; ?></td>
+                                                <td><?php echo $role; ?></td>
+                                                <td>
+                                                    <a href="<?php echo SITEURL; ?>admin/change-pass.php?ID=<?php echo $ID; ?>"></a>
+                                                    <a href="<?php echo SITEURL; ?>admin/viewadmin.php?ID=<?php echo $ID ?>"></a>
+                                                <?php
+                                            }
+                                                ?>
+                                                </td>
                                         </tr>
 
                             <?php
