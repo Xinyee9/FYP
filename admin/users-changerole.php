@@ -76,7 +76,7 @@ include('config/constants.php'); ?>
                 <li>
                     <a href="food.php">
                         <span class="icon"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                        <span class="title">Product</span>
+                        <span class="title">Food</span>
                     </a>
                 </li>
 
