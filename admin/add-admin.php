@@ -41,8 +41,8 @@
             <div class="gender-details">
                 <span class="gender-title">Role :</span>
 
-                <input type="radio" name="role" value="Admin">Admin
-                <input type="radio" name="role" value="User"> User
+                <input type="radio" name="role" value="admin">Admin
+                <input type="radio" name="role" value="user"> User
 
             </div>
 
@@ -62,11 +62,11 @@
             if (isset($_POST['role'])) {
                 $role = $_POST['role'];
             } else {
-                $role = "User";
+                $role = "user";
             }
             $role = $_POST['role'];
             $fname = $_POST['fname'];
-            $lname = $POST['lname'];
+            $lname = $_POST['lname'];
 
 
 

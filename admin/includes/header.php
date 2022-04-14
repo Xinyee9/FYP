@@ -41,7 +41,7 @@ include('config/constants.php'); ?>
                 <li>
                     <a href="food.php">
                         <span class="icon"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                        <span class="title">Product</span>
+                        <span class="title">Food</span>
                     </a>
                 </li>
 
@@ -72,7 +72,7 @@ include('config/constants.php'); ?>
                         <span class="title">Admin & User</span>
                     </a>
                 </li>
-   
+
                 <li>
                     <a href="../php/logout.php">
                         <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>

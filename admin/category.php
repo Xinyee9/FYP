@@ -37,7 +37,7 @@
             </tr>
             <?php
             //Query to get all category
-            $sql = "SELECT * FROM CATEGORY";
+            $sql = "SELECT * FROM category";
             //Execture the Query
             $res = mysqli_query($conn, $sql);
 

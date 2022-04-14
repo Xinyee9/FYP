@@ -79,7 +79,7 @@
 
                         <?php
                         //create PHP code to display category from databasa 
-                        $sql2 = "SELECT * FROM CATEGORY ";
+                        $sql2 = "SELECT * FROM category ";
 
                         //executing query
                         $res2 = mysqli_query($conn, $sql2);
@@ -222,8 +222,8 @@
             food_image = '$image_name',
             food_stock = '$stock',
             food_status= '$status',
-            userid = '$category',
-            cate_id = '$admin',
+            userid = '$admin',
+            cate_id = '$category',
             active = '$active'";
                 //execute the query
                 $res3 = mysqli_query($conn, $sql3);

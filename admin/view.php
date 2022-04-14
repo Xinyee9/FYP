@@ -173,7 +173,7 @@ if (isset($_GET['ID'])) {
                                 <select name="category" class="form-control">
                                     <?php
                                     //create 
-                                    $sql2 = "SELECT * FROM CATEGORY ";
+                                    $sql2 = "SELECT * FROM category ";
 
                                     $res2 = mysqli_query($conn, $sql2);
 
@@ -307,7 +307,7 @@ if (isset($_GET['ID'])) {
     food_image = '$image_name',
     food_stock = '$stock',
     food_status = '$status',
-    admin_id = '$admin',
+    userid = '$admin',
     cate_id = '$category',
     active = '$active'
     WHERE food_id='$ID'
