@@ -47,13 +47,18 @@
         <?php
         //create SQL Query to Get Total Revenue Generated
         //Aggregate Function in SQL
-        $sql4 = "SELECT SUM(subtotal) AS Total FROM real_cart";
+        $sql4 = "SELECT * FROM real_cart, trans where real_cart.transaction_id = trans.transaction_id and delivery_status != 'Cancelled by Admin' and delivery_status != 'Cancelled by User'";
         //Execute the Query
         $res4 = mysqli_query($conn, $sql4);
         //get the value
-        $row4 = mysqli_fetch_assoc($res4);
+        $total_revenue = 0;
+        while ($row4 = mysqli_fetch_assoc($res4))
+        {
+            $subtotal = $row4['subtotal'];
+            $total_revenue += $subtotal;
+        }
         //get the total revenue
-        $total_revenue = $row4['Total'];
+        // $total_revenue = $row4['Total'];
 
         ?>
         <div>
