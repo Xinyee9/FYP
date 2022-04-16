@@ -53,7 +53,7 @@
         //get the value
         $row4 = mysqli_fetch_assoc($res4);
         //get the total revenue
-        $total_revenue = $row4['Total']
+        $total_revenue = $row4['Total'];
 
         ?>
         <div>
