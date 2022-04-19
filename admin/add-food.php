@@ -178,6 +178,7 @@
                         if ($image_name == $img) {
                             echo "<script>
                             alert('Please use different file name for the image file.');
+                            window.location.href='./food.php';
                             </script>";
                             die();
                         }

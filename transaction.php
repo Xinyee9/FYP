@@ -308,9 +308,9 @@ if (isset($_POST['btn-submit'])) {
                             </div>
                         </div>
                     </div>
-                    <label>
+                    <!-- <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                    </label>
+                    </label> -->
 
                     <input type="submit" name="btn-submit" value="Submit and Pay" class="btn" onclick="input()">
                 </form>
